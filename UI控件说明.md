@@ -116,7 +116,7 @@
 
 - **入口**：主界面顶部 `setting` 齿轮图标（提示 `setting_desc`）。
 - **标题**：`setting_desc`（设置：翻译API、自动翻译、显示/隐藏...）。
-- **右上角**：主题切换按钮 `.settings-modal-icon-btn`（图标 `sun`/`moon`；提示 切换到浅色主题/切换到深色主题 `switch_to_light_theme`/`switch_to_dark_theme`）、关闭按钮（图标 `close`）。
+- **右上角**：仅关闭按钮（图标 `close`）。**主题切换按钮已于 2026-10-16 移入【通用设置】内容区**（见下方「WebUI 主题」行）。
 - **遮罩**：点击弹窗外部区域即关闭（`@click="onMaskClick"`）。
 
 **左侧标签栏**（`.settings-modal-tabs` → `.settings-tab-item` → `.settings-tab-icon` + `.settings-tab-label`；定义在 `settingsModal.vue` 的 `tabs` 数组）：
@@ -139,6 +139,7 @@
 |---|---|---|---|---|
 | 提示框总开关 | 是否启用每个功能的提示框，如果你已经熟练掌握本扩展的所有功能，可以取消勾选 | `whether_to_enable_tooltip` | `.setting-line` > `.gradio-checkbox`（图标 `tooltip`） | **标题在上、勾选框只留"图标+开关"**（2026-10-16 去重后） |
 | 界面语言 | 界面语言 | `interface_language` | `.setting-line` > `select.language-select` | 下拉选界面语言（108 项，文案 `code - 名称`，选项来自 i18n.json 的 languages）。选中即切换（emit `update:languageCode`，App.vue watcher 落盘 + 重载分组标签）。**2026-10-16 由顶栏 i18n 按钮迁入** |
+| WebUI 主题 | WebUI 主题 | `webui_theme` | `.setting-line` > `.settings-modal-icon-btn`（图标 `sun`/`moon`；提示 切换到浅色主题/切换到深色主题 `switch_to_light_theme`/`switch_to_dark_theme`） | 单击切换**整个 WebUI 页面**的明暗主题（emit `update:theme`，App.vue 改写 URL `?__theme=` 并重载）。**2026-10-16 由弹窗右上角迁入** |
 | 自动填充·提示词 | 当网页加载后自动填充提示词 | `auto_input_prompt` | `.setting-line` + `.auto-input-row` | 下拉：禁止(`disabled`) / 最后输入的提示词(`last_input_prompt`) / 收藏里的条目 |
 | 自动填充·反向词 | 同上（第二行） | `auto_input_prompt` | `.setting-line` + `.auto-input-row` | 同上 |
 | 输入新关键词后自动翻译 | 输入新关键词后自动翻译 | `auto_translate` | `.settings-auto-translate-row` > `.gradio-checkbox`（图标 `translate`） | 开启后输入新词自动翻译。**语言"不可一键翻译"时拆成两个**：输入新关键词后自动翻译到本地语言(`auto_translate_to_local_language`，图标 `translate`) / …到英文(`auto_translate_to_english`，图标 `english`)。**非英文语言才显示** |

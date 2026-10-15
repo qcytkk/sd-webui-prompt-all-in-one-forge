@@ -4,11 +4,6 @@
                 <div class="settings-modal-header">
                     <div class="settings-modal-title">{{ getLang('setting_desc') }}</div>
                     <div class="settings-modal-header-right">
-                        <div class="settings-modal-icon-btn"
-                             :v-tooltip="getLang(theme === 'dark' ? 'switch_to_light_theme' : 'switch_to_dark_theme')"
-                             @click="$emit('update:theme', theme === 'dark' ? 'light' : 'dark')">
-                            <icon-svg class="hover-scale-120" :name="theme === 'dark' ? 'sun' : 'moon'"/>
-                        </div>
                         <div class="settings-modal-icon-btn" @click="close">
                             <icon-svg name="close"/>
                         </div>
@@ -47,6 +42,17 @@
                                             {{ item.code }} - {{ item.name }}
                                         </option>
                                     </select>
+                                </div>
+                            </div>
+                            <!-- WebUI 主题切换（原位于弹窗右上角，按要求移入「通用设置」） -->
+                            <div class="setting-line">
+                                <div class="line-title">{{ getLang('webui_theme') }}</div>
+                                <div class="line-content">
+                                    <div class="settings-modal-icon-btn"
+                                         :v-tooltip="getLang(theme === 'dark' ? 'switch_to_light_theme' : 'switch_to_dark_theme')"
+                                         @click="$emit('update:theme', theme === 'dark' ? 'light' : 'dark')">
+                                        <icon-svg class="hover-scale-120" :name="theme === 'dark' ? 'sun' : 'moon'"/>
+                                    </div>
                                 </div>
                             </div>
                             <div class="setting-line">
