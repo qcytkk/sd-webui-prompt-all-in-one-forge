@@ -21,15 +21,22 @@
 .physton-settings-modal .settings-tab-pane .language-select{min-width:280px;background:transparent;color:inherit;border:none;font-size:13px;cursor:pointer;outline:none}
 .physton-settings-modal .settings-tab-pane .language-select:hover{background:rgba(255,255,255,.08)}
 
-/* ===== 设置弹窗 UI 重做（2026-10-16 @WorkBuddy / P5a 阶段一：通用+格式分组） =====
-   小节标题（settings-section-title / format-group-title）：12px 灰字、组间留白，
-   与 TraeCode 的 UI1（setting-line 标题在上控件在下）衔接 */
-.physton-settings-modal .settings-tab-pane>.settings-section-title{font-size:12px;font-weight:500;color:rgba(255,255,255,.42);margin:20px 0 10px;letter-spacing:.02em}
-.physton-settings-modal .settings-tab-pane>.settings-section-title:first-child{margin-top:2px}
+/* ===== 设置弹窗 UI 重做（2026-10-16 @WorkBuddy / P5a 阶段一.c：无障碍 + 虚线分隔） =====
+   1) 小节容器 settings-section：组间虚线分隔（.16 alpha）；组内行间虚线分隔（.09 alpha，末行除外）
+   2) 无障碍：小节标题对比度提至 WCAG AA（.42→.6 alpha）；复选框/下拉/主题按钮
+      :focus-visible 焦点环（2px 主题蓝 + offset）；主题按钮已支持键盘 Enter/Space（模板侧） */
+.physton-settings-modal .settings-tab-pane .settings-section-title{font-size:12px;font-weight:500;color:rgba(255,255,255,.6);margin:0 0 10px;letter-spacing:.02em}
+.physton-settings-modal .settings-tab-pane .settings-section + .settings-section{margin-top:20px;padding-top:18px;border-top:1px dashed rgba(255,255,255,.22)}
+.physton-settings-modal .settings-tab-pane .settings-section .setting-line{margin-bottom:14px;border-bottom:1px dashed rgba(255,255,255,.13)}
+.physton-settings-modal .settings-tab-pane .settings-section .setting-line:last-child{margin-bottom:0;border-bottom:none}
+.physton-settings-modal .settings-tab-pane .settings-section .settings-auto-translate-row{gap:16px;margin-bottom:0;padding-bottom:0;border-bottom:none}
 .physton-settings-modal .settings-tab-pane .format-group{margin-bottom:16px}
 .physton-settings-modal .settings-tab-pane .format-group-title{font-size:12px;font-weight:500;color:rgba(255,255,255,.42);margin-bottom:8px;letter-spacing:.02em}
 .physton-settings-modal .settings-tab-pane .format-item{margin-bottom:8px}
 .physton-settings-modal .settings-tab-pane .format-item:last-child{margin-bottom:0}
+.physton-settings-modal input[type="checkbox"]:focus-visible,
+.physton-settings-modal select:focus-visible,
+.physton-settings-modal .settings-modal-icon-btn:focus-visible{outline:2px solid #6b73ff;outline-offset:2px;border-radius:3px}
 
 /* 视觉修正（2026-10-16 @WorkBuddy / P5a 阶段一.b，playwright 实测后）：
    1) 收紧弹窗宽度：原 width:1000px 在大屏下内容区右侧大片留空，与设计稿紧凑比例不符

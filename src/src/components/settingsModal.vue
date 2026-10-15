@@ -21,104 +21,117 @@
                     <div class="settings-modal-content">
                         <!-- 通用 -->
                         <div v-show="activeTab === 'common'" class="settings-tab-pane">
-                            <div class="settings-section-title">{{ getLang('appearance') }}</div>
-                            <div class="setting-line">
-                                <div class="line-title">{{ getLang('interface_language') }}</div>
-                                <div class="line-content">
-                                    <select class="language-select" :value="languageCode" @change="onLanguageChange">
-                                        <option v-for="item in languages" :key="item.code" :value="item.code">
-                                            {{ item.code }} - {{ item.name }}
-                                        </option>
-                                    </select>
-                                </div>
-                            </div>
-                            <!-- WebUI 主题切换（原位于弹窗右上角，TraeCode UI3 移入「通用设置」；P5a 重排后归入「外观」组） -->
-                            <div class="setting-line">
-                                <div class="line-title">{{ getLang('webui_theme') }}</div>
-                                <div class="line-content">
-                                    <div class="settings-modal-icon-btn"
-                                         :v-tooltip="getLang(theme === 'dark' ? 'switch_to_light_theme' : 'switch_to_dark_theme')"
-                                         @click="$emit('update:theme', theme === 'dark' ? 'light' : 'dark')">
-                                        <icon-svg class="hover-scale-120" :name="theme === 'dark' ? 'sun' : 'moon'"/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="settings-section-title">{{ getLang('tooltip_and_auto_input') }}</div>
-                            <div class="setting-line">
-                                <div class="line-title">{{ getLang('whether_to_enable_tooltip') }}</div>
-                                <div class="line-content">
-                                    <div class="gradio-checkbox">
-                                        <label>
-                                            <input type="checkbox" :checked="enableTooltip"
-                                                   :aria-label="getLang('whether_to_enable_tooltip')"
-                                                   @change="$emit('update:enableTooltip', $event.target.checked)">
-                                            <icon-svg name="tooltip"/>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="setting-line">
-                                <div class="line-title">{{ getLang('auto_input_prompt') }}</div>
-                                <div class="line-content">
-                                    <div class="auto-input-row">
-                                        <label class="auto-input-label">{{ getLang('prompt') }}:</label>
-                                        <select v-model="autoInputPromptPrompt" @change="onAutoInputPromptChange('Prompt', $event.target.value)">
-                                            <option value="disabled">{{ getLang('disabled') }}</option>
-                                            <option value="last">{{ getLang('last_input_prompt') }}</option>
-                                            <optgroup v-for="(item) in getFavoritesByType('prompt')" :key="item.key"
-                                                      :label="getLang('favorite') + ' / ' + getLang(item.name)">
-                                                <option v-for="(favorite) in item.list" :value="favorite.id">
-                                                    {{ favorite.name || favorite.prompt.substring(0, 40) }}
-                                                </option>
-                                            </optgroup>
-                                        </select>
-                                    </div>
-                                    <div class="auto-input-row">
-                                        <label class="auto-input-label">{{ getLang('negative_prompt') }}:</label>
-                                        <select v-model="autoInputPromptNegative" @change="onAutoInputPromptChange('Negative Prompt', $event.target.value)">
-                                            <option value="disabled">{{ getLang('disabled') }}</option>
-                                            <option value="last">{{ getLang('last_input_prompt') }}</option>
-                                            <optgroup v-for="(item) in getFavoritesByType('negative_prompt')" :key="item.key"
-                                                      :label="getLang('favorite') + ' / ' + getLang(item.name)">
-                                                <option v-for="(favorite) in item.list" :value="favorite.id">
-                                                    {{ favorite.name || favorite.prompt.substring(0, 40) }}
-                                                </option>
-                                            </optgroup>
+                            <div class="settings-section">
+                                <div class="settings-section-title">{{ getLang('appearance') }}</div>
+                                <div class="setting-line">
+                                    <div class="line-title">{{ getLang('interface_language') }}</div>
+                                    <div class="line-content">
+                                        <select class="language-select" :value="languageCode"
+                                                :aria-label="getLang('interface_language')" @change="onLanguageChange">
+                                            <option v-for="item in languages" :key="item.code" :value="item.code">
+                                                {{ item.code }} - {{ item.name }}
+                                            </option>
                                         </select>
                                     </div>
                                 </div>
+                                <div class="setting-line">
+                                    <div class="line-title">{{ getLang('webui_theme') }}</div>
+                                    <div class="line-content">
+                                        <div class="settings-modal-icon-btn"
+                                             role="button" tabindex="0"
+                                             :aria-label="getLang(theme === 'dark' ? 'switch_to_light_theme' : 'switch_to_dark_theme')"
+                                             @click="$emit('update:theme', theme === 'dark' ? 'light' : 'dark')"
+                                             @keydown.enter="$emit('update:theme', theme === 'dark' ? 'light' : 'dark')"
+                                             @keydown.space.prevent="$emit('update:theme', theme === 'dark' ? 'light' : 'dark')">
+                                            <icon-svg class="hover-scale-120" :name="theme === 'dark' ? 'sun' : 'moon'"/>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="settings-section-title">{{ getLang('auto_translation') }}</div>
-                            <!-- 输入新关键词后自动翻译（原位于「翻译接口」标签页，按要求移入「通用设置」） -->
-                            <div v-if="!isEnglish" class="settings-auto-translate-row">
-                                <template v-if="canOneTranslate">
-                                    <div class="gradio-checkbox">
-                                        <label>
-                                            <input type="checkbox" :checked="autoTranslate"
-                                                   @change="$emit('update:autoTranslate', $event.target.checked)">
-                                            <icon-svg name="translate"/>
-                                            {{ getLang('auto_translate') }}
-                                        </label>
+                            <div class="settings-section">
+                                <div class="settings-section-title">{{ getLang('tooltip_and_auto_input') }}</div>
+                                <div class="setting-line">
+                                    <div class="line-title">{{ getLang('whether_to_enable_tooltip') }}</div>
+                                    <div class="line-content">
+                                        <div class="gradio-checkbox">
+                                            <label>
+                                                <input type="checkbox" :checked="enableTooltip"
+                                                       :aria-label="getLang('whether_to_enable_tooltip')"
+                                                       @change="$emit('update:enableTooltip', $event.target.checked)">
+                                                <icon-svg name="tooltip"/>
+                                            </label>
+                                        </div>
                                     </div>
-                                </template>
-                                <template v-else>
-                                    <div class="gradio-checkbox">
-                                        <label>
-                                            <input type="checkbox" :checked="autoTranslateToLocal"
-                                                   @change="$emit('update:autoTranslateToLocal', $event.target.checked)">
-                                            <icon-svg name="translate"/>
-                                            {{ getLang('auto_translate_to_local_language') }}
-                                        </label>
+                                </div>
+                                <div class="setting-line">
+                                    <div class="line-title">{{ getLang('auto_input_prompt') }}</div>
+                                    <div class="line-content">
+                                        <div class="auto-input-row">
+                                            <label class="auto-input-label">{{ getLang('prompt') }}:</label>
+                                            <select v-model="autoInputPromptPrompt"
+                                                    :aria-label="getLang('auto_input_prompt') + ' - ' + getLang('prompt')"
+                                                    @change="onAutoInputPromptChange('Prompt', $event.target.value)">
+                                                <option value="disabled">{{ getLang('disabled') }}</option>
+                                                <option value="last">{{ getLang('last_input_prompt') }}</option>
+                                                <optgroup v-for="(item) in getFavoritesByType('prompt')" :key="item.key"
+                                                          :label="getLang('favorite') + ' / ' + getLang(item.name)">
+                                                    <option v-for="(favorite) in item.list" :value="favorite.id">
+                                                        {{ favorite.name || favorite.prompt.substring(0, 40) }}
+                                                    </option>
+                                                </optgroup>
+                                            </select>
+                                        </div>
+                                        <div class="auto-input-row">
+                                            <label class="auto-input-label">{{ getLang('negative_prompt') }}:</label>
+                                            <select v-model="autoInputPromptNegative"
+                                                    :aria-label="getLang('auto_input_prompt') + ' - ' + getLang('negative_prompt')"
+                                                    @change="onAutoInputPromptChange('Negative Prompt', $event.target.value)">
+                                                <option value="disabled">{{ getLang('disabled') }}</option>
+                                                <option value="last">{{ getLang('last_input_prompt') }}</option>
+                                                <optgroup v-for="(item) in getFavoritesByType('negative_prompt')" :key="item.key"
+                                                          :label="getLang('favorite') + ' / ' + getLang(item.name)">
+                                                    <option v-for="(favorite) in item.list" :value="favorite.id">
+                                                        {{ favorite.name || favorite.prompt.substring(0, 40) }}
+                                                    </option>
+                                                </optgroup>
+                                            </select>
+                                        </div>
                                     </div>
-                                    <div class="gradio-checkbox">
-                                        <label>
-                                            <input type="checkbox" :checked="autoTranslateToEnglish"
-                                                   @change="$emit('update:autoTranslateToEnglish', $event.target.checked)">
-                                            <icon-svg name="english"/>
-                                            {{ getLang('auto_translate_to_english') }}
-                                        </label>
-                                    </div>
-                                </template>
+                                </div>
+                            </div>
+                            <div class="settings-section">
+                                <div class="settings-section-title">{{ getLang('auto_translation') }}</div>
+                                <!-- 输入新关键词后自动翻译（原位于「翻译接口」标签页，按要求移入「通用设置」） -->
+                                <div v-if="!isEnglish" class="settings-auto-translate-row">
+                                    <template v-if="canOneTranslate">
+                                        <div class="gradio-checkbox">
+                                            <label>
+                                                <input type="checkbox" :checked="autoTranslate"
+                                                       @change="$emit('update:autoTranslate', $event.target.checked)">
+                                                <icon-svg name="translate"/>
+                                                {{ getLang('auto_translate') }}
+                                            </label>
+                                        </div>
+                                    </template>
+                                    <template v-else>
+                                        <div class="gradio-checkbox">
+                                            <label>
+                                                <input type="checkbox" :checked="autoTranslateToLocal"
+                                                       @change="$emit('update:autoTranslateToLocal', $event.target.checked)">
+                                                <icon-svg name="translate"/>
+                                                {{ getLang('auto_translate_to_local_language') }}
+                                            </label>
+                                        </div>
+                                        <div class="gradio-checkbox">
+                                            <label>
+                                                <input type="checkbox" :checked="autoTranslateToEnglish"
+                                                       @change="$emit('update:autoTranslateToEnglish', $event.target.checked)">
+                                                <icon-svg name="english"/>
+                                                {{ getLang('auto_translate_to_english') }}
+                                            </label>
+                                        </div>
+                                    </template>
+                                </div>
                             </div>
                         </div>
 
