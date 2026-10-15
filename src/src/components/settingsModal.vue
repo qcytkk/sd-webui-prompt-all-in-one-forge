@@ -21,7 +21,7 @@
                     <div class="settings-modal-content">
                         <!-- 通用 -->
                         <div v-show="activeTab === 'common'" class="settings-tab-pane">
-                            <!-- 原「外观」分组标题按用户要求去掉（该节仅 2 行，标题冗余）；保留 settings-section 以维持行间虚线分隔 -->
+                            <!-- 分组标题已全部去掉（用户要求）；5 个功能行合并进一个 settings-section，仅靠行间虚线分隔 -->
                             <div class="settings-section">
                                 <div class="setting-line">
                                     <div class="line-text">
@@ -51,9 +51,6 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="settings-section">
-                                <div class="settings-section-title">{{ getLang('tooltip_and_auto_input') }}</div>
                                 <div class="setting-line">
                                     <div class="line-text">
                                         <div class="line-title">{{ getLang('tooltip_switch') }}</div>
@@ -108,9 +105,6 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="settings-section">
-                                <div class="settings-section-title">{{ getLang('auto_translation') }}</div>
                                 <!-- 输入新关键词后自动翻译（原位于「翻译接口」标签页，按要求移入「通用设置」） -->
                                 <div v-if="!isEnglish" class="settings-auto-translate-row">
                                     <div class="line-text">
