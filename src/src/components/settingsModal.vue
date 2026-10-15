@@ -49,22 +49,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="setting-line">
-                                    <div class="line-text">
-                                        <div class="line-title">{{ getLang('tooltip_switch') }}</div>
-                                        <div class="line-desc">{{ getLang('whether_to_enable_tooltip') }}</div>
-                                    </div>
-                                    <div class="line-content">
-                                        <div class="gradio-checkbox">
-                                            <label>
-                                                <input type="checkbox" :checked="enableTooltip"
-                                                       :aria-label="getLang('whether_to_enable_tooltip')"
-                                                       @change="$emit('update:enableTooltip', $event.target.checked)">
-                                                <icon-svg name="tooltip"/>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
+                                <!-- 自动填充提示词 -->
                                 <div class="setting-line">
                                     <div class="line-text">
                                         <div class="line-title">{{ getLang('auto_fill_title') }}</div>
@@ -111,35 +96,56 @@
                                     </div>
                                     <div class="line-content">
                                         <template v-if="canOneTranslate">
-                                            <div class="gradio-checkbox">
-                                                <label>
-                                                    <input type="checkbox" :checked="autoTranslate"
-                                                           :aria-label="getLang('auto_translate')"
-                                                           @change="$emit('update:autoTranslate', $event.target.checked)">
-                                                    <icon-svg name="translate"/>
-                                                </label>
+                                            <div class="paio-pill" role="radiogroup" :aria-label="getLang('auto_translate')">
+                                                <button type="button" class="paio-pill-btn" :class="{on: !autoTranslate}"
+                                                        role="radio" :aria-checked="!autoTranslate"
+                                                        @click="$emit('update:autoTranslate', false)">{{ getLang('toggle_off') }}</button>
+                                                <button type="button" class="paio-pill-btn" :class="{on: autoTranslate}"
+                                                        role="radio" :aria-checked="autoTranslate"
+                                                        @click="$emit('update:autoTranslate', true)">{{ getLang('toggle_on') }}</button>
                                             </div>
                                         </template>
                                         <template v-else>
-                                            <div class="gradio-checkbox">
-                                                <label>
-                                                    <input type="checkbox" :checked="autoTranslateToLocal"
-                                                           :aria-label="getLang('auto_translate_to_local_language')"
-                                                           @change="$emit('update:autoTranslateToLocal', $event.target.checked)">
-                                                    <icon-svg name="translate"/>
-                                                    {{ getLang('auto_translate_to_local_language') }}
-                                                </label>
+                                            <div class="paio-pill-group">
+                                                <span class="paio-pill-label">{{ getLang('auto_translate_to_local_language') }}</span>
+                                                <div class="paio-pill" role="radiogroup" :aria-label="getLang('auto_translate_to_local_language')">
+                                                    <button type="button" class="paio-pill-btn" :class="{on: !autoTranslateToLocal}"
+                                                            role="radio" :aria-checked="!autoTranslateToLocal"
+                                                            @click="$emit('update:autoTranslateToLocal', false)">{{ getLang('toggle_off') }}</button>
+                                                    <button type="button" class="paio-pill-btn" :class="{on: autoTranslateToLocal}"
+                                                            role="radio" :aria-checked="autoTranslateToLocal"
+                                                            @click="$emit('update:autoTranslateToLocal', true)">{{ getLang('toggle_on') }}</button>
+                                                </div>
                                             </div>
-                                            <div class="gradio-checkbox">
-                                                <label>
-                                                    <input type="checkbox" :checked="autoTranslateToEnglish"
-                                                           :aria-label="getLang('auto_translate_to_english')"
-                                                           @change="$emit('update:autoTranslateToEnglish', $event.target.checked)">
-                                                    <icon-svg name="english"/>
-                                                    {{ getLang('auto_translate_to_english') }}
-                                                </label>
+                                            <div class="paio-pill-group">
+                                                <span class="paio-pill-label">{{ getLang('auto_translate_to_english') }}</span>
+                                                <div class="paio-pill" role="radiogroup" :aria-label="getLang('auto_translate_to_english')">
+                                                    <button type="button" class="paio-pill-btn" :class="{on: !autoTranslateToEnglish}"
+                                                            role="radio" :aria-checked="!autoTranslateToEnglish"
+                                                            @click="$emit('update:autoTranslateToEnglish', false)">{{ getLang('toggle_off') }}</button>
+                                                    <button type="button" class="paio-pill-btn" :class="{on: autoTranslateToEnglish}"
+                                                            role="radio" :aria-checked="autoTranslateToEnglish"
+                                                            @click="$emit('update:autoTranslateToEnglish', true)">{{ getLang('toggle_on') }}</button>
+                                                </div>
                                             </div>
                                         </template>
+                                    </div>
+                                </div>
+                                <!-- 功能提示框（按要求移到「自动翻译」之后） -->
+                                <div class="setting-line">
+                                    <div class="line-text">
+                                        <div class="line-title">{{ getLang('tooltip_switch') }}</div>
+                                        <div class="line-desc">{{ getLang('whether_to_enable_tooltip') }}</div>
+                                    </div>
+                                    <div class="line-content">
+                                        <div class="paio-pill" role="radiogroup" :aria-label="getLang('tooltip_switch')">
+                                            <button type="button" class="paio-pill-btn" :class="{on: !enableTooltip}"
+                                                    role="radio" :aria-checked="!enableTooltip"
+                                                    @click="$emit('update:enableTooltip', false)">{{ getLang('toggle_off') }}</button>
+                                            <button type="button" class="paio-pill-btn" :class="{on: enableTooltip}"
+                                                    role="radio" :aria-checked="enableTooltip"
+                                                    @click="$emit('update:enableTooltip', true)">{{ getLang('toggle_on') }}</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

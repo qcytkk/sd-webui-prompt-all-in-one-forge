@@ -300,3 +300,32 @@ body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line>
 body .physton-settings-modal .settings-tab-pane .settings-section .auto-input-row{gap:10px; margin-bottom:0;}
 body .physton-settings-modal .settings-tab-pane .settings-section .auto-input-label{min-width:52px;}
 body .physton-settings-modal .settings-tab-pane .settings-section .auto-input-row select{min-width:0; width:100%;}
+
+/* ── 胶囊切换开关（2026-10-16 @TraeCode / UI8）
+   替代原来的「图标 + 复选框」；样式参考样例库的列表/网格分段控件：
+   外框 1px + 8px 圆角、首尾段 6px 小圆角、选中段品牌底 + 白字。
+   另外：两种语言模式下【自动翻译】的两个选项各配一个胶囊（竖排）。 */
+body .physton-settings-modal .settings-tab-pane .paio-pill{
+  display:inline-flex; align-items:center; gap:0;
+  height:28px; padding:2px; box-sizing:border-box;
+  background:var(--paio-surface-2);
+  border:1px solid var(--paio-border); border-radius:8px;
+}
+body .physton-settings-modal .settings-tab-pane .paio-pill-btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  height:22px; min-width:48px; padding:0 12px;
+  border:0; border-radius:0; background:none;
+  color:var(--paio-text-muted); font:inherit; font-size:13px; line-height:1;
+  cursor:pointer; transition:background .2s ease, color .2s ease;
+}
+body .physton-settings-modal .settings-tab-pane .paio-pill-btn:first-child{border-radius:6px 0 0 6px;}
+body .physton-settings-modal .settings-tab-pane .paio-pill-btn:last-child{border-radius:0 6px 6px 0;}
+body .physton-settings-modal .settings-tab-pane .paio-pill-btn:hover{box-shadow:inset 0 0 0 1px var(--paio-brand);}
+body .physton-settings-modal .settings-tab-pane .paio-pill-btn.on{
+  background:var(--paio-brand-strong); color:var(--paio-on-brand); font-weight:600; box-shadow:none;
+}
+body .physton-settings-modal .settings-tab-pane .paio-pill-group{display:flex; align-items:center; gap:8px;}
+body .physton-settings-modal .settings-tab-pane .paio-pill-label{font-size:13px; color:var(--paio-text-muted);}
+body .physton-settings-modal .settings-tab-pane .settings-section>.settings-auto-translate-row>.line-content:has(.paio-pill-group){
+  flex-direction:column; align-items:flex-end; gap:8px;
+}
