@@ -21,19 +21,7 @@
                     <div class="settings-modal-content">
                         <!-- 通用 -->
                         <div v-show="activeTab === 'common'" class="settings-tab-pane">
-                            <div class="setting-line">
-                                <div class="line-title">{{ getLang('whether_to_enable_tooltip') }}</div>
-                                <div class="line-content">
-                                    <div class="gradio-checkbox">
-                                        <label>
-                                            <input type="checkbox" :checked="enableTooltip"
-                                                   :aria-label="getLang('whether_to_enable_tooltip')"
-                                                   @change="$emit('update:enableTooltip', $event.target.checked)">
-                                            <icon-svg name="tooltip"/>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
+                            <div class="settings-section-title">{{ getLang('appearance') }}</div>
                             <div class="setting-line">
                                 <div class="line-title">{{ getLang('interface_language') }}</div>
                                 <div class="line-content">
@@ -44,7 +32,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <!-- WebUI 主题切换（原位于弹窗右上角，按要求移入「通用设置」） -->
+                            <!-- WebUI 主题切换（原位于弹窗右上角，TraeCode UI3 移入「通用设置」；P5a 重排后归入「外观」组） -->
                             <div class="setting-line">
                                 <div class="line-title">{{ getLang('webui_theme') }}</div>
                                 <div class="line-content">
@@ -52,6 +40,20 @@
                                          :v-tooltip="getLang(theme === 'dark' ? 'switch_to_light_theme' : 'switch_to_dark_theme')"
                                          @click="$emit('update:theme', theme === 'dark' ? 'light' : 'dark')">
                                         <icon-svg class="hover-scale-120" :name="theme === 'dark' ? 'sun' : 'moon'"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="settings-section-title">{{ getLang('tooltip_and_auto_input') }}</div>
+                            <div class="setting-line">
+                                <div class="line-title">{{ getLang('whether_to_enable_tooltip') }}</div>
+                                <div class="line-content">
+                                    <div class="gradio-checkbox">
+                                        <label>
+                                            <input type="checkbox" :checked="enableTooltip"
+                                                   :aria-label="getLang('whether_to_enable_tooltip')"
+                                                   @change="$emit('update:enableTooltip', $event.target.checked)">
+                                            <icon-svg name="tooltip"/>
+                                        </label>
                                     </div>
                                 </div>
                             </div>
@@ -86,6 +88,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="settings-section-title">{{ getLang('auto_translation') }}</div>
                             <!-- 输入新关键词后自动翻译（原位于「翻译接口」标签页，按要求移入「通用设置」） -->
                             <div v-if="!isEnglish" class="settings-auto-translate-row">
                                 <template v-if="canOneTranslate">

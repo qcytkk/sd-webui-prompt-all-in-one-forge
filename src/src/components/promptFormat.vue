@@ -6,71 +6,83 @@
                 <icon-svg name="close"/>
             </div>
             <div class="format-list" @click.stop>
-                <div class="format-item">
-                    <input class="format-checkbox" type="checkbox"
-                           :checked="autoRemoveSpace"
-                           @change="$emit('update:autoRemoveSpace', $event.target.checked)">
-                    <div class="format-desc" v-html="getLang('is_remove_space')"></div>
+                <div class="format-group">
+                    <div class="format-group-title">{{ getLang('group_comma_space') }}</div>
+                    <div class="format-item">
+                        <input class="format-checkbox" type="checkbox"
+                               :checked="autoRemoveSpace"
+                               @change="$emit('update:autoRemoveSpace', $event.target.checked)">
+                        <div class="format-desc" v-html="getLang('is_remove_space')"></div>
+                    </div>
+                    <div class="format-item">
+                        <input class="format-checkbox" type="checkbox"
+                               :checked="autoRemoveLastComma"
+                               @change="$emit('update:autoRemoveLastComma', $event.target.checked)">
+                        <div class="format-desc" v-html="getLang('is_remove_last_comma')"></div>
+                    </div>
+                    <div class="format-item">
+                        <input class="format-checkbox" type="checkbox"
+                               :checked="autoRemoveBeforeLineComma"
+                               @change="$emit('update:autoRemoveBeforeLineComma', $event.target.checked)">
+                        <div class="format-desc" v-html="getLang('is_remove_before_line_comma')"></div>
+                    </div>
                 </div>
-                <div class="format-item">
-                    <input class="format-checkbox" type="checkbox"
-                           :checked="autoRemoveLastComma"
-                           @change="$emit('update:autoRemoveLastComma', $event.target.checked)">
-                    <div class="format-desc" v-html="getLang('is_remove_last_comma')"></div>
+                <div class="format-group">
+                    <div class="format-group-title">{{ getLang('group_weight_symbol') }}</div>
+                    <div class="format-item">
+                        <input class="format-checkbox" type="checkbox"
+                               :checked="autoKeepWeightZero"
+                               @change="$emit('update:autoKeepWeightZero', $event.target.checked)">
+                        <div class="format-desc" v-html="getLang('is_keep_weight_zero')"></div>
+                    </div>
+                    <div class="format-item">
+                        <input class="format-checkbox" type="checkbox"
+                               :checked="useNovelAiWeightSymbol"
+                               @change="$emit('update:useNovelAiWeightSymbol', $event.target.checked)">
+                        <div class="format-desc" v-html="getLang('is_use_novel_ai_weight_symbol')"></div>
+                    </div>
                 </div>
-                <div class="format-item">
-                    <input class="format-checkbox" type="checkbox"
-                           :checked="autoKeepWeightZero"
-                           @change="$emit('update:autoKeepWeightZero', $event.target.checked)">
-                    <div class="format-desc" v-html="getLang('is_keep_weight_zero')"></div>
+                <div class="format-group">
+                    <div class="format-group-title">{{ getLang('group_break_wrap') }}</div>
+                    <div class="format-item">
+                        <input class="format-checkbox" type="checkbox"
+                               :checked="autoBreakBeforeWrap"
+                               @change="$emit('update:autoBreakBeforeWrap', $event.target.checked)">
+                        <div class="format-desc" v-html="getLang('is_break_before_wrap')"></div>
+                    </div>
+                    <div class="format-item">
+                        <input class="format-checkbox" type="checkbox"
+                               :checked="autoBreakAfterWrap"
+                               @change="$emit('update:autoBreakAfterWrap', $event.target.checked)">
+                        <div class="format-desc" v-html="getLang('is_break_after_wrap')"></div>
+                    </div>
                 </div>
-                <div class="format-item">
-                    <input class="format-checkbox" type="checkbox"
-                           :checked="autoBreakBeforeWrap"
-                           @change="$emit('update:autoBreakBeforeWrap', $event.target.checked)">
-                    <div class="format-desc" v-html="getLang('is_break_before_wrap')"></div>
-                </div>
-                <div class="format-item">
-                    <input class="format-checkbox" type="checkbox"
-                           :checked="autoBreakAfterWrap"
-                           @change="$emit('update:autoBreakAfterWrap', $event.target.checked)">
-                    <div class="format-desc" v-html="getLang('is_break_after_wrap')"></div>
-                </div>
-                <div class="format-item">
-                    <input class="format-checkbox" type="checkbox"
-                           :checked="autoRemoveLoraBeforeComma"
-                           @change="$emit('update:autoRemoveLoraBeforeComma', $event.target.checked)">
-                    <div class="format-desc" v-html="getLang('is_remove_lora_before_comma')"></div>
-                </div>
-                <div class="format-item">
-                    <input class="format-checkbox" type="checkbox"
-                           :checked="autoRemoveLoraAfterComma"
-                           @change="$emit('update:autoRemoveLoraAfterComma', $event.target.checked)">
-                    <div class="format-desc" v-html="getLang('is_remove_lora_after_comma')"></div>
-                </div>
-                <div class="format-item">
-                    <input class="format-checkbox" type="checkbox"
-                           :checked="useNovelAiWeightSymbol"
-                           @change="$emit('update:useNovelAiWeightSymbol', $event.target.checked)">
-                    <div class="format-desc" v-html="getLang('is_use_novel_ai_weight_symbol')"></div>
-                </div>
-                <div class="format-item">
-                    <input class="format-checkbox" type="checkbox"
-                           :checked="autoRemoveBeforeLineComma"
-                           @change="$emit('update:autoRemoveBeforeLineComma', $event.target.checked)">
-                    <div class="format-desc" v-html="getLang('is_remove_before_line_comma')"></div>
-                </div>
-                <div class="format-item">
-                    <input class="format-checkbox" type="checkbox"
-                           :checked="autoSplitByPeriod"
-                           @change="$emit('update:autoSplitByPeriod', $event.target.checked)">
-                    <div class="format-desc" v-html="getLang('is_split_by_period')"></div>
-                </div>
-                <div class="format-item" v-if="autoSplitByPeriod" style="padding-left: 20px;">
-                    <input class="format-checkbox" type="checkbox"
-                           :checked="autoSplitByPeriodIncludeParen"
-                           @change="$emit('update:autoSplitByPeriodIncludeParen', $event.target.checked)">
-                    <div class="format-desc" v-html="getLang('is_split_by_period_include_paren')"></div>
+                <div class="format-group">
+                    <div class="format-group-title">{{ getLang('group_lora_period') }}</div>
+                    <div class="format-item">
+                        <input class="format-checkbox" type="checkbox"
+                               :checked="autoRemoveLoraBeforeComma"
+                               @change="$emit('update:autoRemoveLoraBeforeComma', $event.target.checked)">
+                        <div class="format-desc" v-html="getLang('is_remove_lora_before_comma')"></div>
+                    </div>
+                    <div class="format-item">
+                        <input class="format-checkbox" type="checkbox"
+                               :checked="autoRemoveLoraAfterComma"
+                               @change="$emit('update:autoRemoveLoraAfterComma', $event.target.checked)">
+                        <div class="format-desc" v-html="getLang('is_remove_lora_after_comma')"></div>
+                    </div>
+                    <div class="format-item">
+                        <input class="format-checkbox" type="checkbox"
+                               :checked="autoSplitByPeriod"
+                               @change="$emit('update:autoSplitByPeriod', $event.target.checked)">
+                        <div class="format-desc" v-html="getLang('is_split_by_period')"></div>
+                    </div>
+                    <div class="format-item" v-if="autoSplitByPeriod" style="padding-left: 20px;">
+                        <input class="format-checkbox" type="checkbox"
+                               :checked="autoSplitByPeriodIncludeParen"
+                               @change="$emit('update:autoSplitByPeriodIncludeParen', $event.target.checked)">
+                        <div class="format-desc" v-html="getLang('is_split_by_period_include_paren')"></div>
+                    </div>
                 </div>
             </div>
         </div>
