@@ -91,7 +91,9 @@ def on_app_started(_: gr.Blocks, app: FastAPI):
             return {"result": get_lang('is_required', {'0': 'name'})}
         if 'package' not in data:
             return {"result": get_lang('is_required', {'0': 'package'})}
-        return {"result": install_package(data['name'], data['package'])}
+        # install_package() 是阻塞调用（pip 安装，可能持续数分钟），
+        # 放到线程池执行，避免卡住 uvicorn 的事件循环。
+        return {"result": await run_in_threadpool(install_package, data['name'], data['package'])}
 
     @app.get("/physton_prompt/get_extensions")
     async def _get_extensions():
@@ -104,7 +106,9 @@ def on_app_started(_: gr.Blocks, app: FastAPI):
             return {"result": get_lang('is_required', {'0': 'text'})}
         if 'steps' not in data:
             return {"result": get_lang('is_required', {'0': 'steps'})}
-        return get_token_counter(data['text'], data['steps'])
+        # get_token_counter() 含 SD WebUI 的 prompt 解析（CPU 密集，长提示词下明显耗时），
+        # 放到线程池执行，避免卡住 uvicorn 的事件循环。
+        return await run_in_threadpool(get_token_counter, data['text'], data['steps'])
 
     @app.get("/physton_prompt/get_data")
     async def _get_data(key: str):
@@ -383,7 +387,9 @@ def on_app_started(_: gr.Blocks, app: FastAPI):
         if 'api_config' not in data:
             return {"success": False, "message": get_lang('is_required', {'0': 'api_config'})}
         try:
-            return {"success": True, 'result': gen_openai(data['messages'], data['api_config'])}
+            # gen_openai() 是阻塞调用（OpenAI 网络请求，timeout 可达 60s），
+            # 放到线程池执行，避免卡住 uvicorn 的事件循环。
+            return {"success": True, 'result': await run_in_threadpool(gen_openai, data['messages'], data['api_config'])}
         except Exception as e:
             return {"success": False, 'message': str(e)}
 
