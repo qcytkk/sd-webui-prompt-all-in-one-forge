@@ -44,3 +44,217 @@
 .physton-settings-modal .settings-modal-main{width:820px}
 .physton-settings-modal .settings-modal-content{padding:14px 20px}
 .physton-settings-modal input[type="checkbox"]{accent-color:#6b73ff;width:14px;height:14px}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   弹窗设计规范移植（2026-10-16 @TraeCode / P5a）
+   规范来源：`sd_forge_lora_new`（LoRA 管理器）style.css —— 令牌体系 + 弹窗/按钮/输入/焦点/页脚约定。
+   品牌色：沿用本插件的**紫蓝色**（LoRA 的橙色不采用）：brand #6b73ff / brand-strong #4a54ff。
+   作用域：本插件全部弹窗。
+   生效：纯 CSS（根目录 style.css 由 Forge 自动加载，**无需重建前端**）；
+        改完按《项目开发说明》§5：设置页 → Actions →「Reload custom script bodies」→ 刷新页面。
+   范围界定：只做「视觉令牌 + 组件形态」对齐，不动信息架构与交互逻辑。
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── 1) 设计令牌（亮色默认；深色在 body.dark 下覆盖）
+   已实测：本插件 <body> 同时带 `dark` 与 `physton-gradio-container` 两个类 ── */
+:root{
+  --paio-brand:#6b73ff; --paio-brand-strong:#4a54ff; --paio-brand-text:#4a54ff;
+  --paio-brand-soft:#eef0ff; --paio-on-brand:#fff;
+  --paio-surface:#fff; --paio-surface-2:#f3f4f6; --paio-input-bg:#fff;
+  --paio-border:#d5d8de; --paio-border-strong:#9ca3af;
+  --paio-text:#1f2937; --paio-text-muted:#4b5563;
+  --paio-overlay:rgba(0,0,0,.72); --paio-focus:#6b73ff;
+  --paio-shadow:0 1px 3px rgba(0,0,0,.1);
+  --paio-shadow-dialog:0 10px 40px rgba(0,0,0,.35);
+  --paio-shadow-glow:0 0 0 2px rgba(107,115,255,.6),0 0 16px rgba(107,115,255,.45);
+  --paio-radius:8px; --paio-radius-sm:4px; --paio-ctl-h:28px;
+}
+body.dark{
+  --paio-brand:#6b73ff; --paio-brand-strong:#4a54ff; --paio-brand-text:#a5abff;
+  --paio-brand-soft:rgba(107,115,255,.16);
+  --paio-surface:#111827; --paio-surface-2:#1f2937; --paio-input-bg:#1f2937;
+  --paio-border:#374151; --paio-border-strong:#6b7280;
+  --paio-text:#f3f4f6; --paio-text-muted:#9ca3af;
+  --paio-overlay:rgba(0,0,0,.78); --paio-focus:#8b92ff;
+  --paio-shadow:0 1px 3px rgba(0,0,0,.5);
+  --paio-shadow-dialog:0 10px 40px rgba(0,0,0,.75);
+  --paio-shadow-glow:0 0 0 2px rgba(107,115,255,.75),0 0 20px rgba(107,115,255,.5);
+}
+
+/* ── 2) 统一键盘焦点环（LoRA：2px 品牌色 + offset 2px + 4px 圆角）── */
+body .physton-settings-modal :focus-visible,
+body .physton-chatgpt-prompt :focus-visible,
+body .physton-prompt-select-language :focus-visible,
+body .physton-packages-state :focus-visible,
+body .physton-paste-popup :focus-visible,
+body .physton-prompt-history :focus-visible,
+body .physton-prompt-favorite :focus-visible,
+body .physton-prompt-extra-networks-popup :focus-visible,
+body .physton-prompt-blacklist :focus-visible,
+body .physton-prompt-hotkey :focus-visible,
+body .physton-prompt-format :focus-visible,
+body .physton-prompt-translate-setting :focus-visible,
+body .physton-prompt-extension-css :focus-visible,
+body .physton-about-prompt :focus-visible{
+  outline:2px solid var(--paio-focus)!important; outline-offset:2px; border-radius:var(--paio-radius-sm);
+}
+
+/* ── 3) 弹窗外壳：遮罩 + 面板（surface / 1px 边框 / 8px 圆角 / 投影）── */
+body .physton-settings-modal,
+body .physton-chatgpt-prompt,
+body .physton-prompt-select-language,
+body .physton-packages-state,
+body .physton-paste-popup{background:var(--paio-overlay)!important;}
+
+body .physton-settings-modal .settings-modal-main,
+body .physton-chatgpt-prompt .chatgpt-main,
+body .physton-prompt-select-language .language-main,
+body .physton-packages-state .state-main,
+body .physton-paste-popup .paste-popup-main{
+  background:var(--paio-surface)!important; color:var(--paio-text)!important;
+  border:1px solid var(--paio-border)!important; border-radius:var(--paio-radius)!important;
+  box-shadow:var(--paio-shadow-dialog)!important;
+}
+
+/* ── 4) 浮层（历史 / 收藏 / 额外网络信息）── */
+body .physton-prompt-history,
+body .physton-prompt-favorite,
+body .physton-prompt-extra-networks-popup{
+  background:var(--paio-surface)!important; color:var(--paio-text)!important;
+  border:1px solid var(--paio-border)!important; border-radius:var(--paio-radius)!important;
+  box-shadow:var(--paio-shadow-dialog)!important;
+}
+body .physton-prompt-history .popup-tab.active,
+body .physton-prompt-favorite .popup-tab.active{
+  background:var(--paio-brand-soft)!important; color:var(--paio-brand-text)!important;
+}
+body .physton-prompt-history .content-item:hover,
+body .physton-prompt-favorite .content-item:hover{background:var(--paio-surface-2)!important;}
+body .physton-prompt-history .item-header,
+body .physton-prompt-favorite .item-header,
+body .physton-prompt-extra-networks-popup .info-raw{border-color:var(--paio-border)!important;}
+body .physton-prompt-history .item-header-time,
+body .physton-prompt-favorite .item-header-time,
+body .physton-prompt-extra-networks-popup .raw-name{color:var(--paio-text-muted)!important;}
+body .physton-prompt-history .item-header-name input,
+body .physton-prompt-favorite .item-header-name input{color:var(--paio-text)!important;}
+
+/* ── 5) 设置弹窗：结构色（换掉写死的暗色，使亮色主题也正确）── */
+body .physton-settings-modal .settings-modal-header{border-bottom-color:var(--paio-border)!important;}
+body .physton-settings-modal .settings-modal-tabs{border-right-color:var(--paio-border)!important;}
+body .physton-settings-modal .settings-tab-item{color:var(--paio-text-muted)!important;}
+body .physton-settings-modal .settings-tab-item:hover{background:var(--paio-surface-2)!important;}
+body .physton-settings-modal .settings-tab-item.active{
+  background:var(--paio-brand-soft)!important; border-left-color:var(--paio-brand)!important;
+  color:var(--paio-brand-text)!important;
+}
+body .physton-settings-modal .settings-modal-icon-btn{
+  min-width:32px; min-height:32px; padding:0 8px!important;
+  justify-content:center; border-radius:var(--paio-radius)!important;
+  color:var(--paio-text)!important;
+}
+body .physton-settings-modal .settings-modal-icon-btn:hover{background:var(--paio-surface-2)!important;}
+body .physton-settings-modal .settings-modal-content{padding:14px 20px;}
+/* 文案层级：标题=弱化说明，正文=主文字（亮暗两套都成立） */
+body .physton-settings-modal .line-title,
+body .physton-settings-modal .settings-section-title,
+body .physton-settings-modal .format-group-title,
+body .physton-settings-modal .auto-input-label,
+body .physton-settings-modal .settings-hint{color:var(--paio-text-muted)!important;}
+body .physton-settings-modal .line-content{color:var(--paio-text)!important;}
+/* 虚线分隔改用边框令牌（原先写死 rgba(255,255,255,…)，亮色主题会看不见） */
+body .physton-settings-modal .settings-section+.settings-section{border-top-color:var(--paio-border)!important;}
+body .physton-settings-modal .settings-section .setting-line{border-bottom-color:var(--paio-border)!important;}
+body .physton-settings-modal .settings-auto-translate-row{border-bottom-color:var(--paio-border)!important;}
+
+/* ── 6) 通用控件基线：输入 / 文本域 / 下拉 / 复选框（对齐 LoRA：h28 / r6 / 1px / 聚焦态）── */
+body .physton-settings-modal input[type="text"],
+body .physton-settings-modal input[type="number"],
+body .physton-settings-modal textarea,
+body .physton-settings-modal select,
+body .physton-chatgpt-prompt input[type="text"],
+body .physton-chatgpt-prompt textarea,
+body .physton-chatgpt-prompt select,
+body .physton-prompt-select-language input,
+body .physton-prompt-hotkey select,
+body .physton-prompt-format input[type="text"],
+body .physton-prompt-translate-setting input[type="text"],
+body .physton-prompt-translate-setting textarea,
+body .physton-prompt-translate-setting select,
+body .physton-prompt-blacklist textarea,
+body .physton-paste-popup textarea{
+  background:var(--paio-input-bg)!important; color:var(--paio-text)!important;
+  border:1px solid var(--paio-border)!important; border-radius:6px!important;
+  font-size:14px!important;
+}
+body .physton-settings-modal select,
+body .physton-chatgpt-prompt select,
+body .physton-prompt-hotkey select,
+body .physton-prompt-translate-setting select{
+  height:var(--paio-ctl-h)!important; padding:0 8px!important;
+}
+body .physton-settings-modal input[type="checkbox"],
+body .physton-chatgpt-prompt input[type="checkbox"],
+body .physton-prompt-blacklist input[type="checkbox"],
+body .physton-packages-state input[type="checkbox"],
+body .physton-prompt-translate-setting input[type="checkbox"]{
+  accent-color:var(--paio-brand)!important; width:14px!important; height:14px!important;
+}
+/* 设置弹窗里「界面语言 / 自动填充」此前被刻意做成无框下拉，这里按规范恢复为有框控件 */
+body .physton-settings-modal .settings-tab-pane .language-select{
+  background:var(--paio-input-bg)!important; border:1px solid var(--paio-border)!important;
+  border-radius:6px!important; color:var(--paio-text)!important;
+}
+body .physton-settings-modal .settings-tab-pane .settings-section select{min-width:240px;}
+
+/* ── 7) 页脚按钮组：.setting-btns → LoRA 的 .dlg-footer 形态（右对齐 / gap8 / 12px 内距 / 上边框）── */
+body .physton-settings-modal .setting-btns,
+body .physton-prompt-translate-setting .setting-btns,
+body .physton-prompt-blacklist .setting-btns,
+body .physton-prompt-hotkey .setting-btns{
+  display:flex!important; justify-content:flex-end!important; align-items:center;
+  gap:8px!important; margin-top:16px!important; padding:12px 0 0!important;
+  border-top:1px solid var(--paio-border)!important;
+}
+body .physton-prompt-translate-setting .setting-btns>div,
+body .physton-prompt-blacklist .setting-btns>div,
+body .physton-prompt-hotkey .setting-btns>div,
+body .physton-chatgpt-prompt .common-btn,
+body .physton-packages-state .btn-packages-install,
+body .physton-paste-popup .paste-submit{
+  height:32px!important; padding:0 16px!important; box-sizing:border-box;
+  display:inline-flex!important; align-items:center; justify-content:center; gap:6px;
+  border-radius:var(--paio-radius)!important; border:1px solid var(--paio-border)!important;
+  background:var(--paio-surface-2)!important; color:var(--paio-text)!important;
+  font:inherit; font-size:14px!important; cursor:pointer;
+}
+/* 主操作 = 品牌深色底 + 白字（对比 ≥4.5:1）；悬停按用户既有偏好变**亮色**品牌 */
+body .physton-prompt-translate-setting .translate-save,
+body .physton-prompt-blacklist .blacklist-save,
+body .physton-prompt-hotkey .hotkey-save,
+body .physton-chatgpt-prompt .common-btn,
+body .physton-packages-state .btn-packages-install,
+body .physton-paste-popup .paste-submit{
+  background:var(--paio-brand-strong)!important; border-color:var(--paio-brand-strong)!important;
+  color:var(--paio-on-brand)!important; font-weight:600;
+}
+body .physton-prompt-translate-setting .translate-save:hover,
+body .physton-prompt-blacklist .blacklist-save:hover,
+body .physton-prompt-hotkey .hotkey-save:hover,
+body .physton-chatgpt-prompt .common-btn:hover,
+body .physton-packages-state .btn-packages-install:hover,
+body .physton-paste-popup .paste-submit:hover{
+  background:var(--paio-brand)!important; border-color:var(--paio-brand)!important; color:var(--paio-on-brand)!important;
+}
+body .physton-prompt-translate-setting .setting-btns>div:hover,
+body .physton-prompt-blacklist .setting-btns>div:hover,
+body .physton-prompt-hotkey .setting-btns>div:hover{background:var(--paio-surface)!important;}
+
+/* ── 8) 零散：帮助链接 / 错误提示 / 表头（对齐品牌与语义色）── */
+body .physton-settings-modal .help-item a,
+body .physton-chatgpt-prompt .line-content a{color:var(--paio-brand-text)!important;}
+body .physton-settings-modal .common-red{color:#ef4444!important;}
+body .physton-settings-modal .settings-modal-title{color:var(--paio-text)!important;}
+body .physton-prompt-extension-css .extension-table th,
+body .physton-prompt-extension-css .extension-table td{border-color:var(--paio-border)!important;}
+body .physton-about-prompt .version-item{border-color:var(--paio-border)!important;}
