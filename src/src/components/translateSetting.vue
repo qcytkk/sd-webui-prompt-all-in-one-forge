@@ -78,10 +78,6 @@
                     <div class="setting-line">
                         <div class="line-title">TagComplete</div>
                         <div class="line-content">
-                            <div class="help-list">
-                                <div class="help-item">[?] <a :href="globals.docs + '/TranslationApiConfiguration.html#tagcomplete-translation-enhancement'" target="_blank">[Wiki] TagComplete Translation enhancement</a>
-                                </div>
-                            </div>
                             <div v-html="getLang('tagcomplete_translate_desc')"></div>
                             <div class="common-red" v-html="getLang('tagcomplete_translate_desc2')"></div>
                             <div class="line-row">

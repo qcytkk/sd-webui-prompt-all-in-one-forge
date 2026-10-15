@@ -10,7 +10,6 @@
                 <p v-if="!loading">
                     <span>{{ getLang('version') }}: {{ formatVersion(version) }}</span>
                 </p>
-                <p>{{ getLang('wiki_desc') }} <a :href="replaceGlobals('{{docs}}')" target="_blank">Wiki</a></p>
                 <div class="version-list">
                     <icon-svg v-if="loading" name="loading"/>
                     <div class="version-item" v-for="(item) in versions" :key="item.version">
