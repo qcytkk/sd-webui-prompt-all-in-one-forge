@@ -1,0 +1,6 @@
+# 换行格式固定（本插件对下列文件的换行有硬要求，禁止按 core.autocrlf 自动转换）
+* text=auto
+i18n.json text eol=crlf
+translate_apis.json text eol=lf
+tags/en_zh_dictionary.csv text eol=crlf
+javascript/main.entry.js.map -text

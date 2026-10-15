@@ -1,0 +1,4497 @@
+# 👍Источники интеграции подсказок: "路过银河" (zhihu), неизвестный автор (Google Drive), Интернет и т. д. Благодарим этих авторов за их бескорыстный вклад!
+#
+# ⚠️Рекомендуется не изменять содержимое этого файла, поскольку автор этого файла может периодически обновлять его, и изменение файла может привести к конфликтам при обновлении.
+# ⚠️Если вам нужно настроить пользовательские ключевые слова, скопируйте этот файл, переименуйте его в custom.yaml и внесите изменения в custom.yaml.
+# ⚠️Плагин будет прочитывать файл custom.yaml в первую очередь. Если файл custom.yaml не существует, будет прочитан этот файл.
+#
+# ⚠️Если вы хотите добавить свое собственное содержимое перед текущим файлом, вы можете создать файл prepend.yaml.
+# ⚠️Если вы хотите добавить свое собственное содержимое после текущего файла, вы можете создать файл append.yaml.
+# ⚠️custom.yaml: Перезаписывает текущий файл
+# ⚠️prepend.yaml: Добавляет перед текущим файлом
+# ⚠️append.yaml: Добавляет после текущего файла
+#
+# ⚠️Рекомендуется использовать профессиональный текстовый редактор (например, Visual Studio Code) для редактирования этого файла, чтобы избежать проблем с кодировкой и форматированием.
+# ⚠️Не редактируйте этот файл с помощью стандартного блокнота Windows.
+# ⚠️После внесения изменений рекомендуется проверить правильность формата содержимого на https://www.yamllint.com/.
+
+# Формат содержимого:
+# - name: Название первого уровня
+#   groups: Список второго уровня
+#     - name: Название второго уровня
+#       color: Цвет текста ключевых слов по умолчанию (может быть пустым). Код CSS-цвета, например: #ff0000, red, rgb(255,0,0), rgba(255,0,0,1), hsl(0,100%,50%), hsla(0,100%,50%,1)
+#       tags: Список ключевых слов
+#         - Английское ключевое слово: Локализованный перевод
+#         - Английское ключевое слово: Локализованный перевод
+#         ...
+
+
+- name: Персона
+  groups:
+    - name: Объект
+      color: rgba(255, 123, 2, .4)
+      tags:
+        1girl: 1 девушка
+        1boy: 1 мальчик
+        2girls: 2 девушки
+        2boys: 2 мальчика
+        3girls: 3 девушки
+        3boys: 3 мальчика
+        girl: девушка
+        boy: мальчик
+        solo: одиночный
+        multiple_girls: несколько девушек
+        little_girl: маленькая девочка
+        little_boy: маленький мальчик
+        shota: шота
+        loli: лоли
+        kawaii: милый
+        mesugaki: мэсугаки
+        adorable_girl: прелестная девушка
+        bishoujo: бисёдзё
+        gyaru: гяру
+        sisters: сестры
+        ojousama: оджоусама
+        female: женщина
+        mature_female: зрелая женщина
+        mature: зрелый
+        female_pervert: женская извращенка
+        male: мужчина
+        milf: милфа
+        otoko_no_ko: отоко-но-ко
+        crossdressing: переодевание
+
+    - name: Личность
+      color: rgba(255, 123, 2, .4)
+      tags:
+        lifeguard: спасатель
+        boxer: боксёр
+        scientist: ученый
+        athletes: спортсмен
+        office lady: офисная леди
+        monk: монах
+        crobat: акробат
+        nun: монахиня
+        nurse: медсестра
+        stewardess: стюардесса
+        student: студент
+        waitress: официантка
+        teacher: учитель
+        racer: гонщик
+        police: полицейский
+        soldier: солдат
+        cheerleader: болельщица
+        actor: актер
+        actress: актриса
+        spy: шпион
+        agent: агент
+        assassin: убийца
+        poet: поэт
+        samurai: самурай
+        dancing girl: танцовщица
+        motorcyclist: мотоциклист
+        hacker: хакер
+        magician: фокусник
+        detective: детектив
+        doll: кукла
+        maid: горничная
+        pilot: пилот
+        diver: ныряльщик
+        bar censor: цензор в баре
+        missionary: миссионер
+        firefighter: пожарник
+        goalkeeper: вратарь
+        chef: повар
+        astronaut: астронавт
+        cashier: кассир
+        mailman: почтальон
+        barista: бариста
+        the hermit: отшельник
+        makihitsuji: пастух
+        office_lady: офисная леди
+        race_queen: королева гонок
+        queen: королева
+        doctor: врач
+        knight: рыцарь
+        housemaid: горничная
+        dancer: танцор
+        ballerina: балерина
+        gym_leader: тренер по гимнастике
+        trap: ловушка
+        female: женщина
+        harem: гарем
+        idol: идол
+        male: мужчина
+        priest: священник
+        cleric: священник (христианство)
+        wa_maid: японская горничная
+        yaoi: яой
+        yuri: юри
+        albino: альбинос
+        amputee: ампутант
+
+    - name: Двумерный персонаж
+      color: rgba(255, 123, 2, .4)
+      tags:
+        pokemon: покемон
+        teddy bear: мишка
+        mario: Марио
+        pikachu: Пикачу
+        neon genesis evangelion: Неоновый генезис Евангелион
+        hatsune miku: Хацунэ Мику
+        harry potter: Гарри Поттер
+        doraemon: Дораэмон
+        saint seiya: Святой Сейя
+        gojou satoru: Годжо Сатору
+        avengers: Мстители
+        mazinger: Мазингер
+        captain america: Капитан Америка
+        crayon shin-chan: Крейзишин-чан
+        slam dunk: Баскетбол Кай
+        sun wukong: Сунь-Гок
+        witch: Ведьма
+        miko: Мико
+        ninja: Ниндзя
+        vampire: Вампир
+        knight: Рыцарь
+        magical_girl: Волшебная девочка
+        orc: Орк
+        druid: Друид
+        elf: Эльф
+        fairy: Фея
+        furry: Зверолюд
+        mermaid: Русалка
+        kamen rider: Камен Райдер
+        magister: Магистр
+        spider-man: Человек-паук
+        santa alter: Санта Альтер
+        monster_girl: Девушка-монстр
+        cat_girl: Кошечка
+        dog_girl: Собачка
+        fox_girl: Лисичка
+        kitsune: Кицунэ
+        kyuubi: Кюуби
+        raccoon_girl: Енот-девочка
+        wolf_girl: Волчица
+        bunny_girl: Зайка
+        horse_girl: Лошадь-девушка
+        cow_girl: Корова-девушка
+        dragon_girl: Дракон-девушка
+        centaur: Кентавр
+        slime_musume: Слизь-девушка
+        spider_girl: Паук-девушка
+        dominatrix: Доминатрикс
+        sailor_senshi: Морячка-воительница
+        mecha: Меха
+        mecha_musume: Меха-девушка
+        humanoid_robot_: Гуманоидный робот
+        cyborg: Киборг
+        angel: Ангел
+        devil: Дьявол
+        dark_elf: Темный эльф
+        imp: Имп
+        succubus: Суккуб
+        giantess: Гигантесса
+        minigirl: Мини-девочка
+        monster: Монстр
+        no humans: Без людей
+
+    - name: Возраст
+      color: rgba(255, 123, 2, .4)
+      tags:
+        toddler: малыш
+        kindergartener: детсадовец
+        child: ребенок
+        underage: несовершеннолетний
+        teenager: подросток (13-19)
+        teen: подросток (13-19)
+        early teen: ранний подросток (11-15)
+        adult: взрослый
+        elder: пожилой человек
+        old: старик
+        loli: лоли
+        shota: шота
+
+    - name: Кожа
+      color: rgba(255, 123, 2, .4)
+      tags:
+        white_skin: белая кожа
+        pale_skin: бледная кожа
+        fair_skin: светлая кожа
+        brown_skin: коричневая кожа
+        deep_skin: темная кожа
+        dark_skin: темная кожа
+        black_skin: черная кожа
+        shiny_skin: блестящая кожа
+        white_marble_glowing_skin: белая мраморная светящаяся кожа
+        tattoo: татуировка
+        tan: загар
+        tanlines: загарные полосы
+        oil: маслянистая кожа
+
+    - name: Фигура
+      color: rgba(255, 123, 2, .4)
+      tags:
+        skinny: худощавый
+        plump: плотный
+        curvy: изогнутый
+        gyaru: гяру
+        pregnant: беременная
+        fat: толстый
+        thin: тонкий
+        slender: стройный
+        glamor: очарование
+        tall: высокий
+        petite: маленький
+        chibi: чиби
+        muscular: мускулистый
+
+    - name: Тип лица
+      color: rgba(255, 123, 2, .4)
+      tags:
+        slender face: узкое лицо
+        round face: круглое лицо
+        oval face: овальное лицо
+        baby face: детское лицо
+        inverted triangle face: обратное треугольное лицо
+        heart shaped face: лицо в форме сердца
+        diamond face: алмазное лицо
+        square face: квадратное лицо
+        long face: длинное лицо
+        triangular face: треугольное лицо
+
+    - name: Волосы
+      color: rgba(255, 123, 2, .4)
+      tags:
+        white hair: белые волосы
+        blonde hair: блонд волосы
+        silver hair: серебряные волосы
+        grey hair: серые волосы
+        purple hair: фиолетовые волосы
+        red hair: рыжие волосы
+        yellow hair: желтые волосы
+        green hair: зеленые волосы
+        blue hair: синие волосы
+        black hair: черные волосы
+        brown hair: коричневые волосы
+        straight_hair: прямые волосы
+        short hair: короткие волосы
+        curly hair: кудрявые волосы
+        long hair: длинные волосы
+        pony-tail: хвостик
+        bunches: косички
+        streaked hair: пряди
+        grey gradient hair: серый градиент волос
+        light brown hair: светло-коричневые волосы
+        two-tone hair: двухцветные волосы
+        multicolored hair: многоцветные волосы
+        high ponytail: высокий хвостик
+        twintails: два хвостика
+        braided ponytail: косичка-хвостик
+        ponytail: хвостик
+        short ponytail: короткий хвостик
+        twin braids: две косички
+        medium hair: средние волосы
+        very long hair: очень длинные волосы
+        braided bangs: косичка на челке
+        swept bangs: прическа с боковыми челками
+        hair between eyes: волосы между глазами
+        bob cut: каре
+        hime cut: прическа химэ
+        crossed bangs: перекрещенные челки
+        bangs: челка
+        blunt bangs: прямая челка
+        air bangs: воздушная челка
+        hair wings: волосы-крылья
+        long bangs: длинная челка
+        side_blunt_bangs: боковая прямая челка
+        centre parting bangs: пробор посередине
+        asymmetric bangs: асимметричная челка
+        disheveled hair: растрепанные волосы
+        wavy hair: волнистые волосы
+        hair in takes: волосы в виде взлетающих самолетов
+        hair pink flowers: волосы с розовыми цветами
+        ahoge: ахоге
+        antenna hair: волосы-антенны
+        Side ponytail: боковой хвостик
+        forehead: лоб
+        drill hair: волосы-сверло
+        hair bun: пучок
+        double bun: двойной пучок
+        messy hair: неряшливая прическа
+        hair_flaps: волосы-лопасти
+
+    - name: Лицо
+      color: rgba(255, 123, 2, .4)
+      tags:
+        makeup: макияж
+        fundoshi: фундоши
+        eyeshadow: тени для век
+        lipstick: губная помада
+        mascara: тушь для ресниц
+        long_eyelashes: длинные ресницы
+        red_lips_: красные губы
+        facepaint: роспись лица
+        lipgloss: блеск для губ
+        colored_eyelashes: цветные ресницы
+        blush: румяна
+        light_blush: легкие румяна
+        anime_style_blush: аниме-стиль румян
+        nose_blush: румяна на носу
+        nosebleed: носовое кровотечение
+        bruise_on_face: синяк на лице
+        facial_mark: лицевая метка
+        forehead_mark: метка на лбу
+        anger_vein: венозная ярость
+        mole: родинка
+        mole_under_eye: родинка под глазом
+        freckles: веснушки
+        food_on_face: еда на лице
+        rice_on_face: рис на лице
+        cream_on_face: сливки на лице
+        mustache: усы
+        goatee: козлиная борода
+        whisker_markings: отметины усов
+        scar: шрам
+        scar_across_eye: шрам через глаз
+        smoking_pipe: курительная трубка
+        tattoo: татуировка
+
+    - name: Уши
+      color: rgba(255, 123, 2, .4)
+      tags:
+        elf ears: эльфийские уши
+        fake animal ears: поддельные уши животного
+        cat ears: кошачьи уши
+        dog ears: собачьи уши
+        fox ears: лисьи уши
+        bunny ears: кроличьи уши
+        bear ears: медвежьи уши
+        wolf ears: волчьи уши
+        horse ears: лошадиные уши
+        cow ears: коровьи уши
+        mouse ears: мышиные уши
+        pig ears: свиньиные уши
+        sheep ears: овечьи уши
+        deer ears: оленьи уши
+        goat ears: козьи уши
+        antelope ears: антилопьи уши
+        rhino ears: носорожьи уши
+        elephant ears: слоновьи уши
+        bat ears: летучие мышиные уши
+        dragon ears: драконьи уши
+        demon ears: демонические уши
+        angel ears: ангельские уши
+        alien ears: инопланетные уши
+        ear_blush: румянец на ушах
+        ear_ornament: украшение на ухе
+        ear_piercing: прокол уха
+        animal_ears: звериные уши
+        ears_down: опущенные уши
+        fake_animal_ears: поддельные звериные уши
+        floppy_ears: мягкие уши
+        animal_ear_fluff: пушистые звериные уши
+        fox_ears: лисьи уши
+        cat_ears: кошачьи уши
+        lion_ears: львиные уши
+        jaguar_ears: ягуаровы уши
+        tiger_ears: тигровые уши
+        dog_ears: собачьи уши
+        coyote_ears: койотовы уши
+        bunny_ears: кроличьи уши
+        horse_ears: лошадиные уши
+        pointy_ears: остроконечные уши
+        long_pointy_ears: длинные остроконечные уши
+        mouse_ears: мышиные уши
+        raccoon_ears: енотовы уши
+        squirrel_ears: белка уши
+        bear_ears: медвежьи уши
+        panda_ears: пандьи уши
+        bat_ears: летучие мышиные уши
+        robot_ears: роботические уши
+        extra_ears: дополнительные уши
+        ears_through_headwear: уши через головной убор
+        alpaca_ears: альпаковы уши
+        horns: рога
+        fake_horns: поддельные рога
+        dragon_horns: драконьи рога
+        oni_horns: они рога
+        antlers: оленьи рога
+        curled_horns: закрученные рога
+        goat_horns: козьи рога
+        hair_on_horn: волосы на роге
+
+    - name: брови
+      color: rgba(255, 123, 2, .4)
+      tags:
+        thick eyebrows: густые брови
+        cocked eyebrow: поднятая бровь
+        short eyebrows: короткие брови
+        v-shaped eyebrows: брови в форме V
+
+    - name: Глаза
+      color: rgba(255, 123, 2, .4)
+      tags:
+        blue eyes: Голубые глаза
+        red eyes: Красные глаза
+        brown eyes: Коричневые глаза
+        green eyes: Зеленые глаза
+        purple eyes: Фиолетовые глаза
+        yellow eyes: Желтые глаза
+        pink eyes: Розовые глаза
+        black eyes: Черные глаза
+        aqua eyes: Водянисто-голубые глаза
+        orange eyes: Оранжевые глаза
+        grey eyes: Серые глаза
+        multicolored eyes: Многоцветные глаза
+        white eyes: Белые глаза
+        gradient eyes: Градиентные глаза
+        closed eyes: Закрытые глаза
+        half-closed eyes: Полузакрытые глаза
+        crying with eyes open: Плачущие глаза с открытыми глазами
+        narrowed eyes: Суженные глаза
+        hidden eyes: Скрытые глаза
+        heart-shaped eyes: Глаза в форме сердца
+        button eyes: Кнопочные глаза
+        cephalopod eyes: Глаза головоногих
+        eyes visible through hair: Глаза видны сквозь волосы
+        glowing eyes: Светящиеся глаза
+        empty eyes: Пустые глаза
+        rolling eyes: Покатывающие глаза
+        cross eyed: Косоглазие
+        blank eyes: Пустые глаза
+        no eyes: Без глаз
+        sparkling eyes: Искрящиеся глаза
+        extra eyes: Дополнительные глаза
+        crazy eyes: Сумасшедшие глаза
+        solid circle eyes: Сплошные круглые глаза
+        solid oval eyes: Сплошные овальные глаза
+        uneven eyes: Неравные глаза
+        blood from eyes: Кровь из глаз
+        eyeshadow: Тени для век
+        red eyeshadow: Красные тени для век
+        blue eyeshadow: Синие тени для век
+        purple eyeshadow: Фиолетовые тени для век
+        pink eyeshadow: Розовые тени для век
+        green eyeshadow: Зеленые тени для век
+        bags under eyes: Мешки под глазами
+        ringed eyes: Кольцевые глаза
+        covered eyes: Покрытые глаза
+        covering eyes: Покрывающие глаза
+        shading eyes: Затеняющие глаза
+        devil eyes: Глаза дьявола
+        slit pupils: Раздвоенные зрачки
+        bloodshot eyes: Красные глаза
+        tsurime: Взгляд с поднятым уголком глаза
+        tareme: Взгляд с опущенным уголком глаза
+        constricted pupils: Суженные зрачки
+        devil pupils: Дьявольские зрачки
+        snake pupils: Зрачки змеи
+        pupils sparkling: Сверкающие зрачки
+        flower-shaped pupils: Цветочные зрачки
+        heart-shaped pupils: Сердцевидные зрачки
+        heterochromia: Гетерохромия
+        color contact lenses: Цветные контактные линзы
+        longeyelashes: Длинные ресницы
+        colored eyelashes: Цветные ресницы
+        mole under eye: Родинка под глазом
+        light_eyes: Светлые глаза
+        glowing_eye: Светящийся глаз
+        shiny_eyes: Блестящие глаза
+        sparkling_eyes: Искрящиеся глаза
+        gradient_eyes: Градиентные глаза
+        anime_style_eyes: Аниме-стиль глаз
+        water_eyes: Водянистые глаза
+        beautiful_detailed_eyes: Красивые детализированные глаза
+        solid_oval_eyes_: Сплошные овальные глаза
+        solid_circle_pupils: Сплошные круглые зрачки
+        blush_stickers: Стикеры с румянами
+        heart_in_eye: Сердце в глазе
+        evil_eyes: Злые глаза
+        crazy_eyes: Сумасшедшие глаза
+        empty_eyes: Пустые глаза
+        covered_eyes: Покрытые глаза
+        hollow_eyes: Звездообразные зрачки
+        multicolored_eyes: Многоцветные глаза
+        ringed_eyes: Кольцевые глаза
+        sanpaku: Санпаку (смещение зрачков)
+        mismatched_sclera: Несоответствующая склера
+        eye_relfection: Отражение глаз (без эффекта)
+        mechanical_eye: Механический глаз
+        cephalopod_eyes: Глаза головоногих
+        clock_eyes: Часовые глаза
+        compound_eyes: Составные глаза
+        fisheye: Рыбий глаз
+        devil_eyes: Глаза дьявола
+        bloodshot_eyes: Глаза, покрытые кровью
+        blood_from_eyes: Кровь из глаз
+        aqua_eyes: Аквамариновые глаза
+        solid_eyes: Твердые глаза
+        sparkling_anime_eyes: Искрящиеся аниме-глаза
+        blue_eyes: Голубые глаза
+        brown_eyes: Коричневые глаза
+        closed_eyes: Закрытые глаза
+        crying_with_eyes_open: Плач с открытыми глазами
+        extra_eyes: Дополнительные глаза
+        eye_contact: Взгляд в глаза
+        eye_of_horus: Глаз Хоруса
+        eyeball: Глазное яблоко
+        eyeliner: Подводка
+        eyes: Глаза
+        glint: Блеск в глазах
+        glowing_eyes: Светящиеся глаза
+        half-closed_eye: Полузакрытый глаз (один глаз)
+        half-closed_eyes: Полузакрытые глаза
+        horizontal_pupils:
+        jitome: Презрительный взгляд
+        light_brown_eyes: Светло-коричневые глаза
+        no_eyes: Без нарисованных глаз
+        one-eyed: Один глаз с отражением
+        reflective_eyes:
+        silver_eyes: Серебряные глаза
+        spiral_eyes: Вихревые глаза
+        third_eye: Третий глаз
+        uneven_eyes: Неравные глаза
+        flaming_eye: Пламенный взгляд
+        eyes_closed: Глаза закрыты
+        half_closed_eyes: Полузакрытые глаза
+        narrowed_eyes: Суженные глаза
+        squinting: Смотреть сквозь прищуренные глаза
+        tears: Слезы
+        sharp_eyes: Острые глаза
+        slanted_eyes: Наклонные глаза
+        upturned_eyes: Поднятые глаза
+        cross-eyed: Косоглазие
+        hair_over_eyes: Волосы закрывают глаза
+        eyes_visible_through_hair: Глаза видны сквозь волосы
+        hair_over_one_eye: Волосы закрывают один глаз
+        one_eye_covered: Один глаз закрыт
+        bags_under_eyes: Мешки под глазами
+        eyepatch: Повязка на глаз
+        medical_eyepatch: Медицинская повязка на глаз
+        scar_across_eye: Шрам через глаз
+        no_blindfold: Без повязки на глаза
+        no_eyepatch: Без повязки на глаз
+        ahegao: Ахегао
+
+    - name: Зрачки
+      color: rgba(255, 123, 2, .4)
+      tags:
+        pupils: Зрачки
+        bright_pupils: Яркие зрачки
+        heterochromia: Гетерохромия
+        slit_pupils: Вертикальные зрачки/зрачки кошки
+        snake_pupils: Мерцающие зрачки
+        symbol-shaped_pupils: Зрачки в форме символа
+        heart-shaped_pupils: Зрачки в форме сердца
+        diamond-shaped_pupils: Зрачки в форме алмаза
+        star-shaped_pupils: Зрачки в форме звезды
+        dilated_pupils: Расширенные зрачки
+        no_pupils: Без зрачков
+        ringed_eyes: Кольцевые глаза
+        constricted_pupils: Суженные зрачки (без эффекта)
+        star_in_eye: Звезда в глазу
+        x-shaped_pupils: Зрачки в форме X
+        horizontal_pupils: Горизонтальные зрачки
+        dashed_eyes: Пунктирные глаза
+        butterfly-shaped_pupils: Зрачки в форме бабочки
+        rectangular_pupils: Прямоугольные зрачки
+        square_pupils: Квадратные зрачки
+        dot_pupils: Точечные зрачки
+        extra_pupils: Дополнительные зрачки
+        mismatched_pupils: Несоответствующие зрачки
+        "+_+": Звездочки в виде креста
+        cross-shaped_pupils: Зрачки в форме креста (без эффекта)
+        purple_pupils: Фиолетовые зрачки
+        orange_pupils: Оранжевые зрачки
+        blue_pupils: Синие зрачки
+        symbol_in_eye: Символ в глазу
+
+    - name: Нос
+      color: rgba(255, 123, 2, .4)
+      tags:
+        pointed nose: Острый нос
+        small nose: Маленький нос
+        big nose: Большой нос
+        no_nose: Без носа
+        dot_nose: Точечный нос
+        nose_bubble: Пузырь на носу
+        smelling: Обонять
+        nose: Нос
+        nosebleed: Кровотечение из носа
+        snot: Сопли
+        snout: Морда животного
+
+    - name: Рот
+      color: rgba(255, 123, 2, .4)
+      tags:
+        chestnut mouth: Гороховый рот
+        thick lips: Толстые губы
+        puffy lips: Отекшие губы
+        lipstick: Губная помада
+        heart-shaped mouth: Губы в форме сердца
+        pout: Дуть губы
+        open mouth: Открытый рот
+        closed mouth: Закрытый рот
+        shark mouth: Акулья пасть
+        parted lips: Раздвинутые губы
+        mole under mouth: Родинка под ртом
+        open_mouth: Открытый рот
+        gasping: Задыхаться (открытый рот)
+        Slightly_open_mouth: Немного приоткрытый рот
+        wavy_mouth: Волнистый рот
+        close_mouth: Закрытый рот
+        dot_mouth: Точечный рот
+        no_mouth: Без рта
+        gag: Заткнуть рот
+        gnaw: Грызть
+        :3: Котовский рот
+        :o: Открытый рот
+        :>: Рот в форме V
+        parted_lips: Раздвинутые губы
+        bit_gag: Заткнуть рот
+        chestnut_mouth: Гороховый рот
+        cleave_gag: Заткнуть рот
+        closed_mouth: Закрытый рот
+        covered_mouth: Покрытый рот
+        extra_mouth: Дополнительные рты
+        hair_in_mouth: Волосы в рту
+        hair_tie_in_mouth: Закусить волосы
+        homu: Дуть губы
+        lips: Губы
+        mouth: Рот
+        mouth_hold: Держать во рту
+        oral: Оральный
+        pacifier: Пустышка
+        Pouted lips: Выпячивающиеся губы
+        sideways_mouth: Нарисовать рот в профиль
+        spoon_in_mouth: Ложка во рту
+        triangle_mouth: Треугольный рот
+        saliva: Слюна
+        drooling: Слюнотечение
+        mouth_drool: Рот с капельками слюны
+
+    - name: Зубы
+      color: rgba(255, 123, 2, .4)
+      tags:
+        teeth: Зубы
+        upper_teeth: Верхние зубы
+        fang: Клык
+        skin_fang: Кожаный клык
+        round_teeth: Круглые зубы
+        sharp_teeth: Острые зубы
+        clenched_teeth: Сжатые зубы
+        tongue: Язык
+        buck_teeth: Перекошенные зубы
+        fang_out: Выступающий клык
+        fangs: Клыки
+        spiked_club: Шипастая дубина
+        tooth: Зуб
+        toothbrush: Зубная щетка
+        tusks: Бивни
+        shark_mouth: Зубы акулы
+
+    - name: Язык
+      color: rgba(255, 123, 2, .4)
+      tags:
+        :q: Язык на верхней губе
+        :p: Язык на нижней губе
+        ;p: Подмигивание с языком
+        french_kiss: Французский поцелуй
+        long_tongue: Длинный язык
+        oral_invitation: Приглашение языком
+        tongue: Язык
+        tongue_out: Высунутый язык
+        uvula: Малый язык
+
+    - name: Ногти
+      color: rgba(255, 123, 2, .4)
+      tags:
+        fingernails: Ногти на пальцах рук
+        toenails: Ногти на пальцах ног
+        nail_polish: Лак для ногтей
+        toenail_polish: Лак для ногтей на ногах
+        black_nails: Черные ногти
+        red_nails: Красные ногти
+        pink_nails: Розовые ногти
+        long_fingernails: Длинные ногти
+        nail: Ноготь
+        multicolored_nails: Многоцветные ногти
+        nail_art: Нейл-арт
+        brown_vest: Коричневый жилет
+
+    - name: Плечо
+      color: rgba(255, 123, 2, .4)
+      tags:
+        bare shoulders: Голые плечи
+        collarbonea: Ключица
+        armpits: Подмышки
+        armpit_crease: Складка подмышки
+
+    - name: Грудь
+      color: rgba(255, 123, 2, .4)
+      tags:
+        chest: Грудь
+        flat chest: Плоская грудь (A)
+        small_breasts: Маленькая грудь (B)
+        medium breasts: Средняя грудь (C)
+        big breasts: Большая грудь (D)
+        huge breasts: Огромная грудь (E)
+        gigantic breasts: Гигантская грудь (F)
+        between breasts: Между грудью
+        breasts apart: Раздвоенная грудь
+        hanging breasts: Обвисшая грудь
+        bouncing breasts: Подпрыгивающая грудь
+        cleavage: Декольте
+        areola: Ареола
+        nipples: Соски
+        pectorals: Грудные мышцы
+        large_pectorals: Большие грудные мышцы
+        unbuttoned clothes: Расстегнутая одежда на груди
+
+    - name: Талия
+      color: rgba(255, 123, 2, .4)
+      tags:
+        narrow_waist: Узкая талия
+        slender_waist: Тонкая талия
+
+    - name: Живот
+      color: rgba(255, 123, 2, .4)
+      tags:
+        midriff: Живот
+        belly: Живот
+        absolute_territory: Пресс
+        inflation: Вздутый живот
+        navel: Пупок
+        groin: Пах
+
+    - name: Крылья
+      color: rgba(255, 123, 2, .4)
+      tags:
+        wings: Крылья
+        bat_wings: Крылья летучей мыши
+        butterfly_wings: Крылья бабочки
+        black_wings: Черные крылья
+        demon_wings: Крылья демона
+        asymmetrical_wings: Асимметричные крылья
+        detached_wings: Отдельные крылья
+        fairy_wings: Феиные крылья
+        fake_wings: Поддельные крылья
+        fiery_wings: Пылающие крылья
+        insect_wings: Крылья насекомого
+        large_wings: Большие крылья
+        low_wings: Низко расположенные крылья
+        mini_wings: Миниатюрные крылья
+        multicolored_wings: Многоцветные крылья
+        multiple_wings: Несколько пар крыльев
+        no_wings: Без крыльев
+        winged_helmet: Шлем с крыльями
+
+- name: Одежда
+  groups:
+    - name: формальная одежда
+      color: rgba(230, 84, 128, .4)
+      tags:
+        suit: костюм
+        tuxedo: смокинг
+        formal_dress: вечернее платье
+        evening_gown: вечернее платье
+        canonicals: вечерний наряд
+        cocktail_dress: коктейльное платье
+        gown: женское платье
+        japanese_clothes: японская одежда
+        kimono: кимоно
+        sleeveless_kimono: безрукавное кимоно
+        short_kimono: короткое кимоно
+        print_kimono: печатное кимоно
+        furisode: фурисоде (часть кимоно)
+        obi: пояс для кимоно
+        sash: пояс
+        cheongsam: китайское платье
+        china_dress: китайское платье
+        print_cheongsam: печатное китайское платье
+        pelvic_curtain: передняя часть платья китайского стиля
+        wedding_dress: свадебное платье
+        uchikake: белый учикаке (японская свадебная одежда)
+        school_uniform: школьная форма
+        sailor: моряцкая форма
+        serafuku: моряцкая форма
+        summer_uniform: летняя школьная форма
+        kindergarten_uniform: форма детского сада
+        police_uniform: полицейская форма
+        naval_uniform: морская форма
+        military_uniform: военная форма
+        ss_uniform/nazi_uniform: форма СС/нацистская форма
+        maid: горничная
+        stile_uniform: форма служанки
+        miko: одежда мико (священницы в шинтоизме)
+        overalls: комбинезон
+        business_suit: деловой костюм
+        nurse: медсестра
+        chef_uniform: кухонная форма
+        labcoat: белый халат
+        cheerleader: форма чирлидера
+        band_uniform: форма музыкального оркестра
+        space_suit: космический костюм
+        leotard: трико
+        domineering: монашеская одежда
+
+    - name: Стиль
+      color: rgba(230, 84, 128, .4)
+      tags:
+        china_dress: китайская одежда
+        chinese_style: китайский стиль
+        traditional_clothes: традиционная одежда|национальная одежда
+        japanese_clothes: японская одежда
+        hanten_(clothes): хантен (японская одежда)
+        hanbok: ханбок (корейская одежда)
+        korean_clothes: корейская одежда
+        western: западный стиль
+        german_clothes: немецкая одежда
+        gothic: готический стиль
+        lolita: лолита-стиль
+        gothic_lolita: готическо-лолита-стиль
+        byzantine_fashion: византийская мода
+        Tropical: тропический стиль
+        indian_style: индийский стиль
+        Ao_Dai: ао дай (вьетнамская форма)
+        ainu_clothes: одежда айну
+        arabian_clothes: арабская одежда
+        egyptian_clothes: египетская одежда
+        costume: костюм
+        animal_costume: костюм животного (меховой костюм)
+        bunny_costume: костюм кролика
+        adapted_costume: адаптированный костюм
+        cat_costume: костюм кошки
+        dog_costume: костюм собаки
+        bear_costume: костюм медведя
+        embellished_costume: украшенный костюм
+        santa_costume: костюм Санта-Клауса
+        halloween_costume: костюм на Хэллоуин
+        kourindou_tengu_costume: костюм тенгу из Куриндо
+        alternate_costume: альтернативный наряд
+        costume_switch: игра в переодевание
+        meme_attire: мематический наряд
+
+    - name: Кэжуальная одежда
+      color: rgba(230, 84, 128, .4)
+      tags:
+        casual: повседневный
+        loungewear: домашняя одежда
+        hoodie: худи
+        homewear: домашняя одежда
+        pajamas: пижама
+        nightgown: ночная рубашка
+        sleepwear: ночная одежда
+        babydoll: сексуальная ночная одежда
+        print_pajamas: печатные пижамы
+        polka_dot_pajamas: пижама в горошек
+        yukata: юката (японская одежда)
+        chinese_clothes: традиционная китайская одежда
+        hanfu: ханьфу (китайская одежда)
+        Taoist robe: даоистский халат
+        robe: халат
+        robe_of_blending: халат с смешанным узором
+        cloak: плащ
+        hooded_cloak: плащ с капюшоном
+        winter_clothes: зимняя одежда
+        down jacket: пуховик
+        santa: костюм Санта-Клауса
+        harem_outfit: одежда гарема
+        shrug_(clothing): плечики (одежда)
+
+    - name: Спортивная одежда
+      color: rgba(230, 84, 128, .4)
+      tags:
+        sportswear: спортивная одежда
+        gym_uniform: спортивная форма
+        athletic_leotard: гимнастический купальник
+        tennis_uniform: теннисная форма
+        baseball_uniform: форма бейсбольной команды
+        letterman_jacket: куртка бейсбольной команды
+        volleyball_uniform: волейбольная форма
+        biker_clothes: одежда для велосипедистов
+        bikesuit: велосипедный костюм
+        wrestling_outfit: реслинговый костюм
+        dougi: доги (форма для боевых искусств)
+
+    - name: Купальник
+      color: rgba(230, 84, 128, .4)
+      tags:
+        swimsuit: купальник
+        swimwear: плавательный костюм
+        wet_swimsuit: мокрый купальник
+        school_swimsuit: школьный купальник
+        new_school_swimsuit: новый школьный купальник
+        old_school_swimsuit: старый школьный купальник
+        competition_school_swimsuit: соревновательный школьный купальник
+        competition_swimsuit: соревновательный купальник
+        casual_one-piece_swimsuit: однокусочный купальник на каждый день
+        front_zipper_swimsuit: купальник с передней молнией
+        highleg_swimsuit: высокоподрезанный купальник
+        one-piece_swimsuit: однокусочный купальник
+        swimsuit_of_perpetual_summer: купальник вечного лета (костюм ученицы в Fate/Grand Order)
+        bikini: бикини
+        highleg_bikini: бикини с высоким вырезом
+        lowleg_bikini: бикини с низким вырезом
+        slingshot_swimsuit: купальник-пропеллер
+        sailor_bikini: бикини в стиле морячки
+        shell_bikini: бикини с мотивом раковины
+        sports_bikini: спортивное бикини
+        string_bikini: бикини на завязках
+        strapless_bikini: бикини без бретелей
+        side-tie_bikini: бикини с боковыми завязками
+        front-tie_bikini_top: бикини с завязкой спереди (верх)
+        multi-strapped_bikini: бикини с несколькими ремешками
+        thong_bikini: бикини-стринги
+        front-tie_bikini: бикини с завязкой спереди
+        frilled_bikini: оборчатое бикини
+        o-ring_bikini: бикини с кольцом
+        eyepatch_bikini: бикини с повязкой на глаз
+        layered_bikini: наслоенное бикини
+        bow_bikini: бикини с бантом
+        frilled_swimsuit: оборчатый купальник
+        polka_dot_swimsuit: купальник в горошек
+        striped_swimsuit: полосатый купальник
+        striped_bikini: полосатое бикини
+        plaid_bikini: клетчатое бикини
+        polka_dot_bikini: купальник в горошек
+        print_bikini: печатное бикини
+        american_flag_bikini: бикини в американском флаге
+        german_flag_bikini: бикини в немецком флаге
+        impossible_swimsuit: купальник с рисунком на теле
+        bikini_top: только верх бикини
+        bikini_top_only: только верх бикини
+        bikini_top_removed: снятый верх бикини
+        bikini_bottom_only: только низ бикини
+        bikini_bottom: низ бикини
+        untied_bikini: развязанное бикини
+        bikini_aside: бикини с боковым завязыванием
+        swimsuit_aside: купальник с боковым завязыванием
+        swimsuit_under_clothes: купальник под одеждой
+        torn_swimsuit: разорванный купальник
+        bikini_skirt: юбка для бикини
+        swim_briefs: плавательные трусы
+        swim_cap: плавательная шапочка
+        swim_trunks: плавки
+        male_swimwear: мужская плавательная одежда
+
+    - name: форма
+      color: rgba(230, 84, 128, .4)
+      tags:
+        adapted_uniform: адаптированная форма
+        anzio_military_uniform: военная форма Анцио
+        anzio_school_uniform: школьная форма Анцио
+        aria_company_uniform: форма компании Ариа
+        ashford_academy_uniform: форма Ашфордской академии
+        bc_freedom_military_uniform: военная форма BC Freedom
+        chaldea_uniform: форма Чалдеи
+        chi-hatan_military_uniform: военная форма Чи-Хатан
+        fleur_de_lapin_uniform: форма Флер де Лапен
+        garreg_mach_monastery_uniform: форма монастыря Гаррег Мах
+        gem_uniform_(houseki_no_kuni): форма из аниме "Драгоценность"
+        hanasakigawa_school_uniform: школьная форма Ханасакигавы
+        hikarizaka_private_high_school_uniform: форма Частной высшей школы Хикаридзака
+        homurahara_academy_uniform: школьная форма Хомурахары
+        kamiyama_high_school_uniform: школьная форма Камиямы
+        keizoku_military_uniform: военная форма Кейдзоку
+        kita_high_school_uniform: школьная форма Кита
+        kiyosumi_school_uniform: школьная форма Киёсуми
+        luna_nova_school_uniform: школьная форма Луна-Нова
+        meiji_schoolgirl_uniform: форма школьницы эпохи Мэйдзи
+        mitakihara_school_uniform: школьная форма Митакихары
+        nami_junior_high_school_uniform: школьная форма Нами
+        nanairogaoka_middle_school_uniform: школьная форма Нанайрогаока
+        nanamori_school_uniform: школьная форма Нанамори
+        naoetsu_high_school_uniform: школьная форма Наоэцу
+        national_shin_ooshima_school_uniform: школьная форма Национальной шин-оошимской школы
+        ooarai_military_uniform: военная форма Ооарай
+        ooarai_school_uniform: школьная форма Ооарай
+        otonokizaka_school_uniform: школьная форма Отонокидзака
+        paradis_military_uniform: военная форма Парадиса
+        polar_chaldea_uniform: форма Чалдеи в полярных широтах
+        pravda_military_uniform: военная форма Правды
+        pravda_school_uniform: школьная форма Правды
+        rabbit_house_uniform: форма Рэббит Хаус
+        raimon_soccer_uniform: футбольная форма Раймон
+        ryouou_school_uniform: школьная форма Рёо
+        sailor_senshi_uniform: форма морячки-воительницы
+        sakugawa_school_uniform: школьная форма Сакугавы
+        sakuragaoka_high_school_uniform: школьная форма Сакурагаоки
+        saunders_military_uniform: военная форма Сондерс
+        saunders_school_uniform: школьная форма Сондерс
+        seishou_elementary_school_uniform: школьная форма Сэйсё
+        shinda_sekai_sensen_uniform: форма Сенсен Мира-после
+        shuuchiin_academy_uniform: школьная форма Шуучиин
+        shuujin_academy_uniform: школьная форма Шуудзин
+        st._gloriana's_military_uniform: военная форма Святой Глорианы
+        st._gloriana's_school_uniform: школьная форма Святой Глорианы
+        starlight_academy_uniform: школьная форма Академии Звездного Света
+        tokisadame_school_uniform: школьная форма Токисадамэ
+        tokiwadai_school_uniform: школьная форма Токивадай
+        tomoeda_elementary_school_uniform: школьная форма Томоэда
+        tsab_ground_military_uniform: военная форма Земной службы ТСАБ
+        u.a._school_uniform: школьная форма У.А.
+        uranohoshi_school_uniform: школьная форма Уранохоси
+        yasogami_school_uniform: школьная форма Ясогами
+        mismatched_bikini: несоответствующее бикини
+        multicolored_bikini: многоцветное бикини
+
+    - name: блузка
+      color: rgba(230, 84, 128, .4)
+      tags:
+        blouse: блузка
+        white_shirt: белая рубашка
+        collared_shirt: рубашка с воротником
+        dress_shirt: рубашка
+        sailor_shirt: морская рубашка
+        cropped_shirt: укороченная рубашка
+        t-shirt: футболка
+        casual T-shirts: повседневные футболки
+        short sleeve T-shirts: футболки с короткими рукавами
+        off-shoulder_shirt: рубашка с открытыми плечами
+        shrug_(clothing): жакет
+        cardigan: кардиган
+        criss-cross_halter: рубашка с перекрещивающимися бретелями
+        frilled_shirt: рубашка с оборками
+        sweatshirt: толстовка
+        hawaiian_shirt: гавайская рубашка
+        hoodie: худи
+        Impossible shirt: невозможная рубашка
+        kappougi: каппоги (куртка для готовки)
+        plaid_shirt: клетчатая рубашка
+        polo_shirt: поло
+        print_shirt: рубашка с принтом
+        shirt: рубашка
+        sleeveless_hoodie: безрукавка с капюшоном
+        sleeveless_shirt: безрукавка
+        striped_shirt: полосатая рубашка
+        tank_top: майка
+        vest: жилет
+        waistcoat: жилет
+        camisole: топ на бретелях
+        tied_shirt: рубашка с завязкой
+        undershirt: нательная рубашка
+        crop_top: укороченный топ
+        highleg: высокораскроенная одежда
+        clothing_cutout: вырезы на одежде
+        back_cutout: вырез на спине
+        cleavage_cutout: вырез для декольте
+        navel_cutout: вырез для пупка
+        midriff: обнаженный живот
+        heart_cutout: вырез в форме сердца
+        torn_clothes: разорванная одежда
+        torn_shirt: разорванная рубашка
+        undressing: раздевание
+        clothes_down: опущенная одежда
+        shirt_lift: поднятая рубашка
+        shirt_pull: опущенная рубашка
+        shirt_tucked_in: заправленная рубашка
+        clothes_tug: потягивание одежды
+        shirt_tug: потягивание рубашки
+        untucked_shirt: расстегнутая рубашка
+        lifted_by_self: поднятая самим собой
+        untied: развязанная
+        open_clothes: раскрытая одежда
+        unbuttoned shirt: расстегнутая рубашка
+        button_gap: зазор между пуговицами
+        partially_unbuttoned: частично расстегнутая
+        partially_unzipped: частично расстегнутая молния
+        clothes_removed: снятая одежда
+        shirt_removed: снятая рубашка
+        wardrobe_error: ошибка с гардеробом
+        undersized_clothes: маленькая одежда
+        tight: обтягивающая одежда
+        wedgie: зажатие (из-за одежды)
+        wardrobe_malfunction: сбой с гардеробом
+        taut_shirt: натянутая рубашка
+        taut_clothes: натянутая одежда
+        underbust: под грудью
+        oversized_clothes: большая одежда
+        oversized_shirt: большая рубашка
+        borrowed_garments: одежда от парня
+        strap_slip: спущенные бретели (одежда)
+        wet_shirt: мокрая рубашка
+        clothes_theft: кража одежды
+
+    - name: Пальто
+      color: rgba(230, 84, 128, .4)
+      tags:
+        blazer: блейзер
+        overcoat: пальто
+        double-breasted: двубортный
+        long_coat: длинное пальто
+        haori: хаори (японское верхнее пальто)
+        winter_coat: зимнее пальто
+        hooded_coat: пальто с капюшоном
+        fur_coat: меховое пальто
+        fur-trimmed_coat: меховое пальто с отделкой
+        duffel_coat: дюфель
+        fishnet_top: рубашка из сетки
+        parka: парка
+        jacket: куртка
+        jacket_partially_removed: частично снятая куртка
+        jacket_removed: снятая куртка
+        open_jacket: раскрытая куртка
+        cropped_jacket: укороченная куртка
+        track_jacket: спортивная куртка
+        hooded_track_jacket: спортивная куртка с капюшоном
+        military_jacket: военная куртка
+        camouflage_jacket: камуфляжная куртка
+        leather_jacket: кожаная куртка
+        letterman_jacket: куртка с буквами
+        bomber_jacket: бомбер
+        denim_jacket: джинсовая куртка
+        loating_jacket: повседневная куртка
+        fur-trimmed_jacket: меховая куртка с отделкой
+        two-tone_jacket: двухцветная куртка
+        trench_coat: тренчкот
+        furisode: фурисоде (часть кимоно)
+        windbreaker: ветровка
+        raincoat: плащ от дождя
+        hagoromo: хагоромо (полушубок)
+        tunic: туника
+        cape: плащ
+        capelet: пелерина
+        winter_clothes: зимняя одежда
+        sweater: свитер
+        pullover_sweaters: свитера с воротником
+        ribbed_sweater: свитер с ребристым узором
+        sweater_vest: жилет-свитер
+        backless_sweater: свитер с открытой спиной
+        aran_sweater: аранский свитер
+        beige_sweater: бежевый свитер
+        brown_sweater: коричневый свитер
+        hooded_sweater: свитер с капюшоном
+        off-shoulder_sweater: свитер с открытыми плечами
+        striped_sweater: полосатый свитер
+        virgin_killer_sweater: "свитер для убийцы девственности"
+        down_jacket: пуховик
+        puffer_jacket: пуховик
+
+    - name: Прочее
+      color: rgba(230, 84, 128, .4)
+      tags:
+        transparent: прозрачный
+        burnt_clothes: обгоревшая одежда
+        dissolving_clothes: растворяющаяся одежда
+        dirty_clothes: грязная одежда
+        expressive_clothes: выразительная одежда
+        impossible_clothes: невозможная одежда
+        living_clothes: одежда, ожившая
+        leotard_under_clothes: леотард под одеждой
+        multicolored_clothes: многоцветная одежда
+        ofuda_on_clothes: одежда с офудой (бумажной табличкой)
+        wringing_clothes: выжимание одежды
+        clothesline: бельевая веревка
+        shiny_clothes: блестящая одежда
+        kariginu: каригину (японская одежда)
+        front-tie_top: топ с завязкой спереди
+        jacket_on_shoulders: носить куртку на плечах
+        short_jumpsuit: короткий комбинезон
+        harness: кожаный ремень; обвязка
+        rigging: такелаж
+        aiguillette: плечевой шнур
+
+    - name: Талия
+      color: rgba(230, 84, 128, .4)
+      tags:
+        apron: фартук
+        waist_apron: поясной фартук
+        maid_apron: фартук горничной
+        bow tied at the waist: бант, завязанный на талии
+        waist_cape: накидка на талию
+        clothes_around_waist: одежда вокруг талии
+        jacket_around_waist: куртка на талии
+        sweater_around_waist: свитер на талии
+        loincloth: пелена на талии
+        bustier: корсет
+        corset: корсет
+        girdle: корсет
+
+    - name: Броня
+      color: rgba(230, 84, 128, .4)
+      tags:
+        armor: доспехи
+        bikini_armor: бикини-доспехи
+        full_armor: полные доспехи
+        plate_armor: латы
+        japanese_armor: японские доспехи
+        kusazuri: кусазури (нижняя часть японского доспеха)
+        power_armor: силовые доспехи
+        mecha: мех
+        helmet: шлем
+        kabuto: кабуто (японский шлем)
+        off-shoulder_armor: доспехи без плеч
+        shoulder_armor: наплечники
+        muneate: мунэатэ (японская защита груди для стрельбы из лука)
+        breastplate: нагрудник
+        faulds: фолы (защита живота)
+        greaves: наголенники
+        shin_guards: наголенники
+        armored_boots: бронированные сапоги
+
+    - name: Платье
+      color: rgba(230, 84, 128, .4)
+      tags:
+        dress: платье
+        microdress: мини-платье
+        long_dress: длинное платье
+        off-shoulder_dress: платье с открытыми плечами
+        strapless_dress: платье без бретелей
+        backless_dress: платье с открытой спиной
+        halter_dress: платье на шее с открытой спиной
+        sundress: летнее платье без рукавов
+        sleeveless_dress: платье без рукавов
+        sailor_dress: морское платье
+        summer_dress: летнее платье
+        china_dress: китайское платье
+        pinafore_dress: фартук-платье
+        sweater_dress: свитер-платье
+        wedding_dress: свадебное платье
+        armored_dress: доспехи-платье
+        frilled_dress: платье с оборками
+        lace-trimmed_dress: платье с кружевными отделками
+        collared_dress: платье с воротником
+        fur-trimmed_dress: платье с меховыми отделками
+        layered_dress: многослойное платье
+        pleated_dress: платье с складками
+        taut_dress: облегающее платье
+        pencil_dress: платье-карандаш
+        impossible_dress: слишком облегающая одежда
+        multicolored_dress: платье с множеством цветов
+        striped_dress: полосатое платье
+        checkered_skirt: клетчатая юбка
+        plaid_dress: клетчатое платье
+        ribbed_dress: ребристое платье
+        polka_dot_dress: платье в горошек
+        print_dress: платье с принтом
+        vertical-striped_dress: платье в вертикальную полоску
+        see-through_dress: прозрачное платье
+        skirt: юбка
+        microskirt: мини-юбка
+        miniskirt: мини-юбка
+        skirt_suit: костюм с юбкой
+        bikini_skirt: бикини-юбка
+        pleated_skirt: юбка с складками
+        pencil_skirt: юбка-карандаш
+        bubble_skirt: пышная юбка
+        tutu: туту (юбка для балета)
+        ballgown: пышная вечерняя юбка
+        pettiskirt: пышная детская юбка
+        showgirl_skirt: костюм танцовщицы
+        Medium length skirt: юбка средней длины
+        beltskirt: юбка с поясом
+        denim_skirt: джинсовая юбка
+        suspender_skirt: сарафан
+        skirt_set: юбка в комплекте с верхом
+        long_skirt: длинная юбка
+        summer_long_skirt: летняя длинная юбка
+        overskirt: наружная юбка
+        hakama_skirt: хакама (японская юбка)
+        high-waist_skirt: юбка с высокой талией
+        kimono_skirt: юбка кимоно
+        suspender_long_skirt: сарафан с подтяжками
+        chiffon_skirt: шифоновая юбка
+        frilled_skirt: юбка с оборками
+        fur-trimmed_skirt: юбка с меховыми отделками
+        lace_skirt: кружевная юбка
+        lace-trimmed_skirt: юбка с кружевными отделками
+        ribbon-trimmed_skirt: юбка с атласными отделками
+        layered_skirt: многослойная юбка
+        print_skirt: юбка с принтом
+        multicolored_skirt: юбка с множеством цветов
+        striped_skirt: полосатая юбка
+        vertical-striped_skirt: юбка в вертикальную полоску
+        plaid_skirt: клетчатая юбка
+        flared_skirt: расклешенная юбка
+        floral_skirt: юбка с цветочным узором
+
+    - name: Взаимодействие с юбкой
+      color: rgba(230, 84, 128, .4)
+      tags:
+        skirt_hold: изящно держать юбку
+        skirt_tug: потянуть за юбку
+        dress_tug: прижать платье
+        skirt_lift: поднять юбку
+        skirt_around_one_leg: юбка на одной ноге
+        skirt_removed: снятая юбка
+        dress_removed: снятое платье
+        open_skirt: раскрытая юбка
+
+    - name: брюки
+      color: rgba(230, 84, 128, .4)
+      tags:
+        dress_bow: бант на платье
+        dressing_another: одевание
+        shorts_under_skirt: шорты под юбкой
+        side_slit: боковой разрез
+        shorts: шорты
+        micro_shorts: микро-шорты
+        short_shorts: шорты-хот-пэнтс
+        hot_pants: шорты-хот-пэнтс
+        cutoffs: шорты-хот-пэнтс
+        striped_shorts: полосатые шорты
+        suspender_shorts: шорты-сарафан
+        denim_shorts: джинсовые шорты
+        puffy_shorts: пышные шорты
+        dolphin_shorts: шорты-дельфины
+        dolfin_shorts: шорты-дельфины
+        tight_pants: облегающие штаны / спортивные штаны
+        crotchless_pants: штаны без шагов (облегающие)
+        track_pants: спортивные штаны
+        yoga_pants: йога-штаны
+        bike_shorts: велосипедные шорты
+        gym_shorts: спортивные шорты
+        pants: брюки
+        puffy_pants: пышные брюки / широкие брюки
+        pumpkin_pants: брюки-тыквы
+        hakama_pants: хакама (японские брюки)
+        harem_pants: шаровары
+        bloomers: брюки-блумеры
+        buruma: женские брюки-блумеры
+        jeans: джинсы
+        cargo_pants: карго-брюки
+        camouflage_pants: камуфляжные брюки
+        capri_pants: капри (семисантиметровые брюки)
+        chaps: штаны-чапсы (сверху широкие, снизу узкие)
+        jumpsuit: комбинезон (особенно женский)
+        lowleg_pants: брюки с низкой талией
+        plaid_pants: клетчатые брюки
+        single_pantsleg: брюки с одной длинной ногой
+        striped_pants: полосатые брюки
+
+    - name: Взаимодействие с брюками
+      color: rgba(230, 84, 128, .4)
+      tags:
+        asymmetrical_legwear: несимметричные штаны
+        leotard_aside: откинутый леотард
+        open_fly: открытая молния на штанах
+        pants_down: спущенные штаны
+        pants_rolled_up: подвернутые штаны
+        pants_tucked_in: заправленные штаны
+        torn_jeans: рваные джинсы
+        torn_pants: рваные штаны
+        torn_shorts: рваные шорты
+
+    - name: Носки
+      color: rgba(230, 84, 128, .4)
+      tags:
+        bodystocking: боди-чулки
+        pantyhose: колготки
+        leggings: леггинсы
+        legwear: чулки (общее название для колготок или чулок)
+        thighhighs: чулки выше колена
+        kneehighs: чулки до колена
+        socks: носки
+        bare_legs: голые ноги
+        black_bodystocking: черные боди-чулки
+        white_bodystocking: белые боди-чулки
+        stocking_under_clothes: чулки под одеждой
+        black_pantyhose: черные колготки
+        white_pantyhose: белые колготки
+        thighband_pantyhose: колготки с бандажом на бедре
+        pantylines: колготки с выраженными линиями
+        single_leg_pantyhose: одноногие колготки
+        panties_under_pantyhose: трусики под колготками
+        fishnets: сетчатые чулки
+        stirrup_legwear: чулки с петлей под стопой
+        toeless_legwear: чулки без пальцев
+        mismatched_legwear: несоответствующие чулки
+        two-tone_legwear: двухцветные чулки
+        asymmetrical_legwear: несимметричные чулки
+        uneven_legwear: неравномерные чулки
+        white_thighhighs: белые чулки выше колена
+        black_thighhighs: черные чулки выше колена
+        pink_thighhighs: розовые чулки выше колена
+        suspenders: подвязки
+        garter_straps: подвязки для чулок
+        torn_legwear: рваные чулки
+        torn_thighhighs: рваные чулки выше колена
+        see-through_legwear_: прозрачные чулки
+        frilled_legwear: чулки с оборками
+        lace-trimmed_legwear: чулки с кружевными отделками
+        seamed_legwear: чулки с швом
+        back-seamed_legwear: чулки с задним швом
+        animal_ear_legwear: чулки с ушками животных
+        striped_legwear: полосатые чулки
+        vertical-striped_legwear: вертикально полосатые чулки
+        polka_dot_legwear: чулки в горошек
+        print_legwear: чулки с принтом
+        legwear_under_shorts: чулки под шортами
+        over-kneehighs: чулки выше колена
+        bobby_socks: белые носки
+        tabi: таби (японские носки)
+        loose_socks: свободные носки
+        ankle_socks: носки до щиколотки
+        leg_warmers: наколенники / носки-трубы
+        single_sock: одна носка
+        striped_socks: полосатые носки
+
+    - name: Взаимодействие с носками
+      color: rgba(230, 84, 128, .4)
+      tags:
+        leg_cutout: вырез на чулке
+        thighhighs_under_boots: чулки под сапогами
+        adjusting_legwear: корректировка чулок
+        pantyhose_pull: спущенные колготки
+        socks_removed: снятые носки
+        sock_pull: потянуть носок
+        thighhighs_pull: потянуть чулок
+
+    - name: Прочее
+      color: rgba(230, 84, 128, .4)
+      tags:
+        garters: подвязки
+        leg_garter: ножная подвязка
+        garter_straps: подвязки для чулок
+        thigh_strap: бедренный ремень
+        thigh_ribbon: бедренная лента
+        leg_ribbon: лента на ноге
+        bandaid_on_leg: пластырь на ноге
+        bandaged_leg: перевязанная нога
+        ankle_lace-up: шнуровка на щиколотке
+        thigh_holster: бедренная кобура
+        bandaid_on_knee: пластырь на колене
+        argyle_legwear: чулки с аржильным узором
+        bow_legwear: чулки с бантом
+        arm_garter: нарукавная подвязка
+
+    - name: Материал
+      color: rgba(230, 84, 128, .4)
+      tags:
+        armored: бронированный
+        canvas: холстовый
+        denim: джинсовый
+        fluffy: пушистый
+        fur: меховой
+        latex: латексный
+        leather: кожаный
+        see-through: прозрачный
+        spandex: спандексовый
+        tight: облегающий
+
+    - name: Декорирование
+      color: rgba(230, 84, 128, .4)
+      tags:
+        frilled: оборчатый
+        center_frills: оборка по центру
+        crease: складка
+        layered: многослойный
+        lace: кружевной
+        fur_trim: меховая отделка
+        fur-trimmed: меховая отделка
+        fine_fabric_emphasis: акцент на тонкой ткани
+        latex_thighhighs: латексные чулки выше колена
+        see-through_thighhighs: прозрачные чулки выше колена
+        ass_cutout: вырез для ягодиц
+        asymmetrical_clothes: несимметричная одежда
+        back_bow: бант на спине
+        costume_switch: смена костюма
+        cross-laced_clothes: одежда с перекрещенной шнуровкой
+        double_vertical_stripe: две вертикальные полосы на одежде
+        halter_top: топ с завязками на шее
+        multicolored_legwear: многоцветная одежда для ног
+        navy_blue_legwear: темно-синяя одежда для ног
+        nontraditional_miko: нестандартная одежда мико
+        side_cutout: вырез сбоку
+        side_slit: боковой разрез
+        sideless_outfit: одежда без боковины
+        single_kneehigh: одна чулка выше колена
+        single_vertical_stripe: одна вертикальная полоса на одежде
+        turtleneck: водолазка
+        two-sided_fabric: двухсторонняя ткань
+        o-ring: одежда с кольцом
+        o-ring_top: топ с кольцом
+        fringe_trim: отделка кисточками
+        loose_belt: свободный пояс
+        pom_pom_(clothes): помпон (декор на одежде)
+        drawstring: завязка на одежде
+        full-length_zipper: молния на всю длину одежды
+        gathers: складки на одежде
+        gusset: вставка на одежде
+        breast_pocket: карман на груди
+
+    - name: Узор
+      color: rgba(230, 84, 128, .4)
+      tags:
+        argyle: аржильный узор
+        checkered: клетчатый узор
+        colored_stripes: цветные полосы
+        diagonal_stripes: диагональные полосы
+        horizontal_stripes: горизонтальные полосы
+        multicolored_stripes: многоцветные полосы
+        polka_dot_: узор в горошек
+        ribbed: ребристый узор
+        striped: полосатый узор
+        unmoving_pattern: неподвижный узор
+        vertical_stripes: вертикальные полосы
+        plaid: клетчатый узор
+        animal_print: животный узор
+        cat_print: узор с котами
+        bear_print: узор с медведями
+        bird_print: узор с птицами
+        bunny_print: узор с кроликами
+        cow_print: узор с коровами
+        dragon_print: узор с драконами
+        fish_print: узор с рыбами
+        frog_print: узор с лягушками
+        shark_print: узор с акулами
+        snake_print: узор со змеями
+        zebra_print: узор со зебрами
+        tiger_print: узор с тиграми
+        leopard_print: узор с леопардами
+        jaguar_print: узор с ягуарами
+        bat_print: узор с летучими мышами
+        aardwolf_print: узор с ардвольфами
+        african_wild_dog_print: узор с африканскими дикими собаками
+        cheetah_print: узор с гепардами
+        dog_print: узор с собаками
+        fox_print: узор с лисами
+        giraffe_print: узор с жирафами
+        panda_print: узор с пандами
+        sand_cat_print: узор с песчаными котами
+        whale_print: узор с китами
+        white_tiger_print: узор с белыми тиграми
+        goldfish_print: узор с золотыми рыбками
+        wing_print: узор с крыльями
+        spider_web_print: узор с паутиной
+        butterfly_print: узор с бабочками
+        floral_print: цветочный узор
+        leaf_print: узор с листьями
+        clover_print: узор с клевером
+        maple_leaf_print: узор с кленовым листом
+        rose_print: узор с розами
+        strawberry_print: узор с клубникой
+        cherry_print: узор с вишней
+        bamboo_print: узор с бамбуком
+        carrot_print: узор с морковью
+        hibiscus_print: узор с гибискусом
+        jack-o'-lantern_print: узор с тыквой
+        petal_print: узор с лепестками
+        sunflower_print: узор с подсолнухами
+        watermelon_print: узор с арбузом
+        sky_print: узор с небом
+        cloud_print: узор с облаками
+        lightning_bolt_print: узор с молнией
+        rainbow_print: узор с радугой
+        snowflake_print: узор с снежинкой
+        starry_sky_print: узор с звездным небом
+        crescent_print: узор с полумесяцем
+        star_print: узор со звездой
+        star_(symbol): символ звезды
+        moon_print: узор с луной
+        sun_print: узор с солнцем
+        character_print: символьный узор
+        clothes_writing_: надписи на одежде
+        anchor_print: узор с якорями
+        cherry_blossom_print: узор с цветущими сакурами
+        musical_note_print: узор со музыкальными нотами
+        triangle_print: узор с треугольниками
+        arrow_print: узор со стрелками
+        wave_print: узор с волнами
+        peace_symbol: узор с символом мира (☮)
+        heart_print: узор с сердцами
+        flame_print: узор с пламенем
+        hitodama_print: узор с огоньками
+        paw_print: узор с лапами
+        skeleton_print: узор с скелетом
+        skull_print: узор с черепом
+        sparkle_print: узор с блестками
+        yin_yang_print: узор с символом инь-янь
+        cross_print: узор с крестом
+        camoflage: камуфляжный узор
+        flag_print: узор с флагом
+        bone_print: узор с костями
+        ghost_print: узор с призраками
+        mushroom_print: узор с грибами
+        onigiri_print: узор с ониксирами
+        cat_ear: узор с кошачьими ушками
+        cat_ear_cutout: вырез с кошачьими ушками
+
+    - name: Обувь
+      color: rgba(230, 84, 128, .4)
+      tags:
+        barefoot: Босиком
+        no_shoes: Без обуви
+        shoes_removed: Снятая обувь
+        single_shoe: Одна туфля
+        the_only_shoe: Одна туфля
+        black_loafers: Черные мокасины
+        shoes: Кроссовки
+        uwabaki: Внутренняя обувь
+        platform_footwear: Платформенная обувь
+        high_heels: Туфли на высоком каблуке
+        stiletto_heels: Туфли на тонком каблуке
+        strappy_heels: Туфли на тонком каблуке с ремешками
+        platform_heels_: Туфли на платформе с высоким каблуком
+        rudder_footwear: Обувь для капитанов кораблей
+        sandals: Сандалии
+        barefoot_sandals: Сандалии для босиком
+        clog_sandals: Деревянные сандалии
+        geta: Деревянные тапочки
+        slippers: Тапочки
+        skates: Коньки
+        roller_skates: Роликовые коньки
+        animal_feet: Лапы животных
+        animal_slippers: Тапочки в виде животных
+        anklet: Браслет на ноге
+        shackles: Кандалы
+        brown_footwear: Коричневая обувь
+        cross-laced_footwear: Обувь с перекрещенными шнурками
+        loafers: Мокасины
+        mary_janes: Туфли Мэри Джейн
+        mismatched_footwear: Несоответствующая обувь
+        pointy_footwear: Остроносая обувь
+        pumps: Туфли на низком каблуке
+        sandals_removed: Снятые сандалии
+        shoe_soles: Подошвы обуви
+        shoelaces: Шнурки
+        sneakers: Кроссовки
+        winged_footwear: Обувь с крыльями
+        zouri: Японские соломенные туфли
+
+    - name: Ботинки
+      color: rgba(230, 84, 128, .4)
+      tags:
+        boots: Ботинки
+        boots_removed: Снятые сапоги
+        thigh_boots: Сапоги до бедра
+        knee_boots: Сапоги до колена
+        cross-laced_footwear: Обувь с перекрещенными шнурками
+        ankle_boots: Ботильоны
+        high_heel_boots: Ботинки на высоком каблуке
+        toeless_boots: Ботинки без пальцев
+        lace-up_boots: Ботинки на шнуровке
+        fur-trimmed_boots: Сапоги с меховой отделкой
+        snow_boots: Сапоги для снега
+        anklet: Браслет на ноге
+        rubber_boots: Резиновые сапоги
+        santa_boots: Санта Клаусовские сапоги
+        leather_boots: Кожаные сапоги
+        thighhighs_under_boots: Колготки под сапогами
+        combat_boots: Боевые ботинки
+        doc_martens: Ботинки Доктора Мартенса
+        rain_boots: Дождевые сапоги
+        belt_boots: Ботинки с ремнем
+        fur_boots: Меховые ботинки с низким каблуком
+        single_boot: Одна надетая ботинка
+
+    - name: Подошва обуви
+      color: rgba(230, 84, 128, .4)
+      tags:
+        shoe_soles: Подошвы обуви
+        arched_soles: Дуговидные подошвы
+        paw_print_soles: Подошвы с отпечатками лап
+        horseshoe: Подкова
+
+    - name: Воротник
+      color: rgba(230, 84, 128, .4)
+      tags:
+        sailor_collar: Морской воротник
+        fur_collar: Меховой воротник
+        frilled_collar: Оборчатый воротник
+        popped_collar: Поднятый воротник
+        choker: Чокер
+        black_choker: Черный чокер
+        belt_collar: Кожаный воротник
+        frilled_choker: Оборчатый чокер
+        neckerchief: Шейный платок
+        red_neckerchief: Красный шейный платок
+        necktie: Галстук
+        short_necktie: Короткий галстук
+        white_necktie: Белый галстук
+        bowtie: Бабочка
+        headphones_around_neck: Наушники на шее
+        goggles_around_neck: Защитные очки на шее
+        neck_bell: Подвеска на шее
+        neck_ruff: Воротник
+        v-neck: V-образный вырез
+        towel_around_neck: Полотенце на шее
+        loose_necktie: Свободный галстук
+        neck_tattoo: Татуировка на шее
+        ascot: Ассоциация
+        ribbon_choker: Ленточный чокер
+        maebari/pasties: Maebari/пасты
+        latex: Латекс
+        torn_clothes: Разорванная одежда
+        iron_cross: Железный крест
+        chinese_knot: Китайский узел
+        cross_necklace: Крестное ожерелье
+        bead_necklace: Бусы
+        pearl_necklace: Жемчужное ожерелье
+        heart_necklace: Сердечное ожерелье
+        carrot_necklace: Морковное ожерелье
+        chain_necklace: Цепочка
+        magatama_necklace: Ожерелье из магатамы
+        tooth_necklace: Ожерелье из зубов
+        key_necklace: Ожерелье с ключом
+        anchor_necklace: Ожерелье с якорем
+        skull_necklace: Ожерелье со черепом
+        shell_necklace: Ожерелье из раковин
+        gold_necklace: Золотое ожерелье
+        crescent_necklace: Ожерелье в форме полумесяца
+        ring_necklace: Ожерелье с кольцом
+        feather_necklace: Ожерелье с пером
+        bone_necklace: Ожерелье из костей
+        ankh_necklace: Ожерелье с анхом
+        multiple_necklaces: Несколько ожерелий
+        bullet_necklace: Ожерелье из пуль
+        holding_necklace: Держит ожерелье
+        necklace_removed: Снятое ожерелье
+        brown_neckwear: Коричневая шейная одежда
+        checkered_neckwear: Клетчатая шейная одежда
+        diagonal-striped_neckwear: Шейная одежда в диагональную полоску
+        halterneck: Шейка на шее
+        mole_on_neck: Родинка на шее
+        neck: Шея
+        neck_ribbon: Лента на шее
+        neck_ring: Кольцо на шее
+        necklace: Ожерелье
+        plaid_neckwear: Шейная одежда в клетку
+        plunging_neckline: Глубокий вырез
+        print_neckwear: Шейная одежда с принтом
+        sleeveless_turtleneck: Безрукавка с высоким воротником
+        star_necklace: Звездное ожерелье
+        striped_neckwear: Полосатая шейная одежда
+        turtleneck_sweater: Свитер с воротником-хомутом
+        undone_necktie: Расстегнутый галстук
+        whistle_around_neck: Свисток на шее
+
+    - name: Шарф
+      color: rgba(230, 84, 128, .4)
+      tags:
+        plaid_scarf: Шотландский шарф
+        striped_scarf: Полосатый шарф
+        print_scarf: Шарф с принтом
+        vertical-striped_scarf: Вертикально полосатый шарф
+        polka_dot_scarf: Шарф в горошек
+        argyle_scarf: Шарф в клетку
+        beige_scarf: Бежевый шарф
+        scarf_bow: Бант на шарфе
+        fur_scarf: Меховой шарф
+        naked_scarf: Обнаженный шарф
+        multicolored_scarf: Многоцветный шарф
+        floating_scarf: Парящий шарф
+        long_scarf: Длинный шарф
+        arm_scarf: Шарф на руке
+        scarf_on_head: Шарф на голове
+        scarf_over_mouth: Шарф на рту
+        scarf_removed: Снятый шарф
+        adjusting_scarf: Регулировка шарфа
+        holding_scarf: Держит шарф
+        scarf_pull: Вытягивание шарфа
+        brown_scarf: Коричневый шарф
+        scarf: Шарф
+
+    - name: Очки
+      color: rgba(230, 84, 128, .4)
+      tags:
+        glasses: Очки
+        eyewear: Очки
+        monocle: Однолинзовые очки
+        under-rim_eyewear: Очки с нижней рамкой
+        rimless_eyewear: Безрамочные очки
+        semi-rimless_eyewear: Полуримлиссовые очки
+        red-framed_eyewear: Очки с красной оправой
+        round_eyewear: Круглые очки
+        black-framed_eyewear: Очки с черной оправой
+        tinted_eyewear: Очки с тонировкой
+        medical_eyepatch: Медицинская повязка на глаз
+        bandage_over_one_eye: Бинт на одном глазу
+        crooked_eyewear: Кривые очки
+        eyewear_removed: Снятые очки
+        sunglasses: Солнцезащитные очки
+        goggles: Защитные очки
+        Blindfold: Повязка на глаза
+        eyepatch: Повязка на глаз
+        visor: Маска/козырек
+        bespectacled: В очках
+        blue-framed_eyewear: Очки с синей оправой
+        brown-framed_eyewear: Очки с коричневой оправой
+        coke-bottle_glasses: Очки с толстыми линзами
+        no_eyewear: Без очков
+        opaque_glasses: Очки без прозрачных линз
+        over-rim_eyewear: Очки с верхней рамкой
+
+    - name: Маска
+      color: rgba(230, 84, 128, .4)
+      tags:
+        mask: Маска
+        half_mask: Полумаска
+        masked: С маской
+        mask_lift: Поднятая маска
+        mask_on_head: Маска на голове
+        mask_removed: Снятая маска
+        mouth_mask: Медицинская маска
+        surgical_mask: Хирургическая маска
+        plague_doctor_mask: Маска чумного доктора
+        gas_mask: Противогаз
+        visor: Маска/козырек
+        helmet: Шлем
+        fox_mask: Лисья маска
+        diving_mask: Маска для подводного плавания
+        diving_mask_on_head: Маска для подводного плавания на голове
+        oni_mask: Маска они
+        tengu_mask: Маска тэнгу
+        ninja_mask: Ниндзя маска
+        skull_mask: Маска черепа
+        hockey_mask: Хоккейная маска
+        bird_mask: Птичья маска
+        stone_mask: Каменная маска
+        horse_mask: Лошадиная маска
+        masquerade_mask: Маскарадная маска
+        domino_mask: Маска домино
+
+    - name: Рука
+      color: rgba(230, 84, 128, .4)
+      tags:
+        long_sleeves: Длинные рукава
+        short_sleeves: Короткие рукава
+        wide_sleeves: Широкие рукава
+        furisode: Фурисодэ
+        detached_sleeves: Отстегивающиеся рукава
+        single_sleeve: Один рукав
+        sleeveless: Безрукавка
+        asymmetrical_sleeves: Асимметричные рукава
+        puffy_sleeves: Пышные рукава
+        puffy_long_sleeves: Пышные длинные рукава
+        puffy_short_sleeves: Пышные короткие рукава
+        frilled_sleeves: Оборчатые рукава
+        juliet_sleeves: Рукава Жюльетты
+        bandaged_arm: Повязка на руке
+        raglan_sleeves: Рукава реглан
+        vambraces: Наручи
+        layered_sleeves: Слойные рукава
+        fur-trimmed_sleeves: Рукава с меховой отделкой
+        see-through_sleeves: Прозрачные рукава
+        torn_sleeves: Разорванные рукава
+        sleeves_past_fingers: Рукава до пальцев
+        sleeves_past_wrists: Рукава до запястий
+        sleeves_past_elbows: Рукава до локтей
+        sleeves_pushed_up: Рукава подвернуты
+        arm_out_of_sleeve: Рука из рукава
+        uneven_sleeves: Неравные рукава
+        mismatched_sleeves: Несоответствующие рукава
+        sleeve_rolled_up: Рукав завернут
+        sleeves_rolled_up: Одна завернутая рукав
+        feather-trimmed_sleeves: Рукава с перьями
+        hands_in_opposite_sleeves: Руки в противоположных рукавах
+        lace-trimmed_sleeves: Рукава с кружевной отделкой
+        pinching_sleeves: Сжатие рукавов
+        puffy_detached_sleeves: Пышные отстегивающиеся рукава
+        ribbed_sleeves: Ребристые рукава
+        single_detached_sleeve: Один отстегнутый рукав
+        sleeves_folded_up: Завернутые рукава
+        striped_sleeves: Полосатые рукава
+        wrist_cuffs: Манжеты на запястьях
+        armband: Браслет на руке
+        armlet: Браслет на руке
+
+    - name: Руки
+      color: rgba(230, 84, 128, .4)
+      tags:
+        bandage: Бинт
+        leash: Поводок
+        arm_tattoo: Татуировка на руке
+        number_tattoo: Числовая татуировка
+        bead_bracelet: Браслет из бусин
+        bracelet: Браслет
+        flower_bracelet: Цветочный браслет
+        spiked_bracelet: Браслет с шипами
+        wrist_cuffs: Наручники
+        wristband: Браслет на запястье
+        bracer: Наруч
+        cuffs: Манжеты
+        bound_wrists: Связанные запястья
+        wrist_scrunchie: Резинка на запястье
+        handcuffs: Наручники
+        shackles: Кандалы
+        chains: Цепи
+        chain_leash: Цепной поводок
+
+    - name: Перчатки
+      color: rgba(230, 84, 128, .4)
+      tags:
+        gloves: Перчатки
+        gloves_removed: Снятые перчатки
+        no_gloves: Без перчаток
+        single_glove: Одна перчатка
+        single_elbow_glove: Одна перчатка до локтя
+        long_gloves: Длинные перчатки
+        elbow_gloves: Перчатки до локтя
+        bridal_gauntlets: Свадебные перчатки
+        half_gloves: Половинчатые перчатки
+        fingerless_gloves: Перчатки без пальцев
+        partially_fingerless_gloves: Частично безпальцевые перчатки
+        paw_gloves: Лапки на перчатках
+        mittens: Варежки
+        baseball_mitt: Бейсбольная перчатка
+        fur-trimmed_gloves: Перчатки с меховой отделкой
+        latex_gloves: Латексные перчатки
+        lace-trimmed_gloves: Перчатки с кружевной отделкой
+        leather_gloves: Кожаные перчатки
+        frilled_gloves: Оборчатые перчатки
+        mismatched_gloves: Несоответствующие перчатки
+        multicolored_gloves: Многоцветные перчатки
+        asymmetrical_gloves: Асимметричные перчатки
+        brown_gloves: Коричневые перчатки
+        oven_mitts: Кухонные перчатки
+        print_gloves: Перчатки с принтом
+        striped_gloves: Полосатые перчатки
+        torn_gloves: Разорванные перчатки
+
+    - name: Украшение для ушей
+      color: rgba(230, 84, 128, .4)
+      tags:
+        cross_earrings: Крестовые серьги
+        crystal_earrings: Хрустальные серьги
+        earrings: Серьги
+        flower_earrings: Цветочные серьги
+        heart_earrings: Серьги в форме сердца
+        hoop_earrings: Серьги-обручи
+        multiple_earrings: Несколько сережек
+        pill_earrings: Серьги в форме таблетки
+        single_earring: Одна серьга
+        skull_earrings: Серьги со черепом
+        star_earrings: Звездные серьги
+
+    - name: Головные уборы
+      color: rgba(230, 84, 128, .4)
+      tags:
+        halo: Ореол
+        mechanical_halo: Механический ореол
+        headwear: Головной убор
+        headpiece: Головной убор
+        headwear_removed: Головной убор снят
+        head_wreath: Венок на голове
+        crown: Корона
+        mini_crown: Мини-корона
+        tiara: Тиара
+        diadem: То же самое
+        tilted_headwear: Наклоненный головной убор
+        head_fins: Головные плавники
+        maid_headdress: Головной убор горничной
+        bridal_veil: Вуаль невесты
+        headband: Ободок на голове
+        helmet: Шлем
+        alternate_headwear: Альтернативный головной убор
+        fur-trimmed_headwear: Головной убор с меховой отделкой
+        goggles_on_headwear: Защитные очки на головном уборе
+        earphones: Наушники
+        earmuffs: Ушные муфты
+        ears_through_headwear: Уши сквозь головной убор
+        xx_on_head: xx на голове
+        leaf_on_head: Лист на голове
+        topknot: Косичка на голове
+        suigintou: Сьюгинтоу (вид прически)
+        triangular_headpiece: Треугольный головной убор
+        forehead_protector: Защитник лба
+        radio_antenna: Радиоантенна
+        animal_hood: Капюшон с ушками животного
+        arrow_(symbol): Стрелка (символ)
+        axe: Топор
+        bald: Лысый
+        bandana: Бандана
+        bob_cut: Каре (прическа)
+        bone: Кость
+        bowl_cut: Чашечка (прическа)
+        circlet: Венок
+        double_bun: Две косички
+        double_dildo: Двусторонний фаллоимитатор
+        drill: Сверло
+        faucet: Кран
+        hachimaki: Хачимаки (повязка на голову)
+        hair_behind_ear: Волосы за ухом
+        hair_bell: Колокольчик на волосах
+        hair_bun: Косичка на голове
+        hair_down: Распущенные волосы
+        hair_flaps: Клапаны волос
+        hair_flip: Перекидывание волос
+        hair_flower: Цветок на волосах
+        hair_spread_out: Распущенные волосы
+        hair_up: Прическа собранная вверх
+        helm: Головной убор с шлемом
+        helmet_removed: Снятый шлем
+        horned_helmet: Шлем с рожками
+        japari_bun: Жапари-булочка (вид прически)
+        kerchief: Платок на голову
+        mami_mogu_mogu: Мами Могу Могу (вид прически)
+        mob_cap: Кепка с завязками
+        one_side_up: Прическа с поднятыми волосами с одной стороны
+        owl: Сова
+        pier: Пирсинг
+        pillow: Подушка
+        raised_fist: Поднятый кулак
+        skull_and_crossbones: Череп и перекрещенные кости
+        stone: Камень
+        turban: Тюрбан
+        twin_drills: Две косички-шнеки
+        updo: Прическа с поднятыми волосами
+        wet_hair: Влажные волосы
+        headdress: Головное украшение (обобщенно)
+        adjusting_headwear: Регулировка головного убора
+        bear_hair_ornament: Украшение для волос с изображением медведя
+        brown_headwear: Коричневый головной убор
+        horned_headwear: Головной убор с рожками
+        horns_through_headwear: Рожки сквозь головной убор
+        no_headwear: Без головного убора
+        object_on_head: Объект на голове, не являющийся головным убором
+        print_headwear: Головной убор с принтом
+        bone_hair_ornament: Украшение для волос в форме кости
+        bunny_hair_ornament: Украшение для волос в форме кролика
+        horn_ornament: Украшение на рожке
+        animal_on_head: Животное на голове
+        behind-the-head_headphones: Наушники, надетые за головой
+        bird_on_head: Птица на голове
+        cat_ear_headphones: Наушники в форме кошачих ушей
+        cat_on_head: Кошка на голове
+        eyewear_on_head: Очки на голове
+        forehead: Лоб
+        forehead_jewel: Драгоценный камень на лбу
+        forehead_kiss: Поцелуй на лоб
+        forehead_mark: Рисунок на лбу
+        forehead-to-forehead: Лоб к лобу
+        goggles_on_head: Защитные очки на голове
+        head: Голова
+        head_bump: Ушиб головы
+        head_down: Голова опущена
+        head_mounted_display: Головной дисплей
+        head_out_of_frame: Часть головы не попала в кадр
+        head_rest: Голова на подушке
+        head_tilt: Голова наклонена
+        head_wings: Крылья на голове
+        headgear: Головной убор (с элементами научной фантастики)
+        headphones: Наушники
+        heads-up_display: Интерфейс головного дисплея
+        headset: Гарнитура
+        inter_headset: Межсетевое подключение EVA
+        on_head: На голове
+        person_on_head: Человек на голове
+        single_head_wing: Одно крыло на голове
+
+    - name: Шляпа
+      color: rgba(230, 84, 128, .4)
+      tags:
+        hat: Шляпа
+        no_hat: Без шляпы
+        large_hat: Большая шляпа
+        mini_hat: Мини-шляпа
+        witch_hat: Шляпа ведьмы
+        mini_witch_hat: Мини-шляпа ведьмы
+        wizard_hat: Шляпа волшебника
+        party_hat: Праздничная шляпа
+        jester_cap: Шапка шута
+        tokin_hat: Шляпа с большими полями
+        top_hat: Цилиндр
+        mini_top_hat: Мини-цилиндр
+        bowler_hat: Боулер
+        pillbox_hat: Шляпка-пилюльница
+        cloche_hat: Колокольчик
+        side_cap: Боковая шапка
+        military_hat: Военная шапка
+        beret: Берет
+        garrison_cap: Фуражка
+        police_hat: Шапка полицейского
+        nurse_cap: Шапка медсестры
+        chef_hat: Шапка повара
+        school_hat: Школьная шапка
+        pirate_hat: Пиратская шляпа
+        cabbie_hat: Шляпа таксиста
+        bucket_hat: Рыбацкая шляпа
+        hardhat: Защитный шлем
+        straw_hat: Соломенная шляпа
+        sun_hat: Солнечная шляпа
+        rice_hat: Рисовая шляпа
+        animal_hat: Шляпа с животными
+        fur_hat: Шапка из меха
+        hat_with_ears: Шляпа с ушками
+        bobblehat: Шапка с помпоном
+        pillow_hat: Шапка-подушка
+        pumpkin_hat: Шапка с тыквой
+        baseball_cap: Бейсболка
+        flat_cap: Кепка
+        torn_hat: Разорванная шляпа
+        mob_cap: Шапка мятежника
+        newsboy_cap: Кепка газетчика
+        bowknot_over_white_beret: Белая беретка с бантом
+        backwards_hat: Шляпа задом наперед
+        bowl_hat: Шляпа в форме чаши
+        cat_hat: Шапка с кошачьими ушами
+        chat_log: Стиль чата
+        cowboy_hat: Ковбойская шляпа
+        dixie_cup_hat: Шляпа из пластмассового стаканчика
+        hat_bow: Шляпа с бантом
+        hat_feather: Шляпа с пером
+        hat_flower: Шляпа с цветком
+        hat_ornament: Шляпа с украшением
+        hat_over_one_eye: Шляпа накрывает один глаз
+        hat_removed: Снятая шляпа
+        hat_ribbon: Шляпа с лентой
+        hat_tip: Поднятая шляпа
+        hatching_(texture): Шляпа с текстурой клетки
+        hatsune_miku_(cosplay): Косплей Хацуне Мику
+        is_that_so: Совершенно верно (фраза)
+        porkpie_hat: Шляпа Поркпай
+        sailor_hat: Матросская шляпа
+        santa_hat: Шапка Санта-Клауса
+        sideways_hat: Шляпа наискось
+        what: Автор совершил ошибку
+        what_if: Другая версия реальности
+
+    - name: Украшения для волос
+      color: rgba(230, 84, 128, .4)
+      tags:
+        hair_ribbon: Лента для волос
+        hairband: Ободок для волос
+        hair_tie: Резинка для волос
+        lolita_hairband: Ободок Лолиты
+        frilled_hairband: Ободок с оборками
+        lace-trimmed_hairband: Ободок с кружевной отделкой
+        hair_bobbles: Резинки для волос
+        hair_ornament: Украшение для волос
+        hair_flower: Цветок для волос
+        x_hair_ornament: Украшение для волос в форме X
+        hair_bow: Бант для волос
+        frog_hair_ornament: Украшение для волос в форме лягушки
+        heart_hair_ornament: Украшение для волос в форме сердца
+        butterfly_hair_ornament: Украшение для волос в форме бабочки
+        star_hair_ornament: Украшение для волос в форме звезды
+        food-themed_hair_ornament: Украшение для волос в виде еды
+        anchor_hair_ornament: Украшение для волос в форме якоря
+        bat_hair_ornament: Украшение для волос в форме летучей мыши
+        carrot_hair_ornament: Украшение для волос в форме моркови
+        cat_hair_ornament: Украшение для волос в форме кошки
+        clover_hair_ornament: Украшение для волос в форме клевера
+        crescent_hair_ornament: Украшение для волос в форме полумесяца
+        cross_hair_ornament: Украшение для волос в форме креста
+        d-pad_hair_ornament: Украшение для волос в форме джойстика
+        fish_hair_ornament: Украшение для волос в форме рыбы
+        hairpods: Украшения для волос, похожие на беспроводные наушники
+        leaf_hair_ornament: Украшение для волос в форме листа
+        musical_note_hair_ornament: Украшение для волос в форме ноты
+        pumpkin_hair_ornament: Украшение для волос в форме тыквы
+        skull_hair_ornament: Украшение для волос в форме черепа
+        snake_hair_ornament: Украшение для волос в форме змеи
+        snowflake_hair_ornament: Украшение для волос в форме снежинки
+        strawberry_hair_ornament: Украшение для волос в форме клубники
+        sunflower_hair_ornament: Украшение для волос в форме подсолнуха
+        hairpin: Заколка
+        hairclip: Заколка для волос
+        hair_tubes: Трубочки для волос
+        hair_stick: Палочка для волос
+        hair_bun: Коса
+        single_hair_bun: Одиночная коса
+        hair_bell: Звонок для волос
+        hair_rings: Кольца для волос
+
+    - name: Маленькие украшения
+      color: rgba(230, 84, 128, .4)
+      tags:
+        ring: Кольцо
+        wedding_band: Обручальное кольцо
+        earrings: Серьги
+        single_earring: Одна серьга
+        stud_earrings: Студ-серьги
+        necklace: Ожерелье
+        jewelry: Ювелирные изделия
+        crystal: Кристалл
+        brooch: Брошь
+        gem: Драгоценный камень
+        chest_jewel: Драгоценный камень на груди
+        forehead_jewel: Драгоценный камень на лбу
+        tassel: Бахрома
+        belly_chain_: Цепь на животе
+        lace: Кружево
+        ribbon: Лента
+        stitches: Швы
+        scarf: Шарф
+        bandaid: Пластырь
+        collar: Воротник
+        belt: Ремень
+        steam: Пар
+        bell: Колокольчик
+        amulet: Амулет
+        emblem: Эмблема
+        flag_print: Флаг (принт)
+        anchor_symbol: Символ якоря
+        cross: Крест
+        diffraction_spikes: Дифракционные звезды
+        iron_cross: Железный крест
+        latin_cross: Латинский крест
+        lace-trimmed_hairband: Ободок с кружевной отделкой
+        ankle_lace-up: Шнуровка на щиколотке
+        st._gloriana's_(emblem): Эмблема Святого Глорианы
+        heart_lock_(kantai_collection): Замок в форме сердца (Kantai Collection)
+        garters: Подвязки
+        thigh_strap: Ремень на бедре
+        thigh_ribbon: Лента на бедре
+        leg_garter: Околоштанина (подвязка)
+        garter_straps: Ремни для чулок
+        leg_ribbon: Лента на ноге
+        bandaid_on_leg: Пластырь на ноге
+        bandaged_leg: Повязанная нога
+        arm_garter: Рукавная повязка
+        joints: Суставы
+        kneepits: Коленки
+        knee_pads: Наколенники
+        thigh_holster: Кобура на бедре
+        bandaid_on_knee: Пластырь на колене
+
+    - name: Ювелирные изделия
+      color: rgba(230, 84, 128, .4)
+      tags:
+        bracelet: Браслет
+        choker: Ошейник
+        metal collar: Металлический ошейник
+        ring: Кольцо
+        wristband: Браслет на запястье
+        pendant: Подвеска
+        brooch: Брошь
+        hoop earrings: Серьги-кольца
+        bangle: Браслет на руку
+        stud earrings: Серьги-гвоздики
+        sunburst: Ювелирное изделие в форме солнца
+        pearl bracelet: Жемчужный браслет
+        drop earrings: Серьги-подвески
+        puppet rings: Кольца-куклы
+        corsage: Бутоньерка
+        sapphire brooch: Сапфировая брошь
+        jewelry: Ювелирные изделия
+        necklace: Ожерелье
+
+- name: Выражение и движение
+  groups:
+    - name: Улыбка
+      color: rgba(241, 229, 140, .4)
+      tags:
+        smile: Улыбка
+        laughing: Смех
+        kind_smile: Радостная улыбка
+        :d: Счастливая улыбка_:D😀
+        ;d: Улыбка с морганием_:D
+        grin: Улыбка с зубами
+        teasing_smile: Улыбка от шуток, глупая улыбка
+        seductive_smile: Соблазнительная улыбка
+        smirk: Ухмылка, самодовольная улыбка
+        giggling: Смех в стиле "хи-хи"
+        smug: Заносчивая улыбка
+        naughty_face: Шаловливое лицо
+        evil smile: Злобная улыбка
+        crazy_smile: Безумная улыбка
+        happy: Счастье|Счастливый
+        happy_birthday: С днем рождения
+        happy_halloween: Счастливого Хэллоуина
+        happy_new_year: С Новым годом
+        happy_tears: Счастливые слезы
+        happy_valentine: Счастливого Дня святого Валентина
+
+    - name: Плач
+      color: rgba(241, 229, 140, .4)
+      tags:
+        sad: Грусть
+        tear: Рыдание
+        crying: Плач
+        crying_with_eyes_open: Плач с открытыми глазами
+        streaming_tears: Льются слезы
+        teardrop: Слеза
+        tearing_clothes: Разрыв одежды
+        tearing_up: Выражение готовности к плачу
+        tears: Слезы
+        wiping_tears: Стирание слез
+        badmood: Плохое настроение
+
+    - name: Недовольство
+      color: rgba(241, 229, 140, .4)
+      tags:
+        frustrated: Расстроенность
+        frustrated_brow: Расстроенные брови
+        annoyed: Раздраженный
+        anguish: Мучение
+        sigh: Вздох
+        gloom: Уныние
+        disappointed: Разочарование
+        despair: Отчаяние
+
+    - name: Презрение
+      color: rgba(241, 229, 140, .4)
+      tags:
+        disgust: Отвращение (взгляд, как на мусор)
+        disdain: Презрение
+        contempt: Презрение
+        shaded_face: Лицо с тенью, в сочетании с презрением
+        jitome: Презрительный взгляд
+        frown: Напряженные брови/сморщенное лобное взгляд
+        wince: Напряженные брови/сморщенное лобное взгляд (перед сексом)
+        furrowed_brow: Сморщенные брови
+        fear_kubrick: Испуганный взгляд в сторону
+        laughing: Смех
+
+    - name: Злость
+      color: rgba(241, 229, 140, .4)
+      tags:
+        angry: Злой
+        glaring: Злобный взгляд
+        serious: Серьезный (немного похоже на злость)
+        kubrick_stare: Взгляд в сторону с косой головой
+        evil: Злобный
+        sulking: Злой/обиженный
+        screaming: Крик|Громкий крик
+        shouting: Кричать
+
+    - name: Другие эмоции
+      color: rgba(241, 229, 140, .4)
+      tags:
+        expressionless: Безэмоциональное лицо
+        sleepy: Сонный
+        drunk: Пьяный
+        bored: Скучающий
+        confused: Запутанный
+        thinking: Думающий
+        lonely: Одинокий
+        light_blush: Легкое покраснение лица
+        blush: Покраснение лица
+        shy: Застенчивый
+        embarrass: Смущенный
+        facepalm: Прикрывает лицо рукой
+        flustered: Смущенный
+        sweat: Потеть
+        scared: Испуганный
+        ahegao: Ахегао
+        endured_face: Выдержанное лицо
+        restrained: Сдержанный
+        dark_persona: Темная личность
+        crazy: Сумасшедший
+        exhausted: Изнуренный
+        Tsundere: Цундере
+        yandere: Яндере
+        multiple_persona: Множественные личности
+        Jekyll_and_Hyde: Джекилл и Хайд
+        twitching: Судороги
+        spasm: Спазм
+        trembling: Дрожь
+        rape_face: Лицо насилия
+        rolling_eyes: Поворот глаз (высокая точка)
+        envy: Зависть
+        female_orgasm: Женский оргазм
+        heavy_breathing: Тяжелое дыхание, возможно, бесполезное
+        naughty: Непослушный
+        expressions: Выражения лица (примерно)
+        moaning: Стон
+        scowl: Презрительный взгляд
+
+    - name: Основные движения
+      color: rgba(241, 229, 140, .4)
+      tags:
+        standing: Стояние
+        on back: Лежа на спине
+        on stomach: Лежа на животе
+        kneeling: Сидя на коленях
+        on_side: Боком
+        on_stomach: Лежа на животе
+        top-down_bottom-up: Лежа на животе с поднятой попой
+        the_pose: Лежа на животе с поднятыми ногами
+        bent_over: Согнутая поза
+        upside-down: Вверх ногами
+        reversal: Обращение
+        fighting_stance: Боевая стойка
+        leaning_to_the_side: Наклонившись в сторону
+        leaning: Прислонившись|Наклоняясь
+        leaning_back: Наклонившись назад
+        leaning_on_object: Опираясь на объект
+        arched_back: Согнутая спина
+        leaning_forward: Наклонившись вперед
+        afloat: Плавающий (на воде)
+        lying: Лежа
+        fetal_position: Поза эмбриона (лежа)
+        lying_on_person: Лежа на человеке
+        lying_on_the_lake: Лежа на озере
+        lying_on_water: Лежа в воде
+        on_back: Лежа на спине
+        prone_bone: Лежа на животе, поза сзади
+        reclining: Склонившись|Лежа на боку
+        sleeping_upright: Спящий на ногах|Спящий в вертикальном положении
+        presenting: Представление (с последующим членом)
+        spinning: Вращение
+        posing: Позирование
+        stylish_pose: Стильная поза
+        public_indecency: Публичное непристойное поведение
+        parody: Пародия
+        in_container: В контейнере
+        against_glass: Против стекла (безрезультатно)
+        aiming: Прицеливание
+        aiming_at_viewer: Прицеливание на зрителя
+        applying_makeup: Нанесение макияжа
+        bathing: Принятие ванны
+        biting: Покусывание
+        bleeding: Кровотечение
+        blowing: Дуть
+        bowing: Поклон
+        breathing_fire: Выдыхание огня
+        broom_riding: Езда на метле
+        brushing_teeth: Чистка зубов
+        bubble_blowing: Дуть пузырьки
+        bullying: Задирачество
+        burning: Горение
+        cast: Бросок
+        chasing: Погоня
+        cleaning: Уборка
+        climbing: Восхождение
+        comforting: Утешение
+        cooking: Готовка
+        crying: Плач
+        cuddling: Обнимание
+        dancing: Танец
+        diving: Подводное плавание
+        dragging: Тащить что-то
+        drawing: Рисование
+        drawing_bow: Натягивание лука
+        dreaming: Мечта
+        drinking: Питье
+        driving: Вождение
+        dropping: (Случайно) уронить
+        drying: Вытирание (после ванны)
+        dual_wielding: Двойное владение оружием
+        exercise: Занятие спортом
+        fighting: Борьба
+        firing: Выстрел
+        fishing: Рыбная ловля
+        flapping: Порхание
+        flashing: Показывать
+        fleeing: Бегство
+        flexing: Показывать мышцы
+        flying: Полет
+        flying_kick: Полет и удар ногой
+        hair_brushing: Расчесывание волос
+        hair_tucking: Подбор волос
+        hanging: Подвешивание
+        hitting: Удар
+        imagining: Воображение
+        jumping: Прыжок
+        kicking: Удар ногой
+        licking: Лизание
+        licking_lips: Лизание губ
+        lip_biting: Покусывание губ
+        meditation: Медитация
+        painting: Живопись
+        Painting_(Action): Рисование
+        playing_card: Игра в карты
+        playing_games: Игра в игры
+        playing_instrument: Игра на инструменте
+        pole_dancing: Танец на шесте
+        praying: Молитва
+        punching: Удар кулаком
+        pushing: Толчок
+        railing: Опора на стекло
+        reading: Чтение
+        riding: Езда
+        running: Бег
+        sewing: Шитье
+        shopping: Шоппинг
+        showering: Принятие душа
+        sing: Пение
+        singing: Пение
+        slashing: Рубить
+        sleeping: Сон
+        smelling: Понюхать
+        smoking: Курение
+        sneezing: Чихание
+        snowing: Снегопад
+        soaking_feet: Погружение ног в воду
+        soccer: Футбол
+        spilling: Разливание жидкости из контейнера
+        spitting: Плевать
+        splashing: Брызги
+        standing_on_liquid: Стояние на воде или жидкости
+        standing_on_one_leg: Стояние на одной ноге
+        standing_split: Стоячий шпагат|Поднятая нога в стоячей позе
+        steepled_fingers: Пальцы сведены вместе
+        strangling: Придушение
+        sweeping: Подметание
+        swimming: Плавание
+        swing: Качание
+        tail_wagging: Покачивание хвостом
+        taking_picture: Фотографирование|Селфи
+        talking: Говорить
+        talking_on_phone: Разговор по телефону
+        teasing: Дразнить
+        thinking: Думать
+        tickling: Щекотка
+        toilet_use: Использование туалета
+        tossing_: Бросание
+        tripping: Спотыкание
+        trolling: Троллинг
+        twitching: Судороги
+        tying: Завязывание (действие)
+        unsheathing: Вынимание из ножен
+        untying: Развязывание
+        unzipping: Расстегивание молнии
+        wading: Проходить по воде
+        waking_up: Просыпание
+        walking: Ходьба
+        walking_on_liquid: Ходьба по жидкости
+        washing: Мытье
+        whispering: Шепот
+        wrestling: Борьба (спортивная)
+        writing: Письмо
+        yawning: Зевота
+        hiding: Скрытие
+
+    - name: Движения рук
+      color: rgba(241, 229, 140, .4)
+      tags:
+        arms_behind_back: Руки позади спины
+        arm_above_head: Руки над головой
+        arm_behind_head: Рука за головой
+        arms_crossed: Скрещенные руки на груди
+        arm_support: Поддержка рукой
+        armpits: Видны подмышки
+        arms_up: Руки вверх
+        hands_on_hips: Руки на бедрах
+        arm_around_waist: Одна рука обхватывает талию
+        caramelldansen: Известное движение рук и кручение бедер
+        hands_in_opposite_sleeves: Руки в обратных рукавах
+        waving: Махание рукой
+        crossed_arms: Скрещенные руки
+        outstretched_arms: Вытянутые руки
+        v_arms: Руки в форме V
+        w_arms: Руки в форме W
+        salute: Поклон
+        reaching: Рука протянута (с целью)
+        reaching_out: Рука протянута в сторону рисунка
+        stretch: Растяжка
+        hugging_own_legs: Объятие своих ног
+        arm_blade: Рука с клинком
+        arm_grab: Захват руки
+        arm_held_back: Рука удерживается сзади
+        arm_ribbon: Лента на руке
+        bandaged_arm: Перевязанная рука
+        bandaid_on_arm: Пластырь на руке
+        bound_arms: Связанные руки
+        convenient_arm: Рука, скрывающая ключевую часть
+        extra_arms: Дополнительные руки
+        locked_arms: Заключенные руки
+        outstretched_arm: Вытянутая рука
+        waving_arms: Махание руками
+        arm_at_side: Одна рука внизу
+        arm_behind_back: Одна рука позади спины
+        shou: Одна рука за головой
+        arm_cannon: Рука-пушка
+        arm_hug: Объятие рукой
+        arm_up: Поднятая рука
+        arms_at_sides: Руки внизу
+        arms_behind_head: Руки за головой
+        hand_to_mouth: Рука у рта
+        shushing: Жест "тише"
+        cat_pose: Жест "кошачья лапка"
+        claw_pose: Жест "коготь"
+        paw_pose: Жест "поднятая лапка" (котэ-маунт)
+        fox_shadow_puppet: Жест "лиса"
+        double_fox_shadow_puppet: b
+        finger_gun: Жест "пистолет"
+        v: Жест "победа"
+        double_v: Жест "двойная победа"
+        thumbs_up: Жест "поднятый большой палец"
+        index_finger_raised: Поднятый указательный палец
+        middle_finger: Жест "средний палец"
+        grimace: Гримаса
+        eyelid_pull: Гримаса
+        fingersmile: Улыбка с помощью пальцев
+        wiping_tears: Стирание слез
+        finger_on_trigger: Готовность нажать на курок
+        pointing_at_self: Указывать на себя
+        pointing_at_viewer: Указывать на зрителя
+        pointing_up: Указывать вверх
+        poking: Тыкание
+        hand_gesture: Жест рукой
+        ok_sign: Жест "OK"
+        shading_eyes: Затенение глаз
+        finger_biting: Кусание пальца
+        finger_in_mouth: Пальцы в роте
+        fingering_through_clothes: Поглаживание через одежду
+        fingers_together: Пальцы вместе
+        hair_twirling: Пальцы закручивают волосы
+        hands_clasped: Сжатые руки|Сжатие рук
+        holding_hair: Удерживание волос|Пальцы обвивают волосы
+        pointing: Указывание пальцем
+        sharp_fingernails: Острые ногти на пальцах
+        sleeves_past_fingers: Рукава длиннее пальцев
+        spread_fingers: Разведение пальцев
+        trigger_discipline: Палец не на курке
+        w: Пальцы в форме W
+        balancing: Поза в равновесии
+        curvy: Поза, подчеркивающая изгибы
+        multiple_views: Множественные виды|Позы
+        pose: Поза
+        ready_to_draw: Готовность вытащить оружие
+        trefoil: Поза, показывающая ягодицы
+        zombie_pose: Поза зомби
+        beckoning: Приглашение рукой
+        bunching_hair: Удерживание пряди волос
+        carrying: Несение
+        carrying_over_shoulder: Носить на плече
+        carrying_under_arm: Носить под мышкой
+        cheering: Поддержка
+        finger_to_mouth: Рука у рта
+        cheek_pinching: Щипание щек
+        cheek_poking: Тыкание в щеку
+        chin_stroking: Поглаживание подбородка
+        hair_pull: Потягивание волос
+        covering_mouth: Покрытие рта
+        covering_xx: Покрытие xx
+        self_fondle: Поглаживание себя
+        adjusting_thighhigh: Регулировка чулок
+        chin_rest: Опора подбородка
+        head_rest: Опора головы
+        take: Взятие
+        _sheet_grab: Захват простыни
+        groping: Ласкание
+        skirt_lift: Поднятие юбки
+        crotch_grab: Захват паха
+        covering_chest_by_hand: Покрытие груди рукой
+        bangs_pinned_back: Поднятые челки
+        clothes_lift: Поднятие одежды
+        dress_lift: Поднятие платья
+        kimono_lift: Поднятие кимоно
+        lifted_by_another: Поднятие одежды другим человеком
+        lifted_by_self: Поднятие собственной одежды
+        shirt_lift: Поднятие, расстегивание, завертывание рубашки
+        skirt_basket: Форма корзины при поднятии юбки
+        skirt_flip: Поднятие юбки (включая неожиданности)
+        bikini_lift: Открытие бикини
+        leg_lift: Поднятие ноги
+        lifting_person: Поднятие другого человека
+        strap_lift: Поднятие лямок одежды
+        wind_lift: Ветер, воздушные потоки, поднятие
+        bikini_pull: Тянуть бикини
+        cheek_pull: Тянуть щеку
+        clothes_pull: Тянуть одежду
+        dress_pull: Снятие верхней части платья
+        hair_pulled_back: Заколка волос
+        kimono_pull: Снятие кимоно
+        leotard_pull: Снятие леотарда
+        mask_pull: Снятие маски
+        pants_pull: Тянуть штаны
+        pulled_by_another: Тянуть (или тянуть одежду) другим человеком
+        pulled_by_self: Тянуть собственную одежду
+        pulling: Тянуть
+        shirt_pull: Расстегивание рубашки
+        shorts_pull: Снятие шорт
+        skirt_pull: Тянуть юбку
+        swimsuit_pull: Снятие купальника
+        zipper_pull_tab: Застежка-молния
+        adjusting_clothes: Поправлять одежду
+        adjusting_eyewear: Подправить очки
+        adjusting_gloves: Поправить перчатки
+        adjusting_hair: Привести в порядок волосы
+        adjusting_hat: Причесать шляпу
+        adjusting_swimsuit: Поправить купальник
+
+    - name: Движение рук (держит что-то)
+      color: rgba(241, 229, 140, .4)
+      tags:
+        holding: Держит что-то
+        holding_animal: Обнимает животное
+        holding_arrow: Тянет за стрелу
+        holding_axe: Держит топор
+        holding_bag: Несет сумку
+        holding_ball: Обнимает мяч
+        holding_basket: Несет корзину
+        holding_book: Держит книгу
+        holding_bottle: Держит бутылку
+        holding_bouquet: Держит букет
+        holding_bow_(weapon): Держит лук (оружие)
+        holding_bowl: Держит миску
+        holding_box: Держит ящик
+        holding_breath: Задерживает дыхание
+        holding_broom: Держит метлу
+        holding_camera: Держит камеру
+        holding_can: Держит банку
+        holding_candy: Держит конфету
+        holding_card: Держит карту
+        holding_cat: Обнимает кошку
+        holding_chopsticks: Держит палочки для еды
+        holding_cigarette: Держит сигарету
+        holding_clothes: Держит одежду
+        holding_condom: Держит презерватив
+        holding_cup: Держит чашку
+        holding_dagger: Держит кинжал
+        holding_doll: Обнимает куклу
+        holding_eyewear: Держит очки|Снимает очки
+        holding_fan: Держит веер
+        holding_flag: Держит флаг
+        holding_flower: Держит цветок
+        holding_food: Держит еду
+        holding_fork: Держит вилку
+        holding_fruit: Держит фрукт
+        holding_gift: Держит подарок
+        holding_gun: Держит пистолет
+        holding_hands: Держит руки
+        holding_hat: Держит шляпу
+        holding_head: Держит голову
+        holding_helmet: Держит шлем
+        holding_innertube: Держит круг для плавания
+        holding_instrument: Держит инструмент
+        holding_knife: Держит нож
+        holding_leaf: Держит лист
+        holding_lollipop: Держит леденец
+        holding_mask: Держит маску
+        holding_microphone: Держит микрофон
+        holding_needle: Держит иглу для шитья
+        holding_own_foot: Держит свою ногу
+        holding_paintbrush: Держит кисть
+        holding_paper: Держит бумагу
+        holding_pen: Держит ручку
+        holding_pencil: Держит карандаш
+        holding_phone: Держит телефон
+        holding_pillow: Обнимает подушку
+        holding_pipe: Держит трубку
+        holding_pizza: Держит пиццу
+        holding_plate: Держит тарелку
+        holding_poke_ball: Держит покебол
+        holding_pokemon: Обнимает покемона
+        holding_polearm: Держит длинное оружие
+        holding_sack: Несет мешок
+        holding_scythe: Держит серп
+        holding_sheath: Держит ножны
+        holding_shield: Держит щит
+        holding_shoes: Держит обувь
+        holding_sign: Держит вывеску
+        holding_spear: Держит копье
+        holding_spoon: Держит ложку
+        holding_staff: Держит посох
+        holding_strap: Тянет за ремень
+        holding_stuffed_animal: Обнимает плюшевую игрушку
+        holding_stylus: Держит стилус
+        holding_sword: Держит меч
+        holding_syringe: Держит шприц
+        holding_towel: Держит полотенце
+        holding_tray: Держит поднос
+        holding_umbrella: Держит зонтик
+        holding_wand: Держит палочку
+        holding_whip: Держит кнут
+        arm_around_neck: Одна рука обнимает шею
+        arms_around_neck: Обе руки обнимают шею
+
+    - name: Движение рук (положение где-то)
+      color: rgba(241, 229, 140, .4)
+      tags:
+        covering: Покрывающее движение
+        covering_face: Покрывает лицо
+        covering_ass: Покрывает задницу
+        covering_crotch: Покрывает пах
+        covering_eyes: Покрывает глаза
+        covering_mouth: Покрывает рот
+        covering_nipples: Покрывает соски
+        hands_on_another's_: Обе руки на лице другого
+        hands_on_another's_cheeks: Обе руки на щеках другого
+        hands_on_ass: Обе руки на заднице
+        hands_on_feet: Обе руки на ногах
+        hands_on_headwear: Обе руки на головном уборе
+        hands_on_hilt: Обе руки на рукояти
+        hands_on_lap: Обе руки на коленях
+        hands_on_own_face: Обе руки на своем лице
+        hands_on_own_cheeks: Обе руки на своих щеках
+        hands_on_own_chest: Обе руки на своей груди
+        hands_on_own_head: Обе руки на своей голове
+        hands_on_own_knees: Обе руки на своих коленях
+        hands_on_own_stomach: Обе руки на своем животе
+        hands_on_own_thighs: Обе руки на своих бедрах
+        hands_on_another's_shoulders: Обе руки на плечах другого
+        hands_on_hips: Обе руки на бедрах|Обе руки на пояснице
+        hand_on_another's_: Рука касается лица другого
+        hand_on_another's_cheek: Рука касается щеки другого
+        hand_on_another's_chest: Рука на груди другого
+        hand_on_another's_chin: Рука подбирает подбородок другого
+        hand_on_another's_head: Рука на голове другого
+        hand_on_another's_shoulder: Рука на плече другого
+        hand_on_another's_stomach: Рука на животе другого
+        hand_on_ass: Рука на заднице
+        hand_on_head: Рука на голове
+        hand_on_headwear: Рука касается головного убора
+        hand_on_hilt: Рука на рукояти
+        hand_on_hip: Рука на бедре|Рука на пояснице
+        hand_on_own_: Рука на своем лице
+        hand_on_own_cheek: Рука на своей щеке
+        hand_on_own_chest: Рука на своей груди
+        hand_on_own_chin: Рука касается своего подбородка
+        hand_on_own_stomach: Рука на своем животе
+        hand_on_shoulder: Рука на плече
+        hand_in_another's_hair: Рука в волосах другого
+        hand_in_hair: Рука в волосах
+        hand_in_pocket: Рука в кармане
+
+    - name: Движение рук (схватывает что-то)
+      color: rgba(241, 229, 140, .4)
+      tags:
+        ass_grab: Схватывает задницу
+        flat_chest_grab: Схватывает плоскую грудь
+        grabbing: Схватывает
+        grabbing_another's_ass: Схватывает задницу другого
+        grabbing_another's_hair: Схватывает волосы другого
+        grabbing_from_behind: Схватывает грудь сзади
+        grabbing_own_ass: Схватывает свою задницу
+        guided_penetration: Схватывает мужской орган и вводит его в себя
+        hair_grab: Схватывает волосы
+        leg_grab: Схватывает ногу
+        necktie_grab: Схватывает галстук
+        neckwear_grab: Схватывает одежду на шее
+        penis_grab: Схватывает пенис
+        pillow_grab: Схватывает подушку
+        sheet_grab: Схватывает простыню
+        tail_grab: Схватывает хвост
+        thigh_grab: Схватывает бедро
+        torso_grab: Схватывает торс
+        wrist_grab: Схватывает запястье
+
+    - name: Движение ног
+      color: rgba(241, 229, 140, .4)
+      tags:
+        legs_up: Поднимает одну ногу
+        spread legs: Разводит ноги
+        legs_together: Ноги вместе
+        crossed_legs: Скрещенные ноги
+        m_legs: Поза "M"
+        standing_split,_leg_up: Поза "M"
+        curtsy: Куртси (поклонение)
+        hand_between_legs: Рука между ног
+        open_stance: Открытое положение
+        convenient_leg: Нога, закрывающая интимные места
+        leg_lock: Зажимает ногами
+        legs: Ноги
+        legs_over_head: Ноги над головой
+        squatting,_open_legs: Приседает с разведенными ногами
+        knees_together_feet_apart: Колени вместе, стопы разведены
+        animal_on_lap: Животное на коленях
+        hand_on_own_knee: Рука на собственном колене
+        knee_up: Поднимает колено
+        knees: Колени
+        knees_to_chest: Колени к груди
+        on_lap: На коленях
+        sitting: Сидит
+        wariza: Позиция "утка"
+        straddling: Сидит верхом
+        yokozuwari: Боком сидит
+        sitting_backwards: Сидит спиной
+        sitting_in_tree: Сидит на дереве
+        sitting_on_xx: Сидит на чем-то
+        butterfly_sitting: Сидит в позе "бабочка"
+        lotus_position: Сидит в позе "лотос"
+        sitting_on_railing: Сидит на перилах
+        sitting_on_rock: Сидит на камне
+        sitting_on_stairs: Сидит на ступеньках
+        sitting_on_table: Сидит на столе
+        sitting_on_water: Сидит на воде
+        cushion: Подушка
+        indian_style: Сидит в позе "индийский стиль"
+        sitting_on_chair: Сидит на стуле
+        sidesaddle: Сидит верхом на седле
+        sitting_on_bed: Сидит на кровати
+        sitting_on_desk: Сидит на партнере
+        sitting_on_lap: Сидит на коленях
+        sitting_on_person: Сидит на человеке
+        upright_straddle: Сидит в позе "лицом к лицу"
+        squatting: Приседает
+        one_knee: Одно колено
+        kneeling: Сидит на коленях
+        all_fours: На четвереньках
+        gravure_pose: Гравюрная поза
+        kicking: Пинает
+        high_kick: Высокий удар ногой
+        soaking_feet: Мочит ноги
+        reclining: Опирается
+        hugging_own_legs: Обнимает свои ноги
+        bare_legs: Голые ноги
+        between_legs: (акцент) Между ног
+        cropped_legs: Показана только часть ног
+        k/da_(league_of_legends): Команда KDA (League of Legends)
+        leg_belt: Ремень на ноге
+        leg_hair: Волосы на ноге
+        leg_up: Поднимает ногу
+        legs_apart: Разведенные ноги
+        lowleg: Поза "M"
+        mechanical_legs: Механические ноги
+        multiple_legs: Лицо с несколькими ногами
+        no_legs: Без ног
+        no_legwear: Без одежды ниже пояса
+        tail_between_legs: Хвост между ног
+        barefoot: Босиком
+        foot_out_of_frame: Одна нога за пределами кадра
+        footprints: Следы ног
+        dirty_feet: Неправильное изображение ног
+        feet: Ноги
+        feet_out_of_frame: Обе ноги за пределами кадра
+        feet_up: Поднимает ноги
+        wrong_feet: Ошибка в изображении ног
+        cameltoe: Кэмелто
+        pigeon-toed: Воронья походка
+        tiptoes: На цыпочках
+        toe-point: Пальцы ног
+        amputee: Ампутация|Одна нога|Увечье|Девушка с недостатком конечностей
+        ankle_strap: Ремешок на щиколотке
+        ankle_wrap: Повязка на щиколотке
+        crossed_ankles: Скрещенные щиколотки
+        pince-nez: Пинсе-нез|Очки без заушников
+        folded: Поднятая нога, обнажающая интимные места
+        thick_thighs: Полноватые бедра
+        thigh_holster: Кобура на бедре
+
+    - name: Другие движения
+      color: rgba(241, 229, 140, .4)
+      tags:
+        asymmetrical_docking: Соприкосновение грудей
+        back-to-back: Спина к спине
+        cunnilingus: Кунилингус
+        eye_contact: Взгляд в глаза
+        facing_another: Смотрит на другого
+        feeding: Кормление
+        finger_in_another's_mouth: Палец в роте другого
+        fingering: Пальцы во влагалище
+        french_kiss: Французский поцелуй
+        giving: Дает|Передает
+        grinding: Тереться
+        groping: Лапание
+        holding_hands: Держатся за руки
+        hug: Объятие
+        imminent_kiss: Приближение к поцелую
+        incoming_food: Подача еды
+        incoming_gift: Подача подарка
+        interlocked_fingers: Сцепленные пальцы
+        Kabedon: Кабедон
+        lap_pillow: Подушка на коленях
+        licking_penis: Облизывание пениса
+        long_tongue: Длинный язык
+        mimikaki: Чистка ушей
+        oral_invitation: Приглашение к оральному сексу
+        princess_carry: Перенос принцессы
+        shared_bathing: Общая ванна
+        shared_food: Общая еда|Передача еды во рту
+        sitting_on_head: Сидит на голове
+        sitting_on_shoulder: Сидит на плече
+        slapping: Хлопок
+        spanking: Шлепок по заднице
+        special_feeling_(meme): Мем "Один зонтик в снегу"
+        symmetrical_docking: Соприкосновение грудей
+        tongue: Язык
+        tongue_out: Высунутый язык
+        uvula: Небный язычок
+        ear_biting: Укус уха
+        mixed_bathing: Смешанное купание
+
+- name: Изображение
+  groups:
+    - name: Качество изображения
+      color: rgba(0, 255, 255, .4)
+      tags:
+        checkered: клетчатый
+        lowres: низкое разрешение
+        highres: высокое разрешение
+        absurdres: чрезвычайно высокое разрешение
+        incredibly absurdres: невероятно высокое разрешение
+        huge filesize: очень высокое разрешение/большой размер файла
+        wallpaper: обои
+        pixel art: пиксельное искусство
+        monochrome: монохромное изображение
+        colorful: красочное
+
+    - name: Художественный стиль
+      color: rgba(0, 255, 255, .4)
+      tags:
+        artbook: художественная книга
+        game cg: игровая CG-графика
+        comic: комикс
+        4koma: 4-панельный комикс
+        animated gif: анимированный GIF
+        dakimakura: дакимакура (подушка с персонажем)
+        cosplay: косплей
+        crossover: кроссовер
+        dark: темный
+        light: светлый
+        guro: гуро (макабр)
+        realistic: реалистичный
+        photo: фотография
+        real: реальный
+        landscape/scenery: пейзаж
+        cityscape: городской пейзаж
+        science fiction: научная фантастика
+        original: оригинальный
+        parody: пародия
+        personification: олицетворение
+        optical illusion: оптическая иллюзия
+        fine art parody: пародия на произведение изобразительного искусства
+        sketch: эскиз
+        traditional media: традиционные материалы (рисунок от руки)
+        watercolor (medium): акварель
+        silhouette: силуэт
+        cover: обложка
+        album: альбом
+        sample: образец
+        back: задний план
+        bust: бюст
+        profile: профиль
+        expressions: выражения
+        everyone: все основные персонажи в одном произведении
+        column lineup: композиция из маленьких изображений в одну линию
+        transparent background: прозрачный фон
+        simple background: простой фон
+        gradient background: градиентный фон
+        zoom layer: увеличенный фон
+        8 Bit Game: игра в стиле 8 бит
+        1980s anime: аниме 1980-х годов
+        disney movie: фильм Disney
+        goth: готический стиль
+        80s movie: фильм 80-х годов
+        bubble bobble: игра Bubble Bobble
+        style of Pixar: стиль Pixar
+        Polaroid art: искусство в стиле Polaroid
+        Kaleidoscope Photography: калейдоскопическая фотография
+        opal render: опаловая отрисовка
+        chemigram: химический графический процесс
+        Studio Ghibli: стиль студии Ghibli
+        dreamlike: сказочный
+        (faux traditional media): имитация традиционных материалов
+        genshin impact: стиль Genshin Impact
+        azur lane: стиль Azur Lane
+        kantai collection: стиль Kantai Collection
+        rebecca (cyberpunk): стиль Rebecca (киберпанк)
+        chainsaw man: стиль Chainsaw Man
+        Magic Vortex: магический вихрь
+        ((dieselpunk)): дизельпанк
+        magazine scan: сканирование журнала
+        album cover: обложка альбома
+        (lineart): линейный стиль
+        synthwave: синтвейв
+        (illustration),(paper figure),(lococo),((impasto)),(shiny skin): стиль Лококо
+
+    - name: Тип искусства
+      color: rgba(0, 255, 255, .4)
+      tags:
+        monochrome: монохромное изображение
+        Collage: коллажное искусство
+        Dalle de verre: стеклянная мозаика
+        pixel art: пиксельное искусство
+        Encaustic painting: восковая живопись
+        Ink wash painting: гуашевая живопись
+        Mezzotint: меццотинто (гравюра)
+        silhouette: силуэт
+        illustration: иллюстрация
+        (((ink))), ((watercolor)): акварельная живопись
+        illustration,(((ukiyoe))),((sketch)),((japanese_art)): укиё-э
+        ((wash painting)),((ink s...)): китайский стиль
+        ((dyeing)),((oil painting)),((impasto)): масляная живопись
+        (posing sketch), (monochrome): чёрно-белый набросок
+        sketch: эскиз
+        (monochrome), (gray scale), (pencil sketch lines: карандашный набросок
+        (watercolor pencil): цветные карандаши
+
+    - name: Художественные направления
+      color: rgba(0, 255, 255, .4)
+      tags:
+        ((art nouveau)): модерн
+        ((classicism)): классицизм
+        ((futurism)): футуризм
+        ((Dadaism)): дадаизм
+        ((abstract art)): абстракционизм
+        ((ASCII art)): ASCII-арт
+
+    - name: Стиль художника
+      color: rgba(0, 255, 255, .4)
+      tags:
+        ((alphonse mucha)): стиль Альфонса Мухи
+        ((Monet style)): стиль Моне
+
+    - name: Освещение
+      color: rgba(0, 255, 255, .4)
+      tags:
+        rim light: контурный свет
+        Volumetric Lighting: объемное освещение
+        glowing neon lights: светящиеся неоновые огни
+        Cinematic Lighting: кинематографическое освещение
+        lens flare: свечение от объектива
+        metallic luster: металлический блеск
+        moody lighting: настроенное освещение
+        Tyndall effect: эффект Тиндаля
+        light leaks: просачивание света
+        background light: фоновое освещение
+        available light: естественное освещение
+
+    - name: Реализм
+      color: rgba(0, 255, 255, .4)
+      tags:
+        realistic: реалистический
+        highres: толстый слой краски (стиль)
+        photo_(medium): фотография (стиль)
+        oil_painting: масляная живопись
+        reality: реальность
+        polaroid: фотография (полароид)
+
+    - name: Эскиз
+      color: rgba(0, 255, 255, .4)
+      tags:
+        sketch: эскиз
+        flat_color: плоский цвет
+        monochrome: монохромный
+        spot_color: сплошной цвет
+        halftone: полутоновый
+        greyscale: оттенки серого
+        high_contrast: высокий контраст
+        partially_colored: частичное окрашивание
+        chromatic_aberration: хроматическая аберрация
+        contour_deepening: углубление контура
+        outline: контур
+        silhouette: силуэт
+
+    - name: Кисть
+      color: rgba(0, 255, 255, .4)
+      tags:
+        traditional_media: традиционные материалы (бумага и т. д.)
+        faux_traditional_media: имитация традиционных материалов
+        marker_(medium): маркер
+        copics: маркеры Copics (серый)
+        pencil_sketch_lines: карандашный набросок
+        graphite_(medium): графитовый карандаш
+        colored_pencil_(medium): цветные карандаши
+        millipen_(medium): ручка для рисования
+        nib_pen_(medium): ручка с наконечником
+        ballpoint_pen_(medium)_: шариковая ручка
+        pastel_color: пастельные цвета
+        watercolor_(medium): акварель
+        acrylic_paint_(medium): акриловая живопись
+        contour_deepening: утолщение линии
+
+    - name: Цвет
+      color: rgba(0, 255, 255, .4)
+      tags:
+        orange: оранжевый
+        blue: синий
+        red: красный
+        light_brown: светло-коричневый
+        dark_pink: темно-розовый
+        khaki: хаки
+        blonde: блондин
+        brown: коричневый
+        black: черный
+        gray: серый
+        darkgray: темно-серый
+        silver: серебряный
+        lightgray: светло-серый
+        gainsboro: гейнсборо
+        whitesmoke: дымчато-белый
+        snow: снежный
+        ghostwhite: призрачно-белый
+        floralwhite: цветочно-белый
+        linen: льняной
+        antiquewhite: старинно-белый
+        papayawhip: папайя
+        blanchedalmond: бланшированный миндаль
+        bisque: бисквитный
+        moccasin: мокасин
+        navajowhite: навахо
+        peachpuff: персиковый
+        mistyrose: туманно-розовый
+        lavenderblush: бледно-лавандовый
+        seashell: ракушка
+        oldlace: старое кружево
+        ivory: слоновая кость
+        honeydew: медовый
+        mintcream: мятный
+        azure: лазурный
+        aliceblue: синий Алисы
+        lavender: лавандовый
+        lightsteelblue: светло-стальной
+        lightslategray: светло-сине-серый
+        slategray: сине-серый
+        steelblue: стальной
+        royalblue: королевский синий
+        midnightblue: полуночно-синий
+        navy: темно-синий
+        darkblue: темно-синий
+        mediumblue: средний синий
+        dodgerblue: синий Доджера
+        cornflowerblue: васильковый
+        skyblue: небесно-голубой
+        lightblue: светло-голубой
+        powderblue: пудрово-голубой
+        paleturquoise: бледно-бирюзовый
+        lightcyan: светло-циановый
+        cyan: циановый
+        aquamarine: аквамариновый
+        turquoise: бирюзовый
+        mediumturquoise: средне-бирюзовый
+        darkturquoise: темно-бирюзовый
+        lightseagreen: светло-морской
+        cadetblue: кадетский синий
+        darkcyan: темно-циановый
+        teal: сине-зеленый
+        darkslategray: темно-сине-серый
+        darkgreen: темно-зеленый
+        green: зеленый
+        forestgreen: лесной зеленый
+        seagreen: морской зеленый
+        mediumseagreen: средне-морской зеленый
+        mediumaquamarine: средне-аквамариновый
+        darkseagreen: темно-морской зеленый
+        palegreen: бледно-зеленый
+        lightgreen: светло-зеленый
+        springgreen: весенне-зеленый
+        mediumspringgreen: средне-весенне-зеленый
+        lawngreen: газонный зеленый
+        chartreuse: зеленовато-желтый
+        greenyellow: зелено-желтый
+        lime: лаймовый
+        limegreen: лаймово-зеленый
+        yellowgreen: желто-зеленый
+        darkolivegreen: темно-оливковый
+        olivedrab: серо-зеленый
+        olive: оливковый
+        darkkhaki: темно-хаки
+        palegoldenrod: бледно-золотистый
+        cornsilk: кукурузный шелк
+        beige: бежевый
+        lightyellow: светло-желтый
+        lightgoldenrodyellow: светло-золотисто-желтый
+        lemonchiffon: лимонный шифон
+        wheat: пшеничный
+        burlywood: светло-коричневый
+        tan: желто-коричневый
+        yellow: желтый
+        gold: золотой
+        sandybrown: песчано-коричневый
+        darkorange: темно-оранжевый
+        goldenrod: золотистый
+        peru: перуанский
+        darkgoldenrod: темно-золотистый
+        chocolate: шоколадный
+        sienna: сиена
+        saddlebrown: седельно-коричневый
+        maroon: темно-бордовый
+        darkred: темно-красный
+        firebrick: кирпичный
+        indianred: индийский красный
+        rosybrown: розово-коричневый
+        darksalmon: темно-лососевый
+        lightcoral: светло-коралловый
+        salmon: лососевый
+        lightsalmon: светло-лососевый
+        coral: коралловый
+        tomato: томатный
+        orangered: оранжево-красный
+        crimson: малиновый
+        mediumvioletred: средне-фиолетово-красный
+        deeppink: глубокий розовый
+        hotpink: ярко-розовый
+        palevioletred: бледно-фиолетово-красный
+        pink: розовый
+        lightpink: светло-розовый
+        thistle: чертополох
+        magenta: пурпурный
+        fuchsia: фуксия
+        violet: фиолетовый
+        plum: сливовый
+        orchid: орхидея
+        mediumorchid: средне-орхидейный
+        darkorchid: темно-орхидейный
+        darkviolet: темно-фиолетовый
+        darkmagenta: темно-пурпурный
+        purple: пурпурный
+        indigo: индиго
+        darkslateblue: темно-сине-голубой
+        blueviolet: сине-фиолетовый
+        mediumpurple: средне-пурпурный
+        slateblue: сине-голубой
+        mediumslateblue: средне-сине-голубой
+
+    - name: фон
+      color: rgba(0, 255, 255, .4)
+      tags:
+        fantasy: фэнтези стиль
+        ban: научно-фантастический стиль
+        cyberpunk: киберпанк
+        depth_of_field: глубина резкости (художественный приём)
+        blurry: размытый фон
+        blurry_foreground: размытый передний план
+        simple_background: простой фон
+        black_background: черный фон
+        white_background: белый фон
+        transparent_background: прозрачный фон
+        beige_background: бежевый фон
+        brown_background: коричневый фон
+        tan_background: желто-коричневый фон
+        grey_background: серый фон
+        two-tone_background: двухцветный фон
+        gradient_background: градиентный фон
+        multicolored_background: многоцветный фон
+        rainbow_background: радужный фон
+        abstract_background: абстрактный фон
+        argyle_background: клетчатый фон
+        checkered_background: шахматный фон
+        floral_background: фон с цветочным узором
+        halftone_background: фон с полутоновыми точками
+        heart_background: фон с сердечками
+        honeycomb_background: фон в виде сот
+        plaid_background: фон в клетку
+        polka_dot: фон в горошек
+        striped_background: полосатый фон
+        scenery: пейзаж
+        landscape: ландшафт
+        foral_background: фон с цветочным узором
+        crop_top_overhang: обрезанный верх фона
+        starry_background: звездное небо
+        sparkle_background: фон со сверкающими звездами
+        cityscape: городской пейзаж
+        city_lights: городские огни
+        clock_background: фон с часами
+        bubble_background: фон с пузырьками
+        border: рамка
+        pillarboxed: фон с боковыми полосами
+        rounded_corners: фон или рамка с закругленными углами
+        viewfinder: видоискатель фотоаппарата
+        windowboxed: фон с окантовкой (как рамка)
+        outside_border: часть изображения за пределами рамки
+        flashback: сцена воспоминания
+        wall_of_text: фон из текста
+        background_text: текст на фоне
+
+- name: окружение
+  groups:
+    - name: сезон
+      color: rgba(31, 144, 255, .4)
+      tags:
+        in spring: весна
+        in summer: лето
+        in autumn: осень
+        in winter: зима
+        (autumn maple forest:1.3),(very few fallen leaves),(path): осенний лес кленов (1.3), (очень мало упавших листьев), (тропинка)
+
+    - name: погода
+      color: rgba(31, 144, 255, .4)
+      tags:
+        day: день
+        dusk: сумерки
+        night: ночь
+        rain: дождь
+        in the rain: под дождем
+        rainy days: дождливые дни
+        sunset: закат
+        cloudy: облачно
+        full moon: полнолуние
+        sun: солнце
+        moon: луна
+        full_moon: полнолуние
+        stars: звезды
+        sky: небо
+        universe: вселенная
+        snow,ice: снег, лед
+        snowflakes: снежинки
+        lighting: молния
+        rainbow: радуга
+        meteor shower: метеорный дождь
+        cumulonimbus: кучево-дождевые облака
+
+    - name: природа
+      color: rgba(31, 144, 255, .4)
+      tags:
+        nature: природа
+        sea: море
+        ocean: океан
+        beach: пляж
+        hills: холмы
+        in a meadow: на лугу
+        on the beach: на пляже
+        underwater: под водой
+        over the sea: над морем
+        grove: роща
+        on a desert: в пустыне
+        plateau: плато
+        cliff: утес
+        canyon: каньон
+        oasis: оазис
+        bamboo forest: бамбуковый лес
+        glacier: ледник
+        floating island: плавающий остров
+        volcano: вулкан
+        savanna: саванна
+        waterfall: водопад
+        stream: ручей
+        wasteland: пустошь
+        field: поле
+        rice paddy: рисовое поле
+        wheat field: пшеничное поле
+        flower field: цветочное поле
+        flower sea: цветущее море
+        space: космос
+        starry sky: звездное небо
+        lake: озеро
+        river: река
+        onsen: горячий источник
+        flowers meadows: цветущие луга
+        Alps: Альпы
+        Dreamy forest: Мечтательный лес (сказочная атмосфера, световые частицы, тишина)
+        mountain: гора
+        on a hill: на холме
+        the top of the hill: вершина холма
+        outdoors: на открытом воздухе
+
+    - name: вода
+      color: rgba(31, 144, 255, .4)
+      tags:
+        ocean: океан
+        dripping: капельница
+        beach: пляж
+        lake: озеро
+        waterfall: водопад
+        ripples: рябь
+        swirl: вихрь
+        waves: волны
+        seashell: ракушка
+        seaweed: водоросли
+
+    - name: небо
+      color: rgba(31, 144, 255, .4)
+      tags:
+        sky: небо
+        gradient_sky: градиентное небо
+        night_sky: ночное небо
+        starry_sky: звездное небо
+        hyper_galaxy: гипергалактика
+        star_(sky): звезда (в небе)
+        star_trail: след звезды
+        sunset: закат
+        moon: луна
+        lunar: лунный
+        crescent: полумесяц
+        crescent_moon: новолуние
+        full_moon: полнолуние
+        moonlight: лунный свет
+        scarlet_moon: багровая луна
+        universe: вселенная
+        space: космос
+        planet: планета
+        from_space_station: с космической станции
+        satellite: спутник
+
+    - name: облака
+      color: rgba(31, 144, 255, .4)
+      tags:
+        cirrus: перистые облака
+        Cirrocumulus: киррокумулусы
+        Cirrostratus: кирростратусы
+        Altocumulus: высококучевые облака
+        Altostratus: высокослоистые облака
+        stratus: слоистые облака
+        Stratocumulus: слоистокучевые облака
+        cumulus: кучевые облака
+        Cumulonimbus: кучево-дождевые облака
+        Nimbostratus: дождевые облака
+        cirrus_fibratus: перистые облака-волосы
+        cirrus_uncinus: перистые крючковатые облака
+        cirrus_spissatus: перистые плотные облака
+        cirrus_floccus: перистые пушистые облака
+        cirrus_castellanus: перистые башенные облака
+        cirrus_intortus: перистые перемешанные облака
+        cirrocumulus: киррокумулусы
+        cirrocumulus_stratiformis: слоистые киррокумулусы
+        cirrocumulus_floccus: пушистые киррокумулусы
+        cirrocumulus_castellanus: башенные киррокумулусы
+        cirrocumulus_lacunosus: сетчатые киррокумулусы
+        cirrostratus: кирростратусы
+        cirrostratus_fibratus: перистые кирростратусы
+        cirrostratus_nebulosus: туманные кирростратусы
+        altocumulus: высококучевые облака
+        altocumulus_strataformis: слоистые высококучевые облака
+        altocumulus_lenticularis: линзовидные высококучевые облака
+        altocumulus_castellanus: башенные высококучевые облака
+        altocumulus_floccus: пушистые высококучевые облака
+        altocumulus_lacunosus: сетчатые высококучевые облака
+        altostratus: высокослоистые облака
+        altostratus_undulatus: волнистые высокослоистые облака
+        altostratus_duplicates: сложные высокослоистые облака
+        altostratus_pannus: клочковые высокослоистые облака
+        altostratus_translucidus: просвечивающие высокослоистые облака
+        altostratus_opacus: непрозрачные высокослоистые облака
+        altostratus_radiatus: радиальные высокослоистые облака
+        altostratus_mammatus: грудные высокослоистые облака
+        stratus_fractus: слоистые раздробленные облака
+        stratus_nebulosus: туманные слоистые облака
+        stratus_undulatus: волнистые слоистые облака
+        stratocumulus: слоистокучевые облака
+        stratocumulus_stratiformis: слоистые слоистокучевые облака
+        stratocumulus_cumulogentis: кучевые слоистокучевые облака
+        stratocumulus_castellanus: башенные слоистокучевые облака
+        stratocumulus_lenticularis: линзовидные слоистокучевые облака
+        stratocumulus_lacunosus: пушистые слоистокучевые облака
+        cumulus_humilis: скромные кучевые облака
+        cumulus_mediocris: средние кучевые облака
+        cumulus_congestus: густые кучевые облака
+        cumulus_fractus: раздробленные кучевые облака
+        cumulonimbus: кучево-дождевые облака
+        cumulonimbus_calvus: лысые кучево-дождевые облака
+        cumulonimbus_capillatus: пушистые кучево-дождевые облака
+        cumulonimbus_incus: кузовные кучево-дождевые облака
+
+    - name: атмосфера
+      color: rgba(31, 144, 255, .4)
+      tags:
+        new year: новый год
+        year of the rabbit: год кролика
+        valentine: день святого Валентина
+        lantern festival: фестиваль фонарей
+        summer festival: летний фестиваль
+        tanabata: танабата
+        mid-autumn festival: фестиваль середины осени
+        halloween: Хэллоуин
+        christmas: Рождество
+        explosion: взрыв
+        water vapor: водяной пар
+        fireworks: фейерверк
+        ceiling window: потолочное окно
+        colourful glass: красочное стекло
+        stain glass: витраж
+        Graffiti wall: граффити на стене
+        mosaic background: мозаичный фон
+        liquid background, Sputtered water: жидкий фон, распыленная вода
+        magic circles: магические круги
+        fluorescent mushroom forests background: фон светящихся грибных лесов
+        (((colorful bubble))): (((красочный пузырь)))
+        in the ocean: на берегу океана
+        against backlight at dusk: против света на закате
+        golden hour lighting: освещение золотого часа
+        strong rim light: яркий контурный свет
+        intense shadows: интенсивные тени
+
+- name: Сцена
+  groups:
+    - name: На открытом воздухе
+      color: rgba(159, 32, 240, .4)
+      tags:
+        castle: Замок
+        city: Город
+        waterpark: Водный парк
+        carousel: Карусель
+        ferris wheel: Колесо обозрения
+        aquarium: Аквариум
+        zoo: Зоопарк
+        bowling alley: Боулинг-клуб
+        art gallery: Художественная галерея
+        museum: Музей
+        planetarium: Планетарий
+        swimming pool: Бассейн
+        stadium: Стадион
+        temple: Храм
+        bus stop: Автобусная остановка
+        train station: Железнодорожная станция
+        fountain: Фонтан
+        playground: Детская площадка
+        market stall: Рыночная лавка
+        phone booth: Телефонная будка
+        railroad tracks: Железнодорожные пути
+        airport: Аэропорт
+        tunnel: Туннель
+        skyscraper: Небоскреб
+        cityscape: Городской пейзаж
+        ruins: Руины
+        greco-roman architecture: Греко-римская архитектура
+        east asian architecture: Восточноазиатская архитектура
+        torii: Тории
+        church: Церковь
+        shop: Магазин
+        street: Улица
+        cyberpunk city: Киберпанк город
+        chinese style architecture: Китайская архитектура
+        gohei: Гохэи
+        bustling city: Шумный город
+        laboratory: Лаборатория
+        coffee house: Кофейня
+        gym: Спортзал
+        library: Библиотека
+        prison: Тюрьма
+        engine room: Машинное отделение
+        handrail: Перила
+        neon lights: Неоновые огни
+        street lamp: Уличный фонарь
+        road: Дорога
+        shanty town/slum: Трущобы
+        warehouse: Склад
+        gothic architecture: Готическая архитектура
+        restaurant: Ресторан
+        treehouse: Домик на дереве
+        modern,Europe: Современная, Европа
+        industrial wind, Chinese architecture: Промышленный ветер, китайская архитектура
+        building_ruins: Руины здания
+        bar: Бар
+        izakaya: Изакая
+        cafe: Кафе
+        bakery: Пекарня
+        convenience store: Магазин удобств
+        supermarket: Супермаркет
+        pharmacy: Аптека
+        theater: Театр
+        movie theater: Кинотеатр
+        workshop: Мастерская
+        courtroom: Зал суда
+        park: Парк
+        trapeze: Трапеция; Качели
+        classroom: Классная комната
+        botanical garden: Ботанический сад
+        amusement park: Парк развлечений
+        Disney_land: Диснейленд
+        arena: Арена
+        wrestling_ring: Ринг для борьбы
+        auditorium: Аудитория
+        concert: Концерт
+        japanese hotel: Японский отель
+        jail bars: Решетки тюрьмы
+        in_the_movie_theatre: В кинотеатре
+        stage: Сцена
+        harbor: Гавань
+        casino: Казино
+        billiard: Бильярд
+        dungeon: Подземелье
+        grave: Могила
+        graveyard: Кладбище
+        tombstone: Надгробный камень
+        monolith: Монолит
+        rappelling: Спуск по веревке
+        building: Здание
+        architecture: Архитектура
+        magnificent_architecture: Великолепная архитектура
+        Skyscraper: Небоскреб
+        east_asian_architecture: Восточноазиатская архитектура
+        cathedral: Собор
+        chinese_style_loft: Китайский стильный чердак
+        traditional_chinese_room: Традиционная китайская комната
+        turret: Башенный блок
+        tower: Башня
+        mosque: Мечеть
+        reservoir: Водохранилище
+        railroad: Железная дорога
+        railway: Железная дорога
+        bridge: Мост
+        under_bridge: Под мостом
+        remains: Руины
+        rubble_ruins: Руины
+
+    - name: Город
+      color: rgba(159, 32, 240, .4)
+      tags:
+        city: Город
+        cityscape: Городской пейзаж
+        street: Улица
+        downtown: Центр города
+        crowd: Толпа
+        alley: Переулок
+        in_main_street: На главной улице
+        intersection: Перекресток
+        avenue: Проспект
+        lawn: Лужайка
+        road: Дорога
+        path: Путь
+        pavement: Мостовая
+        road_sign: Дорожный знак
+        traffic_cone: Дорожный конус
+        lamppost: Фонарный столб
+        power_lines: Линии электропередачи
+        fence: Забор
+        railing: Ограждение
+        bench: Скамейка
+        vending_machine: Торговый автомат
+
+    - name: В помещении
+      color: rgba(159, 32, 240, .4)
+      tags:
+        indoor: В помещении
+        bathroom: Ванная комната
+        toilet stall: Туалетная кабина
+        otaku room: Комната отаку
+        cafeteria: Кафетерий
+        classroom: Классная комната
+        clubroom: Клубная комната
+        bedroom: Спальня
+        kitchen: Кухня
+        dormitory: Общежитие
+        dungeon: Подвал
+        infirmary: Медицинский кабинет
+        stage: Сцена
+        electrical room: Электрическая комната
+        server room: Комната серверов
+        basement: Подвал
+        art room: Художественная комната
+        bathing: Купание
+        stairs: Лестница
+        greenhouse: Теплица
+
+    - name: Пол
+      color: rgba(159, 32, 240, .4)
+      tags:
+        floor: Пол
+        tile_floor: Деревянный пол
+
+    - name: Мебель
+      color: rgba(159, 32, 240, .4)
+      tags:
+        bedroom: Мебель
+        tatami: Татами
+        bed: Кровать
+        couch: Диван
+        kotatsu: Котацу
+        fireplace: Камин
+        window_: Окно
+        sash: Шашка
+        curtains: Занавески
+        door: Дверь
+        sliding_doors: Скользящие двери
+        clothes_rack: Вешалка для одежды
+        air_conditioner: Кондиционер
+        table: Стол
+        school_desk: Школьная партa
+        chair: Стул
+        armchair: Кресло
+        lounge_chair: Шезлонг
+        beach_chair: Пляжное кресло
+        folding_chair: Складной стул
+        invisible_chair: Невидимый стул
+        office_chair: Офисное кресло
+        wheelchair: Инвалидная коляска
+
+    - name: Постельное белье
+      color: rgba(159, 32, 240, .4)
+      tags:
+        bed_sheet: Простыня
+        mattress: Матрас; Подушка
+        futon: Японский матрас
+        cushion: Подушка
+        carpet: Ковер
+        pillow: Подушка
+        dumpling_Hug_Pillow: Подушка в виде пельменя
+        pillow_hug: Подушка для обнимания
+        yes-no_pillow: Подушка "Да/Нет"
+        stuffed_animal: Мягкая игрушка
+        stuffed_bunny: Мягкий кролик
+        koakuma: Коакума
+
+    - name: Ванная комната
+      color: rgba(159, 32, 240, .4)
+      tags:
+        bathroom: Ванная комната
+        bathtub,: Ванна
+        rubber_duck: Резиновая уточка
+        shower_head: Душевая головка
+        toilet: Туалет
+        squat_toilet: Горизонтальный туалет
+        soap: Мыло
+        tiles: Плитка
+
+- name: Вещи
+  groups:
+    - name: Учебные принадлежности
+      color: rgba(189, 182, 107, .4)
+      tags:
+        notebook: Тетрадь
+        paintbrush: Кисть
+        pencil: Карандаш
+        book: Книга
+        open_book: Открытая книга
+        book_stack: Стопка книг
+        bookshelf: Книжная полка
+        school_bag: Школьная сумка
+        backpack: Рюкзак
+
+    - name: Электронные устройства
+      color: rgba(189, 182, 107, .4)
+      tags:
+        computer: Компьютер
+        mouse: Мышь
+        cellphone: Мобильный телефон
+        Smartphones: Смартфоны
+        handheld_game_console_: Портативная игровая приставка
+        nintendo_3ds: Nintendo 3DS
+        nintendo_ds: Nintendo DS
+        nintendo_switch: Nintendo Switch
+        buttons: Кнопки
+        power_lines: Сетевой кабель
+        cable: Кабель
+
+    - name: Посуда
+      color: rgba(189, 182, 107, .4)
+      tags:
+        pot: Кастрюля
+        teapot: Чайник
+        ladle: Черпак
+        can: Банка
+        soda_can: Газировка в банке
+        cup: Кружка
+        plate: Тарелка
+        tray: Поднос
+        bowl: Миска
+        fork: Вилка
+        chopsticks: Палочки
+        spoon: Ложка
+        drinking_glass: Стакан для питья
+        tumbler: Обычный стакан
+        beer_mug: Пивной кружка
+        gift_box: Подарочная коробка
+        heart-shaped_box: Коробка в форме сердца
+        candle: Свеча
+
+    - name: Музыкальные инструменты
+      color: rgba(189, 182, 107, .4)
+      tags:
+        music: Музыка
+        guitar: Гитара
+        piano: Фортепиано
+        cello: Виолончель
+        playing_instrument: Игра на инструменте
+        wind_chime: Ветровое колокольчик
+
+    - name: Прочие предметы
+      color: rgba(189, 182, 107, .4)
+      tags:
+        wristwatch: Наручные часы
+        folding_fan: Складной веер
+        paper_fan: Бумажный веер
+        uchiwa: Веер
+        umbrella: Зонтик
+        transparent_umbrella: Прозрачный зонтик
+        closed_umbrella: Закрытый зонтик
+        oil-paper_umbrella: Бумажный зонтик
+        Parasol: Парасоль
+        basket: Корзина
+        bouquet: Букет
+        bucket: Ведро
+        pail: Ведро
+        camera: Камера
+        gohei: Гохэй (оберег)
+        lantern/lamp: Фонарь
+        whip: Кнут
+        riding_crop: Ездовой кнут
+        ofuda: Офуда (оберег)
+        cane: Трость
+        wand: Волшебная палочка
+        magic: Магия
+        trading_card: Торговая карта
+        playing_card: Игральная карта
+        Cassette: Кассета
+        chess_piece: Шахматная фигура
+        coin: Монета
+        copper: Медная монета
+        hammer: Молоток
+        microphone: Микрофон
+        mimikaki: Щипчики для ушей
+        sack: Мешок
+        scales: Весы
+        chibi_inset: Чиби-вкладка
+        damaged: Поврежденный
+        diamond_(shape): Алмаз (форма)
+        gourd: Гурда
+        holding_gift: Держит подарок
+        inlet: Вход
+        key: Ключ
+        leash: Поводок
+        Lever: Рычаг, ручка управления
+        molecule: Молекула
+        money: Деньги
+        Painting_(Object): Картина (предмет)
+        photo_(object): Фотография (предмет)
+        sand: Песок
+        stubble: Подстилка
+        trophy: Трофей
+        tube_top: Топ-труба
+        water_bottle: Водная бутылка
+        lotion: Лосьон
+        lotion_bottle: Флакон с лосьоном
+
+    - name: Оружие
+      color: rgba(189, 182, 107, .4)
+      tags:
+        weapon: Оружие
+        weapon_on_back: Оружие на спине
+        weapon_over_shoulder: Оружие через плечо
+        huge_weapon: Крупнокалиберное оружие
+        planted_weapon: Закрепленное оружие
+        broken_weapon: Сломанное оружие
+        planted_sword: Посаженный меч
+        sword: Меч
+        scabbard: Ножны
+        unsheathing: Вынимание из ножен
+        katana: Катана
+        saber_(weapon): Сабля (оружие)
+        scythe: Коса
+        nose_hatchet: Нож для обработки дерева
+        dagger: Кинжал
+        scissors: Ножницы
+        axe: Топор
+        hatchet: Топорик
+        stake: Колья
+        lance: Копье
+        trident: Трезубец
+        bow_(weapon): Лук
+        arrow: Стрела
+        claw_(weapon): Коготь (оружие)
+        rifle,: Винтовка
+        gun: Пистолет
+        handgun: Ручной пистолет
+        thompson_submachine_gun: Пистолет-пулемет Томпсона
+        magazine_(weapon): Магазин (оружие)
+        dynamite: Динамит
+        bomb: Бомба
+        track missiles: Управляемые ракеты
+        complex Trajectory: Сложная траектория
+        tank: Танк
+        cannon: Пушка
+        military_vehicle: Военная техника
+        motorcycle: Мотоцикл
+        ship: Корабль
+        watercraft: Водный транспорт
+        car: Автомобиль
+        machine: Машина
+        machinery: Вооружение механизмами
+        mechanical_arms: Механические руки
+        mechanization: Механизация
+        robot_ears: Роботические уши
+        robot_joints: Роботические сочленения
+        variable_fighter: Вариабельный истребитель
+        sorcerer's_sutra_scroll: Свиток заклинаний волшебника
+
+    - name: Еда
+      color: rgba(189, 182, 107, .4)
+      tags:
+        A_sushi_roll: Суши-ролл
+        apple: Яблоко
+        aubergine: Баклажан
+        burger: Бургер
+        cake: Торт
+        candy: Конфета
+        candy_apple: Карамельное яблоко
+        candy_cane: Леденец-тросточка
+        carrot: Морковь
+        cigarette: Сигарета
+        coffee: Кофе
+        cookie: Печенье
+        cotton_candy_: Сахарная вата
+        cream: Сливки
+        dango: Данго (японская сладость)
+        doughnut: Пончик
+        drink: Напиток
+        egg: Яйцо
+        fruit: Фрукт
+        Gelatin: Желатин, пудинг
+        ice_cream: Мороженое
+        kafuu_chino: Кафуу Чино (напиток)
+        makizushi: Маки-суши
+        meat: Мясо
+        noodles: Лапша
+        obento: Обенто (японская ланч-коробка)
+        onigiri: Онигири (рисовый шарик)
+        pancake: Блин
+        pasties: Пирожки
+        peach: Персик
+        ramen: Рамен (японская лапша)
+        sake: Саке (японское алкогольное питье)
+        taiyaki: Тайяки (японская выпечка)
+        tea: Чай
+        teacup: Чашка для чая
+        wagashi: Вагаши (японская сладость)
+        wine: Вино
+        jam: Джем
+        pocky: Покки (японская сладость)
+        bottled_water: Бутилированная вода
+        sweet_potato: Сладкий картофель
+        sweets: Сладости
+        food: Еда
+        food_in_mouth: Еда во рту
+        food_on_: Еда на лице
+        food_on_body: Еда на теле
+        food_print: Отпечаток от еды
+        food_stand: Палатка с едой
+        in_food: (Персонаж) в еде
+        chips: Чипсы
+        potato_chips: Картофельные чипсы
+        telstar: Телестар (футбольный мяч)
+        sundae: Сандэ (мороженое с добавками)
+        tempura: Тэмпура (японская закуска)
+
+    - name: Животные
+      color: rgba(189, 182, 107, .4)
+      tags:
+        reptile: Пресмыкающееся
+        crow: Ворона
+        bird: Птица
+        penguin: Пингвин
+        chick: Цыпленок
+        manjuu_(azur_lane): Мандзю (морской котик)
+        shell: Ракушка
+        wriggle_nightbug: Ползучий ночной жук
+        dragonfly: Стрекоза
+        mammal: Млекопитающее
+        wolf: Волк
+        扶桑花: Лошадь
+        whale: Кит
+        cat: Кошка
+        cat_teaser: Игрушка для кошки
+        dog: Собака
+        dog_tags: Собачьи теги
+        fox: Лиса
+        bunny: Кролик
+        snow_bunny: Снежный кролик
+        stuffed_bunny: Мягкая игрушка кролика
+        horse: Лошадь
+        cow: Корова
+        dragon: Дракон
+        loong: Лун (китайский дракон)
+        eastern_dragon: Восточный дракон
+        snake: Змея
+        slime: Слизь
+        bear: Медведь
+        panda: Панда
+        teddy_bear: Плюшевый мишка
+        tiger: Тигр
+        bat: Летучая мышь
+        hamster: Хомяк
+        mouse: Мышь
+        squirrel: Белка
+
+    - name: Растения
+      color: rgba(189, 182, 107, .4)
+      tags:
+        plant: Растение
+        flower: Цветок
+        vase: Ваза
+        bouquet: Букет
+        flower_bloom: Цветение цветка
+        plum_blossom: Цветок сливы
+        cherry_blossoms: Цветы вишни
+        wisteria: Глициния
+        hibiscus: Гибискус
+        hydrangea: Гортензия
+        rose: Роза
+        spider_lily: Пауковое лилия
+        lily: Лилия
+        lotus: Лотос
+        bamboo: Бамбук
+        entangled_plants: Запутанные растения
+        orchid: Орхидея
+        chrysanthemum: Хризантема
+        narcissu: Нарцисс
+        tree: Дерево
+        branch: Ветка
+        forest: Лес
+        pine_tree: Сосна
+        palm_tree: Пальма
+        maple_tree: Клён
+        bush/shrub,: Куст
+        christmas_tree: Рождественская ёлка
+        maple_leaf: Клёновый лист
+        pumpkin: Тыква
+        jack-o'-lantern: Фонарь Джека
+        spring_onion: Зеленый лук
+
+- name: Объектив
+  groups:
+    - name: Объектив
+      color: rgba(99, 201, 2, .4)
+      tags:
+        panorama: Панорама
+        landscape: Ландшафтный объектив (дальний план)
+        wide_shot: Объектив широкого ракурса
+        medium_shot: Объектив среднего плана
+        mid_shot: Объектив среднего плана
+        full_shot: Полный план
+        bust: Полуплан
+        upper_body: Верхняя половина тела
+        lower_body: Нижняя половина тела
+        cowboy_shot: Верхняя половина тела + верхняя часть бедра (кадр "каубой")
+        portrait: Портрет (лицо + плечи + иногда грудь)
+        profile: Профильный портрет (боковой вид портрета)
+
+    - name: Крупный план
+      color: rgba(99, 201, 2, .4)
+      tags:
+        close-up: Крупный план
+        macro_shot: Макрообъектив
+        inset: Вставка другого кадра или изображения
+        cross-section: Поперечное сечение
+        x-ray: Рентгеновский снимок
+        solo_focus: Фокус на одном персонаже (подходит для сложных сцен)
+        xx_focus: Фокус на xx
+        face_focus: Фокус на лице
+        eyes_focus: Фокус на глазах
+        foot_focus: Фокус на ногах
+        hip_focus: Фокус на ягодицах
+        ass_focus: Фокус на заднице
+        vehicle_focus: Фокус на транспортном средстве
+        between_legs: (Упор на) между ног
+        between_breasts: (Выделение) груди
+        between_fingers: (Выделение) между пальцами
+        peeking: Подглядывание
+        peeking_out: Подглядывание (поза)
+        peeping: Подглядывание (акцент на точку зрения)
+        midriff_peek: Подглядывание в пупок
+        armpit_peek: Подглядывание в подмышечную впадину
+        pussy_peek: Подглядывание в пах
+        panty_peek: Подглядывание под юбку
+        pantyshot: Просвет в юбке
+        caught: Пойман на месте преступления
+
+    - name: Другие композиции
+      color: rgba(99, 201, 2, .4)
+      tags:
+        aerial: Воздушный
+        turn_one's_back: Поворот спины
+        upskirt: Вид снизу на юбку
+        phone_screen: Экран телефона
+        multiple_views: Множественные ракурсы
+        mirror selfie: Селфи в зеркале
+        three-quarter view: Трехчетвертный ракурс
+
+    - name: Углы съемки
+      color: rgba(99, 201, 2, .4)
+      tags:
+        front view: Фронтальный ракурс
+        from_side: Боковой ракурс
+        from_above: Сверху ↘
+        from_below: Снизу ↗
+        from_outside: Снаружи внутрь
+        from_back: Сзади
+        from behind: Сзади
+        dynamic_angle: Динамичный ракурс
+        cinematic_angle: Кинематографический ракурс
+        dutch angle: Голландский ракурс
+        foreshortening: Сокращение перспективы
+        fisheye: Рыбий глаз
+
+    - name: Эффекты
+      color: rgba(99, 201, 2, .4)
+      tags:
+        depth of field: Глубина резкости (согласование объекта и фона)
+        lens_flare: Вспышка на объективе
+        motion_blur: Размытие движения
+        motion_lines: Линии движения
+        speed_lines: Линии скорости
+        bokeh: Боке (размытость фона)
+        chromatic_aberration: Хроматическая аберрация (цветовая дисторсия)
+        overexposure: Пересвет
+        contour_deepening: Усиление контуров
+
+    - name: Действия главного героя
+      color: rgba(99, 201, 2, .4)
+      tags:
+        looking_at_viewer: Смотреть на зрителя
+        eye-contact: Глазной контакт
+        eyeball: Пристальный взгляд
+        stare: Уставиться
+        looking_back: Оглядываться
+        gradient: Наклон тела
+        looking_down: Взгляд вниз ↘
+        looking_up: Взгляд вверх ↗
+        facing_away: Обратиться в другую сторону
+        looking_to_the_side: Смотреть в сторону
+        looking_away: Отвести взгляд
+        looking_ahead: Смотреть вперед
+        looking_afar: Смотреть вдаль
+        looking_outside: Смотреть наружу
+        head_tilt: Поворот головы
+        head_down: Наклон головы вниз
+        sideways_glance: Боковой взгляд
+        upshirt: Подглядывание снизу под рубашку
+        upshorts: Подглядывание снизу под юбку
+        looking_at_another: Смотреть на другого
+        looking_at_phone: Смотреть на телефон
+        looking_at_animal: Смотреть на животное
+        looking_at_mirror: Смотреть в зеркало
+        looking_at_hand: Смотреть на руку
+        looking_at_hands: Смотреть на обе руки
+        looking_at_food: Смотреть на еду
+        looking_at_screen: Смотреть на экран
+
+- name: Китайская одежда
+  groups:
+    - name: "стиль Тан:"
+      color: rgba(178, 33, 34, .4)
+      tags:
+        hanfu, tang style outfits,<lora:hanfuTang_v32:0.7>: стиль Тан
+
+    - name: Шань
+      color: rgba(178, 33, 34, .4)
+      tags:
+        orange upper shan: Оранжевый верхний Шань
+        red upper shan: Красный верхний Шань
+        green upper shan: Зеленый верхний Шань
+        blue upper shan: Синий верхний Шань
+        pink upper shan: Розовый верхний Шань
+        yellow upper shan: Желтый верхний Шань
+        white upper shan: Белый верхний Шань
+        light blue upper shan: Светло-синий верхний Шань
+        light green upper shan: Светло-зеленый верхний Шань
+        light red upper shan: Светло-красный верхний Шань
+        cyan blue upper shan: Голубой верхний Шань
+        light purple upper shan: Светло-фиолетовый верхний Шань
+        black with blue upper shan: Черный с синим верхний Шань
+        white with orange upper shan: Белый с оранжевым верхний Шань
+        pink with black upper shan: Розовый с черным верхний Шань
+
+    - name: Длинный Шань
+      color: rgba(178, 33, 34, .4)
+      tags:
+        orange long upper shan: Оранжевый длинный Шань
+        red long upper shan: Красный длинный Шань
+        green long upper shan: Зеленый длинный Шань
+        blue long upper shan: Синий длинный Шань
+        pink long upper shan: Розовый длинный Шань
+        yellow long upper shan: Желтый длинный Шань
+        white long upper shan: Белый длинный Шань
+        light blue long upper shan: Светло-синий длинный Шань
+        light green long upper shan: Светло-зеленый длинный Шань
+        light red long upper shan: Светло-красный длинный Шань
+        cyan blue long upper shan: Голубой длинный Шань
+        light purple long upper shan: Светло-фиолетовый длинный Шань
+        black with blue long upper shan: Черный с синим длинный Шань
+        white with orange long upper shan: Белый с оранжевым длинный Шань
+        pink with black long upper shan: Розовый с черным длинный Шань
+
+    - name: Чи-сянь по юбке
+      color: rgba(178, 33, 34, .4)
+      tags:
+        white chest po skirt: Белая Чи-сянь по юбке
+        red chest po skirt: Красная Чи-сянь по юбке
+        green chest po skirt: Зеленая Чи-сянь по юбке
+        blue chest po skirt: Синяя Чи-сянь по юбке
+        pink chest po skirt: Розовая Чи-сянь по юбке
+        purple chest po skirt: Фиолетовая Чи-сянь по юбке
+        multicolour chest po skirt: Многоцветная Чи-сянь по юбке
+        purple with white chest po skirt: Фиолетово-белая Чи-сянь по юбке
+        white with yellow chest po skirt: Бело-желтая Чи-сянь по юбке
+        blue with white chest po skirt: Голубая Чи-сянь по юбке
+        orange with white chest po skirt: Оранжево-белая Чи-сянь по юбке
+        green with white chest po skirt: Зелено-белая Чи-сянь по юбке
+        light orange with white chest po skirt: Светло-оранжево-белая Чи-сянь по юбке
+        pink with white chest po skirt: Розово-белая Чи-сянь по юбке
+        white with pink chest po skirt: Бело-розовая Чи-сянь по юбке
+
+    - name: Чи-сянь по складкам
+      color: rgba(178, 33, 34, .4)
+      tags:
+        white chest pleated skirt: Белая Чи-сянь по складкам
+        red chest pleated skirt: Красная Чи-сянь по складкам
+        green chest pleated skirt: Зеленая Чи-сянь по складкам
+        blue chest pleated skirt: Синяя Чи-сянь по складкам
+        pink chest pleated skirt: Розовая Чи-сянь по складкам
+        purple chest pleated skirt: Фиолетовая Чи-сянь по складкам
+        multicolour chest pleated skirt: Многоцветная Чи-сянь по складкам
+        purple with white chest pleated skirt: Фиолетово-белая Чи-сянь по складкам
+        white with yellow chest pleated skirt: Бело-желтая Чи-сянь по складкам
+        blue with white chest pleated skirt: Голубая Чи-сянь по складкам
+        orange with white chest pleated skirt: Оранжево-белая Чи-сянь по складкам
+        green with white chest pleated skirt: Зелено-белая Чи-сянь по складкам
+        light orange with white chest pleated skirt: Светло-оранжево-белая Чи-сянь по складкам
+        pink with white chest pleated skirt: Розово-белая Чи-сянь по складкам
+        white with pink chest pleated skirt: Бело-розовая Чи-сянь по складкам
+
+    - name: Пояс
+      color: rgba(178, 33, 34, .4)
+      tags:
+        green waistband: Зеленый пояс
+        yellow waistband: Желтый пояс
+        red waistband: Красный пояс
+        pink waistband: Розовый пояс
+        orange waistband: Оранжевый пояс
+        light blue waistband: Светло-синий пояс
+        light green waistband: Зелено-белый пояс
+        green with yellow waistband: Зелено-желтый пояс
+        purple with white waistband: Фиолетово-белый пояс
+        red with white waistband: Красно-белый пояс
+        red with black waistband: Красно-черный пояс
+        yellow with white waistband: Желто-белый пояс
+
+    - name: Покрывало
+      color: rgba(178, 33, 34, .4)
+      tags:
+        white pibo: Белое покрывало
+        orange pibo: Оранжевое покрывало
+        black pibo: Черное покрывало
+        pink pibo: Розовое покрывало
+        red pibo: Красное покрывало
+        purple pibo: Фиолетовое покрывало
+        light green pibo: Светло-зеленое покрывало
+        white with yellow pibo: Бело-желтое покрывало
+
+    - type: wrap
+
+    - name: "стиль Сун:"
+      color: rgba(178, 33, 34, .4)
+      tags:
+        hanfu, song style outfits,<lora:hanfuSong_v31:0.7>: стиль Сун
+
+    - name: Короткая рубашка
+      color: rgba(178, 33, 34, .4)
+      tags:
+        purple short shan: Фиолетовая короткая рубашка
+        red short shan: Красная короткая рубашка
+        green short shan: Зеленая короткая рубашка
+        blue short shan: Синяя короткая рубашка
+        pink short shan: Розовая короткая рубашка
+        yellow short shan: Желтая короткая рубашка
+        white short shan: Белая короткая рубашка
+        light blue short shan: Светло-синяя короткая рубашка
+        light green short shan: Светло-зеленая короткая рубашка
+        light red short shan: Светло-красная короткая рубашка
+        cyan blue short shan: Голубая короткая рубашка
+        light purple short shan: Светло-фиолетовая короткая рубашка
+        black with blue short shan: Черная с синей короткая рубашка
+        white with yellow short shan: Белая с желтой короткая рубашка
+        light yellow with green with white short shan: Светло-желто-зеленая короткая рубашка
+
+    - name: Длинная рубашка
+      color: rgba(178, 33, 34, .4)
+      tags:
+        purple long shan: Фиолетовая длинная рубашка
+        red long shan: Красная длинная рубашка
+        green long shan: Зеленая длинная рубашка
+        blue long shan: Синяя длинная рубашка
+        pink long shan: Розовая длинная рубашка
+        yellow long shan: Желтая длинная рубашка
+        white long shan: Белая длинная рубашка
+        light blue long shan: Светло-синяя длинная рубашка
+        light green long shan: Светло-зеленая длинная рубашка
+        light red long shan: Светло-красная длинная рубашка
+        cyan blue long shan: Голубая длинная рубашка
+        light purple long shan: Светло-фиолетовая длинная рубашка
+        black with blue long shan: Черная с синей длинная рубашка
+        white with yellow long shan: Белая с желтой длинная рубашка
+        light yellow with green with white long shan: Светло-желто-зеленая длинная рубашка
+
+    - name: Многослойная юбка
+      color: rgba(178, 33, 34, .4)
+      tags:
+        white pleated skirt: Белая юбка
+        red pleated skirt: Красная юбка
+        green pleated skirt: Зеленая юбка
+        blue pleated skirt: Синяя юбка
+        pink pleated skirt: Розовая юбка
+        light blue pleated skirt: Светло-синяя юбка
+        white golden pleated skirt: Белая золотая юбка
+        gradient green pleated skirt: Градиентная зеленая юбка
+        translucent white pleated skirt: Прозрачная белая юбка
+        red cyan gradient pleated skirt: Красно-голубая градиентная юбка
+        red green gradient pleated skirt: Красно-зеленая градиентная юбка
+        green with white pleated skirt: Зелено-белая юбка
+        light yellow with green with white pleated skirt: Светло-желто-зелено-белая юбка
+
+    - name: Суньмао
+      color: rgba(178, 33, 34, .4)
+      tags:
+        orange songmo: Оранжевый суньмао
+        red songmo: Красный суньмао
+        green songmo: Зеленый суньмао
+        blue songmo: Синий суньмао
+        pink songmo: Розовый суньмао
+        yellow songmo: Желтый суньмао
+        white songmo: Белый суньмао
+        purple songmo: Фиолетовый суньмао
+        green floral songmo: Зеленый цветочный суньмао
+        purple floral songmo: Фиолетовый цветочный суньмао
+        cyan floral songmo: Голубой цветочный суньмао
+
+    - type: wrap
+
+    - name: "стиль Минь:"
+      color: rgba(178, 33, 34, .4)
+      tags:
+        hanfu, ming style outfits,<lora:hanfuMing_v31:0.7>: стиль Минь
+
+    - name: Верхняя одежда
+      color: rgba(178, 33, 34, .4)
+      tags:
+        short coat: Короткий плащ
+        long coat: Длинный плащ
+
+    - name: Юбка
+      color: rgba(178, 33, 34, .4)
+      tags:
+        mamian skirt: Юбка "ма-миан"
+
+    - name: Воротник
+      color: rgba(178, 33, 34, .4)
+      tags:
+        overlapping collar: Накладной воротник
+        round collar: Круглый воротник
+        standing collar: Воротник-стойка
+        square collar: Квадратный воротник
+
+    - name: Украшения
+      color: rgba(178, 33, 34, .4)
+      tags:
+        overlapping collar: Облака на плечах
+        embroidery: Вышивка
+        woven gold: Плетение золотом
+        makeup flower: Цветочный узор
+        bufu: Буфу
+
+- name: Обратная подсказка
+  groups:
+    - name: Изображения
+      color:
+      tags:
+        NSFW: Нецензурный контент
+        logo: Логотип
+        text: Текст
+        blurry: Размытое
+        low quality: Низкое качество
+        bad anatomy: Неправильная анатомия
+        sketches: Эскизы
+        lowres: Низкое разрешение
+        normal quality: Обычное качество
+        monochrome: Монохромное
+        grayscale: Оттенки серого
+        worstquality: Худшее качество
+        signature: Подпись
+        watermark: Водяной знак
+        cropped: Обрезанное
+        bad proportions: Неправильные пропорции
+        out of focus: Не в фокусе
+        username: Имя пользователя
+
+    - name: Люди
+      color:
+      tags:
+        Multiple people: Несколько людей
+        (AS-YoungV2-Neg:1.3): Удалить взрослых
+        (AS-Adult-Neg:1.3): Удалить молодых
+        bad body: Плохое тело
+        long body: Длинное тело
+        (fat:1.2): Полный
+        long neck: Длинная шея
+        deformed: Деформированный
+        mutated: Мутировавший
+        mutation: Мутация
+        ugly: Уродливый
+        disfigured: Испорченный
+        poorly drawn face: Плохо нарисованное лицо
+        skin blemishes: Пятна на коже
+        skin spots: Веснушки
+        acnes: Прыщи
+        missing limb: Отсутствующая конечность
+        malformed limbs: Деформированные конечности
+        floating limbs: Плавающие конечности
+        disconnected limbs: Отсоединенные конечности
+        extra limb: Дополнительная конечность
+        extra arms: Дополнительные руки
+        mutated hands: Мутировавшие руки
+        poorly drawn hands: Плохо нарисованные руки
+        malformed hands: Деформированные руки
+        mutated hands and fingers: Мутировавшие руки и пальцы
+        bad hands: Плохие руки
+        missing fingers: Отсутствующие пальцы
+        fused fingers: Сросшиеся пальцы
+        too many fingers: Слишком много пальцев
+        extra legs: Дополнительные ноги
+        bad feet: Плохие ноги
+        cross-eyed: Косоглазый
+
+    - name: Embeddings
+      color:
+      tags:
+        AS-YoungV2-neg:
+        BadDream:
+        badhandv4:
+        BadNegAnatomyV1-neg:
+        EasyNegative:
+        FastNegativeV2:

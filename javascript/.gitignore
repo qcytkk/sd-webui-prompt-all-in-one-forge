@@ -1,0 +1,4 @@
+*
+!.gitignore
+!main.entry.js
+!main.entry.js.map

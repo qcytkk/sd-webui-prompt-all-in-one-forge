@@ -1,0 +1,4500 @@
+# 👍Hinweis zur Integration von Stichworten: 路过银河 (Zhihu), Unbekannter Autor (Google Drive), Internet usw. Vielen Dank an diese altruistischen Autoren!
+#
+# ⚠️Es wird empfohlen, den Inhalt dieser Datei nicht zu ändern, da der Autor dieser Datei möglicherweise regelmäßige Updates vornimmt. Wenn Sie diese Datei ändern, kann es zu Konflikten bei Updates kommen.
+# ⚠️Wenn Sie benutzerdefinierte Stichwortgruppen erstellen möchten, kopieren Sie bitte diese Datei, benennen Sie sie in "custom.yaml" um und bearbeiten Sie sie dann in der "custom.yaml".
+# ⚠️Das Plugin liest zuerst die "custom.yaml"-Datei. Wenn die "custom.yaml"-Datei nicht vorhanden ist, wird diese Datei gelesen.
+#
+# ⚠️Wenn Sie nur Ihren eigenen Inhalt vor der aktuellen Datei hinzufügen möchten, können Sie eine prepend.yaml-Datei erstellen.
+# ⚠️Wenn Sie nur Ihren eigenen Inhalt nach der aktuellen Datei hinzufügen möchten, können Sie eine append.yaml-Datei erstellen.
+# ⚠️custom.yaml: Überschreibt die aktuelle Datei
+# ⚠️prepend.yaml: Fügt vor der aktuellen Datei hinzu
+# ⚠️append.yaml: Fügt nach der aktuellen Datei hinzu
+#
+# ⚠️Wenn Sie nur Ihren eigenen Inhalt nach der aktuellen Datei hinzufügen möchten, können Sie eine append.yaml-Datei erstellen.
+# ⚠️custom.yaml: Überschreibt die aktuelle Datei
+# ⚠️append.yaml: Fügt ihn am Ende der aktuellen Datei hinzu
+#
+# ⚠️Es wird empfohlen, einen professionellen Texteditor (wie Visual Studio Code) zu verwenden, um diese Datei zu bearbeiten, um Codierungs- und Formatierungsfehler zu vermeiden.
+# ⚠️Verwenden Sie bitte nicht den in Windows enthaltenen Notepad zur Bearbeitung dieser Datei.
+# ⚠️Nach der Bearbeitung können Sie die Formatierung des Inhalts auf https://www.yamllint.com/ überprüfen.
+
+# Format des Inhalts:
+# - name: Name der ersten Kategorie
+#   groups: Liste der Unterkategorien
+#     - name: Name der Unterkategorie
+#       color: Standardfarbe des Stichworttextes (kann leer sein), CSS-Farbcode, z. B.: #ff0000, rot, rgb(255,0,0), rgba(255,0,0,1), hsl(0,100%,50%), hsla(0,100%,50%,1)
+#       tags: Liste der Stichwörter
+#         - Englisches Stichwort: Lokalisierung der Übersetzung
+#         - Englisches Stichwort: Lokalisierung der Übersetzung
+#         ...
+
+
+- name: Charakter
+  groups:
+    - name: Objekt
+      color: rgba(255, 123, 2, .4)
+      tags:
+        1girl: 1 Mädchen
+        1boy: 1 Junge
+        2girls: 2 Mädchen
+        2boys: 2 Jungen
+        3girls: 3 Mädchen
+        3boys: 3 Jungen
+        girl: Mädchen
+        boy: Junge
+        solo: Einzelperson
+        multiple_girls: Mehrere Mädchen
+        little_girl: Kleines Mädchen
+        little_boy: Kleiner Junge
+        shota: Shota
+        loli: Loli
+        kawaii: Niedlich
+        mesugaki: Mesugaki
+        adorable_girl: Niedliches Mädchen
+        bishoujo: Bishoujo
+        gyaru: Gyaru
+        sisters: Schwestern
+        ojousama: Ojousama
+        female: Weiblich
+        mature_female: Reife Frau
+        mature: Reif
+        female_pervert: Weibliche Perversin
+        male: Männlich
+        milf: Milf
+        otoko_no_ko: Otoko no Ko
+        crossdressing: Crossdressing
+
+    - name: Identität
+      color: rgba(255, 123, 2, .4)
+      tags:
+        lifeguard: Rettungsschwimmer
+        boxer: Boxer
+        scientist: Wissenschaftler
+        athletes: Sportler
+        office lady: Büroangestellte
+        monk: Mönch
+        crobat: Akrobat
+        nun: Nonne
+        nurse: Krankenschwester
+        stewardess: Stewardess
+        student: Student
+        waitress: Kellnerin
+        teacher: Lehrer
+        racer: Rennfahrer
+        police: Polizist
+        soldier: Soldat
+        cheerleader: Cheerleader
+        actor: Schauspieler
+        actress: Schauspielerin
+        spy: Spion
+        agent: Agent
+        assassin: Attentäter
+        poet: Dichter
+        samurai: Samurai
+        dancing girl: Tänzerin
+        motorcyclist: Motorradfahrer
+        hacker: Hacker
+        magician: Magier
+        detective: Detektiv
+        doll: Puppe
+        maid: Dienstmädchen
+        pilot: Pilot
+        diver: Taucher
+        bar censor: Bar-Zensor
+        missionary: Missionar
+        firefighter: Feuerwehrmann
+        goalkeeper: Torwart
+        chef: Koch
+        astronaut: Astronaut
+        cashier: Kassierer
+        mailman: Briefträger
+        barista: Barista
+        the hermit: Der Eremit
+        makihitsuji: Schafhirte
+        office_lady: Büroangestellte
+        race_queen: Rennkönigin
+        queen: Königin
+        doctor: Arzt
+        knight: Ritter
+        housemaid: Hausmädchen
+        dancer: Tänzer
+        ballerina: Ballerina
+        gym_leader: Fitnesstrainer
+        trap: Trap
+        female: Frau
+        harem: Harem
+        idol: Idol
+        male: Mann
+        priest: Priester
+        cleric: Kleriker
+        wa_maid: Wa-Maid
+        yaoi: Yaoi
+        yuri: Yuri
+        albino: Albino
+        amputee: Amputierter
+
+    - name: 2D-Charakter
+      color: rgba(255, 123, 2, .4)
+      tags:
+        pokemon: Pokémon
+        teddy bear: Teddybär
+        mario: Mario
+        pikachu: Pikachu
+        neon genesis evangelion: Neon Genesis Evangelion
+        hatsune miku: Hatsune Miku
+        harry potter: Harry Potter
+        doraemon: Doraemon
+        saint seiya: Saint Seiya
+        gojou satoru: Gojou Satoru
+        avengers: Avengers
+        mazinger: Mazinger
+        captain america: Captain America
+        crayon shin-chan: Crayon Shin-chan
+        slam dunk: Slam Dunk
+        sun wukong: Sun Wukong
+        witch: Hexe
+        miko: Miko
+        ninja: Ninja
+        vampire: Vampir
+        knight: Ritter
+        magical_girl: Magisches Mädchen
+        orc: Ork
+        druid: Druide
+        elf: Elfe
+        fairy: Fee
+        furry: Furry
+        mermaid: Meerjungfrau
+        kamen rider: Kamen Rider
+        magister: Magister
+        spider-man: Spider-Man
+        santa alter: Santa Alter
+        monster_girl: Monstermädchen
+        cat_girl: Katzengirl
+        dog_girl: Hundemädchen
+        fox_girl: Fuchsmädchen
+        kitsune: Kitsune
+        kyuubi: Kyuubi
+        raccoon_girl: Waschbärmädchen
+        wolf_girl: Wolfsjunge
+        bunny_girl: Hasenmädchen
+        horse_girl: Pferdemädchen
+        cow_girl: Kuhmädchen
+        dragon_girl: Drachenmädchen
+        centaur: Zentaur
+        slime_musume: Schleimmädchen
+        spider_girl: Spinnenmädchen
+        dominatrix: Domina
+        sailor_senshi: Sailor-Kriegerin
+        mecha: Mecha
+        mecha_musume: Mecha-Mädchen
+        humanoid_robot_: Humanoider Roboter
+        cyborg: Cyborg
+        angel: Engel
+        devil: Teufel
+        dark_elf: Dunkelelfe
+        imp: Imp
+        succubus: Succubus
+        giantess: Riesin
+        minigirl: Minimädchen
+        monster: Monster
+        no humans: Nicht menschlich
+
+    - name: Alter
+      color: rgba(255, 123, 2, .4)
+      tags:
+        toddler: Kleinkind
+        kindergartener: Kindergartenkind
+        child: Kind
+        underage: Minderjährig
+        teenager: Teenager (13-19)
+        teen: Teenager (13-19)
+        early teen: Früher Teenager (11-15)
+        adult: Erwachsener
+        elder: Älterer Mensch
+        old: Alt
+        loli: Loli
+        shota: Shota
+
+    - name: Hautfarbe
+      color: rgba(255, 123, 2, .4)
+      tags:
+        white_skin: Weiße Haut
+        pale_skin: Blasse Haut
+        fair_skin: Helle Haut
+        brown_skin: Braune Haut
+        deep_skin: Dunkle Haut
+        dark_skin: Dunkle Haut
+        black_skin: Schwarze Haut
+        shiny_skin: Glänzende Haut
+        white_marble_glowing_skin: Weiße Marmorleuchtende Haut
+        tattoo: Tattoo
+        tan: Bräunung
+        tanlines: Bräunungslinien
+        oil: Ölig
+
+    - name: Körperbau
+      color: rgba(255, 123, 2, .4)
+      tags:
+        skinny: Dünn
+        plump: Füllig
+        curvy: Kurvig
+        gyaru: Gyaru
+        pregnant: Schwanger
+        fat: Fett
+        thin: Dünn
+        slender: Schlank
+        glamor: Glamourös
+        tall: Groß
+        petite: Zierlich
+        chibi: Chibi
+        muscular: Muskulös
+
+    - name: Gesichtsform
+      color: rgba(255, 123, 2, .4)
+      tags:
+        slender face: Schmales Gesicht
+        round face: Rundes Gesicht
+        oval face: Ovalgesicht
+        baby face: Babygesicht
+        inverted triangle face: Umgekehrtes Dreiecksgesicht
+        heart shaped face: Herzförmiges Gesicht
+        diamond face: Diamantgesicht
+        square face: Quadratisches Gesicht
+        long face: Langes Gesicht
+        triangular face: Dreiecksgesicht
+
+    - name: Haare
+      color: rgba(255, 123, 2, .4)
+      tags:
+        white hair: Weiße Haare
+        blonde hair: Blondes Haar
+        silver hair: Silbernes Haar
+        grey hair: Graues Haar
+        purple hair: Violettes Haar
+        red hair: Rotes Haar
+        yellow hair: Gelbes Haar
+        green hair: Grünes Haar
+        blue hair: Blaues Haar
+        black hair: Schwarzes Haar
+        brown hair: Braunes Haar
+        straight_hair: Gerades Haar
+        short hair: Kurzes Haar
+        curly hair: Lockiges Haar
+        long hair: Langes Haar
+        pony-tail: Pferdeschwanz
+        bunches: Zöpfe
+        streaked hair: Gesträhntes Haar
+        grey gradient hair: Grauer Verlauf
+        light brown hair: Hellbraunes Haar
+        two-tone hair: Zweifarbiges Haar
+        multicolored hair: Mehrfarbiges Haar
+        high ponytail: Hoher Pferdeschwanz
+        twintails: Doppelzöpfe
+        braided ponytail: Geflochtener Pferdeschwanz
+        ponytail: Pferdeschwanz
+        short ponytail: Kurzer Pferdeschwanz
+        twin braids: Doppelzöpfe
+        medium hair: Mittellanges Haar
+        very long hair: Sehr langes Haar
+        braided bangs: Geflochtener Pony
+        swept bangs: Seitlich gefegter Pony
+        hair between eyes: Haar zwischen den Augen
+        bob cut: Bob-Schnitt
+        hime cut: Hime-Schnitt
+        crossed bangs: Überkreuzter Pony
+        bangs: Pony
+        blunt bangs: Gerader Pony
+        air bangs: Luftiger Pony
+        hair wings: Haarflügel
+        long bangs: Langer Pony
+        side_blunt_bangs: Seitlicher gerader Pony
+        centre parting bangs: Mittelscheitelpartie Pony
+        asymmetric bangs: Asymmetrischer Pony
+        disheveled hair: Unordentliches Haar
+        wavy hair: Gewelltes Haar
+        hair in takes: Haar in Strähnen
+        hair pink flowers: Haar mit rosa Blumen
+        ahoge: Ahoge
+        antenna hair: Antennenhaare
+        Side ponytail: Seitlicher Pferdeschwanz
+        forehead: Stirn
+        drill hair: Bohrfrisur
+        hair bun: Haarknoten
+        double bun: Doppelknoten
+        messy hair: Unordentliche Frisur
+        hair_flaps: Haarflappen
+
+    - name: Gesicht
+      color: rgba(255, 123, 2, .4)
+      tags:
+        makeup: Make-up
+        fundoshi: Fundoshi
+        eyeshadow: Lidschatten
+        lipstick: Lippenstift
+        mascara: Mascara
+        long_eyelashes: Lange Wimpern
+        red_lips_: Rote Lippen
+        facepaint: Gesichtsbemalung
+        lipgloss: Lipgloss
+        colored_eyelashes: Farbige Wimpern
+        blush: Rouge
+        light_blush: Leichtes Rouge
+        anime_style_blush: Anime-Stil Rouge
+        nose_blush: Nasenrouge
+        nosebleed: Nasenbluten
+        bruise_on_face: Bluterguss im Gesicht
+        facial_mark: Gesichtsmarkierung
+        forehead_mark: Stirnmarkierung
+        anger_vein: Wutader
+        mole: Muttermal
+        mole_under_eye: Muttermal unter dem Auge
+        freckles: Sommersprossen
+        food_on_face: Essen im Gesicht
+        rice_on_face: Reis im Gesicht
+        cream_on_face: Sahne im Gesicht
+        mustache: Schnurrbart
+        goatee: Spitzbart
+        whisker_markings: Schnurrhaarmarkierungen
+        scar: Narbe
+        scar_across_eye: Narbe über dem Auge
+        smoking_pipe: Raucherpfeife
+        tattoo: Tattoo
+
+    - name: Ohren
+      color: rgba(255, 123, 2, .4)
+      tags:
+        elf ears: Elfenohren
+        fake animal ears: Künstliche Tierohren
+        cat ears: Katzenohren
+        dog ears: Hundohren
+        fox ears: Fuchsohren
+        bunny ears: Hasenohren
+        bear ears: Bärenohren
+        wolf ears: Wolfsohren
+        horse ears: Pferdeohren
+        cow ears: Kuhohren
+        mouse ears: Mäuseohren
+        pig ears: Schweineohren
+        sheep ears: Schafsohren
+        deer ears: Hirschohren
+        goat ears: Ziegenohren
+        antelope ears: Antilopenohren
+        rhino ears: Nashornohren
+        elephant ears: Elefantenohren
+        bat ears: Fledermausohren
+        dragon ears: Drachenohren
+        demon ears: Dämonenohren
+        angel ears: Engelsohren
+        alien ears: Außerirdische Ohren
+        ear_blush: Erröten der Ohren
+        ear_ornament: Ohrenschmuck
+        ear_piercing: Ohrenpiercing
+        animal_ears: Tierohren
+        ears_down: Hängende Ohren
+        fake_animal_ears: Künstliche Tierohren
+        floppy_ears: Schlappohren
+        animal_ear_fluff: Flauschige Tierohren
+        fox_ears: Fuchsohren
+        cat_ears: Katzenohren
+        lion_ears: Löwenohren
+        jaguar_ears: Jaguarohren
+        tiger_ears: Tigerohren
+        dog_ears: Hundohren
+        coyote_ears: Kojotenohren
+        bunny_ears: Hasenohren
+        horse_ears: Pferdeohren
+        pointy_ears: Spitzohren
+        long_pointy_ears: Lange Spitzohren
+        mouse_ears: Mäuseohren
+        raccoon_ears: Waschbärenohren
+        squirrel_ears: Eichhörnchenohren
+        bear_ears: Bärenohren
+        panda_ears: Pandaohren
+        bat_ears: Fledermausohren
+        robot_ears: Roboterohren
+        extra_ears: Zusätzliche Ohren
+        ears_through_headwear: Ohren durch Kopfbedeckung
+        alpaca_ears: Alpakaohren
+        horns: Hörner
+        fake_horns: Künstliche Hörner
+        dragon_horns: Drachenhörner
+        oni_horns: Oni-Hörner
+        antlers: Geweih
+        curled_horns: Gekrümmte Hörner
+        goat_horns: Ziegenhörner
+        hair_on_horn: Haar auf dem Horn
+
+    - name: Augenbrauen
+      color: rgba(255, 123, 2, .4)
+      tags:
+        thick eyebrows: Dicke Augenbrauen
+        cocked eyebrow: Hochgezogene Augenbraue
+        short eyebrows: Kurze Augenbrauen
+        v-shaped eyebrows: V-förmige Augenbrauen
+
+    - name: Augen
+      color: rgba(255, 123, 2, .4)
+      tags:
+        blue eyes: blaue Augen
+        red eyes: rote Augen
+        brown eyes: braune Augen
+        green eyes: grüne Augen
+        purple eyes: violette Augen
+        yellow eyes: gelbe Augen
+        pink eyes: rosa Augen
+        black eyes: schwarze Augen
+        aqua eyes: aqua Augen
+        orange eyes: orangefarbene Augen
+        grey eyes: graue Augen
+        multicolored eyes: mehrfarbige Augen
+        white eyes: weiße Augen
+        gradient eyes: gradient Augen
+        closed eyes: geschlossene Augen
+        half-closed eyes: halb geschlossene Augen
+        crying with eyes open: weinende Augen mit offenen Augen
+        narrowed eyes: zusammengekniffene Augen
+        hidden eyes: versteckte Augen
+        heart-shaped eyes: herzförmige Augen
+        button eyes: Knopfaugen
+        cephalopod eyes: Kopffüßer-Augen
+        eyes visible through hair: Augen sichtbar durch Haare
+        glowing eyes: leuchtende Augen
+        empty eyes: leere Augen
+        rolling eyes: rollende Augen
+        cross eyed: schielende Augen
+        blank eyes: leere Augen
+        no eyes: keine Augen
+        sparkling eyes: funkelnde Augen
+        extra eyes: zusätzliche Augen
+        crazy eyes: verrückte Augen
+        solid circle eyes: solide Kreisaugen
+        solid oval eyes: solide ovale Augen
+        uneven eyes: ungleichmäßige Augen
+        blood from eyes: Blut aus den Augen
+        eyeshadow: Lidschatten
+        red eyeshadow: roter Lidschatten
+        blue eyeshadow: blauer Lidschatten
+        purple eyeshadow: violetter Lidschatten
+        pink eyeshadow: rosa Lidschatten
+        green eyeshadow: grüner Lidschatten
+        bags under eyes: Augenringe
+        ringed eyes: geränderte Augen
+        covered eyes: bedeckte Augen
+        covering eyes: Augen bedeckend
+        shading eyes: Augen abschattend
+        devil eyes: Teufelsaugen
+        slit pupils: schlitzaugen
+        bloodshot eyes: gerötete Augen
+        tsurime: nach oben geschwungene Augen
+        tareme: nach unten geschwungene Augen
+        constricted pupils: verengte Pupillen
+        devil pupils: Teufelspupillen
+        snake pupils: Schlangenpupillen
+        pupils sparkling: funkelnde Pupillen
+        flower-shaped pupils: blumenförmige Pupillen
+        heart-shaped pupils: herzförmige Pupillen
+        heterochromia: Heterochromie
+        color contact lenses: farbige Kontaktlinsen
+        longeyelashes: lange Wimpern
+        colored eyelashes: farbige Wimpern
+        mole under eye: Muttermal unter dem Auge
+        light_eyes: helle Augen
+        glowing_eye: leuchtendes Auge
+        shiny_eyes: glänzende Augen
+        sparkling_eyes: funkelnde Augen
+        gradient_eyes: gradient Augen
+        anime_style_eyes: Anime-Stil Augen
+        water_eyes: wässrige Augen
+        beautiful_detailed_eyes: schöne detaillierte Augen
+        solid_oval_eyes_: solide ovale Augen
+        solid_circle_pupils: solide Kreispupillen
+        blush_stickers: Rouge-Aufkleber
+        heart_in_eye: Herz im Auge
+        evil_eyes: böse Augen
+        crazy_eyes: verrückte Augen
+        empty_eyes: leere Augen
+        covered_eyes: bedeckte Augen
+        hollow_eyes: sternförmige Pupillen
+        multicolored_eyes: vielfarbige Augen
+        ringed_eyes: geränderte Augen
+        sanpaku: Sanpaku-Augen (versetzte Pupillen)
+        mismatched_sclera: ungleiche Sklera
+        eye_relfection: Augenreflexion (keine Wirkung)
+        mechanical_eye: mechanisches Auge
+        cephalopod_eyes: Kopffüßer-Augen
+        clock_eyes: Uhrenaugen
+        compound_eyes: zusammengesetzte Augen
+        fisheye: Fischaugen
+        devil_eyes: Teufelsaugen
+        bloodshot_eyes: blutunterlaufene Augen
+        blood_from_eyes: Blut aus den Augen
+        aqua_eyes: aqua Augen
+        solid_eyes: feste Augen
+        sparkling_anime_eyes: funkelnde Anime-Augen
+        blue_eyes: blaue Augen
+        brown_eyes: braune Augen
+        closed_eyes: geschlossene Augen
+        crying_with_eyes_open: weinende Augen mit offenen Augen
+        extra_eyes: zusätzliche Augen
+        eye_contact: Blickkontakt
+        eye_of_horus: Horus-Auge
+        eyeball: Augapfel
+        eyeliner: Eyeliner
+        eyes: Augen
+        glint: funkelnder Blick
+        glowing_eyes: leuchtende Augen
+        half-closed_eye: halb geschlossenes Auge
+        half-closed_eyes: halb geschlossene Augen
+        horizontal_pupils: horizontale Pupillen
+        jitome: verächtlicher Blick
+        light_brown_eyes: hellbraune Augen
+        no_eyes: keine Augen gezeichnet
+        one-eyed: einäugig
+        reflective_eyes: reflektierende Augen
+        silver_eyes: silberne Augen
+        spiral_eyes: Wirbelaugen
+        third_eye: drittes Auge
+        uneven_eyes: ungleichmäßige Augen
+        flaming_eye: Flammenauge
+        eyes_closed: Augen geschlossen
+        half_closed_eyes: halb geschlossene Augen
+        narrowed_eyes: zusammengekniffene Augen
+        squinting: schielend
+        tears: Tränen
+        sharp_eyes: scharfe Augen
+        slanted_eyes: schräge Augen
+        upturned_eyes: nach oben gewendete Augen
+        cross-eyed: schielend
+        hair_over_eyes: Haare über den Augen
+        eyes_visible_through_hair: Augen sichtbar durch Haare
+        hair_over_one_eye: Haar über einem Auge
+        one_eye_covered: ein Auge bedeckt
+        bags_under_eyes: Augenringe
+        eyepatch: Augenklappe
+        medical_eyepatch: medizinische Augenklappe
+        scar_across_eye: Narbe über dem Auge
+        no_blindfold: keine Augenbinde
+        no_eyepatch: keine Augenklappe
+        ahegao: Ahegao-Gesichtsausdruck
+
+    - name: Pupillen
+      color: rgba(255, 123, 2, .4)
+      tags:
+        pupils: Pupillen
+        bright_pupils: helle Pupillen
+        heterochromia: Heterochromie
+        slit_pupils: Schlitzpupillen
+        snake_pupils: Schlangenpupillen
+        symbol-shaped_pupils: symbolförmige Pupillen
+        heart-shaped_pupils: herzförmige Pupillen
+        diamond-shaped_pupils: diamantförmige Pupillen
+        star-shaped_pupils: sternförmige Pupillen
+        dilated_pupils: erweiterte Pupillen
+        no_pupils: keine Pupillen
+        ringed_eyes: geränderte Augen
+        constricted_pupils: verengte Pupillen (keine Wirkung)
+        star_in_eye: Stern im Auge
+        x-shaped_pupils: X-förmige Pupillen
+        horizontal_pupils: horizontale Pupillen
+        dashed_eyes: gestrichelte Augen
+        butterfly-shaped_pupils: schmetterlingsförmige Pupillen
+        rectangular_pupils: rechteckige Pupillen
+        square_pupils: quadratische Pupillen
+        dot_pupils: Punkt-Pupillen
+        extra_pupils: zusätzliche Pupillen
+        mismatched_pupils: ungleiche Pupillen
+        "+_+": Kreuzstern-Pupillen
+        cross-shaped_pupils: kreuzförmige Pupillen (keine Wirkung)
+        purple_pupils: violette Pupillen
+        orange_pupils: orangefarbene Pupillen
+        blue_pupils: blaue Pupillen
+        symbol_in_eye: Symbol im Auge
+
+    - name: Nase
+      color: rgba(255, 123, 2, .4)
+      tags:
+        pointed nose: spitzes Nase
+        small nose: kleine Nase
+        big nose: große Nase
+        no_nose: keine Nase
+        dot_nose: Punkt-Nase
+        nose_bubble: Nasenbläschen
+        smelling: riechen
+        nose: Nase
+        nosebleed: Nasenbluten
+        snot: Nasenschleim
+        snout: Schnauze
+
+    - name: Mund
+      color: rgba(255, 123, 2, .4)
+      tags:
+        chestnut mouth: Kastanienmund
+        thick lips: dicke Lippen
+        puffy lips: geschwollene Lippen
+        lipstick: Lippenstift
+        heart-shaped mouth: herzförmiger Mund
+        pout: schmollen
+        open mouth: offener Mund
+        closed mouth: geschlossener Mund
+        shark mouth: Haifischmaul
+        parted lips: geöffnete Lippen
+        mole under mouth: Muttermal unter dem Mund
+        open_mouth: offener Mund
+        gasping: keuchend
+        Slightly_open_mouth: leicht geöffneter Mund
+        wavy_mouth: welliger Mund
+        close_mouth: geschlossener Mund
+        dot_mouth: Punkt-Mund
+        no_mouth: kein Mund
+        gag: knebeln
+        gnaw: nagen
+        :3: Katzenmund
+        :o: offener Mund
+        :>: V-Mund
+        parted_lips: geöffnete Lippen
+        bit_gag: Mund zugebissen
+        chestnut_mouth: Kastanienmund
+        cleave_gag: Mund zugebunden
+        closed_mouth: geschlossener Mund
+        covered_mouth: bedeckter Mund
+        extra_mouth: zusätzlicher Mund
+        hair_in_mouth: Haare im Mund
+        hair_tie_in_mouth: Haargummi im Mund
+        homu: schmollen
+        lips: Lippen
+        mouth: Mund
+        mouth_hold: mit dem Mund halten
+        oral: oral
+        pacifier: Schnuller
+        Pouted lips: gespitzte Lippen
+        sideways_mouth: seitlicher Mund
+        spoon_in_mouth: Löffel im Mund
+        triangle_mouth: dreieckiger Mund
+        saliva: Speichel
+        drooling: sabbern
+        mouth_drool: Mund mit Tropfenform von Speichel
+
+    - name: Zähne
+      color: rgba(255, 123, 2, .4)
+      tags:
+        teeth: Zähne
+        upper_teeth: obere Zähne
+        fang: Reißzahn
+        skin_fang: hautfarbener Reißzahn
+        round_teeth: runde Zähne
+        sharp_teeth: scharfe Zähne
+        clenched_teeth: zusammengebissene Zähne
+        tongue: Zunge
+        buck_teeth: Hasenzähne
+        fang_out: herausstehende Reißzähne
+        fangs: Reißzähne
+        spiked_club: stacheliger Schläger
+        tooth: Zahn
+        toothbrush: Zahnbürste
+        tusks: Stoßzähne
+        shark_mouth: Haifischzähne
+
+    - name: Zunge
+      color: rgba(255, 123, 2, .4)
+      tags:
+        :q: Zunge auf Oberlippe
+        :p: Zunge auf Unterlippe
+        ;p: Zwinkernde Zunge
+        french_kiss: Zungenkuss
+        long_tongue: lange Zunge
+        oral_invitation: orale Einladung
+        tongue: Zunge
+        tongue_out: Zunge herausstrecken
+        uvula: Uvula
+
+    - name: Fingernägel
+      color: rgba(255, 123, 2, .4)
+      tags:
+        fingernails: Fingernägel
+        toenails: Zehennägel
+        nail_polish: Nagellack
+        toenail_polish: Zehennagellack
+        black_nails: schwarze Nägel
+        red_nails: rote Nägel
+        pink_nails: rosa Nägel
+        long_fingernails: lange Fingernägel
+        nail: Nagel
+        multicolored_nails: mehrfarbige Nägel
+        nail_art: Nagelkunst
+        brown_vest: braune Weste
+
+    - name: Schultern
+      color: rgba(255, 123, 2, .4)
+      tags:
+        bare shoulders: nackte Schultern
+        collarbonea: Schlüsselbeine
+        armpits: Achselhöhlen
+        armpit_crease: Achselhöhlenfalte
+
+    - name: Brust
+      color: rgba(255, 123, 2, .4)
+      tags:
+        chest: Brust
+        flat chest: flache Brust
+        small_breasts: kleine Brüste
+        medium breasts: mittlere Brüste
+        big breasts: große Brüste
+        huge breasts: riesige Brüste
+        gigantic breasts: gigantische Brüste
+        between breasts: zwischen den Brüsten
+        breasts apart: getrennte Brüste
+        hanging breasts: hängende Brüste
+        bouncing breasts: wippende Brüste
+        cleavage: Dekolleté
+        areola: Brustwarzenhof
+        nipples: Brustwarzen
+        pectorals: Brustmuskeln
+        large_pectorals: große Brustmuskeln
+        unbuttoned clothes: aufgeknöpfte Kleidung
+
+    - name: Taille
+      color: rgba(255, 123, 2, .4)
+      tags:
+        narrow_waist: schmale Taille
+        slender_waist: schlanke Taille
+
+    - name: Bauch
+      color: rgba(255, 123, 2, .4)
+      tags:
+        midriff: Bauch
+        belly: Bauch
+        absolute_territory: Sixpack
+        inflation: aufgeblähter Bauch
+        navel: Bauchnabel
+        groin: Leistengegend
+        pregnant: schwanger
+
+    - name: Flügel
+      color: rgba(255, 123, 2, .4)
+      tags:
+        wings: Flügel
+        bat_wings: Fledermausflügel
+        butterfly_wings: Schmetterlingsflügel
+        black_wings: schwarze Flügel
+        demon_wings: Dämonenflügel
+        asymmetrical_wings: asymmetrische Flügel
+        detached_wings: abgetrennte Flügel
+        fairy_wings: Feenflügel
+        fake_wings: künstliche Flügel
+        fiery_wings: flammende Flügel
+        insect_wings: Insektenflügel
+        large_wings: große Flügel
+        low_wings: niedrige Flügel
+        mini_wings: Mini-Flügel
+        multicolored_wings: mehrfarbige Flügel
+        multiple_wings: mehrere Flügelpaare
+        no_wings: keine Flügel
+        winged_helmet: Helm mit Flügeln
+
+- name: Kleidung
+  groups:
+    - name: Formelle Kleidung
+      color: rgba(230, 84, 128, .4)
+      tags:
+        suit: Anzug
+        tuxedo: Frack
+        formal_dress: Abendkleid
+        evening_gown: Abendkleid
+        canonicals: Abendkleidung
+        cocktail_dress: Cocktailkleid
+        gown: Abendkleid für Frauen
+        japanese_clothes: Kimono
+        kimono: Kimono
+        sleeveless_kimono: ärmelloser Kimono
+        short_kimono: kurzer Kimono
+        print_kimono: bedruckter Kimono
+        furisode: Furisode (Teil des Kimonos)
+        obi: Obi (Gürtel für Kimono)
+        sash: Schärpe
+        cheongsam: Qipao
+        china_dress: Qipao
+        print_cheongsam: bedrucktes Qipao
+        pelvic_curtain: Vorderer Teil eines Qipao-Kleidungsstücks
+        wedding_dress: Hochzeitskleid
+        uchikake: Uchikake (japanisches Hochzeitskleid)
+        school_uniform: Schuluniform
+        sailor: Matrosenuniform
+        serafuku: Matrosenuniform
+        summer_uniform: Sommeruniform
+        kindergarten_uniform: Kindergartenuniform
+        police_uniform: Polizeiuniform
+        naval_uniform: Marineuniform
+        military_uniform: Militäruniform
+        ss_uniform/nazi_uniform: SS-Uniform/Nazi-Uniform
+        maid: Dienstmädchenkostüm
+        stile_uniform: Uniform für Dienerinnen
+        miko: Miko-Kleidung
+        overalls: Arbeitskleidung
+        business_suit: Geschäftskleidung
+        nurse: Krankenschwester
+        chef_uniform: Kochuniform
+        labcoat: Laborkittel
+        cheerleader: Cheerleader-Kleidung
+        band_uniform: Banduniform
+        space_suit: Raumanzug
+        leotard: Einteiler
+        domineering: Nonnenkleid
+
+    - name: Stil
+      color: rgba(230, 84, 128, .4)
+      tags:
+        china_dress: Chinesische Kleidung
+        chinese_style: Chinesischer Stil
+        traditional_clothes: Traditionelle Kleidung | Volkstracht
+        japanese_clothes: Japanische Kleidung
+        hanten_(clothes): Hanten (japanische Kleidung)
+        hanbok: Hanbok (koreanische Kleidung)
+        korean_clothes: Koreanische Kleidung
+        western: Western-Stil
+        german_clothes: Deutsche Kleidung
+        gothic: Gothic-Stil
+        lolita: Lolita-Stil
+        gothic_lolita: Gothic Lolita-Stil
+        byzantine_fashion: Byzantinischer Stil
+        Tropical: Tropische Merkmale
+        indian_style: Indischer Stil
+        Ao_Dai: Ao Dai (vietnamesische Schuluniform)
+        ainu_clothes: Ainu-Kleidung
+        arabian_clothes: Arabische Kleidung
+        egyptian_clothes: Ägyptische Kleidung
+        costume: Kostüm
+        animal_costume: Tierkostüm
+        bunny_costume: Hasenkostüm
+        adapted_costume: Abgewandeltes Kostüm
+        cat_costume: Katzenkostüm
+        dog_costume: Hunde-Kostüm
+        bear_costume: Bärenkostüm
+        embellished_costume: Verziertes Kostüm
+        santa_costume: Weihnachtskostüm
+        halloween_costume: Halloween-Kostüm
+        kourindou_tengu_costume: Kourindou Tengu-Kostüm
+        alternate_costume: Alternatives Kostüm
+        costume_switch: Kostümwechsel
+        meme_attire: Meme-Kleidung
+
+    - name: Freizeitkleidung
+      color: rgba(230, 84, 128, .4)
+      tags:
+        casual: Freizeitkleidung
+        loungewear: Freizeitkleidung
+        hoodie: Kapuzenpullover
+        homewear: Hauskleidung
+        pajamas: Schlafanzug
+        nightgown: Nachthemd
+        sleepwear: Schlafkleidung
+        babydoll: Babydoll-Nachtwäsche
+        print_pajamas: bedruckter Schlafanzug
+        polka_dot_pajamas: gepunkteter Schlafanzug
+        yukata: Yukata (japanischer Bademantel)
+        chinese_clothes: Tang-Anzug
+        hanfu: Hanfu (traditionelle chinesische Kleidung)
+        Taoist robe: Daoistischer Umhang
+        robe: Robe
+        robe_of_blending: gemischte Robe
+        cloak: Umhang
+        hooded_cloak: Kapuzenumhang
+        winter_clothes: Winterkleidung
+        down jacket: Daunenjacke
+        santa: Weihnachtsmann-Kostüm
+        harem_outfit: Harem-Kleidung
+        shrug_(clothing): Schulterzucken (Kleidungsstück)
+
+    - name: Sportbekleidung
+      color: rgba(230, 84, 128, .4)
+      tags:
+        sportswear: Sportbekleidung
+        gym_uniform: Sportbekleidung
+        athletic_leotard: Turnanzug
+        tennis_uniform: Tennisbekleidung
+        baseball_uniform: Baseball-Uniform
+        letterman_jacket: Baseballjacke
+        volleyball_uniform: Volleyballbekleidung
+        biker_clothes: Fahrradbekleidung
+        bikesuit: Radsportanzug
+        wrestling_outfit: Ringerbekleidung
+        dougi: Do-Gi (Kampfsportbekleidung)
+
+    - name: Badebekleidung
+      color: rgba(230, 84, 128, .4)
+      tags:
+        swimsuit: Badeanzug
+        swimwear: Bademode
+        wet_swimsuit: nasser Badeanzug
+        school_swimsuit: Schulbadeanzug
+        new_school_swimsuit: neuer Schulbadeanzug
+        old_school_swimsuit: alter Schulbadeanzug
+        competition_school_swimsuit: Wettkampf-Schulbadeanzug
+        competition_swimsuit: Wettkampfbadeanzug
+        casual_one-piece_swimsuit: einteiliger Freizeitbadeanzug
+        front_zipper_swimsuit: Badeanzug mit vorderem Reißverschluss
+        highleg_swimsuit: hochgeschnittener Badeanzug
+        one-piece_swimsuit: einteiliger Badeanzug
+        swimsuit_of_perpetual_summer: Badeanzug des ewigen Sommers (FGO-Schulmädchen-Robe)
+        bikini: Bikini
+        highleg_bikini: hochgeschnittener Bikini
+        lowleg_bikini: tiefgeschnittener Bikini
+        slingshot_swimsuit: V-förmiger Badeanzug
+        sailor_bikini: Matrosen-Bikini
+        shell_bikini: Muschel-Bikini
+        sports_bikini: Sport-Bikini
+        string_bikini: String-Bikini
+        strapless_bikini: trägerloser Bikini
+        side-tie_bikini: seitlich gebundener Bikini
+        front-tie_bikini_top: Bikinioberteil mit vorderer Schleife
+        multi-strapped_bikini: Bikini mit mehreren Trägern
+        thong_bikini: Tanga-Bikini
+        front-tie_bikini: von vorne gebundener Bikini
+        frilled_bikini: gerüschter Bikini
+        o-ring_bikini: Bikini mit O-Ring
+        eyepatch_bikini: Augenklappen-Bikini
+        layered_bikini: geschichteter Bikini
+        bow_bikini: Bikini mit Schleife
+        frilled_swimsuit: gerüschter Badeanzug
+        polka_dot_swimsuit: gepunkteter Badeanzug
+        striped_swimsuit: gestreifter Badeanzug
+        striped_bikini: gestreifter Bikini
+        plaid_bikini: karierte Bikini
+        polka_dot_bikini: gepunkteter Bikini
+        print_bikini: bedruckter Bikini
+        american_flag_bikini: Bikini mit amerikanischer Flagge
+        german_flag_bikini: Bikini mit deutscher Flagge
+        impossible_swimsuit: Badeanzug in Körperbemalungsoptik
+        bikini_top: nur Bikinioberteil
+        bikini_top_only: nur Bikinioberteil
+        bikini_top_removed: Bikinioberteil abgenommen
+        bikini_bottom_only: nur Bikinihose
+        bikini_bottom: Bikinihose
+        untied_bikini: ungebundener Bikini
+        bikini_aside: Bikini zur Seite geschoben
+        swimsuit_aside: Badeanzug zur Seite geschoben
+        swimsuit_under_clothes: Badeanzug unter der Kleidung
+        torn_swimsuit: zerrissener Badeanzug
+        bikini_skirt: Bikinirock
+        swim_briefs: Badehose
+        swim_cap: Badekappe
+        swim_trunks: Badehose für Männer
+
+    - name: Uniform
+      color: rgba(230, 84, 128, .4)
+      tags:
+        adapted_uniform: angepasste Uniform
+        anzio_military_uniform: Anzio-Militäruniform
+        anzio_school_uniform: Anzio-Schuluniform
+        aria_company_uniform: Aria-Firmenuniform
+        ashford_academy_uniform: Ashford-Akademieuniform
+        bc_freedom_military_uniform: BC-Freedom-Militäruniform
+        chaldea_uniform: Chaldea-Uniform
+        chi-hatan_military_uniform: Chi-Ha-Tan-Militäruniform
+        fleur_de_lapin_uniform: Fleur-de-Lapin-Mädchenuniform
+        garreg_mach_monastery_uniform: Garreg Mach-Klosteruniform
+        gem_uniform_(houseki_no_kuni): Edelsteinuniform (Houseki no Kuni)
+        hanasakigawa_school_uniform: Hanasakigawa-Schuluniform
+        hikarizaka_private_high_school_uniform: Hikarizaka-Privatoberschuluniform
+        homurahara_academy_uniform: Homurahara-Akademieuniform
+        kamiyama_high_school_uniform: Kamiyama-Oberschuluniform
+        keizoku_military_uniform: Keizoku-Militäruniform
+        kita_high_school_uniform: Kita-Oberschuluniform
+        kiyosumi_school_uniform: Kiyosumi-Oberschuluniform
+        luna_nova_school_uniform: Luna Nova-Schuluniform
+        meiji_schoolgirl_uniform: Meiji-Schulmädchenuniform
+        mitakihara_school_uniform: Mitakihara-Oberschuluniform
+        nami_junior_high_school_uniform: Nami-Mittelschuluniform
+        nanairogaoka_middle_school_uniform: Nanairogaoka-Mittelschuluniform
+        nanamori_school_uniform: Nanamori-Oberschuluniform
+        naoetsu_high_school_uniform: Naoetsu-Oberschuluniform
+        national_shin_ooshima_school_uniform: National Shin Ooshima-Schuluniform
+        ooarai_military_uniform: Ooarai-Militäruniform
+        ooarai_school_uniform: Ooarai-Schuluniform
+        otonokizaka_school_uniform: Otonokizaka-Schuluniform
+        paradis_military_uniform: Paradis-Militäruniform
+        polar_chaldea_uniform: Polar Chaldea-Uniform
+        pravda_military_uniform: Pravda-Militäruniform
+        pravda_school_uniform: Pravda-Schuluniform
+        rabbit_house_uniform: Rabbit House-Uniform
+        raimon_soccer_uniform: Raimon-Fußballuniform
+        ryouou_school_uniform: Ryouou-Schuluniform
+        sailor_senshi_uniform: Sailor-Moon-Uniform
+        sakugawa_school_uniform: Sakugawa-Schuluniform
+        sakuragaoka_high_school_uniform: Sakuragaoka-Oberschuluniform
+        saunders_military_uniform: Saunders-Militäruniform
+        saunders_school_uniform: Saunders-Schuluniform
+        seishou_elementary_school_uniform: Seishou-Grundschuluniform
+        shinda_sekai_sensen_uniform: Shinda Sekai Sensen-Uniform
+        shuuchiin_academy_uniform: Shuuchiin-Akademieuniform
+        shuujin_academy_uniform: Shuujin-Akademieuniform
+        st._gloriana's_military_uniform: St. Gloriana-Militäruniform
+        st._gloriana's_school_uniform: St. Gloriana-Schuluniform
+        starlight_academy_uniform: Starlight-Akademieuniform
+        tokisadame_school_uniform: Tokisadame-Oberschuluniform
+        tokiwadai_school_uniform: Tokiwadai-Schuluniform
+        tomoeda_elementary_school_uniform: Tomoeda-Grundschuluniform
+        tsab_ground_military_uniform: TSAB-Ground-Militäruniform
+        u.a._school_uniform: U.A.-Schuluniform
+        uranohoshi_school_uniform: Uranohoshi-Schuluniform
+        yasogami_school_uniform: Yasogami-Schuluniform
+        mismatched_bikini: ungleiches Bikini-Set
+        multicolored_bikini: mehrfarbiges Bikini-Set
+
+    - name: Oberteil
+      color: rgba(230, 84, 128, .4)
+      tags:
+        blouse: Bluse
+        white_shirt: weißes Hemd
+        collared_shirt: Hemd mit Kragen
+        dress_shirt: Anzugshemd
+        sailor_shirt: Matrosenhemd
+        cropped_shirt: verkürztes Hemd
+        t-shirt: T-Shirt
+        casual T-shirts: Freizeit-T-Shirts
+        short sleeve T-shirts: T-Shirts mit kurzen Ärmeln
+        off-shoulder_shirt: schulterfreies Hemd
+        shrug_(clothing): Schulterzucken (Kleidungsstück)
+        cardigan: Strickjacke
+        criss-cross_halter: gekreuztes Haltertop
+        frilled_shirt: gerüschtes Hemd
+        sweatshirt: Sweatshirt
+        hawaiian_shirt: Hawaiihemd
+        hoodie: Kapuzenpullover
+        Impossible shirt: unmögliche Bluse
+        kappougi: Küchenschürze
+        plaid_shirt: kariertes Hemd
+        polo_shirt: Polohemd
+        print_shirt: bedrucktes Hemd
+        shirt: Hemd
+        sleeveless_hoodie: ärmelloser Kapuzenpullover
+        sleeveless_shirt: ärmelloses Hemd
+        striped_shirt: gestreiftes Hemd
+        tank_top: Tanktop
+        vest: Weste
+        waistcoat: Weste
+        camisole: Trägertop
+        tied_shirt: gebundenes Hemd
+        undershirt: Unterhemd
+        crop_top: Crop-Top
+        highleg: hochgeschnittenes Oberteil
+        clothing_cutout: ausgeschnittene Kleidung
+        back_cutout: rückenfreies Oberteil
+        cleavage_cutout: Ausschnitt mit Dekolleté
+        navel_cutout: Bauchnabelausschnitt
+        midriff: bauchfreies Oberteil
+        heart_cutout: herzförmiger Ausschnitt
+        torn_clothes: zerrissene Kleidung
+        torn_shirt: zerrissenes Hemd
+        undressing: beim Ausziehen
+        clothes_down: Kleidung herunterziehen
+        shirt_lift: Hemd hochheben
+        shirt_pull: Hemd herunterziehen
+        shirt_tucked_in: Hemd eingesteckt
+        clothes_tug: an der Kleidung ziehen
+        shirt_tug: am Hemd ziehen
+        untucked_shirt: ausgezogenes Hemd
+        lifted_by_self: selbst angehoben
+        untied: Hemd gelöst
+        open_clothes: offene Kleidung
+        unbuttoned shirt: aufgeknöpftes Hemd
+        button_gap: Knopflücke
+        partially_unbuttoned: teilweise aufgeknöpft
+        partially_unzipped: teilweise geöffneter Reißverschluss
+        clothes_removed: abgelegte Kleidung
+        shirt_removed: Hemd ausgezogen
+        wardrobe_error: Kleidungsfehler
+        undersized_clothes: zu kleine Kleidung
+        tight: enge Kleidung
+        wedgie: in die Pobacken gezogene Kleidung
+        wardrobe_malfunction: Kleiderpanne
+        taut_shirt: straffes Hemd
+        taut_clothes: straffe Kleidung
+        underbust: unter der Brust
+        oversized_clothes: zu große Kleidung
+        oversized_shirt: zu großes Hemd
+        borrowed_garments: geliehene Kleidung
+        strap_slip: Träger verrutscht
+        wet_shirt: nasses Hemd
+        clothes_theft: Kleiderdiebstahl
+
+    - name: Mantel
+      color: rgba(230, 84, 128, .4)
+      tags:
+        blazer: Blazer
+        overcoat: Mantel
+        double-breasted: Zweireihig
+        long_coat: Langmantel
+        haori: Haori (eine Art weites Oberteil)
+        winter_coat: Wintermantel
+        hooded_coat: Kapuzenmantel
+        fur_coat: Pelzmantel
+        fur-trimmed_coat: Pelzbesetzter Mantel
+        duffel_coat: Dufflecoat
+        fishnet_top: Netzoberteil
+        parka: Parka
+        jacket: Jacke
+        jacket_partially_removed: Jacke teilweise entfernt
+        jacket_removed: Jacke entfernt
+        open_jacket: Offene Jacke (mit gespreizten Beinen)
+        cropped_jacket: Kurze Jacke
+        track_jacket: Trainingsjacke
+        hooded_track_jacket: Kapuzen-Trainingsjacke
+        military_jacket: Militärjacke
+        camouflage_jacket: Camouflagejacke
+        leather_jacket: Lederjacke
+        letterman_jacket: Collegejacke
+        bomber_jacket: Bomberjacke
+        denim_jacket: Jeansjacke
+        loating_jacket: Freizeitjacke
+        fur-trimmed_jacket: Pelzbesetzte Jacke
+        two-tone_jacket: Zweifarbige Jacke
+        trench_coat: Trenchcoat
+        furisode: Furisode (Teil eines Kimonos)
+        windbreaker: Windbreaker
+        raincoat: Regenmantel
+        hagoromo: Hagoromo (Federkleid)
+        tunic: Tailliertes Oberteil
+        cape: Umhang
+        capelet: Schulterumhang
+        winter_clothes: Winterkleidung
+        sweater: Pullover
+        pullover_sweaters: Pullover
+        ribbed_sweater: Rippstrickpullover
+        sweater_vest: Pulloverweste
+        backless_sweater: Rückenfreier Pullover
+        aran_sweater: Aran-Pullover
+        beige_sweater: Beiger Pullover
+        brown_sweater: Brauner Pullover
+        hooded_sweater: Kapuzenpullover
+        off-shoulder_sweater: Schulterfreier Pullover
+        striped_sweater: Gestreifter Pullover
+        virgin_killer_sweater: Virgin Killer Pullover
+        down_jacket: Daunenjacke
+        puffer_jacket: Steppjacke
+
+    - name: Sonstiges
+      color: rgba(230, 84, 128, .4)
+      tags:
+        transparent: Transparent
+        burnt_clothes: Verbrannte Kleidung
+        dissolving_clothes: Sich auflösende Kleidung
+        dirty_clothes: Schmutzige Kleidung
+        expressive_clothes: Ausdrucksstarke Kleidung
+        impossible_clothes: Unrealistisch verpackte Kleidung
+        living_clothes: Lebendige Kleidung
+        leotard_under_clothes: Body unter der Kleidung
+        multicolored_clothes: Mehrfarbige Kleidung
+        ofuda_on_clothes: Kleidung mit Ofuda (Papieramulette)
+        wringing_clothes: Ausgewrungene Kleidung
+        clothesline: Wäscheleine
+        shiny_clothes: Glänzende Kleidung
+        kariginu: Kariginu (traditionelles japanisches Gewand)
+        front-tie_top: Vorne gebundenes Oberteil
+        jacket_on_shoulders: Jacke über den Schultern getragen
+        short_jumpsuit: Kurzer Jumpsuit
+        harness: Harness (Tragegestell)
+        rigging: Rigging (Schiffsausrüstung)
+        aiguillette: Aiguillette (Schulterkordel)
+
+    - name: Taille
+      color: rgba(230, 84, 128, .4)
+      tags:
+        apron: Schürze
+        waist_apron: Taillenschürze
+        maid_apron: Dienstmädchen-Schürze
+        bow tied at the waist: Am Taillenbogen gebundene Schleife
+        waist_cape: Taillenumhang
+        clothes_around_waist: Kleidung um die Taille
+        jacket_around_waist: Jacke um die Taille
+        sweater_around_waist: Pullover um die Taille
+        loincloth: Lendenschurz
+        bustier: Bustier
+        corset: Korsett
+        girdle: Mieder
+
+    - name: Rüstung
+      color: rgba(230, 84, 128, .4)
+      tags:
+        armor: Rüstung
+        bikini_armor: Bikini-Rüstung
+        full_armor: Vollrüstung
+        plate_armor: Plattenrüstung
+        japanese_armor: Japanische Rüstung
+        kusazuri: Kusazuri (japanischer Beinschutz)
+        power_armor: Power-Rüstung
+        mecha: Mecha
+        helmet: Helm
+        kabuto: Kabuto (japanischer Helm)
+        off-shoulder_armor: Rüstung ohne Schulterpolster
+        shoulder_armor: Schulterpanzer
+        muneate: Muneate (japanischer Brustschutz für Bogenschießen)
+        breastplate: Brustpanzer
+        faulds: Bauchpanzer
+        greaves: Beinschienen
+        shin_guards: Schienbeinschoner
+        armored_boots: Gepanzerte Stiefel
+
+    - name: Rock
+      color: rgba(230, 84, 128, .4)
+      tags:
+        dress: Kleid
+        microdress: Minikleid
+        long_dress: Langes Kleid
+        off-shoulder_dress: Schulterfreies Kleid
+        strapless_dress: Trägerloses Kleid
+        backless_dress: Rückenfreies Kleid
+        halter_dress: Neckholder-Kleid
+        sundress: Sommerkleid
+        sleeveless_dress: Ärmelloses Kleid
+        sailor_dress: Matrosenkleid
+        summer_dress: Sommerkleid
+        china_dress: Chinesisches Kleid
+        pinafore_dress: Latzkleid
+        sweater_dress: Pulloverkleid
+        wedding_dress: Hochzeitskleid
+        armored_dress: Kampfanzugkleid
+        frilled_dress: Gerüschtes Kleid
+        lace-trimmed_dress: Spitzenbesetztes Kleid
+        collared_dress: Kleid mit Kragen
+        fur-trimmed_dress: Pelzbesetztes Kleid
+        layered_dress: Schichtkleid
+        pleated_dress: Faltenkleid
+        taut_dress: Eng anliegendes Kleid
+        pencil_dress: Bleistiftkleid
+        impossible_dress: Übertrieben enges Kleid
+        multicolored_dress: Mehrfarbiges Kleid
+        striped_dress: Gestreiftes Kleid
+        checkered_skirt: Kariertes Kleid
+        plaid_dress: Kariertes Kleid
+        ribbed_dress: Geripptes Kleid
+        polka_dot_dress: Gepunktetes Kleid
+        print_dress: Bedrucktes Kleid
+        vertical-striped_dress: Längsgestreiftes Kleid
+        see-through_dress: Durchsichtiges Kleid
+        skirt: Rock
+        microskirt: Minirock
+        miniskirt: Minirock
+        skirt_suit: Rockanzug
+        bikini_skirt: Bikinirock
+        pleated_skirt: Faltenrock
+        pencil_skirt: Bleistiftrock
+        bubble_skirt: Ballonrock
+        tutu: Tutu (Ballettröckchen)
+        ballgown: Ballkleid
+        pettiskirt: Petticoat
+        showgirl_skirt: Showgirl-Rock
+        Medium length skirt: Rock in mittlerer Länge
+        beltskirt: Gürtelrock
+        denim_skirt: Jeansrock
+        suspender_skirt: Latzrock
+        skirt_set: Rock-Set mit Oberteil
+        long_skirt: Langer Rock
+        summer_long_skirt: Sommerlanger Rock
+        overskirt: Überrock
+        hakama_skirt: Hakama-Rock
+        high-waist_skirt: Hochtaillierter Rock
+        kimono_skirt: Kimono-Rock
+        suspender_long_skirt: Latzrock; Trägerrock
+        chiffon_skirt: Chiffonrock
+        frilled_skirt: Gerüschter Rock
+        fur-trimmed_skirt: Pelzbesetzter Rock
+        lace_skirt: Spitzenrock
+        lace-trimmed_skirt: Spitzenbesetzter Rock
+        ribbon-trimmed_skirt: Schleifenbesetzter Rock
+        layered_skirt: Schichtrock
+        print_skirt: Bedruckter Rock
+        multicolored_skirt: Mehrfarbiger Rock
+        striped_skirt: Gestreifter Rock
+        vertical-striped_skirt: Längsgestreifter Rock
+        plaid_skirt: Karierter Rock
+        flared_skirt: Ausgestellter Rock
+        floral_skirt: Blumenrock
+
+    - name: Interaktion mit Röcken
+      color: rgba(230, 84, 128, .4)
+      tags:
+        skirt_hold: Rock elegant halten
+        skirt_tug: Rocksaum ziehen
+        dress_tug: Kleidsaum drücken
+        skirt_lift: Rock hochheben
+        skirt_around_one_leg: Rock an einem Bein hängen
+        skirt_removed: Abgenommener Rock
+        dress_removed: Abgenommenes Kleid
+        open_skirt: Geöffneter Rock
+
+    - name: Hosen
+      color: rgba(230, 84, 128, .4)
+      tags:
+        dress_bow: Schleife am Kleid
+        dressing_another: Anziehen
+        shorts_under_skirt: Shorts unter dem Rock
+        side_slit: Seitenschlitz
+        shorts: Shorts
+        micro_shorts: Mikro-Shorts
+        short_shorts: Hotpants
+        hot_pants: Hotpants
+        cutoffs: Abgeschnittene Shorts
+        striped_shorts: Gestreifte Shorts
+        suspender_shorts: Latzhosen-Shorts
+        denim_shorts: Jeansshorts
+        puffy_shorts: Puffige Shorts
+        dolphin_shorts: Dolphin Shorts (kurze Sporthose)
+        dolfin_shorts: Dolphin Shorts (kurze Sporthose)
+        tight_pants: Enge Hosen / Sporthose
+        crotchless_pants: Schrittlose Hosen (eng anliegend)
+        track_pants: Sporthose
+        yoga_pants: Yogahose
+        bike_shorts: Radlerhose
+        gym_shorts: Gymnastikhose
+        pants: Lange Hose
+        puffy_pants: Puffige Hose / Weite Hose
+        pumpkin_pants: Kürbishose
+        hakama_pants: Hakama-Hose
+        harem_pants: Haremshose
+        bloomers: Ballonhose
+        buruma: Buruma (japanische Ballonhose)
+        jeans: Jeans
+        cargo_pants: Cargohose
+        camouflage_pants: Camouflagehose
+        capri_pants: Caprihose
+        chaps: Chaps (Lederhose mit offenen Seiten)
+        jumpsuit: Jumpsuit (insbesondere für Frauen)
+        lowleg_pants: Niedrige Hüfthose
+        plaid_pants: Karohose
+        single_pantsleg: Einzelnes Hosenbein
+        striped_pants: Gestreifte Hose
+
+    - name: Interaktion mit Hosen
+      color: rgba(230, 84, 128, .4)
+      tags:
+        asymmetrical_legwear: Asymmetrische Hose
+        leotard_aside: Kleidungsschritt zur Seite schieben
+        open_fly: Geöffneter Hosenstall
+        pants_down: Hose herunterziehen
+        pants_rolled_up: Hose hochkrempeln
+        pants_tucked_in: Hose hineinstecken
+        torn_jeans: Zerrissene Jeans
+        torn_pants: Zerrissene Hose
+        torn_shorts: Zerrissene Shorts
+
+    - name: Socken
+      color: rgba(230, 84, 128, .4)
+      tags:
+        bodystocking: Ganzkörper-Strumpf
+        pantyhose: Strumpfhose
+        leggings: Leggings
+        legwear: Beinbekleidung (allgemein)
+        thighhighs: Overknee-Strümpfe
+        kneehighs: Kniestrümpfe
+        socks: Socken
+        bare_legs: Nackte Beine
+        black_bodystocking: Schwarzer Ganzkörper-Strumpf
+        white_bodystocking: Weißer Ganzkörper-Strumpf
+        stocking_under_clothes: Strumpf unter der Kleidung
+        black_pantyhose: Schwarze Strumpfhose
+        white_pantyhose: Weiße Strumpfhose
+        thighband_pantyhose: Strumpfhose mit Oberschenkelband
+        pantylines: Strumpfhose mit sichtbaren Konturen
+        single_leg_pantyhose: Einbeinig getragene Strumpfhose
+        panties_under_pantyhose: Unterhose unter der Strumpfhose
+        fishnets: Netzstrümpfe
+        stirrup_legwear: Stulpenstrümpfe
+        toeless_legwear: Zehenfreie Strumpfwaren
+        mismatched_legwear: Unpassende Strumpfwaren
+        two-tone_legwear: Zweifarbige Strumpfwaren
+        asymmetrical_legwear: Asymmetrische Strumpfwaren
+        uneven_legwear: Ungleich lange Strümpfe
+        white_thighhighs: Weiße Overknee-Strümpfe
+        black_thighhighs: Schwarze Overknee-Strümpfe
+        pink_thighhighs: Rosa Overknee-Strümpfe
+        suspenders: Strumpfhalter
+        garter_straps: Strumpfhaltergurte
+        torn_legwear: Zerstörte Strumpfwaren
+        torn_thighhighs: Zerstörte Overknee-Strümpfe
+        see-through_legwear_: Durchsichtige Strumpfwaren
+        frilled_legwear: Gerüschte Strumpfwaren
+        lace-trimmed_legwear: Spitzenbesetzte Strumpfwaren
+        seamed_legwear: Strumpfwaren mit Naht
+        back-seamed_legwear: Strumpfwaren mit Rückennaht
+        animal_ear_legwear: Strumpfwaren mit Tierohren
+        striped_legwear: Gestreifte Strumpfwaren
+        vertical-striped_legwear: Längsgestreifte Strumpfwaren
+        polka_dot_legwear: Gepunktete Strumpfwaren
+        print_legwear: Bedruckte Strumpfwaren
+        legwear_under_shorts: Strumpfwaren unter Shorts
+        over-kneehighs: Overknee-Strümpfe
+        bobby_socks: Bobby-Socken (weiße Kurzsocken)
+        tabi: Tabi (traditionelle japanische Socken)
+        loose_socks: Lockere Socken
+        ankle_socks: Knöchelsocken
+        leg_warmers: Beinwärmer
+        single_sock: Einzelne Socke
+        striped_socks: Gestreifte Socken
+
+    - name: Interaktion mit Socken
+      color: rgba(230, 84, 128, .4)
+      tags:
+        leg_cutout: Aussparung in den Socken
+        thighhighs_under_boots: Overknee-Strümpfe unter Stiefeln
+        adjusting_legwear: Strumpfwaren anpassen
+        pantyhose_pull: Heruntergezogene Strumpfhose
+        socks_removed: Socken ausziehen
+        sock_pull: Socke hochziehen
+        thighhighs_pull: Overknee-Strümpfe hochziehen
+
+    - name: Sonstiges
+      color: rgba(230, 84, 128, .4)
+      tags:
+        garters: Strumpfhalter
+        leg_garter: Beinhalter / Strumpfhalter
+        garter_straps: Strumpfhaltergurte
+        thigh_strap: Oberschenkelriemen
+        thigh_ribbon: Oberschenkelband
+        leg_ribbon: Beinband
+        bandaid_on_leg: Pflasterverband am Bein
+        bandaged_leg: Verbundenes Bein
+        ankle_lace-up: Knöchelriemchen
+        thigh_holster: Oberschenkelholster
+        bandaid_on_knee: Pflasterverband am Knie
+        argyle_legwear: Argyle-Strumpfwaren
+        bow_legwear: Schleifen-Strumpfwaren
+        arm_garter: Armhalter
+
+    - name: Material
+      color: rgba(230, 84, 128, .4)
+      tags:
+        armored: gepanzert
+        canvas: Leinwand
+        denim: Denim
+        fluffy: flauschig
+        fur: Pelz
+        latex: Latex
+        leather: Leder
+        see-through: durchsichtig
+        spandex: Spandex
+        tight: eng
+
+    - name: Dekoration
+      color: rgba(230, 84, 128, .4)
+      tags:
+        frilled: gerüscht
+        center_frills: mittige Rüschen
+        crease: geknittert
+        layered: geschichtet
+        lace: Spitze
+        fur_trim: Pelzbesatz
+        fur-trimmed: mit Pelzbesatz
+        fine_fabric_emphasis: feine Stoffbetonung
+        latex_thighhighs: Latex-Oberschenkelstrümpfe
+        see-through_thighhighs: durchsichtige Oberschenkelstrümpfe
+        ass_cutout: Po-Ausschnitt
+        asymmetrical_clothes: asymmetrische Kleidung
+        back_bow: Rückenbogen
+        costume_switch: Kostümwechsel
+        cross-laced_clothes: überkreuzte Schnürkleidung
+        double_vertical_stripe: doppelte vertikale Streifen
+        halter_top: Neckholder-Oberteil
+        multicolored_legwear: mehrfarbige Beinbekleidung
+        navy_blue_legwear: marineblaue Beinbekleidung
+        nontraditional_miko: untraditionelle Miko-Kleidung
+        side_cutout: seitlicher Ausschnitt
+        side_slit: seitlicher Schlitz
+        sideless_outfit: seitlich offenes Outfit
+        single_kneehigh: einzelner Kniestrumpf
+        single_vertical_stripe: einzelner vertikaler Streifen
+        turtleneck: Rollkragen
+        two-sided_fabric: zweilagiger Stoff
+        o-ring: O-Ring-Kleidungsstück
+        o-ring_top: Oberteil mit O-Ring
+        fringe_trim: Fransenbesatz
+        loose_belt: lockerer Gürtel
+        pom_pom_(clothes): Bommel (Kleidung)
+        drawstring: Kordelzug
+        full-length_zipper: durchgehender Reißverschluss
+        gathers: Falten
+        gusset: Zwickel
+        breast_pocket: Brusttasche
+
+    - name: Muster
+      color: rgba(230, 84, 128, .4)
+      tags:
+        argyle: Argyle-Muster
+        checkered: kariert
+        colored_stripes: bunte Streifen
+        diagonal_stripes: diagonale Streifen
+        horizontal_stripes: horizontale Streifen
+        multicolored_stripes: mehrfarbige Streifen
+        polka_dot_: Tupfenmuster
+        ribbed: gerippt
+        striped: gestreift
+        unmoving_pattern: unbewegliches Muster
+        vertical_stripes: vertikale Streifen
+        plaid: Karomuster
+        animal_print: Tiermuster
+        cat_print: Katzenmuster
+        bear_print: Bärenmuster
+        bird_print: Vogelmuster
+        bunny_print: Hasenmuster
+        cow_print: Kuhmuster
+        dragon_print: Drachenmuster
+        fish_print: Fischmuster
+        frog_print: Froschmuster
+        shark_print: Haifischmuster
+        snake_print: Schlangenmuster
+        zebra_print: Zebramuster
+        tiger_print: Tigerstreifen
+        leopard_print: Leopardenmuster
+        jaguar_print: Jaguar-Muster
+        bat_print: Fledermausmuster
+        aardwolf_print: Aardwolf-Muster
+        african_wild_dog_print: Afrikanischer Wildhund-Muster
+        cheetah_print: Gepardenmuster
+        dog_print: Hundemuster
+        fox_print: Fuchsmuster
+        giraffe_print: Giraffenmuster
+        panda_print: Pandamuster
+        sand_cat_print: Sandkatzenmuster
+        whale_print: Wal-Muster
+        white_tiger_print: Weiße Tigerstreifen
+        goldfish_print: Goldfischmuster
+        wing_print: Flügelmuster
+        spider_web_print: Spinnennetz-Muster
+        butterfly_print: Schmetterlingsmuster
+        floral_print: Blumenmuster
+        leaf_print: Blattmuster
+        clover_print: Kleeblattmuster
+        maple_leaf_print: Ahornblattmuster
+        rose_print: Rosenmuster
+        strawberry_print: Erdbeermuster
+        cherry_print: Kirschmuster
+        bamboo_print: Bambusmuster
+        carrot_print: Karottenmuster
+        hibiscus_print: Hibiskusmuster
+        jack-o'-lantern_print: Kürbismuster
+        petal_print: Blütenblattmuster
+        sunflower_print: Sonnenblumenmuster
+        watermelon_print: Wassermelonenmuster
+        sky_print: Himmel-Muster
+        cloud_print: Wolkenmuster
+        lightning_bolt_print: Blitzmuster
+        rainbow_print: Regenbogenmuster
+        snowflake_print: Schneeflockenmuster
+        starry_sky_print: Sternenhimmel-Muster
+        crescent_print: Mondsichel-Muster
+        star_print: Sternmuster
+        star_(symbol): Sternsymbol
+        moon_print: Mondmuster
+        sun_print: Sonnenmuster
+        character_print: Zeichenmuster
+        clothes_writing_: Schrift auf Kleidung
+        anchor_print: Anker-Muster
+        cherry_blossom_print: Kirschblütenmuster
+        musical_note_print: Musiknotenmuster
+        triangle_print: Dreiecksmuster
+        arrow_print: Pfeilmuster
+        wave_print: Wellenmuster
+        peace_symbol: ☮ (Friedenssymbol auf Kleidung)
+        heart_print: Herzmuster
+        flame_print: Flammenmuster
+        hitodama_print: Hitodama-Muster
+        paw_print: Pfotenabdruck
+        skeleton_print: Skelettmuster
+        skull_print: Totenkopfmuster
+        sparkle_print: glitzerndes Muster
+        yin_yang_print: Yin-Yang-Muster
+        cross_print: Kreuzmuster
+        camoflage: Tarnmuster
+        flag_print: Flaggenmuster
+        bone_print: Knochenmuster
+        ghost_print: Geistermuster
+        mushroom_print: Pilzmuster
+        onigiri_print: Onigiri-Muster
+        cat_ear: Katzenohren
+        cat_ear_cutout: ausgeschnittene Katzenohren
+
+    - name: Schuhe
+      color: rgba(230, 84, 128, .4)
+      tags:
+        barefoot: barfuß
+        no_shoes: keine Schuhe
+        shoes_removed: Schuhe ausgezogen
+        single_shoe: einzelner Schuh
+        the_only_shoe: der einzige Schuh
+        black_loafers: schwarze Slipper
+        shoes: Schuhe
+        uwabaki: Hausschuhe
+        platform_footwear: Plateauschuhe
+        high_heels: hohe Absätze
+        stiletto_heels: Stiletto-Absätze
+        strappy_heels: Riemchen-Absätze
+        platform_heels_: Plateau-Absätze
+        rudder_footwear: Ruderfußbekleidung
+        sandals: Sandalen
+        barefoot_sandals: barfuß Sandalen
+        clog_sandals: Holzschuhe Sandalen
+        geta: Geta (japanische Holzschuhe)
+        slippers: Hausschuhe
+        skates: Schlittschuhe
+        roller_skates: Rollschuhe
+        animal_feet: Tierfüße
+        animal_slippers: Tierhausschuhe
+        anklet: Fußkettchen
+        shackles: Fesseln
+        brown_footwear: braune Schuhe
+        cross-laced_footwear: überkreuzte Schnürschuhe
+        loafers: Slipper
+        mary_janes: Mary Janes
+        mismatched_footwear: ungleiche Schuhe
+        pointy_footwear: spitz zulaufende Schuhe
+        pumps: Pumps
+        sandals_removed: Sandalen ausgezogen
+        shoe_soles: Schuhsohlen
+        shoelaces: Schnürsenkel
+        sneakers: Turnschuhe
+        winged_footwear: Schuhe mit Flügeln
+        zouri: Zouri (japanische Sandalen)
+
+    - name: Stiefel
+      color: rgba(230, 84, 128, .4)
+      tags:
+        boots: Stiefel
+        boots_removed: Stiefel ausgezogen
+        thigh_boots: Overknee-Stiefel
+        knee_boots: Kniestiefel
+        cross-laced_footwear: geschnürte Stiefel
+        ankle_boots: Knöchelstiefel
+        high_heel_boots: High Heel-Stiefel
+        toeless_boots: offene Stiefel
+        lace-up_boots: Schnürstiefel
+        fur-trimmed_boots: Pelzbesetzte Stiefel
+        snow_boots: Schneestiefel
+        anklet: Fußkettchen
+        rubber_boots: Gummistiefel
+        santa_boots: Weihnachtsmann-Stiefel
+        leather_boots: Lederstiefel
+        thighhighs_under_boots: Overknee-Stiefel mit Strumpfhose
+        combat_boots: Kampfstiefel
+        doc_martens: Doc Martens
+        rain_boots: Regenstiefel
+        belt_boots: Gürtelstiefel
+        fur_boots: Pelzstiefel
+        single_boot: ein einzelner Stiefel
+
+    - name: Schuhsohle
+      color: rgba(230, 84, 128, .4)
+      tags:
+        shoe_soles: Schuhsohlen
+        arched_soles: gewölbte Sohlen
+        paw_print_soles: Pfotenabdrucksohlen
+        horseshoe: Hufeisen
+
+    - name: Kragen
+      color: rgba(230, 84, 128, .4)
+      tags:
+        sailor_collar: Matrosenkragen
+        fur_collar: Pelzkragen
+        frilled_collar: gerüschter Kragen
+        popped_collar: hochgestellter Kragen
+        choker: Choker-Halsband
+        black_choker: schwarzer Choker
+        belt_collar: Gürtelkragen
+        frilled_choker: gerüschter Choker
+        neckerchief: Halstuch
+        red_neckerchief: rotes Halstuch
+        necktie: Krawatte
+        short_necktie: kurze Krawatte
+        white_necktie: weiße Krawatte
+        bowtie: Fliege
+        headphones_around_neck: Kopfhörer um den Hals
+        goggles_around_neck: Schutzbrille um den Hals
+        neck_bell: Halsglocke
+        neck_ruff: Kragenrüsche
+        v-neck: V-Ausschnitt
+        towel_around_neck: Handtuch um den Hals
+        loose_necktie: lockere Krawatte
+        neck_tattoo: Hals-Tattoo
+        ascot: Ascot-Krawatte
+        ribbon_choker: Schleifen-Choker
+        maebari/pasties: Maebari/Pasties (Brustwarzenabdeckungen)
+        latex: Latex
+        torn_clothes: zerrissene Kleidung
+        iron_cross: Eisernes Kreuz
+        chinese_knot: Chinesischer Knoten
+        cross_necklace: Kreuz-Halskette
+        bead_necklace: Perlenkette
+        pearl_necklace: Perlenkette
+        heart_necklace: Herz-Halskette
+        carrot_necklace: Karotten-Halskette
+        chain_necklace: Kettenhalskette
+        magatama_necklace: Magatama-Halskette
+        tooth_necklace: Zahnhalskette
+        key_necklace: Schlüssel-Halskette
+        anchor_necklace: Anker-Halskette
+        skull_necklace: Totenkopf-Halskette
+        shell_necklace: Muschel-Halskette
+        gold_necklace: Goldkette
+        crescent_necklace: Mondsichel-Halskette
+        ring_necklace: Ring-Halskette
+        feather_necklace: Feder-Halskette
+        bone_necklace: Knochen-Halskette
+        ankh_necklace: Ankh-Halskette
+        multiple_necklaces: mehrere Halsketten
+        bullet_necklace: Patronen-Halskette
+        holding_necklace: Halskette halten
+        necklace_removed: Halskette entfernt
+        brown_neckwear: brauner Halsbehang
+        checkered_neckwear: karierte Halsbekleidung
+        diagonal-striped_neckwear: diagonal gestreifte Halsbekleidung
+        halterneck: Halterneck
+        mole_on_neck: Maulwurf am Hals
+        neck: Hals
+        neck_ribbon: Halsband mit Schleife
+        neck_ring: Halsring
+        necklace: Halskette
+        plaid_neckwear: karierte Halsbekleidung
+        plunging_neckline: tief ausgeschnittener Ausschnitt
+        print_neckwear: bedruckte Halsbekleidung
+        sleeveless_turtleneck: ärmelloses Rollkragenoberteil
+        star_necklace: Stern-Halskette
+        striped_neckwear: gestreifte Halsbekleidung
+        turtleneck_sweater: Rollkragenpullover
+        undone_necktie: gelöste Krawatte
+        whistle_around_neck: Pfeife um den Hals
+
+    - name: Schal
+      color: rgba(230, 84, 128, .4)
+      tags:
+        plaid_scarf: karierte Schal
+        striped_scarf: gestreifter Schal
+        print_scarf: bedruckter Schal
+        vertical-striped_scarf: vertikal gestreifter Schal
+        polka_dot_scarf: gepunkteter Schal
+        argyle_scarf: Argyle-Schal
+        beige_scarf: beiger Schal
+        scarf_bow: Schal-Schleife
+        fur_scarf: Pelzschal
+        naked_scarf: nackter Schal
+        multicolored_scarf: mehrfarbiger Schal
+        floating_scarf: schwebender Schal
+        long_scarf: langer Schal
+        arm_scarf: Armschal
+        scarf_on_head: Schal auf dem Kopf
+        scarf_over_mouth: Schal über dem Mund
+        scarf_removed: entfernter Schal
+        adjusting_scarf: Schal anpassen
+        holding_scarf: Schal halten
+        scarf_pull: Schal ziehen
+        brown_scarf: brauner Schal
+        scarf: Schal
+
+    - name: Brille
+      color: rgba(230, 84, 128, .4)
+      tags:
+        glasses: Brille
+        eyewear: Brillen
+        monocle: Monokel
+        under-rim_eyewear: Unterrand-Brille
+        rimless_eyewear: randlose Brille
+        semi-rimless_eyewear: halbrandlose Brille
+        red-framed_eyewear: Brille mit rotem Rahmen
+        round_eyewear: runde Brille
+        black-framed_eyewear: Brille mit schwarzem Rahmen
+        tinted_eyewear: getönte Brille
+        medical_eyepatch: medizinische Augenklappe
+        bandage_over_one_eye: Verband über einem Auge
+        crooked_eyewear: schief sitzende Brille
+        eyewear_removed: Brille abgenommen
+        sunglasses: Sonnenbrille
+        goggles: Schutzbrille
+        Blindfold: Augenbinde
+        eyepatch: Augenklappe
+        visor: Visier
+        bespectacled: mit Brille
+        blue-framed_eyewear: Brille mit blauem Rahmen
+        brown-framed_eyewear: Brille mit braunem Rahmen
+        coke-bottle_glasses: dicke Brillengläser
+        no_eyewear: keine Brille
+        opaque_glasses: undurchsichtige Brille
+        over-rim_eyewear: über dem Rand der Brille
+
+    - name: Maske
+      color: rgba(230, 84, 128, .4)
+      tags:
+        mask: Maske
+        half_mask: Halbmaske
+        masked: maskiert
+        mask_lift: Maske anheben
+        mask_on_head: Maske auf dem Kopf
+        mask_removed: Maske abgenommen
+        mouth_mask: Mundschutz
+        surgical_mask: chirurgische Maske
+        plague_doctor_mask: Pestarztmaske
+        gas_mask: Gasmaske
+        visor: Visier
+        helmet: Helm
+        fox_mask: Fuchsmaske
+        diving_mask: Tauchmaske
+        diving_mask_on_head: Tauchmaske auf dem Kopf
+        oni_mask: Oni-Maske
+        tengu_mask: Tengu-Maske
+        ninja_mask: Ninja-Maske
+        skull_mask: Totenkopfmaske
+        hockey_mask: Eishockeymaske
+        bird_mask: Vogelmaske
+        stone_mask: Steinmaske
+        horse_mask: Pferdemaske
+        masquerade_mask: Maskenballmaske
+        domino_mask: Domino-Maske
+
+    - name: Arm
+      color: rgba(230, 84, 128, .4)
+      tags:
+        long_sleeves: lange Ärmel
+        short_sleeves: kurze Ärmel
+        wide_sleeves: weite Ärmel
+        furisode: Furisode (japanisches Kimono)
+        detached_sleeves: abnehmbare Ärmel
+        single_sleeve: einzelner Ärmel
+        sleeveless: ärmellos
+        asymmetrical_sleeves: asymmetrische Ärmel
+        puffy_sleeves: puffige Ärmel
+        puffy_long_sleeves: puffige lange Ärmel
+        puffy_short_sleeves: puffige kurze Ärmel
+        frilled_sleeves: gerüschte Ärmel
+        juliet_sleeves: Juliet-Ärmel
+        bandaged_arm: bandagierter Arm
+        raglan_sleeves: Raglanärmel
+        vambraces: Unterarmschutz
+        layered_sleeves: geschichtete Ärmel
+        fur-trimmed_sleeves: Ärmel mit Pelzbesatz
+        see-through_sleeves: durchsichtige Ärmel
+        torn_sleeves: zerrissene Ärmel
+        sleeves_past_fingers: Ärmel über den Fingern
+        sleeves_past_wrists: Ärmel über den Handgelenken
+        sleeves_past_elbows: Ärmel über den Ellenbogen
+        sleeves_pushed_up: hochgeschobene Ärmel
+        arm_out_of_sleeve: Arm aus dem Ärmel
+        uneven_sleeves: ungleiche Ärmel
+        mismatched_sleeves: ungleiche Ärmel
+        sleeve_rolled_up: hochgekrempelter Ärmel
+        sleeves_rolled_up: hochgekrempelte Ärmel
+        feather-trimmed_sleeves: Ärmel mit Federbesatz
+        hands_in_opposite_sleeves: Hände in gegenüberliegenden Ärmeln
+        lace-trimmed_sleeves: Ärmel mit Spitzenbesatz
+        pinching_sleeves: Ärmel kneifen
+        puffy_detached_sleeves: puffige abnehmbare Ärmel
+        ribbed_sleeves: gerippte Ärmel
+        single_detached_sleeve: einzelner nicht abnehmbarer Ärmel
+        sleeves_folded_up: hochgefaltete Ärmel
+        striped_sleeves: gestreifte Ärmel
+        wrist_cuffs: Handgelenksmanschetten
+        armband: Armbinde
+        armlet: Armreif
+
+    - name: Hand
+      color: rgba(230, 84, 128, .4)
+      tags:
+        bandage: Verband
+        leash: Leine
+        arm_tattoo: Arm-Tattoo
+        number_tattoo: Nummern-Tattoo
+        bead_bracelet: Perlenarmband
+        bracelet: Armband
+        flower_bracelet: Blumenarmband
+        spiked_bracelet: Stachelarmband
+        wrist_cuffs: Handgelenksschmuck
+        wristband: Handgelenkband
+        bracer: Armschutz
+        cuffs: Manschetten
+        bound_wrists: gefesselte Handgelenke
+        wrist_scrunchie: Handgelenksscrunchie
+        handcuffs: Handschellen
+        shackles: Fesseln
+        chains: Ketten
+        chain_leash: Kettenleine
+
+    - name: Handschuhe
+      color: rgba(230, 84, 128, .4)
+      tags:
+        gloves: Handschuhe
+        gloves_removed: Handschuhe abgenommen
+        no_gloves: keine Handschuhe
+        single_glove: einzelner Handschuh
+        single_elbow_glove: einzelner Handschuh über dem Ellenbogen
+        long_gloves: lange Handschuhe
+        elbow_gloves: Ellenbogenlange Handschuhe
+        bridal_gauntlets: Brauthandschuhe
+        half_gloves: halbe Handschuhe
+        fingerless_gloves: fingerlose Handschuhe
+        partially_fingerless_gloves: teilweise fingerlose Handschuhe
+        paw_gloves: Pfotenhandschuhe
+        mittens: Fäustlinge
+        baseball_mitt: Baseball-Handschuh
+        fur-trimmed_gloves: Handschuhe mit Pelzbesatz
+        latex_gloves: Latexhandschuhe
+        lace-trimmed_gloves: Handschuhe mit Spitzenbesatz
+        leather_gloves: Lederhandschuhe
+        frilled_gloves: gerüschte Handschuhe
+        mismatched_gloves: ungleiche Handschuhe
+        multicolored_gloves: mehrfarbige Handschuhe
+        asymmetrical_gloves: asymmetrische Handschuhe
+        brown_gloves: braune Handschuhe
+        oven_mitts: Ofenhandschuhe
+        print_gloves: bedruckte Handschuhe
+        striped_gloves: gestreifte Handschuhe
+        torn_gloves: zerrissene Handschuhe
+
+    - name: Ohrschmuck
+      color: rgba(230, 84, 128, .4)
+      tags:
+        cross_earrings: Kreuzohrringe
+        crystal_earrings: Kristallohrringe
+        earrings: Ohrringe
+        flower_earrings: Blumenohrringe
+        heart_earrings: Herzohrringe
+        hoop_earrings: Creolen
+        multiple_earrings: mehrere Ohrringe
+        pill_earrings: Pillenohrringe
+        single_earring: einzelnes Ohrring
+        skull_earrings: Totenkopfohrringe
+        star_earrings: Sternohrringe
+
+    - name: Kopfschmuck
+      color: rgba(230, 84, 128, .4)
+      tags:
+        halo: Heiligenschein
+        mechanical_halo: mechanischer Heiligenschein
+        headwear: Kopfschmuck
+        headpiece: Kopfschmuck
+        headwear_removed: Kopfschmuck abgenommen
+        head_wreath: Kopfkranz
+        crown: Krone
+        mini_crown: Mini-Krone
+        tiara: Tiara
+        diadem: Diadem
+        tilted_headwear: geneigter Kopfschmuck
+        head_fins: Kopfflossen
+        maid_headdress: Dienstmädchen-Kopfschmuck
+        bridal_veil: Brautschleier
+        headband: Stirnband
+        helmet: Helm
+        alternate_headwear: alternativer Kopfschmuck
+        fur-trimmed_headwear: Kopfschmuck mit Pelzbesatz
+        goggles_on_headwear: Schutzbrille auf dem Kopfschmuck
+        earphones: Kopfhörer
+        earmuffs: Ohrenschützer
+        ears_through_headwear: Ohren durch den Kopfschmuck
+        xx_on_head: xx auf dem Kopf
+        leaf_on_head: Blatt auf dem Kopf
+        topknot: Dutt
+        suigintou: Suigintou (Charaktername)
+        triangular_headpiece: dreieckiger Kopfschmuck
+        forehead_protector: Stirnschutz
+        radio_antenna: Radioantenne
+        animal_hood: Tierkapuze
+        arrow_(symbol): Pfeil (Symbol)
+        axe: Axt
+        bald: kahl
+        bandana: Bandana
+        bob_cut: Bob-Frisur
+        bone: Knochen
+        bowl_cut: Schüsselschnitt
+        circlet: Stirnreif
+        double_bun: Doppelknoten
+        double_dildo: Doppeldildo
+        drill: Bohrer
+        faucet: Wasserhahn
+        hachimaki: Hachimaki (Kopfband)
+        hair_behind_ear: Haar hinter dem Ohr
+        hair_bell: Haarklingel
+        hair_bun: Haarknoten
+        hair_down: offenes Haar
+        hair_flaps: Haarflügel
+        hair_flip: Haarwurf
+        hair_flower: Haarblume
+        hair_spread_out: ausgebreitetes Haar
+        hair_up: hochgestecktes Haar
+        helm: Helm getragen
+        helmet_removed: Helm abgenommen
+        horned_helmet: gehörnter Helm
+        japari_bun: Japari-Dutt
+        kerchief: Kopftuch
+        mami_mogu_mogu: Mami Mogu Mogu (Charaktername)
+        mob_cap: Haube
+        one_side_up: einseitig hochgestecktes Haar
+        owl: Eule
+        pier: Pier
+        pillow: Kissen
+        raised_fist: erhobene Faust
+        skull_and_crossbones: Totenkopf und gekreuzte Knochen
+        stone: Stein
+        turban: Turban
+        twin_drills: Doppelzöpfe
+        updo: hochgesteckte Frisur
+        wet_hair: nasses Haar
+        headdress: Kopfbedeckung
+        adjusting_headwear: Kopfschmuck anpassen
+        bear_hair_ornament: Bärenhaar-Ornament
+        brown_headwear: brauner Kopfschmuck
+        horned_headwear: gehörnter Kopfschmuck
+        horns_through_headwear: Hörner durch den Kopfschmuck
+        no_headwear: kein Kopfschmuck
+        object_on_head: Objekt auf dem Kopf
+        print_headwear: bedruckter Kopfschmuck
+        bone_hair_ornament: Knochen-Haar-Ornament
+        bunny_hair_ornament: Hasen-Haar-Ornament
+        horn_ornament: Hörner-Ornament
+        animal_on_head: Tier auf dem Kopf
+        behind-the-head_headphones: Kopfhörer hinter dem Kopf
+        bird_on_head: Vogel auf dem Kopf
+        cat_ear_headphones: Katzenohr-Kopfhörer
+        cat_on_head: Katze auf dem Kopf
+        eyewear_on_head: Brille auf dem Kopf
+        forehead: Stirn
+        forehead_jewel: Stirnschmuck
+        forehead_kiss: Stirnkuss
+        forehead_mark: Stirnmarkierung
+        forehead-to-forehead: Stirn-an-Stirn
+        goggles_on_head: Schutzbrille auf dem Kopf
+        head: Kopf
+        head_bump: Kopfstoß
+        head_down: Kopf nach unten
+        head_mounted_display: Kopfmonitordisplay
+        head_out_of_frame: Kopf außerhalb des Bildrahmens
+        head_rest: Kopfstütze
+        head_tilt: Kopfneigung
+        head_wings: Kopfflügel
+        headgear: Kopfschmuck (mit bestimmten Science-Fiction-Elementen)
+        headphones: Kopfhörer
+        heads-up_display: Heads-Up-Display
+        headset: Kopfhörer (Kopfbügel)
+        inter_headset: EVA-Nervenverbindung
+        on_head: auf dem Kopf
+        person_on_head: Person auf dem Kopf
+        single_head_wing: einzelner Kopfflügel
+
+    - name: Hut
+      color: rgba(230, 84, 128, .4)
+      tags:
+        hat: Hut
+        no_hat: kein Hut
+        large_hat: großer Hut
+        mini_hat: Mini-Hut
+        witch_hat: Hexenhut
+        mini_witch_hat: Mini-Hexenhut
+        wizard_hat: Zaubererhut
+        party_hat: Partyhut
+        jester_cap: Narrenkappe
+        tokin_hat: Tokin-Hut
+        top_hat: Zylinderhut
+        mini_top_hat: Mini-Zylinderhut
+        bowler_hat: Melone
+        pillbox_hat: Pillbox-Hut
+        cloche_hat: Glockenhut
+        side_cap: Seitenkappe
+        military_hat: Militärhut
+        beret: Baskenmütze
+        garrison_cap: Garnisonshut
+        police_hat: Polizeimütze
+        nurse_cap: Krankenschwesterhaube
+        chef_hat: Kochmütze
+        school_hat: Schulkappe
+        pirate_hat: Piratenhut
+        cabbie_hat: Schiebermütze
+        bucket_hat: Fischerhut
+        hardhat: Sicherheitshelm
+        straw_hat: Strohhut
+        sun_hat: Sonnenhut
+        rice_hat: Reishut
+        animal_hat: Tierhut
+        fur_hat: Pelzhut
+        hat_with_ears: Hut mit Ohren
+        bobblehat: Bommelmütze
+        pillow_hat: Kopfkissenhut
+        pumpkin_hat: Kürbishut
+        baseball_cap: Baseballkappe
+        flat_cap: Schiebermütze
+        torn_hat: zerrissener Hut
+        mob_cap: Haube
+        newsboy_cap: Schiffermütze
+        bowknot_over_white_beret: Schleife über weißer Baskenmütze
+        backwards_hat: umgedrehter Hut
+        bowl_hat: Schalenhut
+        cat_hat: Katzenhut
+        chat_log: Chat-Protokoll-Stil
+        cowboy_hat: Cowboyhut
+        dixie_cup_hat: Dixie-Becher-Hut
+        hat_bow: Hut mit Schleife
+        hat_feather: Hut mit Feder
+        hat_flower: Hut mit Blume
+        hat_ornament: Hut mit Verzierung
+        hat_over_one_eye: Hut über einem Auge
+        hat_removed: Hut abgenommen
+        hat_ribbon: Hut mit Schleifenband
+        hat_tip: Hutkrempe hochgeklappt
+        hatching_(texture): Schraffur (Textur)
+        hatsune_miku_(cosplay): Hatsune Miku (Cosplay)
+        is_that_so: So-nanoka (Ausruf)
+        porkpie_hat: Porkpie-Hut
+        sailor_hat: Matrosenhut
+        santa_hat: Weihnachtsmannhut
+        sideways_hat: Hut zur Seite geneigt
+        what: Autor ist verrückt geworden
+        what_if: alternative Zeitlinie
+
+    - name: Haarschmuck
+      color: rgba(230, 84, 128, .4)
+      tags:
+        hair_ribbon: Haarband
+        hairband: Haarband
+        hair_tie: Haargummi
+        lolita_hairband: Lolita-Haarband
+        frilled_hairband: gerüschtes Haarband
+        lace-trimmed_hairband: Haarband mit Spitzenbesatz
+        hair_bobbles: Haargummis
+        hair_ornament: Haarschmuck
+        hair_flower: Haarblume
+        x_hair_ornament: X-Haarschmuck
+        hair_bow: Haarschleife
+        frog_hair_ornament: Frosch-Haarschmuck
+        heart_hair_ornament: Herz-Haarschmuck
+        butterfly_hair_ornament: Schmetterlings-Haarschmuck
+        star_hair_ornament: Stern-Haarschmuck
+        food-themed_hair_ornament: lebensmittelthemenbezogener Haarschmuck
+        anchor_hair_ornament: Anker-Haarschmuck
+        bat_hair_ornament: Fledermaus-Haarschmuck
+        carrot_hair_ornament: Karotten-Haarschmuck
+        cat_hair_ornament: Katzen-Haarschmuck
+        clover_hair_ornament: Kleeblatt-Haarschmuck
+        crescent_hair_ornament: Halbmond-Haarschmuck
+        cross_hair_ornament: Kreuz-Haarschmuck
+        d-pad_hair_ornament: Steuerkreuz-Haarschmuck
+        fish_hair_ornament: Fisch-Haarschmuck
+        hairpods: Haarpods
+        leaf_hair_ornament: Blatt-Haarschmuck
+        musical_note_hair_ornament: Noten-Haarschmuck
+        pumpkin_hair_ornament: Kürbis-Haarschmuck
+        skull_hair_ornament: Totenkopf-Haarschmuck
+        snake_hair_ornament: Schlangen-Haarschmuck
+        snowflake_hair_ornament: Schneeflocken-Haarschmuck
+        strawberry_hair_ornament: Erdbeer-Haarschmuck
+        sunflower_hair_ornament: Sonnenblumen-Haarschmuck
+        hairpin: Haarnadel
+        hairclip: Haarklammer
+        hair_tubes: Haarröhrchen
+        hair_stick: Haarstab
+        hair_bun: Haarknoten
+        single_hair_bun: einzelner Haarknoten
+        hair_bell: Haarglocke
+        hair_rings: Haarringe
+
+    - name: Kleine Dekoration
+      color: rgba(230, 84, 128, .4)
+      tags:
+        ring: Ring
+        wedding_band: Ehering
+        earrings: Ohrringe
+        single_earring: Einzelner Ohrring
+        stud_earrings: Ohrstecker
+        necklace: Halskette
+        jewelry: Schmuck
+        crystal: Kristall
+        brooch: Brosche
+        gem: Edelstein
+        chest_jewel: Brustschmuck
+        forehead_jewel: Stirnschmuck
+        tassel: Quaste
+        belly_chain_: Bauchkette
+        lace: Spitze
+        ribbon: Band
+        stitches: Stiche
+        scarf: Schal
+        bandaid: Pflaster
+        collar: Kragen
+        belt: Gürtel
+        steam: Dampf
+        bell: Glocke
+        amulet: Amulett
+        emblem: Emblem
+        flag_print: Flaggenmuster
+        anchor_symbol: Ankersymbol
+        cross: Kreuz
+        diffraction_spikes: Beugungsspitzen
+        iron_cross: Eisernes Kreuz
+        latin_cross: Lateinisches Kreuz
+        lace-trimmed_hairband: Spitzenbesetztes Haarband
+        ankle_lace-up: Knöchelriemen
+        st._gloriana's_(emblem): St. Gloriana's (Emblem)
+        heart_lock_(kantai_collection): Herzschloss (Kantai Collection)
+        garters: Strumpfhalter
+        thigh_strap: Oberschenkelriemen
+        thigh_ribbon: Oberschenkelband
+        leg_garter: Beinschmuck
+        garter_straps: Strumpfhaltergurte
+        leg_ribbon: Beinband
+        bandaid_on_leg: Pflaster am Bein
+        bandaged_leg: Verbundenes Bein
+        arm_garter: Armband
+        joints: Gelenke
+        kneepits: Kniekehlen
+        knee_pads: Knieschoner
+        thigh_holster: Oberschenkelholster
+        bandaid_on_knee: Pflaster am Knie
+
+    - name: Schmuck
+      color: rgba(230, 84, 128, .4)
+      tags:
+        bracelet: Armband
+        choker: Halsband
+        metal collar: Metallhalsband
+        ring: Ring
+        wristband: Armband
+        pendant: Anhänger
+        brooch: Brosche
+        hoop earrings: Creolen
+        bangle: Armreif
+        stud earrings: Ohrstecker
+        sunburst: Sonnenstrahlen-Schmuck
+        pearl bracelet: Perlenarmband
+        drop earrings: Hängeohrringe
+        puppet rings: Puppenringe
+        corsage: Korsage
+        sapphire brooch: Saphirbrosche
+        jewelry: Schmuck
+        necklace: Halskette
+
+- name: Gesichtsausdrücke und Bewegungen
+  groups:
+    - name: Lächeln
+      color: rgba(241, 229, 140, .4)
+      tags:
+        smile: Lächeln
+        laughing: Lachen
+        kind_smile: Fröhlich lächeln
+        :d: Fröhliches Lachen_:D😀
+        ;d: Zwinkerndes Lachen_:D
+        grin: Grinsen mit geöffnetem Mund
+        teasing_smile: Zum Lachen bringen, breites Grinsen
+        seductive_smile: Verführerisches Lächeln
+        smirk: Dummes Grinsen, selbstgefälliges Lachen
+        giggling: Kichern
+        smug: Überheblich
+        naughty_face: Schelmisches Gesicht
+        evil smile: Böses Lächeln
+        crazy_smile: Verrücktes Lachen
+        happy: Glücklich|Zufrieden
+        happy_birthday: Alles Gute zum Geburtstag
+        happy_halloween: Fröhliches Halloween
+        happy_new_year: Frohes neues Jahr
+        happy_tears: Freudentränen
+        happy_valentine: Fröhlicher Valentinstag
+
+    - name: Weinen
+      color: rgba(241, 229, 140, .4)
+      tags:
+        sad: Traurig
+        tear: Schluchzen
+        crying: Weinen
+        crying_with_eyes_open: Weinen mit offenen Augen
+        streaming_tears: Tränenfluss
+        teardrop: Träne
+        tearing_clothes: Kleidung zerreißen
+        tearing_up: Tränen in den Augen haben
+        tears: Tränen
+        wiping_tears: Tränen abwischen
+        badmood: Schlechte Laune
+
+    - name: Unglücklich
+      color: rgba(241, 229, 140, .4)
+      tags:
+        frustrated: Frustration
+        frustrated_brow: Frustrierte Stirn
+        annoyed: Verärgert
+        anguish: Qual
+        sigh: Seufzen
+        gloom: Trübsinnig
+        disappointed: Enttäuscht
+        despair: Verzweiflung
+
+    - name: Verachtung
+      color: rgba(241, 229, 140, .4)
+      tags:
+        disgust: Ekel (mit Blick auf Müll)
+        disdain: Verachtung
+        contempt: Verachtung
+        shaded_face: Gesicht mit Schatten, begleitet von Verachtung
+        jitome: Verächtlicher Blick
+        frown: Stirnrunzeln
+        wince: Stirnrunzeln (vor dem Geschlechtsverkehr)
+        furrowed_brow: Stirnrunzeln
+        fear_kubrick: Ängstlicher seitlicher Blick
+        laughing: Lachen
+
+    - name: Wut
+      color: rgba(241, 229, 140, .4)
+      tags:
+        angry: Wütend
+        glaring: Wütend anstarren
+        serious: Ernst (ähnlich wie wütend)
+        kubrick_stare: Seitlich anstarren
+        evil: Böse
+        sulking: Schmollen
+        screaming: Schreien
+        shouting: Schreien
+
+    - name: Andere Ausdrücke
+      color: rgba(241, 229, 140, .4)
+      tags:
+        expressionless: Ausdruckslos
+        sleepy: Müde
+        drunk: Betrunken
+        bored: Gelangweilt
+        confused: Verwirrt machen
+        thinking: Nachdenken
+        lonely: Einsam
+        light_blush: Leicht erröten
+        blush: Erröten
+        shy: Schüchtern
+        embarrass: Verlegen
+        facepalm: Hand vor das Gesicht schlagen
+        flustered: Verwirrt
+        sweat: Schwitzen
+        scared: Ängstlich
+        ahegao: Ahegao-Gesichtsausdruck
+        endured_face: Ausdruck des Aushaltens
+        restrained: Zurückhaltend
+        dark_persona: Dunkle Persönlichkeit
+        crazy: Verrückt
+        exhausted: Erschöpft
+        Tsundere: Tsundere
+        yandere: Yandere
+        multiple_persona: Mehrere Persönlichkeiten
+        Jekyll_and_Hyde: Jekyll und Hyde
+        twitching: Zucken
+        spasm: Krampf
+        trembling: Zittern
+        rape_face: Vergewaltigungsgesicht
+        rolling_eyes: Augen verdrehen
+        envy: Neid
+        female_orgasm: Weiblicher Orgasmus
+        heavy_breathing: Schweres Atmen (wahrscheinlich nutzlos)
+        naughty: Frech
+        expressions: Ausdrücke differenzieren (ungefähr)
+        moaning: Stöhnen
+        scowl: Verächtlicher Blick
+
+    - name: Grundlegende Handlungen
+      color: rgba(241, 229, 140, .4)
+      tags:
+        standing: Stehen
+        on back: Liegen auf dem Rücken
+        on stomach: Bauchlage
+        kneeling: Knien
+        on_side: Seitlage
+        on_stomach: Auf dem Bauch liegen
+        top-down_bottom-up: Mit dem Gesäß nach oben und nach unten
+        the_pose: Auf dem Boden liegen und die Füße hochheben
+        bent_over: Gesäß nach oben gebeugt
+        upside-down: Kopfüber
+        reversal: Umkehrung
+        fighting_stance: Kampfhaltung
+        leaning_to_the_side: An die Seite lehnen
+        leaning: Anlehnen|Körper neigen
+        leaning_back: Körper nach hinten lehnen
+        leaning_on_object: An einem Objekt lehnen
+        arched_back: Rücken krümmen
+        leaning_forward: Körper nach vorne neigen
+        afloat: Auf dem Wasser treiben
+        lying: Liegen
+        fetal_position: Fötusstellung (liegend)
+        lying_on_person: Auf einer Person liegen
+        lying_on_the_lake: Auf dem See liegen
+        lying_on_water: Im Wasser liegen
+        on_back: Auf dem Rücken liegen
+        prone_bone: Bauchlage von hinten
+        reclining: Schräglage, liegend
+        sleeping_upright: (nicht liegend) schlafen|aufrecht schlafen
+        presenting: Präsentieren (gefolgt von Körperteil)
+        spinning: Drehen
+        posing: Posen
+        stylish_pose: Stilvolle Pose
+        public_indecency: Öffentliche Unzucht
+        parody: Parodie
+        in_container: In einem Behälter
+        against_glass: Gegen Glas drücken (ineffektiv)
+        aiming: Zielen
+        aiming_at_viewer: Auf den Betrachter zielen
+        applying_makeup: Make-up auftragen
+        bathing: Baden
+        biting: Beißen
+        bleeding: Bluten
+        blowing: Blasen
+        bowing: Verbeugen
+        breathing_fire: Feuer speien
+        broom_riding: Auf einem Besen reiten
+        brushing_teeth: Zähne putzen
+        bubble_blowing: Seifenblasen pusten
+        bullying: Mobbing
+        burning: Brennen
+        cast: Werfen
+        chasing: Verfolgen
+        cleaning: Putzen
+        climbing: Klettern
+        comforting: Trösten
+        cooking: Kochen
+        crying: Weinen
+        cuddling: Kuscheln
+        dancing: Tanzen
+        diving: Tauchen
+        dragging: Etwas schleppen
+        drawing: Zeichnen
+        drawing_bow: Bogen spannen
+        dreaming: Träumen
+        drinking: Trinken
+        driving: Fahren
+        dropping: (versehentlich) fallenlassen
+        drying: Trocknen (nach dem Baden)
+        dual_wielding: Dual-Wielding
+        exercise: Sport treiben
+        fighting: Kämpfen
+        firing: Schießen
+        fishing: Angeln
+        flapping: Flattern
+        flashing: Zeigen
+        fleeing: Fliehen
+        flexing: Muskeln zeigen
+        flying: Fliegen
+        flying_kick: Fliegender Tritt
+        hair_brushing: Haare bürsten
+        hair_tucking: Haare zurückschieben
+        hanging: Hängen
+        hitting: Schlagen
+        imagining: Sich etwas vorstellen
+        jumping: Springen
+        kicking: Treten
+        licking: Lecken
+        licking_lips: Lippen lecken
+        lip_biting: Lippen beißen
+        meditation: Meditation
+        painting: Malen
+        Painting_(Action): Malen
+        playing_card: Karten spielen
+        playing_games: Spiele spielen
+        playing_instrument: Instrument spielen
+        pole_dancing: Pole Dance
+        praying: Beten
+        punching: Boxen
+        pushing: Stoßen
+        railing: Sich an etwas festhalten
+        reading: Lesen
+        riding: Reiten
+        running: Laufen
+        sewing: Nähen
+        shopping: Einkaufen
+        showering: Duschen
+        sing: Singen
+        singing: Singen
+        slashing: Hauen
+        sleeping: Schlafen
+        smelling: Riechen
+        smoking: Rauchen
+        sneezing: Niesen
+        snowing: Schneien
+        soaking_feet: Füße einweichen
+        soccer: Fußball spielen
+        spilling: Flüssigkeit aus einem Behälter verschütten
+        spitting: Flüssigkeit aus dem Mund spucken
+        splashing: Spritzen
+        standing_on_liquid: Auf Flüssigkeit stehen
+        standing_on_one_leg: Auf einem Bein stehen
+        standing_split: Stehender Spagat
+        steepled_fingers: Fingerkuppen aneinanderlegen
+        strangling: Erwürgen
+        sweeping: Fegen
+        swimming: Schwimmen
+        swing: Schaukeln
+        tail_wagging: Mit dem Schwanz wedeln
+        taking_picture: Fotos machen|Selfies machen
+        talking: Sprechen
+        talking_on_phone: Telefonieren
+        teasing: Neckerei
+        thinking: Nachdenken
+        tickling: Kitzeln
+        toilet_use: Toilette benutzen
+        tossing_: Werfen
+        tripping: Stolpern
+        trolling: Trollen
+        twitching: Zucken
+        tying: Binden (Aktion)
+        unsheathing: Herausziehen (Schwert)
+        untying: Lösen
+        unzipping: Reißverschluss öffnen
+        wading: Watend
+        waking_up: Aufwachen
+        walking: Gehen
+        walking_on_liquid: Auf Flüssigkeit gehen
+        washing: Waschen
+        whispering: Flüstern
+        wrestling: Ringen
+        writing: Schreiben
+        yawning: Gähnen
+        hiding: Verstecken
+
+    - name: Handbewegungen
+      color: rgba(241, 229, 140, .4)
+      tags:
+        arms_behind_back: Hände hinter dem Rücken
+        arm_above_head: Hand über dem Kopf
+        arm_behind_head: Hand hinter dem Kopf
+        arms_crossed: Arme verschränkt
+        arm_support: Handstütze
+        armpits: Achselhöhlen
+        arms_up: Hände hoch
+        hands_on_hips: Hände in die Hüften gestemmt
+        arm_around_waist: Eine Hand um die Taille
+        caramelldansen: Bekannte Hand- und Hüftbewegung
+        hands_in_opposite_sleeves: Hände in umgekehrten Ärmeln
+        waving: Winken
+        crossed_arms: Verschränkte Arme
+        outstretched_arms: Ausgestreckte Arme
+        v_arms: Arme zu einem V formen
+        w_arms: Arme zu einem W formen
+        salute: Salutieren
+        reaching: (Zielgerichtet) die Hand ausstrecken
+        reaching_out: Hand nach außen strecken
+        stretch: Sich strecken
+        hugging_own_legs: Eigene Beine umarmen
+        arm_blade: Armklinge
+        arm_grab: Arm greifen
+        arm_held_back: Arm nach hinten halten
+        arm_ribbon: Arm mit Schleife
+        bandaged_arm: Verbundener Arm
+        bandaid_on_arm: Pflaster auf dem Arm
+        bound_arms: Gefesselte Arme
+        convenient_arm: Hand, die wichtige Stellen bedeckt
+        extra_arms: Extra Arme
+        locked_arms: Verschränkte Arme
+        outstretched_arm: Ausgestreckter Arm
+        waving_arms: Mit den Armen wedeln
+        arm_at_side: Eine Hand an der Seite
+        arm_behind_back: Eine Hand hinter dem Rücken
+        shou: Eine Hand am Kopf
+        arm_cannon: Armkanone
+        arm_hug: Hände umarmen
+        arm_up: Hand hochheben
+        arms_at_sides: Hände an den Seiten
+        arms_behind_head: Hände hinter dem Kopf
+        hand_to_mouth: Hand am Mund
+        shushing: Stillschweigende Geste
+        cat_pose: Katzenpfotengeste
+        claw_pose: Krallengeste
+        paw_pose: Glückskatzengeste (mit nach unten gebogenem Handgelenk)
+        fox_shadow_puppet: Fuchs-Schattenspiel
+        double_fox_shadow_puppet: b
+        finger_gun: Fingerpistole
+        v: Victory-Geste
+        double_v: Doppeltes V
+        thumbs_up: Daumen hoch
+        index_finger_raised: Zeigefinger erhoben
+        middle_finger: Internationale Geste der Freundschaft
+        grimace: Grimassen schneiden
+        eyelid_pull: Grimassen schneiden
+        fingersmile: Lächeln mit den Fingern darstellen
+        wiping_tears: Tränen abwischen
+        finger_on_trigger: Geste zum Abdrücken des Abzugs
+        pointing_at_self: Auf sich selbst zeigen
+        pointing_at_viewer: Auf den Betrachter zeigen
+        pointing_up: Nach oben zeigen
+        poking: Stupsen
+        hand_gesture: Handgeste
+        ok_sign: OK-Geste
+        shading_eyes: Augen abschatten
+        finger_biting: Finger beißen
+        finger_in_mouth: Finger in den Mund nehmen
+        fingering_through_clothes: Kleidung mit den Fingern berühren
+        fingers_together: Finger zusammenlegen
+        hair_twirling: Haare mit den Fingern drehen
+        hands_clasped: Hände verschränken
+        holding_hair: Haare festhalten|Finger um die Haare wickeln
+        pointing: Mit dem Finger zeigen
+        sharp_fingernails: Scharfe Fingernägel
+        sleeves_past_fingers: Ärmel reichen über die Finger
+        spread_fingers: Finger spreizen
+        trigger_discipline: Finger nicht am Abzug
+        w: Finger im W-Form
+        balancing: (Gleichgewicht) halten
+        curvy: Kurvige Pose
+        multiple_views: Mehrere Ansichten|Verschiedene Posen
+        pose: Pose
+        ready_to_draw: Bereit zum Zeichnen
+        trefoil: Pose, um den Hintern zu zeigen
+        zombie_pose: Zombie-Pose
+        beckoning: Herbeiwinken
+        bunching_hair: Haare zusammenhalten
+        carrying: Tragen
+        carrying_over_shoulder: Über die Schulter tragen
+        carrying_under_arm: Unter dem Arm tragen
+        cheering: Jubeln
+        finger_to_mouth: Finger an den Mund legen
+        cheek_pinching: Wange kneifen
+        cheek_poking: Wange stupsen
+        chin_stroking: Kinn streicheln
+        hair_pull: Haare ziehen
+        covering_mouth: Mund bedecken
+        covering_xx: XX bedecken
+        self_fondle: Sich selbst berühren
+        adjusting_thighhigh: Oberschenkelhohe Strümpfe zurechtrücken
+        chin_rest: Kinn abstützen
+        head_rest: Kopf abstützen
+        take: Etwas nehmen
+        _sheet_grab: Bettlaken greifen
+        groping: Tasten
+        skirt_lift: Rock hochheben
+        crotch_grab: Schritt greifen
+        covering_chest_by_hand: Brust mit der Hand bedecken
+        bangs_pinned_back: Hochgesteckter Pony
+        clothes_lift: Kleidung hochheben
+        dress_lift: Kleid hochheben
+        kimono_lift: Kimono hochheben
+        lifted_by_another: Von einer anderen Person hochgehoben werden
+        lifted_by_self: Sich selbst hochheben
+        shirt_lift: Hemd hochziehen
+        skirt_basket: Korbartige Form beim Hochheben des Rocks
+        skirt_flip: Rock hochheben (einschließlich unerwarteter Situationen)
+        bikini_lift: Bikini hochziehen
+        leg_lift: Ein Bein hochheben
+        lifting_person: Eine Person hochheben
+        strap_lift: Träger einer Kleidung hochziehen
+        wind_lift: Windeffekt|Aufsteigende Luftströmung
+        bikini_pull: Bikini hochziehen
+        cheek_pull: Wange ziehen
+        clothes_pull: Kleidung ziehen
+        dress_pull: Teil des Kleides abziehen
+        hair_pulled_back: Haare nach hinten binden
+        kimono_pull: Kimono öffnen
+        leotard_pull: Leotard abziehen
+        mask_pull: Maske abziehen
+        pants_pull: Hose hochziehen
+        pulled_by_another: Von einer anderen Person gezogen werden (oder Kleidung ziehen)
+        pulled_by_self: Eigene Kleidung abziehen
+        pulling: Ziehen
+        shirt_pull: Hemd aufziehen
+        shorts_pull: Shorts ausziehen
+        skirt_pull: Rock hochziehen
+        swimsuit_pull: Badeanzug herunterziehen
+        zipper_pull_tab: Reißverschluss ziehen
+        adjusting_clothes: Kleidung zurechtrücken
+        adjusting_eyewear: Brille zurechtrücken
+        adjusting_gloves: Handschuhe zurechtrücken
+        adjusting_hair: Haare zurechtmachen
+        adjusting_hat: Hut zurechtrücken
+        adjusting_swimsuit: Badeanzug zurechtrücken
+
+    - name: Handlungen mit den Händen (Etwas halten)
+      color: rgba(241, 229, 140, .4)
+      tags:
+        holding: Etwas halten
+        holding_animal: Ein Tier halten
+        holding_arrow: Einen Bogen spannen
+        holding_axe: Eine Axt halten
+        holding_bag: Eine Tasche tragen
+        holding_ball: Einen Ball halten
+        holding_basket: Einen Korb tragen
+        holding_book: Ein Buch halten
+        holding_bottle: Eine Flasche halten
+        holding_bouquet: Einen Blumenstrauß halten
+        holding_bow_(weapon): Einen Bogen (Waffe) halten
+        holding_bowl: Eine Schüssel tragen
+        holding_box: Eine Box tragen
+        holding_breath: Den Atem anhalten
+        holding_broom: Einen Besen halten
+        holding_camera: Eine Kamera halten
+        holding_can: Eine Dose halten
+        holding_candy: Süßigkeiten in der Hand halten
+        holding_card: Eine Karte in der Hand halten
+        holding_cat: Eine Katze tragen
+        holding_chopsticks: Essstäbchen halten
+        holding_cigarette: Eine Zigarette im Mund halten
+        holding_clothes: Kleidung in der Hand halten
+        holding_condom: Ein Kondom halten
+        holding_cup: Eine Tasse halten
+        holding_dagger: Ein Dolch halten
+        holding_doll: Eine Puppe tragen
+        holding_eyewear: Eine Brille in der Hand halten | Eine Brille abnehmen
+        holding_fan: Einen Fächer halten
+        holding_flag: Eine Fahne in der Hand halten
+        holding_flower: Eine Blume halten
+        holding_food: Essen in der Hand halten
+        holding_fork: Eine Gabel halten
+        holding_fruit: Obst in der Hand halten
+        holding_gift: Ein Geschenk halten
+        holding_gun: Eine Waffe halten
+        holding_hands: Händchen halten
+        holding_hat: Einen Hut in der Hand halten
+        holding_head: Den Kopf in den Händen halten
+        holding_helmet: Einen Helm halten
+        holding_innertube: Eine Schwimmreifen halten
+        holding_instrument: Ein Musikinstrument halten
+        holding_knife: Ein Messer halten
+        holding_leaf: Ein Blatt in der Hand halten
+        holding_lollipop: Einen Lolli halten
+        holding_mask: Eine Maske in der Hand halten
+        holding_microphone: Ein Mikrofon halten
+        holding_needle: Eine Nähnadel in der Hand halten
+        holding_own_foot: Den eigenen Fuß halten
+        holding_paintbrush: Einen Pinsel halten
+        holding_paper: Ein Blatt Papier halten
+        holding_pen: Einen Stift halten
+        holding_pencil: Einen Bleistift in der Hand halten
+        holding_phone: Ein Handy halten
+        holding_pillow: Ein Kissen halten
+        holding_pipe: Eine Pfeife in der Hand halten
+        holding_pizza: Eine Pizza in der Hand halten
+        holding_plate: Einen Teller tragen
+        holding_poke_ball: Einen Pokéball halten
+        holding_pokemon: Ein Pokémon tragen
+        holding_polearm: Eine Stangenwaffe halten
+        holding_sack: Einen Sack tragen
+        holding_scythe: Eine Sense halten
+        holding_sheath: Eine Schwertscheide halten
+        holding_shield: Einen Schild halten
+        holding_shoes: Schuhe in der Hand halten
+        holding_sign: Ein Schild in der Hand halten
+        holding_spear: Einen Speer halten
+        holding_spoon: Einen Löffel halten
+        holding_staff: Einen Stab halten
+        holding_strap: Einen Riemen halten
+        holding_stuffed_animal: Ein Stofftier halten
+        holding_stylus: Einen Stylus-Stift halten
+        holding_sword: Ein Schwert halten
+        holding_syringe: Eine Spritze halten
+        holding_towel: Ein Handtuch halten
+        holding_tray: Ein Tablett halten
+        holding_umbrella: Einen Regenschirm halten
+        holding_wand: Einen Zauberstab halten
+        holding_whip: Eine Peitsche halten
+        arm_around_neck: Mit einer Hand um den Hals greifen
+        arms_around_neck: Mit beiden Händen um den Hals greifen
+
+    - name: Handlungen mit den Händen (Etwas bedecken)
+      color: rgba(241, 229, 140, .4)
+      tags:
+        covering: Etwas bedecken
+        covering_face: Das Gesicht bedecken
+        covering_ass: Den Po bedecken
+        covering_crotch: Den Schritt bedecken
+        covering_eyes: Die Augen bedecken
+        covering_mouth: Den Mund bedecken
+        covering_nipples: Die Brustwarzen bedecken
+        hands_on_another's_: Mit beiden Händen das Gesicht einer anderen Person berühren
+        hands_on_another's_cheeks: Mit beiden Händen die Wangen einer anderen Person berühren
+        hands_on_ass: Mit beiden Händen den Po berühren
+        hands_on_feet: Mit beiden Händen die Füße berühren
+        hands_on_headwear: Mit beiden Händen den Kopfschmuck berühren
+        hands_on_hilt: Mit beiden Händen den Griff berühren
+        hands_on_lap: Mit beiden Händen auf dem Schoß
+        hands_on_own_face: Mit beiden Händen das eigene Gesicht berühren
+        hands_on_own_cheeks: Mit beiden Händen die eigenen Wangen berühren
+        hands_on_own_chest: Mit beiden Händen die eigene Brust berühren
+        hands_on_own_head: Mit beiden Händen den eigenen Kopf berühren
+        hands_on_own_knees: Mit beiden Händen die eigenen Knie berühren
+        hands_on_own_stomach: Mit beiden Händen den eigenen Bauch berühren
+        hands_on_own_thighs: Mit beiden Händen die eigenen Oberschenkel berühren
+        hands_on_another's_shoulders: Mit beiden Händen die Schultern einer anderen Person berühren
+        hands_on_hips: Mit beiden Händen auf die Hüften stützen | Mit beiden Händen auf der Taille stützen
+        hand_on_another's_: Eine Hand das Gesicht einer anderen Person berühren
+        hand_on_another's_cheek: Eine Hand die Wange einer anderen Person berühren
+        hand_on_another's_chest: Eine Hand die Brust einer anderen Person berühren
+        hand_on_another's_chin: Eine Hand das Kinn einer anderen Person berühren
+        hand_on_another's_head: Eine Hand den Kopf einer anderen Person berühren
+        hand_on_another's_shoulder: Eine Hand die Schulter einer anderen Person berühren
+        hand_on_another's_stomach: Eine Hand den Bauch einer anderen Person berühren
+        hand_on_ass: Eine Hand den Po berühren
+        hand_on_head: Eine Hand den Kopf berühren
+        hand_on_headwear: Eine Hand den Kopfschmuck berühren
+        hand_on_hilt: Eine Hand den Griff berühren
+        hand_on_hip: Eine Hand auf die Hüfte stützen | Eine Hand auf der Taille stützen
+        hand_on_own_: Eine Hand auf das eigene Gesicht legen
+        hand_on_own_cheek: Eine Hand auf die eigene Wange legen
+        hand_on_own_chest: Eine Hand auf die eigene Brust legen
+        hand_on_own_chin: Eine Hand das eigene Kinn berühren
+        hand_on_own_stomach: Eine Hand auf den eigenen Bauch legen
+        hand_on_shoulder: Eine Hand auf die Schulter legen
+        hand_in_another's_hair: Eine Hand in den Haaren einer anderen Person
+        hand_in_hair: Eine Hand im Haar vergraben
+        hand_in_pocket: Eine Hand in der Tasche
+
+    - name: Handlungen mit den Händen (Etwas greifen)
+      color: rgba(241, 229, 140, .4)
+      tags:
+        ass_grab: Den Po greifen
+        flat_chest_grab: Flache Brust greifen
+        grabbing: Greifen | Etwas festhalten
+        grabbing_another's_ass: Den Po einer anderen Person greifen
+        grabbing_another's_hair: Die Haare einer anderen Person greifen
+        grabbing_from_behind: Von hinten greifen | Von hinten die Brust festhalten
+        grabbing_own_ass: Den eigenen Po greifen
+        guided_penetration: Den Penis führen
+        hair_grab: Die Haare greifen
+        leg_grab: Das Bein greifen
+        necktie_grab: Die Krawatte greifen
+        neckwear_grab: Die Halsbekleidung greifen
+        penis_grab: Den Penis greifen
+        pillow_grab: Das Kissen greifen
+        sheet_grab: Das Bettlaken greifen
+        tail_grab: Den Schwanz greifen
+        thigh_grab: Den Oberschenkel greifen
+        torso_grab: Den Oberkörper greifen
+        wrist_grab: Das Handgelenk greifen
+
+    - name: Beinbewegungen
+      color: rgba(241, 229, 140, .4)
+      tags:
+        legs_up: Ein Bein anheben
+        spread legs: Die Beine spreizen
+        legs_together: Die Beine zusammenhalten
+        crossed_legs: Die Beine übereinander schlagen
+        m_legs: Die Beine im M-Stil halten
+        standing_split,_leg_up: Im Stehen einen Spagat machen, ein Bein anheben
+        curtsy: Verbeugen (Höflichkeitsgeste)
+        hand_between_legs: Eine Hand zwischen den Beinen
+        open_stance: Stehend entspannt
+        convenient_leg: Das Bein an einer empfindlichen Stelle halten
+        leg_lock: Mit beiden Beinen festhalten
+        legs: Beine
+        legs_over_head: Die Beine über den Kopf heben
+        squatting,_open_legs: In der Hocke sitzen und die Beine spreizen
+        knees_together_feet_apart: Knie zusammen, Füße auseinander
+        animal_on_lap: Ein Tier auf dem Schoß
+        hand_on_own_knee: Eine Hand auf das eigene Knie legen
+        knee_up: Das Knie anheben
+        knees: Knie
+        knees_to_chest: Die Knie zur Brust ziehen
+        on_lap: Auf dem Schoß
+        sitting: Sitzen
+        wariza: Im Schneidersitz
+        straddling: Im Schritt sitzen
+        yokozuwari: Seitlich sitzen
+        sitting_backwards: Rückwärts sitzen
+        sitting_in_tree: Auf einem Baum sitzen
+        sitting_on_xx: Auf etwas sitzen
+        butterfly_sitting: Schmetterlingssitz
+        lotus_position: Im Lotussitz sitzen
+        sitting_on_railing: Auf einem Geländer sitzen
+        sitting_on_rock: Auf einem Felsen sitzen
+        sitting_on_stairs: Auf Treppen sitzen
+        sitting_on_table: Auf einem Tisch sitzen
+        sitting_on_water: Auf dem Wasser sitzen
+        cushion: Sitzkissen
+        indian_style: Im Schneidersitz
+        sitting_on_chair: Auf einem Stuhl sitzen
+        sidesaddle: Seitlich auf dem Sattel sitzen
+        sitting_on_bed: Auf dem Bett sitzen
+        sitting_on_desk: Auf dem Schreibtisch sitzen
+        sitting_on_lap: Auf dem Schoß sitzen
+        sitting_on_person: Auf einer Person sitzen
+        upright_straddle: Gegenüber sitzen
+        squatting: In der Hocke sitzen
+        one_knee: Ein Knie
+        kneeling: Knien
+        all_fours: Auf allen Vieren
+        gravure_pose: Gravure-Positur
+        kicking: Treten
+        high_kick: Hoch treten
+        soaking_feet: Füße einweichen
+        reclining: Sich zurücklehnen
+        hugging_own_legs: Die eigenen Beine umarmen
+        bare_legs: Nackte Beine
+        between_legs: (Hervorhebung) Zwischen den Beinen
+        cropped_legs: Nur ein Teil der Beine gezeichnet
+        k/da_(league_of_legends): K/DA (League of Legends)
+        leg_belt: Bein mit einem Riemen befestigen
+        leg_hair: Beinbehaarung
+        leg_up: Das Bein anheben
+        legs_apart: Die Beine auseinander
+        lowleg: Beine im M-Stil
+        mechanical_legs: Mechanische Beine
+        multiple_legs: Charakter mit mehreren Beinen
+        no_legs: Keine Beine gezeichnet
+        no_legwear: Keine Beinbekleidung (nackt)
+        tail_between_legs: Den Schwanz zwischen den Beinen halten
+        barefoot: Barfuß
+        foot_out_of_frame: Ein Fuß ist außerhalb des Bildes
+        footprints: Fußabdrücke
+        dirty_feet: Falsch gezeichnete Füße
+        feet: Füße
+        feet_out_of_frame: Beide Füße sind außerhalb des Bildes
+        feet_up: Die Füße hochlegen
+        wrong_feet: Falsch gezeichnete Füße
+        cameltoe: Cameltoe
+        pigeon-toed: Einwärts gedrehte Beine
+        tiptoes: Auf den Zehenspitzen stehen
+        toe-point: Zehenspitzen
+        amputee: Amputierte Gliedmaßen | Einbeinig | Körperliche Behinderung | Amputiertes Mädchen
+        ankle_strap: Knöchelriemen
+        ankle_wrap: Knöchelwickel
+        crossed_ankles: Die Knöchel überkreuzen
+        pince-nez: Pince-Nez (Nasenbrille) | Brillen ohne Bügel
+        folded: Ein Bein anheben und die Intimzone zeigen
+        thick_thighs: Dicke Oberschenkel
+        thigh_holster: Beinholster
+
+    - name: Andere Aktionen
+      color: rgba(241, 229, 140, .4)
+      tags:
+        asymmetrical_docking: Brüste aneinander drücken | Brust an Brust
+        back-to-back: Rücken an Rücken
+        cunnilingus: Cunnilingus
+        eye_contact: Blickkontakt
+        facing_another: Einander gegenüberstehen
+        feeding: Füttern
+        finger_in_another's_mouth: Finger im Mund einer anderen Person
+        fingering: Fingern
+        french_kiss: Französischer Kuss
+        giving: Geben | Überreichen
+        grinding: Reiben | Aneinander reiben
+        groping: Betatschen
+        holding_hands: Händchen halten
+        hug: Umarmung
+        imminent_kiss: Bevorstehender Kuss
+        incoming_food: Essen anreichen
+        incoming_gift: Geschenk anreichen
+        interlocked_fingers: Verschränkte Finger
+        Kabedon: Kabedon (an die Wand drücken)
+        lap_pillow: Schoßkissen
+        licking_penis: Penis lecken
+        long_tongue: Lange Zunge
+        mimikaki: Ohren putzen
+        oral_invitation: Mit herausgestreckter Zunge auf Ejakulation warten
+        princess_carry: Prinzessinnen-Trage
+        shared_bathing: Gemeinsames Baden
+        shared_food: Essen teilen | Essen mit dem Mund weitergeben
+        sitting_on_head: Auf dem Kopf sitzen
+        sitting_on_shoulder: Auf der Schulter sitzen
+        slapping: Ohrfeigen
+        spanking: Den Po versohlen
+        special_feeling_(meme): Meme "Besondere Gefühle" (Schirm im Schnee)
+        symmetrical_docking: Brüste zusammendrücken
+        tongue: Zunge
+        tongue_out: Zunge herausstrecken
+        uvula: Uvula | Hängender Gaumenzäpfchen
+        ear_biting: Ohrläppchen beißen
+        mixed_bathing: Gemischtes Baden
+
+- name: Bild
+  groups:
+    - name: Bildqualität
+      color: rgba(0, 255, 255, .4)
+      tags:
+        checkered: kariert
+        lowres: niedrige Auflösung
+        highres: hohe Auflösung
+        absurdres: extrem hohe Auflösung
+        incredibly absurdres: unglaublich hohe Auflösung
+        huge filesize: sehr hohe Auflösung/große Dateigröße
+        wallpaper: Hintergrundbild
+        pixel art: Pixelkunst
+        monochrome: monochromes Bild
+        colorful: farbenfroh
+
+    - name: Kunststil
+      color: rgba(0, 255, 255, .4)
+      tags:
+        artbook: Kunstbuch
+        game cg: CG-Kunstwerk aus Spielen
+        comic: Comic
+        4koma: Vier-Panel-Comic
+        animated gif: animiertes GIF
+        dakimakura: Dakimakura (japanisches Kissen)
+        cosplay: Cosplay
+        crossover: Crossover
+        dark: dunkel
+        light: hell
+        guro: Guro (grausamer Kunststil)
+        realistic: realistisch
+        photo: Foto
+        real: real
+        landscape/scenery: Landschaft
+        cityscape: Stadtbild
+        science fiction: Science-Fiction
+        original: Original
+        parody: Parodie
+        personification: Personifizierung
+        optical illusion: optische Täuschung
+        fine art parody: Parodie auf ein berühmtes Kunstwerk
+        sketch: Skizze
+        traditional media: traditionelle Medien (Handzeichnung)
+        watercolor (medium): Aquarell
+        silhouette: Silhouette
+        cover: Cover
+        album: Album
+        sample: Bild mit Text
+        back: Rückansicht
+        bust: Büste
+        profile: Profilansicht
+        expressions: Gesichtsausdrücke
+        everyone: alle Hauptfiguren in einem Werk
+        column lineup: Bildkomposition aus mehreren kleinen Bildern
+        transparent background: transparenter Hintergrund
+        simple background: einfacher Hintergrund
+        gradient background: Verlaufshintergrund
+        zoom layer: Hintergrund ist eine vergrößerte Version des Vordergrunds
+        8 Bit Game: 8-Bit-Spiel
+        1980s anime: 80er-Jahre-Anime
+        disney movie: Disney-Film
+        goth: Gothic
+        80s movie: 80er-Jahre-Film
+        bubble bobble: Bubble Bobble
+        style of Pixar: Pixar-Stil
+        Polaroid art: Polaroid-Kunst
+        Kaleidoscope Photography: Kaleidoskop-Fotografie
+        opal render: Opal-Rendering
+        chemigram: Chemigramm
+        Studio Ghibli: Studio-Ghibli-Stil
+        dreamlike: traumhaft
+        (faux traditional media): Imitation traditioneller Medien
+        genshin impact: Genshin Impact
+        azur lane: Azur Lane
+        kantai collection: Kantai Collection
+        rebecca (cyberpunk): Rebecca (Cyberpunk)
+        chainsaw man: Chainsaw Man
+        Magic Vortex: Magischer Wirbel
+        ((dieselpunk)): Dieselpunk
+        magazine scan: Zeitschriften-Scan
+        album cover: Albumcover
+        (lineart): Linienkunst
+        synthwave: Synthwave
+        (illustration),(paper figure),(lococo),((impasto)),(shiny skin): Lococo
+
+    - name: Kunsttyp
+      color: rgba(0, 255, 255, .4)
+      tags:
+        monochrome: monochromes Bild
+        Collage: Collage
+        Dalle de verre: Glasmosaik
+        pixel art: Pixelkunst
+        Encaustic painting: Enkaustikmalerei
+        Ink wash painting: Tuschemalerei
+        Mezzotint: Mezzotinto
+        silhouette: Silhouette
+        illustration: Illustration
+        (((ink))), ((watercolor)): Aquarellmalerei
+        illustration,(((ukiyoe))),((sketch)),((japanese_art)): Ukiyo-e
+        ((wash painting)),((ink s...)): chinesischer Stil
+        ((dyeing)),((oil painting)),((impasto)): Ölmalerei
+        (posing sketch), (monochrome): Schwarz-Weiß-Skizze
+        sketch: Skizze
+        (monochrome), (gray scale), (pencil sketch lines: Bleistiftskizze
+        (watercolor pencil): Aquarellstiftzeichnung
+
+    - name: Kunstrichtung
+      color: rgba(0, 255, 255, .4)
+      tags:
+        ((art nouveau)): Jugendstil
+        ((classicism)): Klassizismus
+        ((futurism)): Futurismus
+        ((Dadaism)): Dadaismus
+        ((abstract art)): abstrakte Kunst
+        ((ASCII art)): ASCII-Kunst
+
+    - name: Künstlerischer Stil
+      color: rgba(0, 255, 255, .4)
+      tags:
+        ((alphonse mucha)): Alphonse Mucha-Stil
+        ((Monet style)): Monet-Stil
+
+    - name: Beleuchtung
+      color: rgba(0, 255, 255, .4)
+      tags:
+        rim light: Kantenlicht
+        Volumetric Lighting: Volumenlicht
+        glowing neon lights: leuchtende Neonlichter
+        Cinematic Lighting: filmreife Beleuchtung
+        lens flare: Linsenreflex
+        metallic luster: metallischer Glanz
+        moody lighting: stimmungsvolle Beleuchtung
+        Tyndall effect: Tyndall-Effekt
+        light leaks: Lichtlecks
+        background light: Hintergrundbeleuchtung
+        available light: vorhandenes Licht
+
+    - name: Realismus
+      color: rgba(0, 255, 255, .4)
+      tags:
+        realistic: realistisch
+        highres: dick aufgetragen (Stil)
+        photo_(medium): fotorealistisch (Stil)
+        oil_painting: Ölgemälde
+        reality: Realität
+        polaroid: Polaroid-Foto
+
+    - name: Skizze
+      color: rgba(0, 255, 255, .4)
+      tags:
+        sketch: Skizze
+        flat_color: Flächenfarbe
+        monochrome: monochrom
+        spot_color: Volltonfarbe
+        halftone: Raster
+        greyscale: Graustufen
+        high_contrast: hoher Kontrast
+        partially_colored: teilweise koloriert
+        chromatic_aberration: Farbfehler
+        contour_deepening: Konturvertiefung
+        outline: Umriss
+        silhouette: Silhouette
+
+    - name: Pinsel
+      color: rgba(0, 255, 255, .4)
+      tags:
+        traditional_media: traditionelle Medien (wie Papier)
+        faux_traditional_media: Imitation traditioneller Medien
+        marker_(medium): Marker
+        copics: Copics (neutralgrau)
+        pencil_sketch_lines: Bleistiftskizzenlinien
+        graphite_(medium): Graphitstift
+        colored_pencil_(medium): Buntstift
+        millipen_(medium): Fineliner
+        nib_pen_(medium): Federstift
+        ballpoint_pen_(medium)_: Kugelschreiber
+        pastel_color: Pastellfarbe
+        watercolor_(medium): Aquarell
+        acrylic_paint_(medium): Acrylfarbe
+        contour_deepening: Linienverstärkung
+
+    - name: Farbe
+      color: rgba(0, 255, 255, .4)
+      tags:
+        orange: Orange
+        blue: Blau
+        red: Rot
+        light_brown: Hellbraun
+        dark_pink: Dunkelrosa
+        khaki: Khaki
+        blonde: Blond
+        brown: Braun
+        black: Schwarz
+        gray: Grau
+        darkgray: Dunkelgrau
+        silver: Silber
+        lightgray: Hellgrau
+        gainsboro: Gainsboro
+        whitesmoke: Weißrauch
+        snow: Schnee
+        ghostwhite: Geisterweiß
+        floralwhite: Blütenweiß
+        linen: Leinen
+        antiquewhite: Antikweiß
+        papayawhip: Papayacreme
+        blanchedalmond: Blanchierte Mandel
+        bisque: Biskuit
+        moccasin: Mokassin
+        navajowhite: Navajoweiß
+        peachpuff: Pfirsich
+        mistyrose: Blassrose
+        lavenderblush: Lavendelrosa
+        seashell: Muschel
+        oldlace: Alte Spitze
+        ivory: Elfenbein
+        honeydew: Honigmelone
+        mintcream: Minzcreme
+        azure: Azurblau
+        aliceblue: Aliceblau
+        lavender: Lavendel
+        lightsteelblue: Hellstahlblau
+        lightslategray: Hellgraugrün
+        slategray: Schiefergrau
+        steelblue: Stahlblau
+        royalblue: Königsblau
+        midnightblue: Mitternachtsblau
+        navy: Marineblau
+        darkblue: Dunkelblau
+        mediumblue: Mittelblau
+        dodgerblue: Dodgerblau
+        cornflowerblue: Kornblumenblau
+        skyblue: Himmelblau
+        lightblue: Hellblau
+        powderblue: Puderblau
+        paleturquoise: Blaustichiges Türkis
+        lightcyan: Hellzyan
+        cyan: Cyan
+        aquamarine: Aquamarin
+        turquoise: Türkis
+        mediumturquoise: Mitteltürkis
+        darkturquoise: Dunkeltürkis
+        lightseagreen: Hellseegrün
+        cadetblue: Kadettenblau
+        darkcyan: Dunkelzyan
+        teal: Blaugrün
+        darkslategray: Dunkelgraugrün
+        darkgreen: Dunkelgrün
+        green: Grün
+        forestgreen: Waldgrün
+        seagreen: Seegrün
+        mediumseagreen: Mittelgrün
+        mediumaquamarine: Mittelaquamarin
+        darkseagreen: Dunkelgrün
+        palegreen: Hellgrün
+        lightgreen: Hellgrün
+        springgreen: Frühlingsgrün
+        mediumspringgreen: Mittelfrühlingsgrün
+        lawngreen: Grasgrün
+        chartreuse: Chartreuse
+        greenyellow: Grün-Gelb
+        lime: Limettengrün
+        limegreen: Limettengrün
+        yellowgreen: Gelbgrün
+        darkolivegreen: Dunkelolivgrün
+        olivedrab: Olivgrau
+        olive: Olive
+        darkkhaki: Dunkelkhaki
+        palegoldenrod: Blassgoldgelb
+        cornsilk: Maisseide
+        beige: Beige
+        lightyellow: Hellgelb
+        lightgoldenrodyellow: Hellgoldgelb
+        lemonchiffon: Zitronenchiffon
+        wheat: Weizen
+        burlywood: Burlywood
+        tan: Tan
+        yellow: Gelb
+        gold: Gold
+        sandybrown: Sandbraun
+        darkorange: Dunkelorange
+        goldenrod: Goldrute
+        peru: Peru
+        darkgoldenrod: Dunkelgoldrute
+        chocolate: Schokolade
+        sienna: Sienna
+        saddlebrown: Sattelbraun
+        maroon: Kastanienbraun
+        darkred: Dunkelrot
+        firebrick: Ziegelrot
+        indianred: Indischrot
+        rosybrown: Rosenbraun
+        darksalmon: Dunkellachs
+        lightcoral: Hellkoralle
+        salmon: Lachs
+        lightsalmon: Helllachs
+        coral: Koralle
+        tomato: Tomatenrot
+        orangered: Orangerot
+        crimson: Karmesinrot
+        mediumvioletred: Mittelviolettrot
+        deeppink: Tiefrosa
+        hotpink: Knallrosa
+        palevioletred: Blassviolettrot
+        pink: Rosa
+        lightpink: Hellrosa
+        thistle: Distel
+        magenta: Magenta
+        fuchsia: Fuchsia
+        violet: Violett
+        plum: Pflaume
+        orchid: Orchidee
+        mediumorchid: Mittelorchidee
+        darkorchid: Dunkelorchidee
+        darkviolet: Dunkelviolett
+        darkmagenta: Dunkelmagenta
+        purple: Purpur
+        indigo: Indigoblau
+        darkslateblue: Dunkelschieferblau
+        blueviolet: Blauviolett
+        mediumpurple: Mittelpurpur
+        slateblue: Schieferblau
+        mediumslateblue: Mittelschieferblau
+
+    - name: Hintergrund
+      color: rgba(0, 255, 255, .4)
+      tags:
+        fantasy: Fantasy-Stil
+        ban: Science-Fiction
+        cyberpunk: Cyberpunk
+        depth_of_field: Tiefenschärfe (Maltechnik)
+        blurry: verschwommener Hintergrund
+        blurry_foreground: verschwommener Vordergrund
+        simple_background: einfacher Hintergrund
+        black_background: schwarzer Hintergrund
+        white_background: weißer Hintergrund
+        transparent_background: transparenter Hintergrund
+        beige_background: beige Hintergrund
+        brown_background: brauner Hintergrund
+        tan_background: tan Hintergrund
+        grey_background: grauer Hintergrund
+        two-tone_background: zweifarbiger Hintergrund
+        gradient_background: Verlaufshintergrund
+        multicolored_background: mehrfarbiger Hintergrund
+        rainbow_background: Regenbogenhintergrund
+        abstract_background: abstrakter Hintergrund
+        argyle_background: Argyle-Hintergrund
+        checkered_background: karierte Hintergrund
+        floral_background: mit Blumen verzierter Hintergrund
+        halftone_background: Rasterhintergrund
+        heart_background: herzförmiger Hintergrund
+        honeycomb_background: Bienenwaben-Hintergrund
+        plaid_background: karierte Hintergrund
+        polka_dot: Tupfenhintergrund
+        striped_background: gestreifter Hintergrund
+        scenery: Landschaft
+        landscape: Landschaft
+        foral_background: mit Blumenmuster verzierter Hintergrund
+        crop_top_overhang: überhängender Oberteilbeschnitt
+        starry_background: Sternenhintergrund
+        sparkle_background: funkelnder Hintergrund
+        cityscape: Stadtbild
+        city_lights: Stadtleuchten
+        clock_background: Uhrenhintergrund
+        bubble_background: Blasenhintergrund
+        border: Rand
+        pillarboxed: säulenförmiger Hintergrund
+        rounded_corners: abgerundete Ecken
+        viewfinder: Sucher
+        windowboxed: fensterrahmenartiger Hintergrund
+        outside_border: Teil des Bildes liegt außerhalb des Rahmens
+        flashback: Rückblende
+        wall_of_text: Text im Hintergrund
+        background_text: Hintergrundtext
+
+- name: Umgebung
+  groups:
+    - name: Jahreszeit
+      color: rgba(31, 144, 255, .4)
+      tags:
+        in spring: Frühling
+        in summer: Sommer
+        in autumn: Herbst
+        in winter: Winter
+        (autumn maple forest:1.3),(very few fallen leaves),(path): Herbstlandschaft
+
+    - name: Wetter
+      color: rgba(31, 144, 255, .4)
+      tags:
+        day: Tag
+        dusk: Abenddämmerung
+        night: Nacht
+        rain: Regen
+        rainy days: Regentage
+        sunset: Sonnenuntergang
+        cloudy: Bewölkt
+        full moon: Vollmond
+        sun: Sonne
+        moon: Mond
+        full_moon: Vollmond
+        stars: Sterne
+        sky: Himmel
+        universe: Universum
+        snow,ice: Schnee, Eis
+        snowflakes: Schneeflocken
+        lighting: Blitz
+        rainbow: Regenbogen
+        meteor shower: Meteoritenschauer
+        cumulonimbus: Cumulonimbus-Wolke
+
+    - name: Natur
+      color: rgba(31, 144, 255, .4)
+      tags:
+        nature: Natur
+        sea: Meer
+        ocean: Ozean
+        beach: Strand
+        hills: Hügel
+        in a meadow: In einer Wiese
+        on the beach: Am Strand
+        underwater: Unterwasser
+        over the sea: Über dem Meer
+        grove: Hain
+        on a desert: In einer Wüste
+        plateau: Hochebene
+        cliff: Klippe
+        canyon: Canyon
+        oasis: Oase
+        bamboo forest: Bambuswald
+        glacier: Gletscher
+        floating island: Schwimmende Insel
+        volcano: Vulkan
+        savanna: Savanne
+        waterfall: Wasserfall
+        stream: Bach
+        wasteland: Ödland
+        field: Feld
+        rice paddy: Reisfeld
+        wheat field: Weizenfeld
+        flower field: Blumenfeld
+        flower sea: Blumenmeer
+        space: Weltraum
+        starry sky: Sternenhimmel
+        lake: See
+        river: Fluss
+        onsen: Onsen (heiße Quelle)
+        flowers meadows: Blumenwiesen
+        Alps: Alpen
+        Dreamy forest: Traumhafter Wald (illusionär, leuchtende Partikel, ruhig)
+        mountain: Berg
+        on a hill: Auf einem Hügel
+        the top of the hill: Der Gipfel des Hügels
+        outdoors: Draußen
+
+    - name: Wasser
+      color: rgba(31, 144, 255, .4)
+      tags:
+        ocean: Ozean
+        dripping: Tropfen
+        beach: Strand
+        lake: See
+        waterfall: Wasserfall
+        ripples: Wellenbewegungen
+        swirl: Wirbel
+        waves: Wellen
+        seashell: Muschel
+        seaweed: Seetang
+
+    - name: Himmel
+      color: rgba(31, 144, 255, .4)
+      tags:
+        sky: Himmel
+        gradient_sky: Farbverlaufshimmel
+        night_sky: Nachthimmel
+        starry_sky: Sternenhimmel
+        hyper_galaxy: Hyper-Galaxie
+        star_(sky): Stern (am Himmel)
+        star_trail: Sternenspur
+        sunset: Sonnenuntergang
+        moon: Mond
+        lunar: Mond-, mondbezogen
+        crescent: Sichel
+        crescent_moon: Neumond
+        full_moon: Vollmond
+        moonlight: Mondlicht
+        scarlet_moon: Scharlachroter Mond
+        universe: Universum
+        space: Weltraum
+        planet: Planet
+        from_space_station: Von der Raumstation
+        satellite: Satellit
+
+    - name: Wolken
+      color: rgba(31, 144, 255, .4)
+      tags:
+        cirrus: Federwolke
+        Cirrocumulus: Schäfchenwolke
+        Cirrostratus: Schleierwolke
+        Altocumulus: Schichtwolke
+        Altostratus: Mittelhochwolke
+        stratus: Schichtwolke
+        Stratocumulus: Schichtwolke mit Quellungen
+        cumulus: Haufenwolke
+        Cumulonimbus: Gewitterwolke
+        Nimbostratus: Regenwolke
+        cirrus_fibratus: Faserwolke
+        cirrus_uncinus: Hakenfederwolke
+        cirrus_spissatus: Dichte Federwolke
+        cirrus_floccus: Flockenwolke
+        cirrus_castellanus: Burgenwolke
+        cirrus_intortus: Verdrehte Federwolke
+        cirrocumulus: Schäfchenwolke
+        cirrocumulus_stratiformis: Schichtförmige Schäfchenwolke
+        cirrocumulus_floccus: Flockenförmige Schäfchenwolke
+        cirrocumulus_castellanus: Burgenförmige Schäfchenwolke
+        cirrocumulus_lacunosus: Netzförmige Schäfchenwolke
+        cirrostratus: Schleierwolke
+        cirrostratus_fibratus: Faserige Schleierwolke
+        cirrostratus_nebulosus: Nebulöse Schleierwolke
+        altocumulus: Schichtwolke
+        altocumulus_strataformis: Schichtförmige Schichtwolke
+        altocumulus_lenticularis: Linsenförmige Schichtwolke
+        altocumulus_castellanus: Burgenförmige Schichtwolke
+        altocumulus_floccus: Flockenförmige Schichtwolke
+        altocumulus_lacunosus: Netzförmige Schichtwolke
+        altostratus: Mittelhochwolke
+        altostratus_undulatus: Gewellte Mittelhochwolke
+        altostratus_duplicates: Doppelte Mittelhochwolke
+        altostratus_pannus: Faserige Mittelhochwolke
+        altostratus_translucidus: Durchsichtige Mittelhochwolke
+        altostratus_opacus: Undurchsichtige Mittelhochwolke
+        altostratus_radiatus: Strahlenförmige Mittelhochwolke
+        altostratus_mammatus: Mammatusförmige Mittelhochwolke
+        stratus_fractus: Zerfetzte Schichtwolke
+        stratus_nebulosus: Nebulöse Schichtwolke
+        stratus_undulatus: Gewellte Schichtwolke
+        stratocumulus: Schichtwolke
+        stratocumulus_stratiformis: Schichtförmige Schichtwolke
+        stratocumulus_cumulogentis: Schauerartige Schichtwolke
+        stratocumulus_castellanus: Burgenförmige Schichtwolke
+        stratocumulus_lenticularis: Linsenförmige Schichtwolke
+        stratocumulus_lacunosus: Flockenförmige Schichtwolke
+        cumulus_humilis: Flache Haufenwolke
+        cumulus_mediocris: Mittelhohe Haufenwolke
+        cumulus_congestus: Stark aufgetürmte Haufenwolke
+        cumulus_fractus: Zerfetzte Haufenwolke
+        cumulonimbus: Gewitterwolke
+        cumulonimbus_calvus: Kahlköpfige Gewitterwolke
+        cumulonimbus_capillatus: Haarige Gewitterwolke
+        cumulonimbus_incus: Ambossförmige Gewitterwolke
+
+    - name: Atmosphäre
+      color: rgba(31, 144, 255, .4)
+      tags:
+        new year: Neujahr
+        year of the rabbit: Jahr des Kaninchens
+        valentine: Valentinstag
+        lantern festival: Laternenfest
+        summer festival: Sommerfest
+        tanabata: Tanabata-Fest
+        mid-autumn festival: Mittherbstfest
+        halloween: Halloween
+        christmas: Weihnachten
+        explosion: Explosion
+        water vapor: Wasserdampf
+        fireworks: Feuerwerk
+        ceiling window: Bodentiefe Fenster
+        colourful glass: Bunte Glasfenster
+        stain glass: Buntglas
+        Graffiti wall: Graffiti-Wand
+        mosaic background: Mosaikhintergrund
+        liquid background, Sputtered water: Flüssiger Hintergrund, Spritzwasser
+        magic circles: Magische Kreise
+        fluorescent mushroom forests background: Hintergrund mit fluoreszierenden Pilzwäldern
+        (((colorful bubble))): Bunte Blase
+        in the ocean: Am Meer
+        against backlight at dusk: Gegen das Abendlicht
+        golden hour lighting: Beleuchtung zur goldenen Stunde
+        strong rim light: Starkes Kantenlicht
+        intense shadows: Intensive Schatten
+
+- name: Szene
+  groups:
+    - name: Im Freien
+      color: rgba(159, 32, 240, .4)
+      tags:
+        castle: Schloss
+        city: Stadt
+        waterpark: Wasserpark
+        carousel: Karussell
+        ferris wheel: Riesenrad
+        aquarium: Aquarium
+        zoo: Zoo
+        bowling alley: Bowlingbahn
+        art gallery: Kunstgalerie
+        museum: Museum
+        planetarium: Planetarium
+        swimming pool: Schwimmbad
+        stadium: Stadion
+        temple: Tempel
+        bus stop: Bushaltestelle
+        train station: Bahnhof
+        fountain: Brunnen
+        playground: Spielplatz
+        market stall: Marktstand
+        phone booth: Telefonzelle
+        railroad tracks: Eisenbahnschienen
+        airport: Flughafen
+        tunnel: Tunnel
+        skyscraper: Wolkenkratzer
+        cityscape: Stadtbild
+        ruins: Ruinen
+        greco-roman architectur: griechisch-römische Architektur
+        east asian architecture: ostasiatische Architektur
+        torii: Torii (japanisches Tor)
+        church: Kirche
+        shop: Geschäft
+        street: Straße
+        cyberpunk city: Cyberpunk-Stadt
+        chinese style architecture: chinesische Architektur im traditionellen Stil
+        gohei: Gohei (Shintō-Schrein)
+        Bustling city: belebte Stadt
+        laboratory: Labor
+        coffee house: Kaffeehaus
+        gym: Fitnessstudio
+        library: Bibliothek
+        prison: Gefängnis
+        engine room: Maschinenraum
+        handrail: Geländer
+        neon lights: Neonlichter
+        street lamp: Straßenlaterne
+        road: Straße
+        shanty town/slum: Elendsviertel/Slum
+        warehouse: Lagerhaus
+        gothic architecture: gotische Architektur
+        restaurant: Restaurant
+        treehouse: Baumhaus
+        modern,Europe: modern, Europa
+        Industrial wind, Chinese architecture: Industrieller Wind, chinesische Architektur
+        building_ruins: Ruine eines Gebäudes
+        bar: Bar
+        izakaya: Izakaya (japanisches Gasthaus)
+        cafe: Café
+        bakery: Bäckerei
+        convenience store: Convenience-Store
+        supermarket: Supermarkt
+        pharmacy: Apotheke
+        theater: Theater
+        movie theater: Kino
+        workshop: Werkstatt
+        courtroom: Gerichtssaal
+        park: Park
+        Trapeze: Trapez
+        classroom: Klassenzimmer
+        botanical garden: Botanischer Garten
+        amusement_park: Vergnügungspark
+        Disney_land: Disneyland
+        arena: Arena
+        wrestling_ring: Wrestling-Ring
+        Auditorium: Auditorium
+        concert: Konzert
+        Japanese_hotel: japanisches Hotel
+        jail_bars: Gefängnisgitter
+        in_the_movie_theatre: im Kino
+        stage: Bühne
+        harbor: Hafen
+        casino: Casino
+        billiard: Billard
+        dungeon: Verlies
+        grave: Grab
+        graveyard: Friedhof
+        tombstone: Grabstein
+        monolith: Monolith
+        rappelling: Abseilen
+        building: Gebäude
+        architecture: Architektur
+        magnificent_architecture: prächtige Architektur
+        Skyscraper: Wolkenkratzer
+        east_asian_architecture: ostasiatische Architektur
+        cathedral: Kathedrale
+        chinese_style_loft: chinesischer Loft-Stil
+        traditional_chinese_room: traditionelles chinesisches Zimmer
+        turret: Turm
+        tower: Turm
+        mosque: Moschee
+        reservoir: Stausee
+        railroad: Eisenbahn
+        railway: Eisenbahn
+        bridge: Brücke
+        under_bridge: unter der Brücke
+        remains: Überreste
+        rubble_ruins: Trümmer
+
+    - name: Stadt
+      color: rgba(159, 32, 240, .4)
+      tags:
+        city: Stadt
+        cityscape: Stadtbild
+        street: Straße
+        downtown: Innenstadt
+        crowd: Menschenmenge
+        alley: Gasse
+        in_main_street: in der Hauptstraße
+        Intersection: Kreuzung
+        avenue: Allee
+        lawn: Rasen
+        road: Straße
+        path: Pfad
+        pavement: Gehweg
+        road_sign: Verkehrsschild
+        traffic_cone: Verkehrshütchen
+        lamppost: Straßenlaterne
+        power_lines: Stromleitungen
+        fence: Zaun
+        railing: Geländer
+        bench: Bank
+        vending_machine: Verkaufsautomat
+
+    - name: Innenraum
+      color: rgba(159, 32, 240, .4)
+      tags:
+        indoor: Innenraum
+        bathroom: Badezimmer
+        toilet stall: Toilettenkabine
+        otaku room: Otaku-Zimmer
+        cafeteria: Cafeteria
+        classroom: Klassenzimmer
+        clubroom: Clubraum
+        bedroom: Schlafzimmer
+        kitchen: Küche
+        dormitory: Schlafsaal
+        dungeon: Verlies
+        infirmary: Krankenstation
+        stage: Bühne
+        electrical room: Elektrikraum
+        server room: Serverraum
+        basement: Keller
+        art room: Kunstraum
+        bathing: Baden
+        stairs: Treppe
+        greenhouse: Gewächshaus
+
+    - name: Boden
+      color: rgba(159, 32, 240, .4)
+      tags:
+        floor: Boden
+        tile_floor: Fliesenboden
+
+    - name: Möbel
+      color: rgba(159, 32, 240, .4)
+      tags:
+        bedroom: Schlafzimmer
+        tatami: Tatami (japanische Bodenmatte)
+        bed: Bett
+        couch: Sofa
+        kotatsu: Kotatsu (japanischer Wärmetisch)
+        fireplace: Kamin
+        window_: Fenster
+        sash: Fensterflügel
+        curtains: Vorhänge
+        door: Tür
+        sliding_doors: Schiebetüren
+        clothes_rack: Kleiderständer
+        air_conditioner: Klimaanlage
+        table: Tisch
+        school_desk: Schulbank
+        chair: Stuhl
+        armchair: Sessel
+        lounge_chair: Liegestuhl
+        beach_chair: Strandstuhl
+        folding_chair: Klappstuhl
+        invisible_chair: unsichtbarer Stuhl
+        office_chair: Bürostuhl
+        wheelchair: Rollstuhl
+
+    - name: Bettwäsche
+      color: rgba(159, 32, 240, .4)
+      tags:
+        bed_sheet: Bettlaken
+        mattress: Matratze
+        futon: Futon (japanische Schlafmatte)
+        cushion: Kissen
+        carpet: Teppich
+        pillow: Kopfkissen
+        dumpling_Hug_Pillow: Knödel-Kuschelkissen
+        pillow_hug: Kuschelkissen
+        yes-no_pillow: Ja/Nein-Kissen
+        stuffed_animal: Plüschtier
+        stuffed_bunny: Plüschhase
+        koakuma: Koakuma (kleiner Bär)
+
+    - name: Badezimmer
+      color: rgba(159, 32, 240, .4)
+      tags:
+        bathroom: Badezimmer
+        bathtub,: Badewanne
+        rubber_duck: Gummiente
+        shower_head: Duschkopf
+        toilet: Toilette
+        squat_toilet: Hocktoilette
+        soap: Seife
+        tiles: Fliesen
+
+- name: Gegenstand
+  groups:
+    - name: Schulmaterial
+      color: rgba(189, 182, 107, .4)
+      tags:
+        notebook: Notizbuch
+        paintbrush: Pinsel
+        pencil: Bleistift
+        book: Buch
+        open_book: aufgeschlagenes Buch
+        book_stack: Bücherstapel
+        bookshelf: Bücherregal
+        school_bag: Schultasche
+        backpack: Rucksack
+
+    - name: Elektronische Geräte
+      color: rgba(189, 182, 107, .4)
+      tags:
+        computer: Computer
+        mouse: Maus
+        cellphone: Handy
+        Smartphones: Smartphone
+        handheld_game_console_: Handheld-Spielekonsole
+        nintendo_3ds: Nintendo 3DS
+        nintendo_ds: Nintendo DS
+        nintendo_switch: Nintendo Switch
+        buttons: Knöpfe
+        power_lines: Stromkabel
+        cable: Kabel
+
+    - name: Geschirr
+      color: rgba(189, 182, 107, .4)
+      tags:
+        pot: Topf
+        teapot: Teekanne
+        ladle: Schöpfkelle
+        can: Dose
+        soda_can: Getränkedose
+        cup: Tasse
+        plate: Teller
+        tray: Tablett
+        bowl: Schüssel
+        fork: Gabel
+        chopsticks: Essstäbchen
+        spoon: Löffel
+        drinking_glass: Trinkglas
+        tumbler: normales Glas
+        beer_mug: Bierkrug
+        gift_box: Geschenkbox
+        heart-shaped_box: herzförmige Geschenkbox
+        candle: Kerze
+
+    - name: Instrumente
+      color: rgba(189, 182, 107, .4)
+      tags:
+        music: Musik
+        guitar: Gitarre
+        piano: Klavier
+        cello: Cello
+        playing_instrument: Instrument spielen
+        wind_chime: Windspiel
+
+    - name: Sonstige Gegenstände
+      color: rgba(189, 182, 107, .4)
+      tags:
+        wristwatch: Armbanduhr
+        folding_fan: Fächer
+        paper_fan: Papierfächer
+        uchiwa: Fächer
+        umbrella: Regenschirm
+        transparent_umbrella: transparenter Regenschirm
+        closed_umbrella: geschlossener Regenschirm
+        oil-paper_umbrella: Ölpapierregenschirm
+        Parasol: Sonnenschirm
+        basket: Korb
+        bouquet: Blumenstrauß
+        bucket: Eimer
+        pail: Eimer
+        camera: Kamera
+        gohei: Gohei (Schutzband gegen das Böse)
+        lantern/lamp: Laterne
+        whip: Peitsche
+        riding_crop: Reitgerte
+        ofuda: Ofuda (Schutzamulett)
+        cane: Spazierstock
+        wand: Zauberstab
+        magic: Magie
+        trading_card: Sammelkarte
+        playing_card: Spielkarte
+        Cassette: Kassette
+        chess_piece: Schachfigur
+        coin: Münze
+        copper: Kupfer
+        hammer: Hammer
+        microphone: Mikrofon
+        mimikaki: Ohrreiniger
+        sack: Sack
+        scales: Waage
+        chibi_inset: Chibi-Einlage
+        damaged: beschädigt
+        diamond_(shape): Diamant (Form)
+        gourd: Kürbisflasche
+        holding_gift: Geschenk halten
+        inlet: Einlass
+        key: Schlüssel
+        leash: Leine
+        Lever: Hebel
+        molecule: Molekül
+        money: Geld
+        Painting_(Object): Gemälde
+        photo_(object): Foto
+        sand: Sand
+        stubble: Stoppeln
+        trophy: Trophäe
+        tube_top: Tubentop
+        water_bottle: Wasserflasche
+        lotion: Lotion
+        lotion_bottle: Lotionflasche
+
+    - name: Waffen
+      color: rgba(189, 182, 107, .4)
+      tags:
+        weapon: Waffe
+        weapon_on_back: Waffe auf dem Rücken
+        weapon_over_shoulder: Waffe über der Schulter
+        huge_weapon: riesige Waffe
+        planted_weapon: in den Boden gesteckte Waffe
+        broken_weapon: kaputte Waffe
+        planted_sword: gestecktes Schwert
+        sword: Schwert
+        scabbard: Schwertscheide
+        unsheathing: Herausziehen
+        katana: Katana
+        saber_(weapon): Säbel
+        scythe: Sense
+        nose_hatchet: Nasenbeil
+        dagger: Dolch
+        scissors: Schere
+        axe: Axt
+        hatchet: Beil
+        stake: Pfahl
+        lance: Lanze
+        trident: Dreizack
+        bow_(weapon): Bogen
+        arrow: Pfeil
+        claw_(weapon): Klaue
+        rifle,: Gewehr
+        gun: Pistole
+        handgun: Handfeuerwaffe
+        thompson_submachine_gun: Thompson-Maschinenpistole
+        magazine_(weapon): Magazin
+        dynamite: Dynamit
+        bomb: Bombe
+        track missiles: Lenkflugkörper
+        complex Trajectory: komplexe Flugbahn
+        tank: Panzer
+        cannon: Kanone
+        military_vehicle: Militärfahrzeug
+        motorcycle: Motorrad
+        ship: Schiff
+        watercraft: Wasserfahrzeug
+        car: Auto
+        machine: Maschine
+        machinery: Maschinenbewaffnung
+        mechanical_arms: mechanische Arme
+        mechanization: Mechanisierung
+        robot_ears: Roboterohren
+        robot_joints: Roboter-Gelenke
+        variable_fighter: Variable Kämpfer
+        sorcerer's_sutra_scroll: Zauberers Sutra-Schriftrolle
+
+    - name: Lebensmittel
+      color: rgba(189, 182, 107, .4)
+      tags:
+        A_sushi_roll: Sushi-Rolle
+        apple: Apfel
+        aubergine: Aubergine
+        burger: Burger
+        cake: Kuchen
+        candy: Süßigkeit
+        candy_apple: kandierte Äpfel
+        candy_cane: Zuckerstange
+        carrot: Karotte
+        cigarette: Zigarette
+        coffee: Kaffee
+        cookie: Keks
+        cotton_candy_: Zuckerwatte
+        cream: Sahne
+        dango: Dango (japanische Süßigkeit)
+        doughnut: Donut
+        drink: Getränk
+        egg: Ei
+        fruit: Obst
+        Gelatin: Gelatine
+        ice_cream: Eiscreme
+        kafuu_chino: Kafuu Chino (Kaffeesorte)
+        makizushi: Makizushi (gerolltes Sushi)
+        meat: Fleisch
+        noodles: Nudeln
+        obento: Bentō (japanisches Mittagessen)
+        onigiri: Onigiri (Reisbällchen)
+        pancake: Pfannkuchen
+        pasties: Pasteten
+        peach: Pfirsich
+        ramen: Ramen
+        sake: Sake (japanischer Reiswein)
+        taiyaki: Taiyaki (gefüllter Fischförmiger Pfannkuchen)
+        tea: Tee
+        teacup: Teetasse
+        wagashi: Wagashi (japanisches Süßgebäck)
+        wine: Wein
+        jam: Marmelade
+        pocky: Pocky (japanischer Snack)
+        bottled_water: Flaschenwasser
+        sweet_potato: Süßkartoffel
+        sweets: Süßigkeiten
+        food: Essen
+        food_in_mouth: Essen im Mund
+        food_on_: Essen auf dem Gesicht
+        food_on_body: Essen auf dem Körper
+        food_print: Essensabdruck
+        food_stand: Essensstand
+        in_food: (Charakter) im Essen
+        chips: Chips
+        potato_chips: Kartoffelchips
+        telstar: Telstar-Fußball
+        sundae: Eisbecher
+        tempura: Tempura
+
+    - name: Tiere
+      color: rgba(189, 182, 107, .4)
+      tags:
+        reptile: Reptil
+        crow: Krähe
+        bird: Vogel
+        penguin: Pinguin
+        chick: Küken
+        manjuu_(azur_lane): Manjuu (Azur Lane)
+        shell: Muschel
+        wriggle_nightbug: Wriggle Nightbug (Insekt)
+        dragonfly: Libelle
+        mammal: Säugetier
+        wolf: Wolf
+        扶桑花: Pferd
+        whale: Wal
+        cat: Katze
+        cat_teaser: Katzenköder
+        dog: Hund
+        dog_tags: Hundemarken
+        fox: Fuchs
+        bunny: Hase
+        snow_bunny: Schneehase
+        stuffed_bunny: Plüschhase
+        horse: Pferd
+        cow: Kuh
+        dragon: Drache
+        loong: chinesischer Drache
+        eastern_dragon: östlicher Drache
+        snake: Schlange
+        slime: Schleim
+        bear: Bär
+        panda: Panda
+        teddy_bear: Teddybär
+        tiger: Tiger
+        bat: Fledermaus
+        hamster: Hamster
+        mouse: Maus
+        squirrel: Eichhörnchen
+
+    - name: Pflanzen
+      color: rgba(189, 182, 107, .4)
+      tags:
+        plant: Pflanze
+        flower: Blume
+        vase: Vase
+        bouquet: Blumenstrauß
+        flower_bloom: Blüte
+        plum_blossom: Pflaumenblüte
+        cherry_blossoms: Kirschblüte
+        wisteria: Glyzinie
+        hibiscus: Hibiskus
+        hydrangea: Hortensie
+        rose: Rose
+        spider_lily: Spinnenlilie
+        lily: Lilie
+        lotus: Lotusblume
+        bamboo: Bambus
+        entangled_plants: verwachsene Pflanzen
+        orchid: Orchidee
+        chrysanthemum: Chrysantheme
+        narcissu: Narzisse
+        tree: Baum
+        branch: Ast
+        forest: Wald
+        pine_tree: Kiefer
+        palm_tree: Palme
+        maple_tree: Ahornbaum
+        bush/shrub,: Busch
+        christmas_tree: Weihnachtsbaum
+        maple_leaf: Ahornblatt
+        pumpkin: Kürbis
+        jack-o'-lantern: Kürbislaterne
+        spring_onion: Frühlingszwiebel
+
+- name: Objektiv
+  groups:
+    - name: Objektiv
+      color: rgba(99, 201, 2, .4)
+      tags:
+        panorama: Panorama
+        landscape: Landschaftsobjektiv (Fernsicht)
+        wide_shot: Weitwinkelobjektiv (Panoramaobjektiv)
+        medium_shot: Mittlere Nahaufnahme
+        mid_shot: Mittlere Nahaufnahme
+        full_shot: Ganzkörperaufnahme
+        bust: Halbkörperaufnahme
+        upper_body: Oberkörper
+        lower_body: Unterkörper
+        cowboy_shot: Oberkörper + Oberschenkel (Cowboy-Objektiv)
+        portrait: Porträt (Gesicht + Schulter + gelegentlich Brust)
+        profile: Seitenprofil-Porträt (Seitenansicht des Porträts)
+
+    - name: Nahaufnahme
+      color: rgba(99, 201, 2, .4)
+      tags:
+        close-up: Nahaufnahme
+        macro_shot: Makroaufnahme
+        inset: Einfügen von anderen Objektiven oder Bildern
+        cross-section: Querschnitt
+        x-ray: Röntgen
+        solo_focus: Fokus auf eine einzelne Person (geeignet für komplexe Szenen)
+        xx_focus: Fokus auf xx
+        face_focus: Fokus auf das Gesicht
+        eyes_focus: Fokus auf die Augen
+        foot_focus: Fokus auf die Füße
+        hip_focus: Fokus auf die Hüfte
+        ass_focus: Fokus auf den Hintern
+        vehicle_focus: Fokus auf das Fahrzeug
+        between_legs: Betonung der Beine
+        between_breasts: Betonung der Brust
+        between_fingers: Betonung der Finger
+        peeking: Heimlich schauen
+        peeking_out: Herausschauen (Heimlich)
+        peeping: Heimlich schauen (Betonung der Perspektive)
+        midriff_peek: Blick auf den Bauchnabel
+        armpit_peek: Blick in die Achselhöhle
+        pussy_peek: Blick auf die Vagina
+        panty_peek: Blick auf den Slip
+        pantyshot: Slipblitzer
+        caught: Auf frischer Tat ertappt
+
+    - name: Andere Komposition
+      color: rgba(99, 201, 2, .4)
+      tags:
+        aerial: Luftaufnahme
+        turn_one's_back: Sich umdrehen
+        upskirt: Rockbodenansicht
+        phone_screen: Handyscreen
+        multiple_views: Mehrere Ansichten
+        mirror selfie: Spiegelselfie
+        three-quarter view: 3/4-Ansicht
+
+    - name: Kamerawinkel
+      color: rgba(99, 201, 2, .4)
+      tags:
+        front view: Frontalansicht
+        from_side: Seitliche Ansicht
+        from_above: Von oben ↘
+        from_below: Von unten ↗
+        from_outside: Von außen nach innen
+        from_back: Rückansicht
+        from behind: Rückansicht
+        dynamic_angle: Dynamischer Winkel
+        cinematic_angle: Kinematografischer Winkel
+        dutch angle: Schräger Winkel
+        foreshortening: Verkürzung
+        fisheye: Fischaugenperspektive
+
+    - name: Effekte
+      color: rgba(99, 201, 2, .4)
+      tags:
+        depth of field: Schärfentiefe (Abstimmung von Person und Umgebung)
+        lens_flare: Objektivreflexion
+        motion_blur: Bewegungsunschärfe
+        motion_lines: Linien, die Bewegung darstellen
+        speed_lines: Geschwindigkeitslinien
+        bokeh: Unschärfeeffekt
+        chromatic_aberration: Farbfehler
+        overexposure: Überbelichtung
+        contour_deepening: Konturverstärkung
+
+    - name: Hauptcharakteraktionen
+      color: rgba(99, 201, 2, .4)
+      tags:
+        looking_at_viewer: Zum Betrachter schauen
+        eye-contact: Blickkontakt
+        eyeball: Anstarren
+        stare: Starren
+        looking_back: Zurückblicken
+        gradient: Neigung des Charakters
+        looking_down: Charakter schaut nach unten ↘
+        looking_up: Charakter schaut nach oben ↗
+        facing_away: Wegschauen
+        looking_to_the_side: Zur Seite schauen
+        looking_away: Wegschauen
+        looking_ahead: In die Zukunft schauen
+        looking_afar: In die Ferne schauen
+        looking_outside: Nach draußen schauen
+        head_tilt: Kopf neigen
+        head_down: Kopf senken
+        sideways_glance: Leicht seitlicher Blick
+        upshirt: Blick von unten auf das Hemd
+        upshorts: Blick von unten auf den Rock
+        looking_at_another: Jemand anderen anschauen
+        looking_at_phone: Auf das Handy schauen
+        looking_at_animal: Auf ein Tier schauen
+        looking_at_mirror: In den Spiegel schauen
+        looking_at_hand: Auf die Hand schauen
+        looking_at_hands: Auf die Hände schauen
+        looking_at_food: Auf das Essen schauen
+        looking_at_screen: Auf den Bildschirm schauen
+
+- name: Hanfu
+  groups:
+    - name: "Tang-Stil:"
+      color: rgba(178, 33, 34, .4)
+      tags:
+        hanfu, tang style outfits,<lora:hanfuTang_v32:0.7>: Tang-Stil
+
+    - name: Shangshan
+      color: rgba(178, 33, 34, .4)
+      tags:
+        orange upper shan: Orange Oberbekleidung
+        red upper shan: Rote Oberbekleidung
+        green upper shan: Grüne Oberbekleidung
+        blue upper shan: Blaue Oberbekleidung
+        pink upper shan: Rosa Oberbekleidung
+        yellow upper shan: Gelbe Oberbekleidung
+        white upper shan: Weiße Oberbekleidung
+        light blue upper shan: Hellblaue Oberbekleidung
+        light green upper shan: Hellgrüne Oberbekleidung
+        light red upper shan: Hellrote Oberbekleidung
+        cyan blue upper shan: Cyanblaue Oberbekleidung
+        light purple upper shan: Hellviolette Oberbekleidung
+        black with blue upper shan: Schwarze Oberbekleidung mit blauer Oberbekleidung
+        white with orange upper shan: Weiße Oberbekleidung mit orangefarbener Oberbekleidung
+        pink with black upper shan: Rosa Oberbekleidung mit schwarzer Oberbekleidung
+
+    - name: Changshan
+      color: rgba(178, 33, 34, .4)
+      tags:
+        orange long upper shan: Orange Langoberteil
+        red long upper shan: Rotes Langoberteil
+        green long upper shan: Grünes Langoberteil
+        blue long upper shan: Blaues Langoberteil
+        pink long upper shan: Rosa Langoberteil
+        yellow long upper shan: Gelbes Langoberteil
+        white long upper shan: Weißes Langoberteil
+        light blue long upper shan: Hellblaues Langoberteil
+        light green long upper shan: Hellgrünes Langoberteil
+        light red long upper shan: Hellrotes Langoberteil
+        cyan blue long upper shan: Cyanblaues Langoberteil
+        light purple long upper shan: Hellviolette Langoberteil
+        black with blue long upper shan: Schwarzes Langoberteil mit blauer Oberbekleidung
+        white with orange long upper shan: Weiße Langoberteil mit orangefarbener Oberbekleidung
+        pink with black long upper shan: Rosa Langoberteil mit schwarzer Oberbekleidung
+
+    - name: Qixiong Poqun
+      color: rgba(178, 33, 34, .4)
+      tags:
+        white chest po skirt: Weiße zerrissene Rockunterseite
+        red chest po skirt: Rote zerrissene Rockunterseite
+        green chest po skirt: Grüne zerrissene Rockunterseite
+        blue chest po skirt: Blaue zerrissene Rockunterseite
+        pink chest po skirt: Rosa zerrissene Rockunterseite
+        purple chest po skirt: Violette zerrissene Rockunterseite
+        multicolour chest po skirt: Bunte zerrissene Rockunterseite
+        purple with white chest po skirt: Violette zerrissene Rockunterseite mit weißer zerrissener Rockunterseite
+        white with yellow chest po skirt: Weiße zerrissene Rockunterseite mit gelber zerrissener Rockunterseite
+        blue with white chest po skirt: Blaue zerrissene Rockunterseite mit weißer zerrissener Rockunterseite
+        orange with white chest po skirt: Orangefarbene zerrissene Rockunterseite mit weißer zerrissener Rockunterseite
+        green with white chest po skirt: Grüne zerrissene Rockunterseite mit weißer zerrissener Rockunterseite
+        light orange with white chest po skirt: Hellorangefarbene zerrissene Rockunterseite mit weißer zerrissener Rockunterseite
+        pink with white chest po skirt: Rosa zerrissene Rockunterseite mit weißer zerrissener Rockunterseite
+        white with pink chest po skirt: Weiße zerrissene Rockunterseite mit rosa zerrissener Rockunterseite
+
+    - name: Qixiong Zhequn
+      color: rgba(178, 33, 34, .4)
+      tags:
+        white chest pleated skirt: Weiße Plisseerockunterseite
+        red chest pleated skirt: Rote Plisseerockunterseite
+        green chest pleated skirt: Grüne Plisseerockunterseite
+        blue chest pleated skirt: Blaue Plisseerockunterseite
+        pink chest pleated skirt: Rosa Plisseerockunterseite
+        purple chest pleated skirt: Violette Plisseerockunterseite
+        multicolour chest pleated skirt: Bunte Plisseerockunterseite
+        purple with white chest pleated skirt: Violette Plisseerockunterseite mit weißer zerrissener Rockunterseite
+        white with yellow chest pleated skirt: Weiße Plisseerockunterseite mit gelber zerrissener Rockunterseite
+        blue with white chest pleated skirt: Blaue Plisseerockunterseite mit weißer zerrissener Rockunterseite
+        orange with white chest pleated skirt: Orangefarbene Plisseerockunterseite mit weißer zerrissener Rockunterseite
+        green with white chest pleated skirt: Grüne Plisseerockunterseite mit weißer zerrissener Rockunterseite
+        light orange with white chest pleated skirt: Hellorangefarbene Plisseerockunterseite mit weißer zerrissener Rockunterseite
+        pink with white chest pleated skirt: Rosa Plisseerockunterseite mit weißer zerrissener Rockunterseite
+        white with pink chest pleated skirt: Weiße Plisseerockunterseite mit rosa zerrissener Rockunterseite
+
+    - name: Xidai
+      color: rgba(178, 33, 34, .4)
+      tags:
+        green waistband: Grünes Taillenband
+        yellow waistband: Gelbes Taillenband
+        red waistband: Rotes Taillenband
+        pink waistband: Rosa Taillenband
+        orange waistband: Orangefarbenes Taillenband
+        light blue waistband: Hellblaues Taillenband
+        light green waistband: Grünweißes Taillenband
+        green with yellow waistband: Grünes Taillenband mit gelbem Taillenband
+        purple with white waistband: Violettes Taillenband mit weißem Taillenband
+        red with white waistband: Rotes Taillenband mit weißem Taillenband
+        red with black waistband: Rotes Taillenband mit schwarzem Taillenband
+        yellow with white waistband: Gelbes Taillenband mit weißem Taillenband
+
+    - name: Pibo
+      color: rgba(178, 33, 34, .4)
+      tags:
+        white pibo: Weißer Pibo
+        orange pibo: Orangefarbener Pibo
+        black pibo: Schwarzer Pibo
+        pink pibo: Rosa Pibo
+        red pibo: Roter Pibo
+        purple pibo: Violetter Pibo
+        light green pibo: Hellgrüner Pibo
+        white with yellow pibo: Weißer Pibo mit gelbem Pibo
+
+    - type: wrap
+
+    - name: "Song-Stil:"
+      color: rgba(178, 33, 34, .4)
+      tags:
+        hanfu, song style outfits,<lora:hanfuSong_v31:0.7>: Song-Stil
+
+    - name: Duanshan
+      color: rgba(178, 33, 34, .4)
+      tags:
+        purple short shan: Violette Kurzoberteil
+        red short shan: Rotes Kurzoberteil
+        green short shan: Grünes Kurzoberteil
+        blue short shan: Blaues Kurzoberteil
+        pink short shan: Rosa Kurzoberteil
+        yellow short shan: Gelbes Kurzoberteil
+        white short shan: Weißes Kurzoberteil
+        light blue short shan: Hellblaues Kurzoberteil
+        light green short shan: Hellgrünes Kurzoberteil
+        light red short shan: Hellrotes Kurzoberteil
+        cyan blue short shan: Cyanblaues Kurzoberteil
+        light purple short shan: Hellviolette Kurzoberteil
+        black with blue short shan: Schwarzes Kurzoberteil mit blauem Kurzoberteil
+        white with yellow short shan: Weißes Kurzoberteil mit gelbem Kurzoberteil
+        light yellow with green with white short shan: Hellgelbes Kurzoberteil mit grünem und weißem Kurzoberteil
+
+    - name: Changshan
+      color: rgba(178, 33, 34, .4)
+      tags:
+        purple long shan: Violette Langoberteil
+        red long shan: Rotes Langoberteil
+        green long shan: Grünes Langoberteil
+        blue long shan: Blaues Langoberteil
+        pink long shan: Rosa Langoberteil
+        yellow long shan: Gelbes Langoberteil
+        white long shan: Weißes Langoberteil
+        light blue long shan: Hellblaues Langoberteil
+        light green long shan: Hellgrünes Langoberteil
+        light red long shan: Hellrotes Langoberteil
+        cyan blue long shan: Cyanblaues Langoberteil
+        light purple long shan: Hellviolette Langoberteil
+        black with blue long shan: Schwarzes Langoberteil mit blauem Langoberteil
+        white with yellow long shan: Weißes Langoberteil mit gelbem Langoberteil
+        light yellow with green with white long shan: Hellgelbes Langoberteil mit grünem und weißem Langoberteil
+
+    - name: Baizhequn
+      color: rgba(178, 33, 34, .4)
+      tags:
+        white pleated skirt: Weißer Plisseerock
+        red pleated skirt: Roter Plisseerock
+        green pleated skirt: Grüner Plisseerock
+        blue pleated skirt: Blauer Plisseerock
+        pink pleated skirt: Rosa Plisseerock
+        light blue pleated skirt: Hellblauer Plisseerock
+        white golden pleated skirt: Weißer goldener Plisseerock
+        gradient green pleated skirt: Grüner Verlaufsplisseerock
+        translucent white pleated skirt: Halbtransparenter weißer Plisseerock
+        red cyan gradient pleated skirt: Roter Cyan-Verlaufsplisseerock
+        red green gradient pleated skirt: Roter grüner Verlaufsplisseerock
+        green with white pleated skirt: Grüner Plisseerock mit weißem Plisseerock
+        light yellow with green with white pleated skirt: Hellgelber Plisseerock mit grünem und weißem Plisseerock
+
+    - name: Songmo
+      color: rgba(178, 33, 34, .4)
+      tags:
+        orange songmo: Orangefarbener Songmo
+        red songmo: Roter Songmo
+        green songmo: Grüner Songmo
+        blue songmo: Blauer Songmo
+        pink songmo: Rosa Songmo
+        yellow songmo: Gelber Songmo
+        white songmo: Weißer Songmo
+        purple songmo: Violetter Songmo
+        green floral songmo: Grüner floraler Songmo
+        purple floral songmo: Violetter floraler Songmo
+        cyan floral songmo: Cyanblauer floraler Songmo
+
+    - type: wrap
+
+    - name: "Ming-Stil:"
+      color: rgba(178, 33, 34, .4)
+      tags:
+        hanfu, ming style outfits,<lora:hanfuMing_v31:0.7>: Ming-Stil
+
+    - name: Oberbekleidung
+      color: rgba(178, 33, 34, .4)
+      tags:
+        short coat: Kurze Jacke
+        long coat: Lange Jacke
+
+    - name: Rock
+      color: rgba(178, 33, 34, .4)
+      tags:
+        mamian skirt: Mamian-Rock
+
+    - name: Kragen
+      color: rgba(178, 33, 34, .4)
+      tags:
+        overlapping collar: Überlappender Kragen
+        round collar: Runder Kragen
+        standing collar: Stehkragen
+        square collar: Quadratischer Kragen
+
+    - name: Verzierungen
+      color: rgba(178, 33, 34, .4)
+      tags:
+        overlapping collar: Wolken-Schulter
+        embroidery: Stickerei
+        woven gold: Gewebtes Gold
+        makeup flower: Schminkblume
+        bufu: Bufu
+
+- name: Negativ Eingabeaufforderung
+  groups:
+    - name: Bild
+      color:
+      tags:
+        NSFW: Nicht sicher für die Arbeit
+        logo: Logo
+        text: Text
+        blurry: Unscharf
+        low quality: Niedrige Qualität
+        bad anatomy: Schlechte Anatomie
+        sketches: Skizzen
+        lowres: Niedrige Auflösung
+        normal quality: Normale Qualität
+        monochrome: Monochrom
+        grayscale: Graustufen
+        worstquality: Schlechteste Qualität
+        signature: Signatur
+        watermark: Wasserzeichen
+        cropped: Beschnitten
+        bad proportions: Schlechte Proportionen
+        out of focus: Unschärfe
+        username: Benutzername
+
+    - name: Person
+      color:
+      tags:
+        Multiple people: Mehrere Personen
+        (AS-YoungV2-Neg:1.3): Erwachsene entfernen
+        (AS-Adult-Neg:1.3): Jugendliche entfernen
+        bad body: Schlechter Körper
+        long body: Langer Körper
+        (fat:1.2): Übergewicht
+        long neck: Langer Hals
+        deformed: Verformt
+        mutated: Mutiert
+        mutation: Mutation
+        ugly: Hässlich
+        disfigured: Entstellt
+        poorly drawn face: Schlecht gezeichnetes Gesicht
+        skin blemishes: Hautunreinheiten
+        skin spots: Hautflecken
+        acnes: Akne
+        missing limb: Fehlendes Gliedmaß
+        malformed limbs: Missgebildete Gliedmaßen
+        floating limbs: Schwebende Gliedmaßen
+        disconnected limbs: Nicht verbundene Gliedmaßen
+        extra limb: Zusätzliches Gliedmaß
+        extra arms: Zusätzliche Arme
+        mutated hands: Mutierte Hände
+        poorly drawn hands: Schlecht gezeichnete Hände
+        malformed hands: Missgebildete Hände
+        mutated hands and fingers: Mutierte Hände und Finger
+        bad hands: Schlechte Hände
+        missing fingers: Fehlende Finger
+        fused fingers: Verschmolzene Finger
+        too many fingers: Zu viele Finger
+        extra legs: Zusätzliche Beine
+        bad feet: Schlechte Füße
+        cross-eyed: Schielen
+
+    - name: Embeddings
+      color:
+      tags:
+        AS-YoungV2-neg:
+        BadDream:
+        badhandv4:
+        BadNegAnatomyV1-neg:
+        EasyNegative:
+        FastNegativeV2:
