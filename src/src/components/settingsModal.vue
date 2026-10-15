@@ -39,16 +39,14 @@
                                 <div class="setting-line">
                                     <div class="line-text">
                                         <div class="line-title">{{ getLang('webui_theme') }}</div>
+                                        <div class="line-desc">{{ getLang('webui_theme_desc') }}</div>
                                     </div>
                                     <div class="line-content">
-                                        <div class="settings-modal-icon-btn"
-                                             role="button" tabindex="0"
-                                             :aria-label="getLang(theme === 'dark' ? 'switch_to_light_theme' : 'switch_to_dark_theme')"
-                                             @click="$emit('update:theme', theme === 'dark' ? 'light' : 'dark')"
-                                             @keydown.enter="$emit('update:theme', theme === 'dark' ? 'light' : 'dark')"
-                                             @keydown.space.prevent="$emit('update:theme', theme === 'dark' ? 'light' : 'dark')">
-                                            <icon-svg class="hover-scale-120" :name="theme === 'dark' ? 'sun' : 'moon'"/>
-                                        </div>
+                                        <select class="theme-select" :value="theme"
+                                                :aria-label="getLang('webui_theme')" @change="onThemeChange">
+                                            <option value="dark">{{ getLang('theme_dark') }}</option>
+                                            <option value="light">{{ getLang('theme_light') }}</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="setting-line">
@@ -390,6 +388,10 @@ export default {
         onLanguageChange(e) {
             // 界面语言切换（原顶栏「Language」按钮功能移入设置弹窗）
             this.$emit('update:languageCode', e.target.value)
+        },
+        onThemeChange(e) {
+            // WebUI 主题切换（原为弹窗右上角/内容区的太阳月亮图标按钮，改为下拉）
+            this.$emit('update:theme', e.target.value)
         },
         getFavoritesByType(type) {
             const favorites = typeof window.phystonPromptfavorites === 'object' ? window.phystonPromptfavorites : []

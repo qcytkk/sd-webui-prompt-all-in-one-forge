@@ -195,7 +195,10 @@
                 "group_break_wrap": "换行与 BREAK",
                 "group_lora_period": "LoRA 与句号",
                 "tooltip_switch": "功能提示框",
-                "auto_fill_title": "自动填充提示词"
+                "auto_fill_title": "自动填充提示词",
+                "webui_theme_desc": "切换WebUI 主题样式",
+                "theme_dark": "暗夜主题",
+                "theme_light": "白日主题"
             }
         },
         {
@@ -392,7 +395,10 @@
                 "group_break_wrap": "換行與 BREAK",
                 "group_lora_period": "LoRA 與句號",
                 "tooltip_switch": "功能提示框",
-                "auto_fill_title": "自動填入提示詞"
+                "auto_fill_title": "自動填入提示詞",
+                "webui_theme_desc": "切換 WebUI 主題樣式",
+                "theme_dark": "暗夜主題",
+                "theme_light": "白日主題"
             }
         },
         {
@@ -589,7 +595,10 @@
                 "group_break_wrap": "換行與 BREAK",
                 "group_lora_period": "LoRA 與句號",
                 "tooltip_switch": "功能提示框",
-                "auto_fill_title": "自動填入提示詞"
+                "auto_fill_title": "自動填入提示詞",
+                "webui_theme_desc": "切換 WebUI 主題樣式",
+                "theme_dark": "暗夜主題",
+                "theme_light": "白日主題"
             }
         },
         {
@@ -786,7 +795,10 @@
                 "group_break_wrap": "Line breaks & BREAK",
                 "group_lora_period": "LoRA & periods",
                 "tooltip_switch": "Feature Tooltips",
-                "auto_fill_title": "Auto-fill Prompt"
+                "auto_fill_title": "Auto-fill Prompt",
+                "webui_theme_desc": "Switch the WebUI theme style",
+                "theme_dark": "Dark Theme",
+                "theme_light": "Light Theme"
             }
         },
         {
