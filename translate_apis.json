@@ -124,10 +124,6 @@
                         {
                             "title": "Bing - Microsoft",
                             "url": "https://www.bing.com/Translator"
-                        },
-                        {
-                            "title": "[prompt-all-in-one Wiki] Translation API Description / 翻译接口说明",
-                            "url": "https://aiodoc.physton.com/TranslationApiConfiguration.html#translation-api-description"
                         }
                     ],
                     "config": [
@@ -285,10 +281,6 @@
                         {
                             "title": "Google",
                             "url": "https://translate.google.com/"
-                        },
-                        {
-                            "title": "[prompt-all-in-one Wiki] Translation API Description / 翻译接口说明",
-                            "url": "https://aiodoc.physton.com/TranslationApiConfiguration.html#translation-api-description"
                         }
                     ],
                     "config": [
@@ -440,10 +432,6 @@
                         {
                             "title": "iTranslate",
                             "url": "https://itranslate.com/webapp"
-                        },
-                        {
-                            "title": "[prompt-all-in-one Wiki] Translation API Description / 翻译接口说明",
-                            "url": "https://aiodoc.physton.com/TranslationApiConfiguration.html#translation-api-description"
                         }
                     ]
                 },
@@ -544,10 +532,6 @@
                         {
                             "title": "Lingvanex",
                             "url": "https://lingvanex.com/demo"
-                        },
-                        {
-                            "title": "[prompt-all-in-one Wiki] Translation API Description / 翻译接口说明",
-                            "url": "https://aiodoc.physton.com/TranslationApiConfiguration.html#translation-api-description"
                         }
                     ]
                 },
@@ -651,10 +635,6 @@
                         {
                             "title": "Modernmt / Translated",
                             "url": "https://www.modernmt.com/translate"
-                        },
-                        {
-                            "title": "[prompt-all-in-one Wiki] Translation API Description / 翻译接口说明",
-                            "url": "https://aiodoc.physton.com/TranslationApiConfiguration.html#translation-api-description"
                         }
                     ]
                 },
@@ -725,10 +705,6 @@
                         {
                             "title": "SysTran",
                             "url": "https://www.systran.net/translate/"
-                        },
-                        {
-                            "title": "[prompt-all-in-one Wiki] Translation API Description / 翻译接口说明",
-                            "url": "https://aiodoc.physton.com/TranslationApiConfiguration.html#translation-api-description"
                         }
                     ]
                 },
@@ -766,10 +742,6 @@
                         {
                             "title": "TranslateCom",
                             "url": "https://www.translate.com/machine-translation"
-                        },
-                        {
-                            "title": "[prompt-all-in-one Wiki] Translation API Description / 翻译接口说明",
-                            "url": "https://aiodoc.physton.com/TranslationApiConfiguration.html#translation-api-description"
                         }
                     ]
                 },
@@ -803,10 +775,6 @@
                         {
                             "title": "Argos / Libre",
                             "url": "https://translate.argosopentech.com/"
-                        },
-                        {
-                            "title": "[prompt-all-in-one Wiki] Translation API Description / 翻译接口说明",
-                            "url": "https://aiodoc.physton.com/TranslationApiConfiguration.html#translation-api-description"
                         }
                     ]
                 },
@@ -838,10 +806,6 @@
                         {
                             "title": "Papago - Naver",
                             "url": "https://papago.naver.com/"
-                        },
-                        {
-                            "title": "[prompt-all-in-one Wiki] Translation API Description / 翻译接口说明",
-                            "url": "https://aiodoc.physton.com/TranslationApiConfiguration.html#translation-api-description"
                         }
                     ]
                 },
@@ -885,10 +849,6 @@
                         {
                             "title": "Reverso",
                             "url": "https://www.reverso.net/text-translation"
-                        },
-                        {
-                            "title": "[prompt-all-in-one Wiki] Translation API Description / 翻译接口说明",
-                            "url": "https://aiodoc.physton.com/TranslationApiConfiguration.html#translation-api-description"
                         }
                     ]
                 },
@@ -918,10 +878,6 @@
                         {
                             "title": "TranslateMe / Neosus",
                             "url": "https://translateme.network/"
-                        },
-                        {
-                            "title": "[prompt-all-in-one Wiki] Translation API Description / 翻译接口说明",
-                            "url": "https://aiodoc.physton.com/TranslationApiConfiguration.html#translation-api-description"
                         }
                     ]
                 },
@@ -942,10 +898,6 @@
                         {
                             "title": "Elia - Elhuyar",
                             "url": "https://elia.eus/translator"
-                        },
-                        {
-                            "title": "[prompt-all-in-one Wiki] Translation API Description / 翻译接口说明",
-                            "url": "https://aiodoc.physton.com/TranslationApiConfiguration.html#translation-api-description"
                         }
                     ]
                 },
@@ -966,10 +918,6 @@
                         {
                             "title": "Judic - CrossLang",
                             "url": "https://judic.io/en/translate"
-                        },
-                        {
-                            "title": "[prompt-all-in-one Wiki] Translation API Description / 翻译接口说明",
-                            "url": "https://aiodoc.physton.com/TranslationApiConfiguration.html#translation-api-description"
                         }
                     ]
                 },
@@ -1079,10 +1027,6 @@
                         {
                             "title": "Alibaba/阿里翻译 - Alibaba",
                             "url": "https://translate.alibaba.com/"
-                        },
-                        {
-                            "title": "[prompt-all-in-one Wiki] Translation API Description / 翻译接口说明",
-                            "url": "https://aiodoc.physton.com/TranslationApiConfiguration.html#translation-api-description"
                         }
                     ]
                 },
@@ -1192,10 +1136,6 @@
                         {
                             "title": "Baidu/百度翻译 - Baidu",
                             "url": "https://fanyi.baidu.com/"
-                        },
-                        {
-                            "title": "[prompt-all-in-one Wiki] Translation API Description / 翻译接口说明",
-                            "url": "https://aiodoc.physton.com/TranslationApiConfiguration.html#translation-api-description"
                         }
                     ]
                 },
@@ -1233,10 +1173,6 @@
                         {
                             "title": "Sogou/搜狗翻译 - Tencent",
                             "url": "https://fanyi.sogou.com/"
-                        },
-                        {
-                            "title": "[prompt-all-in-one Wiki] Translation API Description / 翻译接口说明",
-                            "url": "https://aiodoc.physton.com/TranslationApiConfiguration.html#translation-api-description"
                         }
                     ]
                 },
@@ -1272,10 +1208,6 @@
                         {
                             "title": "QQTranSmart/腾讯交互翻译 - Tencent",
                             "url": "https://transmart.qq.com/"
-                        },
-                        {
-                            "title": "[prompt-all-in-one Wiki] Translation API Description / 翻译接口说明",
-                            "url": "https://aiodoc.physton.com/TranslationApiConfiguration.html#translation-api-description"
                         }
                     ]
                 },
@@ -1294,10 +1226,6 @@
                         {
                             "title": "Youdao/有道翻译 - NetEase",
                             "url": "https://ai.youdao.com/product-fanyi-text.s"
-                        },
-                        {
-                            "title": "[prompt-all-in-one Wiki] Translation API Description / 翻译接口说明",
-                            "url": "https://aiodoc.physton.com/TranslationApiConfiguration.html#translation-api-description"
                         }
                     ]
                 },
@@ -1409,10 +1337,6 @@
                         {
                             "title": "Iciba/爱词霸 - Kingsoft / Xiaomi",
                             "url": "https://www.iciba.com/fy"
-                        },
-                        {
-                            "title": "[prompt-all-in-one Wiki] Translation API Description / 翻译接口说明",
-                            "url": "https://aiodoc.physton.com/TranslationApiConfiguration.html#translation-api-description"
                         }
                     ]
                 },
@@ -1450,10 +1374,6 @@
                         {
                             "title": "CloudTranslation/深圳云译 - Xiamen University / CloudTranslation",
                             "url": "https://www.cloudtranslation.com/#/translate"
-                        },
-                        {
-                            "title": "[prompt-all-in-one Wiki] Translation API Description / 翻译接口说明",
-                            "url": "https://aiodoc.physton.com/TranslationApiConfiguration.html#translation-api-description"
                         }
                     ]
                 },
@@ -1475,10 +1395,6 @@
                         {
                             "title": "Caiyun/彩云翻译 - ColorfulClouds",
                             "url": "https://fanyi.caiyunapp.com/"
-                        },
-                        {
-                            "title": "[prompt-all-in-one Wiki] Translation API Description / 翻译接口说明",
-                            "url": "https://aiodoc.physton.com/TranslationApiConfiguration.html#translation-api-description"
                         }
                     ]
                 },
@@ -1607,10 +1523,6 @@
                         {
                             "title": "MyMemory Usage Limits [5000 chars/day]",
                             "url": "https://mymemory.translated.net/doc/usagelimits.php"
-                        },
-                        {
-                            "title": "[prompt-all-in-one Wiki] Translation API Description / 翻译接口说明",
-                            "url": "https://aiodoc.physton.com/TranslationApiConfiguration.html#translation-api-description"
                         }
                     ]
                 }
@@ -1733,10 +1645,6 @@
                         {
                             "title": "【中文】申请教程 by TTime",
                             "url": "https://ttime.timerecord.cn/pages/2448b0/"
-                        },
-                        {
-                            "title": "[prompt-all-in-one Wiki] Translation API Description / 翻译接口说明",
-                            "url": "https://aiodoc.physton.com/TranslationApiConfiguration.html#translation-api-description"
                         }
                     ],
                     "config": [
@@ -1883,14 +1791,6 @@
                         {
                             "title": "【中文】申请教程 by Pot",
                             "url": "https://pot.pylogmon.com/docs/tutorial/api/openai"
-                        },
-                        {
-                            "title": "[prompt-all-in-one Wiki] Translation API Description / 翻译接口说明",
-                            "url": "https://aiodoc.physton.com/TranslationApiConfiguration.html#translation-api-description"
-                        },
-                        {
-                            "title": "[prompt-all-in-one Wiki] Configure ChatGPT / 配置ChatGPT",
-                            "url": "https://aiodoc.physton.com/UsingChatgptToGeneratePrompts.html#configure-chatgpt"
                         }
                     ],
                     "config": [
@@ -2063,10 +1963,6 @@
                         {
                             "title": "【中文】申请教程 by BobTranslate",
                             "url": "https://bobtranslate.com/service/translate/microsoft.html"
-                        },
-                        {
-                            "title": "[prompt-all-in-one Wiki] Translation API Description / 翻译接口说明",
-                            "url": "https://aiodoc.physton.com/TranslationApiConfiguration.html#translation-api-description"
                         }
                     ],
                     "config": [
@@ -2174,10 +2070,6 @@
                         {
                             "title": "【中文】申请教程 by BobTranslate",
                             "url": "https://bobtranslate.com/service/translate/amazon.html"
-                        },
-                        {
-                            "title": "[prompt-all-in-one Wiki] Translation API Description / 翻译接口说明",
-                            "url": "https://aiodoc.physton.com/TranslationApiConfiguration.html#translation-api-description"
                         }
                     ],
                     "config": [
@@ -2288,10 +2180,6 @@
                         {
                             "title": "【中文】申请教程 by Pot",
                             "url": "https://pot.pylogmon.com/docs/tutorial/api/deepl"
-                        },
-                        {
-                            "title": "[prompt-all-in-one Wiki] Translation API Description / 翻译接口说明",
-                            "url": "https://aiodoc.physton.com/TranslationApiConfiguration.html#translation-api-description"
                         }
                     ],
                     "config": [
@@ -2393,10 +2281,6 @@
                         {
                             "title": "[official] Creating API keys | Yandex Cloud - Documentation",
                             "url": "https://cloud.yandex.com/en/docs/iam/operations/api-key/create"
-                        },
-                        {
-                            "title": "[prompt-all-in-one Wiki] Translation API Description / 翻译接口说明",
-                            "url": "https://aiodoc.physton.com/TranslationApiConfiguration.html#translation-api-description"
                         }
                     ],
                     "config": [
@@ -2525,10 +2409,6 @@
                         {
                             "title": "MyMemory: API key generator",
                             "url": "https://mymemory.translated.net/doc/keygen.php"
-                        },
-                        {
-                            "title": "[prompt-all-in-one Wiki] Translation API Description / 翻译接口说明",
-                            "url": "https://aiodoc.physton.com/TranslationApiConfiguration.html#translation-api-description"
                         }
                     ],
                     "config": [
@@ -2591,10 +2471,6 @@
                         {
                             "title": "【中文】申请教程 by Pot",
                             "url": "https://pot.pylogmon.com/docs/tutorial/api/baidu"
-                        },
-                        {
-                            "title": "[prompt-all-in-one Wiki] Translation API Description / 翻译接口说明",
-                            "url": "https://aiodoc.physton.com/TranslationApiConfiguration.html#translation-api-description"
                         }
                     ],
                     "config": [
@@ -2729,10 +2605,6 @@
                         {
                             "title": "【中文】申请教程 by Pot",
                             "url": "https://pot.pylogmon.com/docs/tutorial/api/alibaba/"
-                        },
-                        {
-                            "title": "[prompt-all-in-one Wiki] Translation API Description / 翻译接口说明",
-                            "url": "https://aiodoc.physton.com/TranslationApiConfiguration.html#translation-api-description"
                         }
                     ],
                     "config": [
@@ -2891,10 +2763,6 @@
                         {
                             "title": "【中文】申请教程 by TTime",
                             "url": "https://ttime.timerecord.cn/pages/43750c/"
-                        },
-                        {
-                            "title": "[prompt-all-in-one Wiki] Translation API Description / 翻译接口说明",
-                            "url": "https://aiodoc.physton.com/TranslationApiConfiguration.html#translation-api-description"
                         }
                     ],
                     "config": [
@@ -2953,10 +2821,6 @@
                         {
                             "title": "【中文】申请教程 by Pot",
                             "url": "https://pot.pylogmon.com/docs/tutorial/api/tencent"
-                        },
-                        {
-                            "title": "[prompt-all-in-one Wiki] Translation API Description / 翻译接口说明",
-                            "url": "https://aiodoc.physton.com/TranslationApiConfiguration.html#translation-api-description"
                         }
                     ],
                     "config": [
@@ -3117,10 +2981,6 @@
                         {
                             "title": "【中文】申请教程 by TTime",
                             "url": "https://ttime.timerecord.cn/pages/cc1bc7/"
-                        },
-                        {
-                            "title": "[prompt-all-in-one Wiki] Translation API Description / 翻译接口说明",
-                            "url": "https://aiodoc.physton.com/TranslationApiConfiguration.html#translation-api-description"
                         }
                     ],
                     "config": [
@@ -3158,10 +3018,6 @@
                         {
                             "title": "【中文】申请教程 by Pot",
                             "url": "https://pot.pylogmon.com/docs/tutorial/api/caiyun"
-                        },
-                        {
-                            "title": "[prompt-all-in-one Wiki] Translation API Description / 翻译接口说明",
-                            "url": "https://aiodoc.physton.com/TranslationApiConfiguration.html#translation-api-description"
                         }
                     ],
                     "config": [
@@ -3276,10 +3132,6 @@
                         {
                             "title": "【中文】申请教程 by Pot",
                             "url": "https://pot.pylogmon.com/docs/tutorial/api/volcengine"
-                        },
-                        {
-                            "title": "[prompt-all-in-one Wiki] Translation API Description / 翻译接口说明",
-                            "url": "https://aiodoc.physton.com/TranslationApiConfiguration.html#translation-api-description"
                         }
                     ],
                     "config": [
@@ -3392,10 +3244,6 @@
                         {
                             "title": "[official] 机器翻译 API 文档",
                             "url": "https://www.xfyun.cn/doc/nlp/xftrans/API.html"
-                        },
-                        {
-                            "title": "[prompt-all-in-one Wiki] Translation API Description / 翻译接口说明",
-                            "url": "https://aiodoc.physton.com/TranslationApiConfiguration.html#translation-api-description"
                         }
                     ],
                     "config": [
@@ -3480,10 +3328,6 @@
                         {
                             "title": "[official] 机器翻译（新） API 文档",
                             "url": "https://www.xfyun.cn/doc/nlp/xftrans_new/API.html"
-                        },
-                        {
-                            "title": "[prompt-all-in-one Wiki] Translation API Description / 翻译接口说明",
-                            "url": "https://aiodoc.physton.com/TranslationApiConfiguration.html#translation-api-description"
                         }
                     ],
                     "config": [
