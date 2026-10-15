@@ -1,4 +1,4 @@
-﻿<template>
+<template>
     <div class="physton-settings-modal" v-show="visible" @click="onMaskClick">
             <div class="settings-modal-main" @click.stop>
                 <div class="settings-modal-header">
@@ -32,9 +32,9 @@
                                     <div class="gradio-checkbox">
                                         <label>
                                             <input type="checkbox" :checked="enableTooltip"
+                                                   :aria-label="getLang('whether_to_enable_tooltip')"
                                                    @change="$emit('update:enableTooltip', $event.target.checked)">
                                             <icon-svg name="tooltip"/>
-                                            {{ getLang('whether_to_enable_tooltip') }}
                                         </label>
                                     </div>
                                 </div>
