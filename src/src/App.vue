@@ -97,6 +97,8 @@
                         @update:blacklist="onUpdateBlacklist"
                         :hotkey="hotkey"
                         @update:hotkey="onUpdateHotkey"
+                        :prompt-items="prompts"
+                        @update:prompt-option="onUpdatePromptOption"
                         @forceUpdate:translateApi="updateTranslateApiConfig"/>
         <select-language ref="selectLanguage" v-model:language-code="languageCode"
                          :translate-apis="translateApis"
@@ -1240,6 +1242,15 @@ export default {
         },
         onUpdateHotkey(data) {
             this.hotkey = data
+        },
+        onUpdatePromptOption(id, field, value) {
+            // 设置弹窗内按提示词框修改「自动加载WebUI提示词变动 / 隐藏默认输入框」
+            // （这两个开关原先在主界面工具栏上，现值仍按提示词框各自独立存放）
+            if (field === 'hideDefaultInput') {
+                this.onUpdateHideDefaultInput(id, value)
+            } else if (field === 'autoLoadWebuiPrompt') {
+                this.onUpdateAutoLoadWebuiPrompt(id, value)
+            }
         },
         onShowExtraNetworks(e, name, useCallback, showCheckpoints, from) {
             this.$refs.extraNetworksPopup.show(e, name, useCallback, showCheckpoints, from)

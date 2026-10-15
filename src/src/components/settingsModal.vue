@@ -149,6 +149,44 @@
                                     </div>
                                 </div>
                             </div>
+                            <!-- 各提示词框独立的两项设置（原为主界面工具栏上的两个图标开关，按要求移入此处） -->
+                            <div class="settings-section" v-for="item in promptItems" :key="item.id">
+                                <div class="settings-section-title">
+                                    {{ getLang(item.tab === 'tab_txt2img' ? 'txt2img' : 'img2img') }} · {{ getLang(item.neg ? 'negative_prompt' : 'prompt') }}
+                                </div>
+                                <div class="setting-line">
+                                    <div class="line-text">
+                                        <div class="line-title">{{ getLang('auto_load_title') }}</div>
+                                        <div class="line-desc">{{ getLang('auto_load_desc') }}</div>
+                                    </div>
+                                    <div class="line-content">
+                                        <div class="paio-pill" role="radiogroup" :aria-label="getLang('auto_load_title')">
+                                            <button type="button" class="paio-pill-btn" :class="{on: !item.autoLoadWebuiPrompt}"
+                                                    role="radio" :aria-checked="!item.autoLoadWebuiPrompt"
+                                                    @click="$emit('update:promptOption', item.id, 'autoLoadWebuiPrompt', false)">{{ getLang('toggle_off') }}</button>
+                                            <button type="button" class="paio-pill-btn" :class="{on: item.autoLoadWebuiPrompt}"
+                                                    role="radio" :aria-checked="item.autoLoadWebuiPrompt"
+                                                    @click="$emit('update:promptOption', item.id, 'autoLoadWebuiPrompt', true)">{{ getLang('toggle_on') }}</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="setting-line">
+                                    <div class="line-text">
+                                        <div class="line-title">{{ getLang('hide_default_input_box') }}</div>
+                                        <div class="line-desc">{{ getLang('default_input_desc') }}</div>
+                                    </div>
+                                    <div class="line-content">
+                                        <div class="paio-pill" role="radiogroup" :aria-label="getLang('hide_default_input_box')">
+                                            <button type="button" class="paio-pill-btn" :class="{on: !item.hideDefaultInput}"
+                                                    role="radio" :aria-checked="!item.hideDefaultInput"
+                                                    @click="$emit('update:promptOption', item.id, 'hideDefaultInput', false)">{{ getLang('toggle_off') }}</button>
+                                            <button type="button" class="paio-pill-btn" :class="{on: item.hideDefaultInput}"
+                                                    role="radio" :aria-checked="item.hideDefaultInput"
+                                                    @click="$emit('update:promptOption', item.id, 'hideDefaultInput', true)">{{ getLang('toggle_on') }}</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- 翻译API -->
@@ -268,6 +306,7 @@ export default {
         languageCode: {type: String, default: 'en'},
         translateApis: {type: Array, default: () => []},
         languages: {type: Array, default: () => []},
+        promptItems: {type: Array, default: () => []},
         canOneTranslate: {type: Boolean, default: false},
         autoTranslate: {type: Boolean, default: false},
         autoTranslateToLocal: {type: Boolean, default: false},
@@ -295,6 +334,7 @@ export default {
     },
     emits: [
         'update:visible', 'update:theme', 'update:languageCode',
+        'update:promptOption',
         'update:autoTranslate', 'update:autoTranslateToLocal', 'update:autoTranslateToEnglish',
         'update:enableTooltip', 'update:translateApi', 'update:tagCompleteFile',
         'update:onlyCsvOnAuto', 'update:groupTagsTranslate',

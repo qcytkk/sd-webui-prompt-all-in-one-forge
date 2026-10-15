@@ -200,7 +200,10 @@
                 "theme_dark": "暗夜主题",
                 "theme_light": "白日主题",
                 "toggle_off": "关闭",
-                "toggle_on": "开启"
+                "toggle_on": "开启",
+                "auto_load_title": "自动加载WebUI提示词变动",
+                "auto_load_desc": "WebUI 提示词变动时自动加载并格式化；关闭后需手动点击「加载WebUI提示词」按钮",
+                "default_input_desc": "隐藏 WebUI 自带的提示词输入框，只显示本插件的标签编辑区"
             }
         },
         {
@@ -402,7 +405,10 @@
                 "theme_dark": "暗夜主題",
                 "theme_light": "白日主題",
                 "toggle_off": "關閉",
-                "toggle_on": "開啟"
+                "toggle_on": "開啟",
+                "auto_load_title": "自動載入 WebUI 提示詞變動",
+                "auto_load_desc": "WebUI 提示詞變動時自動載入並格式化；關閉後需手動點擊「載入 WebUI 提示詞」按鈕",
+                "default_input_desc": "隱藏 WebUI 內建的提示詞輸入框，只顯示本插件的標籤編輯區"
             }
         },
         {
@@ -604,7 +610,10 @@
                 "theme_dark": "暗夜主題",
                 "theme_light": "白日主題",
                 "toggle_off": "關閉",
-                "toggle_on": "開啟"
+                "toggle_on": "開啟",
+                "auto_load_title": "自動載入 WebUI 提示詞變動",
+                "auto_load_desc": "WebUI 提示詞變動時自動載入並格式化；關閉後需手動點擊「載入 WebUI 提示詞」按鈕",
+                "default_input_desc": "隱藏 WebUI 內建的提示詞輸入框，只顯示本外掛的標籤編輯區"
             }
         },
         {
@@ -806,7 +815,10 @@
                 "theme_dark": "Dark Theme",
                 "theme_light": "Light Theme",
                 "toggle_off": "Off",
-                "toggle_on": "On"
+                "toggle_on": "On",
+                "auto_load_title": "Auto-load WebUI Prompt Changes",
+                "auto_load_desc": "Auto-load and format when the WebUI prompt changes; when off, click the Load WebUI Prompt button manually",
+                "default_input_desc": "Hide the WebUI built-in prompt box and show only this plugin's tag editor"
             }
         },
         {

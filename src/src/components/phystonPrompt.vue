@@ -101,28 +101,7 @@
                 </div>
                 <div class="prompt-header-extend prompt-append">
                     <div class="extend-content">
-                        <div class="gradio-checkbox hover-scale-120">
-                            <label v-tooltip="getLang('auto_load_webui_prompt')">
-                                <input type="checkbox" name="auto_load_webui_prompt" value="1"
-                                       :checked="autoLoadWebuiPrompt"
-                                       @change="$emit('update:autoLoadWebuiPrompt', $event.target.checked)">
-                                <icon-svg name="load"/>
-                            </label>
-                        </div>
-                        <div class="gradio-checkbox hover-scale-120">
-                            <label v-if="hideDefaultInput" v-tooltip="getLang('show_default_input_box')">
-                                <input type="checkbox" name="hide_default_input" value="1"
-                                       :checked="!hideDefaultInput"
-                                       @change="$emit('update:hideDefaultInput', !$event.target.checked)">
-                                <icon-svg name="input"/>
-                            </label>
-                            <label v-else v-tooltip="getLang('hide_default_input_box')">
-                                <input type="checkbox" name="hide_default_input" value="1"
-                                       :checked="!hideDefaultInput"
-                                       @change="$emit('update:hideDefaultInput', !$event.target.checked)">
-                                <icon-svg name="input"/>
-                            </label>
-                        </div>
+                        <!-- 原「自动加载WebUI提示词变动」「隐藏默认输入框」两个开关已移入 设置弹窗 → 通用设置（按提示词框分别设置） -->
                         <textarea type="text" class="scroll-hide svelte-4xt1ch input-tag-append" ref="promptTagAppend"
                                   :placeholder="getLang('please_enter_new_keyword')"
                                   v-tooltip="getLang('enter_to_add')"
