@@ -21,8 +21,8 @@
                     <div class="settings-modal-content">
                         <!-- 通用 -->
                         <div v-show="activeTab === 'common'" class="settings-tab-pane">
+                            <!-- 原「外观」分组标题按用户要求去掉（该节仅 2 行，标题冗余）；保留 settings-section 以维持行间虚线分隔 -->
                             <div class="settings-section">
-                                <div class="settings-section-title">{{ getLang('appearance') }}</div>
                                 <div class="setting-line">
                                     <div class="line-title">{{ getLang('interface_language') }}</div>
                                     <div class="line-content">

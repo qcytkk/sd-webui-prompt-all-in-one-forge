@@ -133,7 +133,9 @@
 
 > 内容容器：`.settings-modal-content` / `.settings-tab-pane`；行样式 `.setting-line` + `.line-title` + `.line-content`。
 
-**① 通用设置（`common`，`settingsModal.vue:28-104`）**
+**① 通用设置（`common`）**
+
+> **分组结构**（`.settings-section` + `.settings-section-title`；组间有虚线、组内行间有虚线）：本页现有 **2 个带标题的分组** —— **提示与自动填充**（`tooltip_and_auto_input`：提示框开关 + 自动填充×2）、**自动翻译**（`auto_translation`）。原先的「外观」（`appearance`）分组标题已于 2026-10-16 按用户要求**去掉**（该组仅「界面语言 + WebUI 主题」两行，标题冗余）；`appearance` 键因此成为**死键**（未清理）。
 
 | 控件 | 可见文案 | key | CSS 类名 | 行为 |
 |---|---|---|---|---|
