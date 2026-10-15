@@ -40,6 +40,16 @@
                                 </div>
                             </div>
                             <div class="setting-line">
+                                <div class="line-title">{{ getLang('interface_language') }}</div>
+                                <div class="line-content">
+                                    <select class="language-select" :value="languageCode" @change="onLanguageChange">
+                                        <option v-for="item in languages" :key="item.code" :value="item.code">
+                                            {{ item.code }} - {{ item.name }}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="setting-line">
                                 <div class="line-title">{{ getLang('auto_input_prompt') }}</div>
                                 <div class="line-content">
                                     <div class="auto-input-row">
@@ -342,6 +352,10 @@ export default {
             }).catch(() => {
                 this.$toastr.error(this.getLang('failed'))
             })
+        },
+        onLanguageChange(e) {
+            // 界面语言切换（原顶栏「Language」按钮功能移入设置弹窗）
+            this.$emit('update:languageCode', e.target.value)
         },
         getFavoritesByType(type) {
             const favorites = typeof window.phystonPromptfavorites === 'object' ? window.phystonPromptfavorites : []

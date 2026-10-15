@@ -184,7 +184,8 @@
                 "is_split_by_period": "是否在句号+空格处分割关键词。<br/>勾选后将“word1. word2”分割为“word1.”和“word2”两个关键词。<br/>取消勾选则保持原样。",
                 "is_split_by_period_include_paren": "是否同时分割括号前的句号+空格（如“word1. (test)”）。<br/>需先勾选上方选项。",
                 "auto_load_webui_prompt": "自动加载WebUI提示词变动。<br/>勾选后，当WebUI中提示词输入框的内容变动时，插件会自动加载关键词解析并格式化。<br/>未勾选，当WebUI中提示词输入框的内容变动时，需要手动点击加载提示词按钮。",
-                "load_webui_prompt": "加载WebUI提示词"
+                "load_webui_prompt": "加载WebUI提示词",
+                "interface_language": "界面语言"
             }
         },
         {
@@ -370,7 +371,8 @@
                 "is_split_by_period": "是否在句號+空格處分割關鍵詞。<br/>勾選後將「word1. word2」分割為「word1.」和「word2」兩個關鍵詞。<br/>取消勾選則保持原樣。",
                 "is_split_by_period_include_paren": "是否同時分割括號前的句號+空格（如「word1. (test)」）。<br/>需先勾選上方選項。",
                 "auto_load_webui_prompt": "自動加載WebUI提示詞變動。<br/>勾選後，當WebUI中提示詞輸入框的內容變動時，插件會自動加載關鍵詞解析並格式化。<br/>未勾選，當WebUI中提示詞輸入框的內容變動時，需要手動點擊加載提示詞按鈕。",
-                "load_webui_prompt": "加載WebUI提示詞"
+                "load_webui_prompt": "加載WebUI提示詞",
+                "interface_language": "介面語言"
             }
         },
         {
@@ -556,7 +558,8 @@
                 "is_split_by_period": "是否在句號+空格處分割關鍵詞。<br/>勾選後將「word1. word2」分割為「word1.」和「word2」兩個關鍵詞。<br/>取消勾選則保持原樣。",
                 "is_split_by_period_include_paren": "是否同時分割括號前的句號+空格（如「word1. (test)」）。<br/>需先勾選上方選項。",
                 "auto_load_webui_prompt": "自動載入WebUI提示詞變動。<br/>勾選後，當WebUI中提示詞輸入框的內容變動時，插件會自動載入關鍵詞解析並格式化。<br/>未勾選，當WebUI中提示詞輸入框的內容變動時，需要手動點擊載入提示詞按鈕。",
-                "load_webui_prompt": "載入WebUI提示詞"
+                "load_webui_prompt": "載入WebUI提示詞",
+                "interface_language": "介面語言"
             }
         },
         {
@@ -742,7 +745,8 @@
                 "is_split_by_period": "Whether to split keywords at period+space.<br/>If checked, \"word1. word2\" will be split into \"word1.\" and \"word2\".<br/>If unchecked, it stays as is.",
                 "is_split_by_period_include_paren": "Also split at period+space before parentheses (e.g. \"word1. (test)\").<br/>Requires the above option.",
                 "auto_load_webui_prompt": "Auto-load WebUI prompt changes.<br/>When checked, the plugin will automatically load and format keyword parsing when the content of the prompt input box in WebUI changes.<br/>When unchecked, you need to manually click the load prompt button when the content of the prompt input box in WebUI changes.",
-                "load_webui_prompt": "Load WebUI prompt"
+                "load_webui_prompt": "Load WebUI prompt",
+                "interface_language": "Interface Language"
             }
         },
         {

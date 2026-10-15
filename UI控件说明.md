@@ -35,22 +35,23 @@
 
 ### 1.2 顶部图标按钮栏（一排小图标，`.extend-btn-item`）
 
-> 每份提示词框都有一排；顺序如下（`phystonPrompt.vue:10-105`）。**正面框比负面框多一个 ChatGPT 按钮**。
+> 每份提示词框都有一排；顺序如下（`phystonPrompt.vue:10-101`）。**正面框比负面框多一个 ChatGPT 按钮**。
 
 | # | 图标名 | 悬停提示（zh_CN） | key | 行为 |
 |---|---|---|---|---|
-| 1 | `i18n` | `Language: <语言名>` | — | **打开语言选择弹窗**（`selectLanguage.vue`） |
-| 2 | `setting` | 设置：翻译API、自动翻译、显示/隐藏... | `setting_desc` | **打开设置弹窗**（`settingsModal.vue`） |
-| 3 | `history` | 历史记录 | `history` | 打开**历史记录浮层**（`history.vue`） |
-| 4 | `favorite` | 收藏列表 | `favorite` | 打开**收藏列表浮层**（`favorite.vue`） |
-| 5 | `translate` | 一键翻译所有关键词（`one_translate_all_keywords`）／ 翻译关键词到本地语言（`translate_keywords_to_local_language`） | 同左 | 翻译全部标签 → 本地语言（翻译中变 `loading` 图标） |
-| 6 | `english` | 翻译所有非英文的关键词到英文 | `translate_all_keywords_to_english` | 翻译全部标签 → 英文。**仅当语言非"可一键翻译"时才出现**（与 #5 二选一） |
-| 7 | `copy` | 复制所有关键词到剪贴板 | `copy_keywords_to_clipboard` | 复制当前所有标签 |
-| 8 | `remove` | 删除所有关键词 | `delete_all_keywords` | 清空全部标签（有确认弹窗） |
-| 9 | `load2` | 加载WebUI提示词 | `load_webui_prompt` | 手动从 WebUI 输入框加载。**仅当"自动加载"关闭时出现** |
-| 10 | `chatgpt` | 使用ChatGPT生成Prompt | `use_chatgpt_gen_prompts` | 打开 **ChatGPT 弹窗**。**仅正面框出现** |
+| 1 | `setting` | 设置：翻译API、自动翻译、显示/隐藏... | `setting_desc` | **打开设置弹窗**（`settingsModal.vue`） |
+| 2 | `history` | 历史记录 | `history` | 打开**历史记录浮层**（`history.vue`） |
+| 3 | `favorite` | 收藏列表 | `favorite` | 打开**收藏列表浮层**（`favorite.vue`） |
+| 4 | `translate` | 一键翻译所有关键词（`one_translate_all_keywords`）／ 翻译关键词到本地语言（`translate_keywords_to_local_language`） | 同左 | 翻译全部标签 → 本地语言（翻译中变 `loading` 图标） |
+| 5 | `english` | 翻译所有非英文的关键词到英文 | `translate_all_keywords_to_english` | 翻译全部标签 → 英文。**仅当语言非"可一键翻译"时才出现**（与 #4 二选一） |
+| 6 | `copy` | 复制所有关键词到剪贴板 | `copy_keywords_to_clipboard` | 复制当前所有标签 |
+| 7 | `remove` | 删除所有关键词 | `delete_all_keywords` | 清空全部标签（有确认弹窗） |
+| 8 | `load2` | 加载WebUI提示词 | `load_webui_prompt` | 手动从 WebUI 输入框加载。**仅当"自动加载"关闭时出现** |
+| 9 | `chatgpt` | 使用ChatGPT生成Prompt | `use_chatgpt_gen_prompts` | 打开 **ChatGPT 弹窗**。**仅正面框出现** |
 
-### 1.3 输入区与两个开关（`.prompt-header-extend.prompt-append`，`phystonPrompt.vue:106-136`）
+> 注：原 #1 `i18n`（Language 按钮）已于 2026-10-16 移除，功能迁入【设置弹窗 → 通用设置 → 界面语言】下拉（见 §2.1 与 §2.2）。
+
+### 1.3 输入区与两个开关（`.prompt-header-extend.prompt-append`，`phystonPrompt.vue:102-132`）
 
 | 控件 | 可见文案 | key | 类型 | CSS 类名 |
 |---|---|---|---|---|
@@ -137,6 +138,7 @@
 | 控件 | 可见文案 | key | CSS 类名 | 行为 |
 |---|---|---|---|---|
 | 提示框总开关 | 是否启用每个功能的提示框，如果你已经熟练掌握本扩展的所有功能，可以取消勾选 | `whether_to_enable_tooltip` | `.setting-line` > `.gradio-checkbox`（图标 `tooltip`） | **标题在上、勾选框只留"图标+开关"**（2026-10-16 去重后） |
+| 界面语言 | 界面语言 | `interface_language` | `.setting-line` > `select.language-select` | 下拉选界面语言（108 项，文案 `code - 名称`，选项来自 i18n.json 的 languages）。选中即切换（emit `update:languageCode`，App.vue watcher 落盘 + 重载分组标签）。**2026-10-16 由顶栏 i18n 按钮迁入** |
 | 自动填充·提示词 | 当网页加载后自动填充提示词 | `auto_input_prompt` | `.setting-line` + `.auto-input-row` | 下拉：禁止(`disabled`) / 最后输入的提示词(`last_input_prompt`) / 收藏里的条目 |
 | 自动填充·反向词 | 同上（第二行） | `auto_input_prompt` | `.setting-line` + `.auto-input-row` | 同上 |
 | 输入新关键词后自动翻译 | 输入新关键词后自动翻译 | `auto_translate` | `.settings-auto-translate-row` > `.gradio-checkbox`（图标 `translate`） | 开启后输入新词自动翻译。**语言"不可一键翻译"时拆成两个**：输入新关键词后自动翻译到本地语言(`auto_translate_to_local_language`，图标 `translate`) / …到英文(`auto_translate_to_english`，图标 `english`)。**非英文语言才显示** |
@@ -207,7 +209,7 @@
 
 ### 2.2 语言选择弹窗（`selectLanguage.vue`）
 
-- **入口**：主界面 `i18n` 图标（提示 `Language: <名>`）。
+- **入口（2026-10-16 起）**：① 主入口 = 【设置弹窗 → 通用设置 → 界面语言】下拉（直接选，不经弹窗）；② 辅助入口 = packagesState 浮层的语言行（仍走本弹窗）。**顶栏原 `i18n` 图标已移除**。
 - 结构：`.physton-prompt-select-language` → `.language-main` → `.language-list` → 每项 `.language-item`（文案 `code - 名称`，当前项带 `selected`）；右上 `close`。
 - 行为：点某项即切换界面语言（写入 `languageCode`）。
 

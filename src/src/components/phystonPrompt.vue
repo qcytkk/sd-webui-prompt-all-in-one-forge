@@ -10,10 +10,6 @@
                 <div class="prompt-header-extend">
                     <div class="extend-content">
                         <div class="extend-btn-group">
-                            <div class="extend-btn-item" v-tooltip="'Language: ' + langName"
-                                 @click="$emit('click:selectLanguage', $event)">
-                                <icon-svg class="hover-scale-120" name="i18n"/>
-                            </div>
                             <div class="extend-btn-item"
                                  v-tooltip="getLang('setting_desc')"
                                  @click="$emit('click:openSettings', $event)">
