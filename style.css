@@ -258,3 +258,45 @@ body .physton-settings-modal .settings-modal-title{color:var(--paio-text)!import
 body .physton-prompt-extension-css .extension-table th,
 body .physton-prompt-extension-css .extension-table td{border-color:var(--paio-border)!important;}
 body .physton-about-prompt .version-item{border-color:var(--paio-border)!important;}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   通用设置「功能行」布局（2026-10-16 @TraeCode / P5a-行布局）
+   1) 每个功能 = 一行两列：左 = 文字块（标题 + 可选详情），右 = 控件（右对齐）
+   2) 行内加上下内边距 12px，使内容与虚线分隔留出空隙，不再粘连
+   3) 作用域限定 `.settings-section`（只覆盖通用设置页），
+      避免影响翻译接口/黑名单等页里的宽控件行（大文本域不适合右对齐）
+   ═══════════════════════════════════════════════════════════════════════════ */
+body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line,
+body .physton-settings-modal .settings-tab-pane .settings-section>.settings-auto-translate-row{
+  display:flex!important; align-items:center!important; justify-content:space-between;
+  gap:16px; margin-bottom:0!important; padding:12px 0!important;
+  border-bottom:1px dashed var(--paio-border)!important;
+}
+body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line:last-child,
+body .physton-settings-modal .settings-tab-pane .settings-section>.settings-auto-translate-row:last-child{
+  border-bottom:none!important;
+}
+/* 左列：标题（主文字）+ 详情（弱化小字，可缺省） */
+body .physton-settings-modal .settings-tab-pane .line-text{
+  display:flex; flex-direction:column; gap:4px; min-width:0; flex:1 1 auto;
+}
+body .physton-settings-modal .settings-tab-pane .line-text>.line-title{
+  margin:0!important; font-size:14px!important; font-weight:500; line-height:1.4;
+  color:var(--paio-text)!important;
+}
+body .physton-settings-modal .settings-tab-pane .line-text>.line-desc{
+  font-size:12px!important; line-height:1.55; color:var(--paio-text-muted)!important;
+}
+/* 右列：控件，靠右 */
+body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line>.line-content,
+body .physton-settings-modal .settings-tab-pane .settings-section>.settings-auto-translate-row>.line-content{
+  flex:0 1 auto; min-width:0; margin-left:auto;
+  display:flex; align-items:center; justify-content:flex-end; gap:10px;
+}
+/* 自动填充：右列的两个下拉改为纵向堆叠并限宽，避免挤压左侧文字 */
+body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line>.line-content:has(.auto-input-row){
+  flex-direction:column; align-items:stretch; gap:6px; width:min(320px,48%);
+}
+body .physton-settings-modal .settings-tab-pane .settings-section .auto-input-row{gap:10px; margin-bottom:0;}
+body .physton-settings-modal .settings-tab-pane .settings-section .auto-input-label{min-width:52px;}
+body .physton-settings-modal .settings-tab-pane .settings-section .auto-input-row select{min-width:0; width:100%;}

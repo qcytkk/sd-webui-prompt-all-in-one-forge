@@ -24,7 +24,9 @@
                             <!-- 原「外观」分组标题按用户要求去掉（该节仅 2 行，标题冗余）；保留 settings-section 以维持行间虚线分隔 -->
                             <div class="settings-section">
                                 <div class="setting-line">
-                                    <div class="line-title">{{ getLang('interface_language') }}</div>
+                                    <div class="line-text">
+                                        <div class="line-title">{{ getLang('interface_language') }}</div>
+                                    </div>
                                     <div class="line-content">
                                         <select class="language-select" :value="languageCode"
                                                 :aria-label="getLang('interface_language')" @change="onLanguageChange">
@@ -35,7 +37,9 @@
                                     </div>
                                 </div>
                                 <div class="setting-line">
-                                    <div class="line-title">{{ getLang('webui_theme') }}</div>
+                                    <div class="line-text">
+                                        <div class="line-title">{{ getLang('webui_theme') }}</div>
+                                    </div>
                                     <div class="line-content">
                                         <div class="settings-modal-icon-btn"
                                              role="button" tabindex="0"
@@ -51,7 +55,10 @@
                             <div class="settings-section">
                                 <div class="settings-section-title">{{ getLang('tooltip_and_auto_input') }}</div>
                                 <div class="setting-line">
-                                    <div class="line-title">{{ getLang('whether_to_enable_tooltip') }}</div>
+                                    <div class="line-text">
+                                        <div class="line-title">{{ getLang('tooltip_switch') }}</div>
+                                        <div class="line-desc">{{ getLang('whether_to_enable_tooltip') }}</div>
+                                    </div>
                                     <div class="line-content">
                                         <div class="gradio-checkbox">
                                             <label>
@@ -64,7 +71,10 @@
                                     </div>
                                 </div>
                                 <div class="setting-line">
-                                    <div class="line-title">{{ getLang('auto_input_prompt') }}</div>
+                                    <div class="line-text">
+                                        <div class="line-title">{{ getLang('auto_fill_title') }}</div>
+                                        <div class="line-desc">{{ getLang('auto_input_prompt') }}</div>
+                                    </div>
                                     <div class="line-content">
                                         <div class="auto-input-row">
                                             <label class="auto-input-label">{{ getLang('prompt') }}:</label>
@@ -103,34 +113,42 @@
                                 <div class="settings-section-title">{{ getLang('auto_translation') }}</div>
                                 <!-- 输入新关键词后自动翻译（原位于「翻译接口」标签页，按要求移入「通用设置」） -->
                                 <div v-if="!isEnglish" class="settings-auto-translate-row">
-                                    <template v-if="canOneTranslate">
-                                        <div class="gradio-checkbox">
-                                            <label>
-                                                <input type="checkbox" :checked="autoTranslate"
-                                                       @change="$emit('update:autoTranslate', $event.target.checked)">
-                                                <icon-svg name="translate"/>
-                                                {{ getLang('auto_translate') }}
-                                            </label>
-                                        </div>
-                                    </template>
-                                    <template v-else>
-                                        <div class="gradio-checkbox">
-                                            <label>
-                                                <input type="checkbox" :checked="autoTranslateToLocal"
-                                                       @change="$emit('update:autoTranslateToLocal', $event.target.checked)">
-                                                <icon-svg name="translate"/>
-                                                {{ getLang('auto_translate_to_local_language') }}
-                                            </label>
-                                        </div>
-                                        <div class="gradio-checkbox">
-                                            <label>
-                                                <input type="checkbox" :checked="autoTranslateToEnglish"
-                                                       @change="$emit('update:autoTranslateToEnglish', $event.target.checked)">
-                                                <icon-svg name="english"/>
-                                                {{ getLang('auto_translate_to_english') }}
-                                            </label>
-                                        </div>
-                                    </template>
+                                    <div class="line-text">
+                                        <div class="line-title">{{ getLang('auto_translation') }}</div>
+                                        <div class="line-desc">{{ getLang('auto_translate') }}</div>
+                                    </div>
+                                    <div class="line-content">
+                                        <template v-if="canOneTranslate">
+                                            <div class="gradio-checkbox">
+                                                <label>
+                                                    <input type="checkbox" :checked="autoTranslate"
+                                                           :aria-label="getLang('auto_translate')"
+                                                           @change="$emit('update:autoTranslate', $event.target.checked)">
+                                                    <icon-svg name="translate"/>
+                                                </label>
+                                            </div>
+                                        </template>
+                                        <template v-else>
+                                            <div class="gradio-checkbox">
+                                                <label>
+                                                    <input type="checkbox" :checked="autoTranslateToLocal"
+                                                           :aria-label="getLang('auto_translate_to_local_language')"
+                                                           @change="$emit('update:autoTranslateToLocal', $event.target.checked)">
+                                                    <icon-svg name="translate"/>
+                                                    {{ getLang('auto_translate_to_local_language') }}
+                                                </label>
+                                            </div>
+                                            <div class="gradio-checkbox">
+                                                <label>
+                                                    <input type="checkbox" :checked="autoTranslateToEnglish"
+                                                           :aria-label="getLang('auto_translate_to_english')"
+                                                           @change="$emit('update:autoTranslateToEnglish', $event.target.checked)">
+                                                    <icon-svg name="english"/>
+                                                    {{ getLang('auto_translate_to_english') }}
+                                                </label>
+                                            </div>
+                                        </template>
+                                    </div>
                                 </div>
                             </div>
                         </div>

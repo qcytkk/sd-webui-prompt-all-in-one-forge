@@ -185,7 +185,7 @@
                 "is_split_by_period_include_paren": "是否同时分割括号前的句号+空格（如“word1. (test)”）。<br/>需先勾选上方选项。",
                 "auto_load_webui_prompt": "自动加载WebUI提示词变动。<br/>勾选后，当WebUI中提示词输入框的内容变动时，插件会自动加载关键词解析并格式化。<br/>未勾选，当WebUI中提示词输入框的内容变动时，需要手动点击加载提示词按钮。",
                 "load_webui_prompt": "加载WebUI提示词",
-                "interface_language": "界面语言",
+                "interface_language": "插件语言",
                 "webui_theme": "WebUI 主题",
                 "appearance": "外观",
                 "tooltip_and_auto_input": "提示与自动填充",
@@ -193,7 +193,9 @@
                 "group_comma_space": "逗号与空格",
                 "group_weight_symbol": "权重与符号",
                 "group_break_wrap": "换行与 BREAK",
-                "group_lora_period": "LoRA 与句号"
+                "group_lora_period": "LoRA 与句号",
+                "tooltip_switch": "功能提示框",
+                "auto_fill_title": "自动填充提示词"
             }
         },
         {
@@ -380,7 +382,7 @@
                 "is_split_by_period_include_paren": "是否同時分割括號前的句號+空格（如「word1. (test)」）。<br/>需先勾選上方選項。",
                 "auto_load_webui_prompt": "自動加載WebUI提示詞變動。<br/>勾選後，當WebUI中提示詞輸入框的內容變動時，插件會自動加載關鍵詞解析並格式化。<br/>未勾選，當WebUI中提示詞輸入框的內容變動時，需要手動點擊加載提示詞按鈕。",
                 "load_webui_prompt": "加載WebUI提示詞",
-                "interface_language": "介面語言",
+                "interface_language": "插件語言",
                 "webui_theme": "WebUI 主題",
                 "appearance": "外觀",
                 "tooltip_and_auto_input": "提示與自動填充",
@@ -388,7 +390,9 @@
                 "group_comma_space": "逗號與空格",
                 "group_weight_symbol": "權重與符號",
                 "group_break_wrap": "換行與 BREAK",
-                "group_lora_period": "LoRA 與句號"
+                "group_lora_period": "LoRA 與句號",
+                "tooltip_switch": "功能提示框",
+                "auto_fill_title": "自動填入提示詞"
             }
         },
         {
@@ -575,7 +579,7 @@
                 "is_split_by_period_include_paren": "是否同時分割括號前的句號+空格（如「word1. (test)」）。<br/>需先勾選上方選項。",
                 "auto_load_webui_prompt": "自動載入WebUI提示詞變動。<br/>勾選後，當WebUI中提示詞輸入框的內容變動時，插件會自動載入關鍵詞解析並格式化。<br/>未勾選，當WebUI中提示詞輸入框的內容變動時，需要手動點擊載入提示詞按鈕。",
                 "load_webui_prompt": "載入WebUI提示詞",
-                "interface_language": "介面語言",
+                "interface_language": "擴充套件語言",
                 "webui_theme": "WebUI 主題",
                 "appearance": "外觀",
                 "tooltip_and_auto_input": "提示與自動填充",
@@ -583,7 +587,9 @@
                 "group_comma_space": "逗號與空格",
                 "group_weight_symbol": "權重與符號",
                 "group_break_wrap": "換行與 BREAK",
-                "group_lora_period": "LoRA 與句號"
+                "group_lora_period": "LoRA 與句號",
+                "tooltip_switch": "功能提示框",
+                "auto_fill_title": "自動填入提示詞"
             }
         },
         {
@@ -770,7 +776,7 @@
                 "is_split_by_period_include_paren": "Also split at period+space before parentheses (e.g. \"word1. (test)\").<br/>Requires the above option.",
                 "auto_load_webui_prompt": "Auto-load WebUI prompt changes.<br/>When checked, the plugin will automatically load and format keyword parsing when the content of the prompt input box in WebUI changes.<br/>When unchecked, you need to manually click the load prompt button when the content of the prompt input box in WebUI changes.",
                 "load_webui_prompt": "Load WebUI prompt",
-                "interface_language": "Interface Language",
+                "interface_language": "Plugin Language",
                 "webui_theme": "WebUI Theme",
                 "appearance": "Appearance",
                 "tooltip_and_auto_input": "Tooltips & auto-fill",
@@ -778,7 +784,9 @@
                 "group_comma_space": "Commas & spaces",
                 "group_weight_symbol": "Weights & symbols",
                 "group_break_wrap": "Line breaks & BREAK",
-                "group_lora_period": "LoRA & periods"
+                "group_lora_period": "LoRA & periods",
+                "tooltip_switch": "Feature Tooltips",
+                "auto_fill_title": "Auto-fill Prompt"
             }
         },
         {
