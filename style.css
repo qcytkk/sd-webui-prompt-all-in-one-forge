@@ -30,3 +30,10 @@
 .physton-settings-modal .settings-tab-pane .format-group-title{font-size:12px;font-weight:500;color:rgba(255,255,255,.42);margin-bottom:8px;letter-spacing:.02em}
 .physton-settings-modal .settings-tab-pane .format-item{margin-bottom:8px}
 .physton-settings-modal .settings-tab-pane .format-item:last-child{margin-bottom:0}
+
+/* 视觉修正（2026-10-16 @WorkBuddy / P5a 阶段一.b，playwright 实测后）：
+   1) 收紧弹窗宽度：原 width:1000px 在大屏下内容区右侧大片留空，与设计稿紧凑比例不符
+   2) 复选框统一 14px + 主题蓝，对齐设计稿（原生复选框最小可近似） */
+.physton-settings-modal .settings-modal-main{width:820px}
+.physton-settings-modal .settings-modal-content{padding:14px 20px}
+.physton-settings-modal input[type="checkbox"]{accent-color:#6b73ff;width:14px;height:14px}
