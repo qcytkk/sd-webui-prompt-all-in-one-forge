@@ -78,6 +78,16 @@
                     <!-- ③ 翻译增强（关键词组 + TagComplete） -->
                     <div class="settings-section">
                         <div class="settings-section-title" role="heading" aria-level="3">{{ getLang('enhance_translation') }}</div>
+                        <!-- 关键词组与 CSV 词典是 if / else-if 互斥关系（见 phystonPrompt.vue 的翻译分支），
+                             这里直接告诉用户当前实际生效的是哪一个，避免"改了没反应"的困惑 -->
+                        <div class="setting-line">
+                            <div class="line-text">
+                                <div class="line-title">{{ getLang('translation_source') }}</div>
+                            </div>
+                            <div class="line-content">
+                                <span class="paio-source-badge" :class="{'is-off': translationSource === 'none'}">{{ translationSourceText }}</span>
+                            </div>
+                        </div>
                         <div class="setting-line">
                             <div class="line-text">
                                 <div class="line-title">{{ getLang('Keyword_group') }}</div>
@@ -175,6 +185,17 @@ export default {
                 })
             })
             return api
+        },
+        // 与 phystonPrompt.vue 的翻译分支保持一致：关键词组优先，其次 CSV 词典，都没有则全部走网络
+        translationSource() {
+            if (this.groupTagsTranslateValue) return 'group_tags'
+            if (this.tagCompleteFileKey) return 'csv'
+            return 'none'
+        },
+        translationSourceText() {
+            if (this.translationSource === 'group_tags') return this.getLang('Keyword_group')
+            if (this.translationSource === 'csv') return this.getLang('source_csv_dict')
+            return this.getLang('source_network_only')
         },
     },
     mounted() {

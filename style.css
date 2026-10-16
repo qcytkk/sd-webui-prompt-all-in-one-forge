@@ -402,8 +402,18 @@ body .physton-settings-modal .settings-tab-pane .translate-setting-content{
    1) 分组说明文字（替代原来的红色「1. / 2. …」段落）
    2) .paio-stack：该行改为上下堆叠（标签在上、整宽文本框在下），
       因为大文本框不适合「左文字 / 右控件」的两列排法 */
-body .physton-settings-modal .settings-tab-pane .settings-section>.paio-section-desc{
+body .physton-settings-modal .settings-tab-pane .paio-section-desc{
   font-size:12px; line-height:1.55; color:var(--paio-text-muted); margin:0 0 10px;
+}
+/* 「当前生效的翻译来源」徽标（2026-10-16 @TraeCode / UI23）
+   生效中 = 品牌色描边+文字；未启用本地词典 = 弱化灰 */
+body .physton-settings-modal .settings-tab-pane .paio-source-badge{
+  display:inline-flex; align-items:center; height:24px; padding:0 10px;
+  border-radius:6px; border:1px solid var(--paio-brand); color:var(--paio-brand);
+  font-size:12px; font-weight:600; white-space:nowrap;
+}
+body .physton-settings-modal .settings-tab-pane .paio-source-badge.is-off{
+  border-color:var(--paio-border); color:var(--paio-text-muted); font-weight:500;
 }
 /* .paio-stack：标签在上、整宽控件在下（大文本框用），并留出标签与控件之间的间距 */
 body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-stack{display:block!important;}
