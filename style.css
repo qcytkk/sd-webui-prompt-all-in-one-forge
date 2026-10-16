@@ -377,6 +377,12 @@ body .physton-settings-modal .settings-tab-pane .about-body{
   width:auto!important;
   max-width:none!important;
 }
+/* 上面两个盒子（blacklist-body / hotkey-body）上游是 flex 布局（--ppb-bm-blacklistBody-display: flex + flex-wrap），
+   直接嵌进来会让内部 .settings-section 变成 flex 子项、按内容收缩而非撑满整宽。
+   改成 block：内部元素回归常规文档流，宽度自然与容器对齐。
+   （format-list / extension-list / about-body 上游本来就是 block，无需处理） */
+body .physton-settings-modal .settings-tab-pane .blacklist-body,
+body .physton-settings-modal .settings-tab-pane .hotkey-body{display:block!important;}
 
 /* ── 【关键词黑名单】与【通用设置】统一（2026-10-16 @TraeCode / UI16） ──
    1) 分组说明文字（替代原来的红色「1. / 2. …」段落）
