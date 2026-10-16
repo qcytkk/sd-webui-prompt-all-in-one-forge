@@ -97,35 +97,53 @@
                                     <div class="line-content">
                                         <template v-if="canOneTranslate">
                                             <div class="paio-pill" role="radiogroup" :aria-label="getLang('auto_translate')">
-                                                <button type="button" class="paio-pill-btn" :class="{on: !autoTranslate}"
-                                                        role="radio" :aria-checked="!autoTranslate"
-                                                        @click="$emit('update:autoTranslate', false)">{{ getLang('toggle_off') }}</button>
-                                                <button type="button" class="paio-pill-btn" :class="{on: autoTranslate}"
-                                                        role="radio" :aria-checked="autoTranslate"
-                                                        @click="$emit('update:autoTranslate', true)">{{ getLang('toggle_on') }}</button>
+                                                <label class="paio-pill-btn">
+                                                    <input class="paio-pill-input" type="radio" name="paio-auto-translate"
+                                                           :checked="!autoTranslate"
+                                                           @change="$emit('update:autoTranslate', false)">
+                                                    <span>{{ getLang('toggle_off') }}</span>
+                                                </label>
+                                                <label class="paio-pill-btn">
+                                                    <input class="paio-pill-input" type="radio" name="paio-auto-translate"
+                                                           :checked="autoTranslate"
+                                                           @change="$emit('update:autoTranslate', true)">
+                                                    <span>{{ getLang('toggle_on') }}</span>
+                                                </label>
                                             </div>
                                         </template>
                                         <template v-else>
                                             <div class="paio-pill-group">
                                                 <span class="paio-pill-label">{{ getLang('auto_translate_to_local_language') }}</span>
                                                 <div class="paio-pill" role="radiogroup" :aria-label="getLang('auto_translate_to_local_language')">
-                                                    <button type="button" class="paio-pill-btn" :class="{on: !autoTranslateToLocal}"
-                                                            role="radio" :aria-checked="!autoTranslateToLocal"
-                                                            @click="$emit('update:autoTranslateToLocal', false)">{{ getLang('toggle_off') }}</button>
-                                                    <button type="button" class="paio-pill-btn" :class="{on: autoTranslateToLocal}"
-                                                            role="radio" :aria-checked="autoTranslateToLocal"
-                                                            @click="$emit('update:autoTranslateToLocal', true)">{{ getLang('toggle_on') }}</button>
+                                                    <label class="paio-pill-btn">
+                                                        <input class="paio-pill-input" type="radio" name="paio-auto-translate-local"
+                                                               :checked="!autoTranslateToLocal"
+                                                               @change="$emit('update:autoTranslateToLocal', false)">
+                                                        <span>{{ getLang('toggle_off') }}</span>
+                                                    </label>
+                                                    <label class="paio-pill-btn">
+                                                        <input class="paio-pill-input" type="radio" name="paio-auto-translate-local"
+                                                               :checked="autoTranslateToLocal"
+                                                               @change="$emit('update:autoTranslateToLocal', true)">
+                                                        <span>{{ getLang('toggle_on') }}</span>
+                                                    </label>
                                                 </div>
                                             </div>
                                             <div class="paio-pill-group">
                                                 <span class="paio-pill-label">{{ getLang('auto_translate_to_english') }}</span>
                                                 <div class="paio-pill" role="radiogroup" :aria-label="getLang('auto_translate_to_english')">
-                                                    <button type="button" class="paio-pill-btn" :class="{on: !autoTranslateToEnglish}"
-                                                            role="radio" :aria-checked="!autoTranslateToEnglish"
-                                                            @click="$emit('update:autoTranslateToEnglish', false)">{{ getLang('toggle_off') }}</button>
-                                                    <button type="button" class="paio-pill-btn" :class="{on: autoTranslateToEnglish}"
-                                                            role="radio" :aria-checked="autoTranslateToEnglish"
-                                                            @click="$emit('update:autoTranslateToEnglish', true)">{{ getLang('toggle_on') }}</button>
+                                                    <label class="paio-pill-btn">
+                                                        <input class="paio-pill-input" type="radio" name="paio-auto-translate-english"
+                                                               :checked="!autoTranslateToEnglish"
+                                                               @change="$emit('update:autoTranslateToEnglish', false)">
+                                                        <span>{{ getLang('toggle_off') }}</span>
+                                                    </label>
+                                                    <label class="paio-pill-btn">
+                                                        <input class="paio-pill-input" type="radio" name="paio-auto-translate-english"
+                                                               :checked="autoTranslateToEnglish"
+                                                               @change="$emit('update:autoTranslateToEnglish', true)">
+                                                        <span>{{ getLang('toggle_on') }}</span>
+                                                    </label>
                                                 </div>
                                             </div>
                                         </template>
@@ -139,50 +157,70 @@
                                     </div>
                                     <div class="line-content">
                                         <div class="paio-pill" role="radiogroup" :aria-label="getLang('tooltip_switch')">
-                                            <button type="button" class="paio-pill-btn" :class="{on: !enableTooltip}"
-                                                    role="radio" :aria-checked="!enableTooltip"
-                                                    @click="$emit('update:enableTooltip', false)">{{ getLang('toggle_off') }}</button>
-                                            <button type="button" class="paio-pill-btn" :class="{on: enableTooltip}"
-                                                    role="radio" :aria-checked="enableTooltip"
-                                                    @click="$emit('update:enableTooltip', true)">{{ getLang('toggle_on') }}</button>
+                                            <label class="paio-pill-btn">
+                                                <input class="paio-pill-input" type="radio" name="paio-enable-tooltip"
+                                                       :checked="!enableTooltip"
+                                                       @change="$emit('update:enableTooltip', false)">
+                                                <span>{{ getLang('toggle_off') }}</span>
+                                            </label>
+                                            <label class="paio-pill-btn">
+                                                <input class="paio-pill-input" type="radio" name="paio-enable-tooltip"
+                                                       :checked="enableTooltip"
+                                                       @change="$emit('update:enableTooltip', true)">
+                                                <span>{{ getLang('toggle_on') }}</span>
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- 各提示词框独立的两项设置（原为主界面工具栏上的两个图标开关，按要求移入此处） -->
-                            <div class="settings-section" v-for="item in promptItems" :key="item.id">
-                                <div class="settings-section-title">
-                                    {{ getLang(item.tab === 'tab_txt2img' ? 'txt2img' : 'img2img') }} · {{ getLang(item.neg ? 'negative_prompt' : 'prompt') }}
-                                </div>
-                                <div class="setting-line">
+                            <!-- 功能区一：隐藏默认输入框（原为主界面工具栏的图标开关，按要求移入；按提示词框各自独立） -->
+                            <div class="settings-section">
+                                <div class="settings-section-title" role="heading" aria-level="3">{{ getLang('hide_default_input_box') }}</div>
+                                <div class="setting-line" v-for="item in promptItems" :key="'hide-' + item.id">
                                     <div class="line-text">
-                                        <div class="line-title">{{ getLang('auto_load_title') }}</div>
-                                        <div class="line-desc">{{ getLang('auto_load_desc') }}</div>
+                                        <div class="line-title">{{ promptLabel(item) }}</div>
+                                        <div class="line-desc" v-html="getLang(item.neg ? 'hide_default_input_desc_negative' : 'hide_default_input_desc_positive')"></div>
                                     </div>
                                     <div class="line-content">
-                                        <div class="paio-pill" role="radiogroup" :aria-label="getLang('auto_load_title')">
-                                            <button type="button" class="paio-pill-btn" :class="{on: !item.autoLoadWebuiPrompt}"
-                                                    role="radio" :aria-checked="!item.autoLoadWebuiPrompt"
-                                                    @click="$emit('update:promptOption', item.id, 'autoLoadWebuiPrompt', false)">{{ getLang('toggle_off') }}</button>
-                                            <button type="button" class="paio-pill-btn" :class="{on: item.autoLoadWebuiPrompt}"
-                                                    role="radio" :aria-checked="item.autoLoadWebuiPrompt"
-                                                    @click="$emit('update:promptOption', item.id, 'autoLoadWebuiPrompt', true)">{{ getLang('toggle_on') }}</button>
+                                        <div class="paio-pill" role="radiogroup" :aria-label="promptLabel(item)">
+                                            <label class="paio-pill-btn">
+                                                <input class="paio-pill-input" type="radio" :name="'paio-hide-' + item.id"
+                                                       :checked="!item.hideDefaultInput"
+                                                       @change="$emit('update:promptOption', item.id, 'hideDefaultInput', false)">
+                                                <span>{{ getLang('toggle_off') }}</span>
+                                            </label>
+                                            <label class="paio-pill-btn">
+                                                <input class="paio-pill-input" type="radio" :name="'paio-hide-' + item.id"
+                                                       :checked="item.hideDefaultInput"
+                                                       @change="$emit('update:promptOption', item.id, 'hideDefaultInput', true)">
+                                                <span>{{ getLang('toggle_on') }}</span>
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="setting-line">
+                            </div>
+                            <!-- 功能区二：自动加载WebUI提示词变动 -->
+                            <div class="settings-section">
+                                <div class="settings-section-title" role="heading" aria-level="3">{{ getLang('auto_load_title') }}</div>
+                                <div class="setting-line" v-for="item in promptItems" :key="'autoload-' + item.id">
                                     <div class="line-text">
-                                        <div class="line-title">{{ getLang('hide_default_input_box') }}</div>
-                                        <div class="line-desc">{{ getLang('default_input_desc') }}</div>
+                                        <div class="line-title">{{ promptLabel(item) }}</div>
+                                        <div class="line-desc" v-html="getLang(item.neg ? 'auto_load_desc_negative' : 'auto_load_desc_positive')"></div>
                                     </div>
                                     <div class="line-content">
-                                        <div class="paio-pill" role="radiogroup" :aria-label="getLang('hide_default_input_box')">
-                                            <button type="button" class="paio-pill-btn" :class="{on: !item.hideDefaultInput}"
-                                                    role="radio" :aria-checked="!item.hideDefaultInput"
-                                                    @click="$emit('update:promptOption', item.id, 'hideDefaultInput', false)">{{ getLang('toggle_off') }}</button>
-                                            <button type="button" class="paio-pill-btn" :class="{on: item.hideDefaultInput}"
-                                                    role="radio" :aria-checked="item.hideDefaultInput"
-                                                    @click="$emit('update:promptOption', item.id, 'hideDefaultInput', true)">{{ getLang('toggle_on') }}</button>
+                                        <div class="paio-pill" role="radiogroup" :aria-label="promptLabel(item)">
+                                            <label class="paio-pill-btn">
+                                                <input class="paio-pill-input" type="radio" :name="'paio-autoload-' + item.id"
+                                                       :checked="!item.autoLoadWebuiPrompt"
+                                                       @change="$emit('update:promptOption', item.id, 'autoLoadWebuiPrompt', false)">
+                                                <span>{{ getLang('toggle_off') }}</span>
+                                            </label>
+                                            <label class="paio-pill-btn">
+                                                <input class="paio-pill-input" type="radio" :name="'paio-autoload-' + item.id"
+                                                       :checked="item.autoLoadWebuiPrompt"
+                                                       @change="$emit('update:promptOption', item.id, 'autoLoadWebuiPrompt', true)">
+                                                <span>{{ getLang('toggle_on') }}</span>
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
@@ -438,6 +476,12 @@ export default {
         onThemeChange(e) {
             // WebUI 主题切换（原为弹窗右上角/内容区的太阳月亮图标按钮，改为下拉）
             this.$emit('update:theme', e.target.value)
+        },
+        promptLabel(item) {
+            // 提示词框的显示名，如「文生图 · 提示词」
+            const tab = this.getLang(item.tab === 'tab_txt2img' ? 'txt2img' : 'img2img')
+            const kind = this.getLang(item.neg ? 'negative_prompt' : 'prompt')
+            return tab + ' · ' + kind
         },
         getFavoritesByType(type) {
             const favorites = typeof window.phystonPromptfavorites === 'object' ? window.phystonPromptfavorites : []

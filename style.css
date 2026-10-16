@@ -312,20 +312,31 @@ body .physton-settings-modal .settings-tab-pane .paio-pill{
   border:1px solid var(--paio-border); border-radius:8px;
 }
 body .physton-settings-modal .settings-tab-pane .paio-pill-btn{
+  position:relative;
   display:inline-flex; align-items:center; justify-content:center;
   height:22px; min-width:48px; padding:0 12px;
-  border:0; border-radius:0; background:none;
+  border-radius:0;
   color:var(--paio-text-muted); font:inherit; font-size:13px; line-height:1;
   cursor:pointer; transition:background .2s ease, color .2s ease;
 }
 body .physton-settings-modal .settings-tab-pane .paio-pill-btn:first-child{border-radius:6px 0 0 6px;}
 body .physton-settings-modal .settings-tab-pane .paio-pill-btn:last-child{border-radius:0 6px 6px 0;}
+/* 原生单选控件：视觉隐藏但保留可聚焦、方向键切换与屏幕阅读器语义（无障碍） */
+body .physton-settings-modal .settings-tab-pane .paio-pill-input{
+  position:absolute; width:1px; height:1px; margin:0; padding:0;
+  opacity:0; appearance:none; -webkit-appearance:none; pointer-events:none;
+}
 body .physton-settings-modal .settings-tab-pane .paio-pill-btn:hover{box-shadow:inset 0 0 0 1px var(--paio-brand);}
-body .physton-settings-modal .settings-tab-pane .paio-pill-btn.on{
+body .physton-settings-modal .settings-tab-pane .paio-pill-btn:has(.paio-pill-input:checked){
   background:var(--paio-brand-strong); color:var(--paio-on-brand); font-weight:600; box-shadow:none;
+}
+body .physton-settings-modal .settings-tab-pane .paio-pill-btn:has(.paio-pill-input:focus-visible){
+  outline:2px solid var(--paio-focus); outline-offset:2px;
 }
 body .physton-settings-modal .settings-tab-pane .paio-pill-group{display:flex; align-items:center; gap:8px;}
 body .physton-settings-modal .settings-tab-pane .paio-pill-label{font-size:13px; color:var(--paio-text-muted);}
 body .physton-settings-modal .settings-tab-pane .settings-section>.settings-auto-translate-row>.line-content:has(.paio-pill-group){
   flex-direction:column; align-items:flex-end; gap:8px;
 }
+/* 详情文案中的强调短语：加粗 + 提亮（两套主题下对比度均高于周边的弱化文字） */
+body .physton-settings-modal .settings-tab-pane .line-desc .paio-em{font-weight:600; color:var(--paio-text);}
