@@ -390,6 +390,13 @@ body .physton-settings-modal .settings-tab-pane .hotkey-body{display:block!impor
 body .physton-settings-modal .settings-tab-pane .extension-list{
   height:auto!important; max-height:none!important; overflow:visible!important;
 }
+/* 【翻译接口】内容盒上游带 1px solid #464646 边框 + 6px 圆角（独立弹窗样式）。
+   设置弹窗原有的重置只清了 padding/max-height/overflow，**漏了边框** → 会多出一圈深灰方框。
+   这里去掉，与其它页签一致 */
+body .physton-settings-modal .settings-tab-pane .translate-setting-content{
+  border:none!important; border-radius:0!important;
+  background-color:transparent!important; box-shadow:none!important;
+}
 
 /* ── 【关键词黑名单】与【通用设置】统一（2026-10-16 @TraeCode / UI16） ──
    1) 分组说明文字（替代原来的红色「1. / 2. …」段落）

@@ -219,7 +219,8 @@
                 "fmt_split_by_period": "句号分词",
                 "fmt_split_include_paren": "括号前的句号",
                 "translate_blacklist_title": "禁止翻译的词",
-                "cancel_confirm_title": "取消加入黑名单的确认提示"
+                "cancel_confirm_title": "取消加入黑名单的确认提示",
+                "enhance_translation": "翻译增强"
             }
         },
         {
@@ -440,7 +441,8 @@
                 "fmt_split_by_period": "句號分詞",
                 "fmt_split_include_paren": "括號前的句號",
                 "translate_blacklist_title": "禁止翻譯的詞",
-                "cancel_confirm_title": "取消加入黑名單的確認提示"
+                "cancel_confirm_title": "取消加入黑名單的確認提示",
+                "enhance_translation": "翻譯增強"
             }
         },
         {
@@ -661,7 +663,8 @@
                 "fmt_split_by_period": "句號分詞",
                 "fmt_split_include_paren": "括號前的句號",
                 "translate_blacklist_title": "禁止翻譯的詞",
-                "cancel_confirm_title": "取消加入黑名單的確認提示"
+                "cancel_confirm_title": "取消加入黑名單的確認提示",
+                "enhance_translation": "翻譯增強"
             }
         },
         {
@@ -882,7 +885,8 @@
                 "fmt_split_by_period": "Split by period",
                 "fmt_split_include_paren": "Period before parentheses",
                 "translate_blacklist_title": "Translation Blacklist",
-                "cancel_confirm_title": "Skip confirmation when adding to blacklist"
+                "cancel_confirm_title": "Skip confirmation when adding to blacklist",
+                "enhance_translation": "Translation Enhancements"
             }
         },
         {
