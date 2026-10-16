@@ -120,10 +120,10 @@
                                         <icon-svg v-if="tagCompleteFilesLoading" name="loading"/>
                                         <icon-svg v-else name="refresh" />
                                     </div>
-                                    <input v-show="tagCompleteFileKey" id="paio-only-csv-auto"
-                                           class="hover-scale-120" type="checkbox" value="1" v-model="onlyCsvOnAutoValue">
                                 </div>
-                                <label class="onlyCsvOnAuto" for="paio-only-csv-auto" v-show="tagCompleteFileKey">
+                                <!-- 勾选框与它的说明文字成对放在同一行 -->
+                                <label class="onlyCsvOnAuto" v-show="tagCompleteFileKey">
+                                    <input class="hover-scale-120" type="checkbox" value="1" v-model="onlyCsvOnAutoValue">
                                     <span>{{ getLang('only_csv_on_auto') }}</span>
                                 </label>
                             </div>
