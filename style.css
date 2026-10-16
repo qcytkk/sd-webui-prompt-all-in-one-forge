@@ -358,3 +358,18 @@ gradio-app.paio-scroll-locked,
 .gradio-container.paio-scroll-locked{overflow:hidden!important;}
 /* 【Prompt格式】里的从句号分词子项：保留层级缩进 */
 body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-fmt-sub{padding-left:24px!important;}
+
+/* ── 抹平各标签页「内容盒」的弹窗外壳（2026-10-16 @TraeCode / UI14）
+   上游给这些盒子配了独立弹窗才需要的底色 / 投影 / 圆角 / 过渡；
+   嵌进设置弹窗后应与【通用设置】一致（直接铺在弹窗底上）。
+   原先的 `.physton-settings-modal` 重置规则只覆盖了外层包裹（…-main / .physton-prompt-*），漏了这些内层盒子。 ── */
+body .physton-settings-modal .settings-tab-pane .format-list,
+body .physton-settings-modal .settings-tab-pane .blacklist-body,
+body .physton-settings-modal .settings-tab-pane .hotkey-body,
+body .physton-settings-modal .settings-tab-pane .extension-list,
+body .physton-settings-modal .settings-tab-pane .about-body{
+  background-color:transparent!important;
+  box-shadow:none!important;
+  border-radius:0!important;
+  transition:none!important;
+}
