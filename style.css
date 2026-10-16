@@ -228,19 +228,21 @@ body .physton-paste-popup .paste-submit{
   background:var(--paio-surface-2)!important; color:var(--paio-text)!important;
   font:inherit; font-size:14px!important; cursor:pointer;
 }
-/* 主操作 = 品牌深色底 + 白字（对比 ≥4.5:1）；悬停按用户既有偏好变**亮色**品牌 */
-body .physton-prompt-translate-setting .translate-save,
-body .physton-prompt-blacklist .blacklist-save,
-body .physton-prompt-hotkey .hotkey-save,
+/* 主操作 = 品牌蓝底 + 白字（对比 ≥4.5:1）；悬停变亮品牌蓝、仍为白字。
+   注意：选择器必须写成 `.setting-btns>.xxx`（3 个类），否则会被上面那条
+   `.setting-btns>div`（2 类 + 1 元素）按特异性压过，按钮会渲染成灰色。 */
+body .physton-prompt-translate-setting .setting-btns>.translate-save,
+body .physton-prompt-blacklist .setting-btns>.blacklist-save,
+body .physton-prompt-hotkey .setting-btns>.hotkey-save,
 body .physton-chatgpt-prompt .common-btn,
 body .physton-packages-state .btn-packages-install,
 body .physton-paste-popup .paste-submit{
   background:var(--paio-brand-strong)!important; border-color:var(--paio-brand-strong)!important;
   color:var(--paio-on-brand)!important; font-weight:600;
 }
-body .physton-prompt-translate-setting .translate-save:hover,
-body .physton-prompt-blacklist .blacklist-save:hover,
-body .physton-prompt-hotkey .hotkey-save:hover,
+body .physton-prompt-translate-setting .setting-btns>.translate-save:hover,
+body .physton-prompt-blacklist .setting-btns>.blacklist-save:hover,
+body .physton-prompt-hotkey .setting-btns>.hotkey-save:hover,
 body .physton-chatgpt-prompt .common-btn:hover,
 body .physton-packages-state .btn-packages-install:hover,
 body .physton-paste-popup .paste-submit:hover{

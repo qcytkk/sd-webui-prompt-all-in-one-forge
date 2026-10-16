@@ -16,7 +16,6 @@
                 </div>
                 <div class="setting-btns">
                     <div class="hotkey-save hover-scale-120" @click="onSaveClick">{{ getLang('save') }}</div>
-                    <div class="hotkey-close hover-scale-120" @click="onCloseClick">{{ getLang('close') }}</div>
                 </div>
             </div>
         </div>
@@ -156,8 +155,9 @@ export default {
                 data[item.name] = item.value
             })
             this.gradioAPI.setData('hotkey', data)
-            this.close()
             this.$emit('update:hotkey', data)
+            // 嵌入设置弹窗后不再「保存即关闭」——旧的弹窗行为会让本页内容消失，这里只给个轻提示
+            this.$toastr.success(this.getLang('success'))
         },
     },
 }
