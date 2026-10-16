@@ -6,44 +6,91 @@
                     <icon-svg name="close"/>
                 </div>
                 <div class="blacklist-body" @click.stop>
-                    <div class="blacklist-desc">1. {{ getLang('blacklist_desc') }}</div>
-                    <div class="blacklist-group">
-                        <div class="group-title">{{ getLang('prompt_blacklist_list') }}:</div>
-                        <textarea class="group-content" :placeholder="getLang('one_keyword_per_line')" v-model="textarea.prompt"></textarea>
-                    </div>
-                    <div class="blacklist-group">
-                        <div class="group-title">{{ getLang('negative_prompt_blacklist_list') }}:</div>
-                        <textarea class="group-content" :placeholder="getLang('one_keyword_per_line')" v-model="textarea.negative_prompt"></textarea>
-                    </div>
-                    <div class="blacklist-wrap"></div>
-                    <div class="blacklist-group">
-                        <div class="group-title">{{ getLang('lora_blacklist_list') }}:</div>
-                        <textarea class="group-content" :placeholder="getLang('one_keyword_per_line')" v-model="textarea.lora"></textarea>
-                    </div>
-                    <div class="blacklist-group">
-                        <div class="group-title">{{ getLang('lycoris_blacklist_list') }}:</div>
-                        <textarea class="group-content" :placeholder="getLang('one_keyword_per_line')" v-model="textarea.lycoris"></textarea>
-                    </div>
-                    <div class="blacklist-group">
-                        <div class="group-title">{{ getLang('embedding_blacklist_list') }}:</div>
-                        <textarea class="group-content" :placeholder="getLang('one_keyword_per_line')" v-model="textarea.embedding"></textarea>
-                    </div>
-                    <div class="blacklist-wrap"></div>
-                    <div class="blacklist-group">
-                        <div class="group-title">
-                            <label>
-                                <input type="checkbox" v-model="cancelBlacklistConfirm">
-                                {{ getLang('cancel_confirm_add_blacklist') }}
-                            </label>
+                    <!-- 行样式与【通用设置】一致；文本框为整宽，故用 .paio-stack 改为上下堆叠 -->
+                    <div class="settings-section">
+                        <div class="settings-section-title" role="heading" aria-level="3">{{ getLang('keywords_blacklist') }}</div>
+                        <div class="paio-section-desc">{{ getLang('blacklist_desc') }}</div>
+                        <div class="setting-line paio-stack">
+                            <div class="line-text">
+                                <div class="line-title">{{ getLang('prompt_blacklist_list') }}</div>
+                            </div>
+                            <div class="line-content">
+                                <textarea :aria-label="getLang('prompt_blacklist_list')"
+                                          :placeholder="getLang('one_keyword_per_line')" v-model="textarea.prompt"></textarea>
+                            </div>
+                        </div>
+                        <div class="setting-line paio-stack">
+                            <div class="line-text">
+                                <div class="line-title">{{ getLang('negative_prompt_blacklist_list') }}</div>
+                            </div>
+                            <div class="line-content">
+                                <textarea :aria-label="getLang('negative_prompt_blacklist_list')"
+                                          :placeholder="getLang('one_keyword_per_line')" v-model="textarea.negative_prompt"></textarea>
+                            </div>
+                        </div>
+                        <div class="setting-line paio-stack">
+                            <div class="line-text">
+                                <div class="line-title">{{ getLang('lora_blacklist_list') }}</div>
+                            </div>
+                            <div class="line-content">
+                                <textarea :aria-label="getLang('lora_blacklist_list')"
+                                          :placeholder="getLang('one_keyword_per_line')" v-model="textarea.lora"></textarea>
+                            </div>
+                        </div>
+                        <div class="setting-line paio-stack">
+                            <div class="line-text">
+                                <div class="line-title">{{ getLang('lycoris_blacklist_list') }}</div>
+                            </div>
+                            <div class="line-content">
+                                <textarea :aria-label="getLang('lycoris_blacklist_list')"
+                                          :placeholder="getLang('one_keyword_per_line')" v-model="textarea.lycoris"></textarea>
+                            </div>
+                        </div>
+                        <div class="setting-line paio-stack">
+                            <div class="line-text">
+                                <div class="line-title">{{ getLang('embedding_blacklist_list') }}</div>
+                            </div>
+                            <div class="line-content">
+                                <textarea :aria-label="getLang('embedding_blacklist_list')"
+                                          :placeholder="getLang('one_keyword_per_line')" v-model="textarea.embedding"></textarea>
+                            </div>
+                        </div>
+                        <div class="setting-line">
+                            <div class="line-text">
+                                <div class="line-title">{{ getLang('cancel_confirm_title') }}</div>
+                                <div class="line-desc">{{ getLang('cancel_confirm_add_blacklist') }}</div>
+                            </div>
+                            <div class="line-content">
+                                <div class="paio-pill" role="radiogroup" :aria-label="getLang('cancel_confirm_title')">
+                                    <label class="paio-pill-btn">
+                                        <input class="paio-pill-input" type="radio" name="paio-bl-cancel-confirm"
+                                               :checked="!cancelBlacklistConfirm"
+                                               @change="cancelBlacklistConfirm = false">
+                                        <span>{{ getLang('toggle_off') }}</span>
+                                    </label>
+                                    <label class="paio-pill-btn">
+                                        <input class="paio-pill-input" type="radio" name="paio-bl-cancel-confirm"
+                                               :checked="cancelBlacklistConfirm"
+                                               @change="cancelBlacklistConfirm = true">
+                                        <span>{{ getLang('toggle_on') }}</span>
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="blacklist-wrap"></div>
-                    <div class="blacklist-desc">2. {{ getLang('translate_blacklist_desc') }}</div>
-                    <div class="blacklist-group">
-                        <div class="group-title">{{ getLang('disable_translate_prompt_blacklist_list') }}:</div>
-                        <textarea class="group-content" :placeholder="getLang('one_keyword_per_line')" v-model="textarea.translate"></textarea>
+                    <div class="settings-section">
+                        <div class="settings-section-title" role="heading" aria-level="3">{{ getLang('translate_blacklist_title') }}</div>
+                        <div class="paio-section-desc">{{ getLang('translate_blacklist_desc') }}</div>
+                        <div class="setting-line paio-stack">
+                            <div class="line-text">
+                                <div class="line-title">{{ getLang('disable_translate_prompt_blacklist_list') }}</div>
+                            </div>
+                            <div class="line-content">
+                                <textarea :aria-label="getLang('disable_translate_prompt_blacklist_list')"
+                                          :placeholder="getLang('one_keyword_per_line')" v-model="textarea.translate"></textarea>
+                            </div>
+                        </div>
                     </div>
-                    <div class="blacklist-wrap"></div>
                     <div class="setting-btns">
                         <div class="blacklist-save hover-scale-120" @click="onSaveClick">{{ getLang('save') }}</div>
                         <div class="blacklist-close hover-scale-120" @click="onCloseClick">{{ getLang('close') }}</div>

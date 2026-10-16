@@ -217,7 +217,9 @@
                 "fmt_lora_before_comma": "Lora 前的逗号",
                 "fmt_lora_after_comma": "Lora 后的逗号",
                 "fmt_split_by_period": "句号分词",
-                "fmt_split_include_paren": "括号前的句号"
+                "fmt_split_include_paren": "括号前的句号",
+                "translate_blacklist_title": "禁止翻译的词",
+                "cancel_confirm_title": "取消加入黑名单的确认提示"
             }
         },
         {
@@ -436,7 +438,9 @@
                 "fmt_lora_before_comma": "Lora 前的逗號",
                 "fmt_lora_after_comma": "Lora 後的逗號",
                 "fmt_split_by_period": "句號分詞",
-                "fmt_split_include_paren": "括號前的句號"
+                "fmt_split_include_paren": "括號前的句號",
+                "translate_blacklist_title": "禁止翻譯的詞",
+                "cancel_confirm_title": "取消加入黑名單的確認提示"
             }
         },
         {
@@ -655,7 +659,9 @@
                 "fmt_lora_before_comma": "Lora 前的逗號",
                 "fmt_lora_after_comma": "Lora 後的逗號",
                 "fmt_split_by_period": "句號分詞",
-                "fmt_split_include_paren": "括號前的句號"
+                "fmt_split_include_paren": "括號前的句號",
+                "translate_blacklist_title": "禁止翻譯的詞",
+                "cancel_confirm_title": "取消加入黑名單的確認提示"
             }
         },
         {
@@ -874,7 +880,9 @@
                 "fmt_lora_before_comma": "Comma before Lora",
                 "fmt_lora_after_comma": "Comma after Lora",
                 "fmt_split_by_period": "Split by period",
-                "fmt_split_include_paren": "Period before parentheses"
+                "fmt_split_include_paren": "Period before parentheses",
+                "translate_blacklist_title": "Translation Blacklist",
+                "cancel_confirm_title": "Skip confirmation when adding to blacklist"
             }
         },
         {
