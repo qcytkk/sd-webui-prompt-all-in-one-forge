@@ -315,40 +315,46 @@ body .physton-settings-modal .settings-tab-pane .settings-section.paio-plain>.se
 body .physton-settings-modal .settings-tab-pane .settings-section+.settings-section.paio-no-sep{
   border-top:none!important;
 }
-/* 【翻译测试】：标题左列、内容右列（与 TagComplete 同款两栏），
-   右列内部是「两栏 textarea + 测试按钮」套成的一个块（2026-10-16 @TraeCode） */
-body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-test>.line-text{
+/* 「标题在左列、内容在右列」的两栏行（【翻译接口】【翻译测试】共用）：
+   左列只占标题的自然宽度，右列吃满剩余宽度；右列里放一个内容块 .paio-side-block
+   （2026-10-16 @TraeCode） */
+body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-side>.line-text{
   flex:0 0 auto;
 }
-body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-test>.line-content{
+body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-side>.line-content{
   flex:1 1 auto; width:auto; min-width:0; margin-left:0;
   display:flex; align-items:stretch; justify-content:flex-start;
 }
-body .physton-settings-modal .settings-tab-pane .paio-test-block{
+/* 右列的内容块：内部各块纵向排列 */
+body .physton-settings-modal .settings-tab-pane .paio-side-block{
   display:flex; flex-direction:column; align-items:stretch; gap:12px; width:100%;
 }
-body .physton-settings-modal .settings-tab-pane .paio-test-block>.paio-test-pair{
+/* 块内的「名称左 / 控件右」行（翻译接口下拉、各接口参数） */
+body .physton-settings-modal .settings-tab-pane .paio-side-block>.paio-param-row{
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+}
+body .physton-settings-modal .settings-tab-pane .paio-side-block>.paio-param-row>.paio-param-ctl{
+  flex:0 1 auto; min-width:0; display:flex; align-items:center; justify-content:flex-end; gap:10px;
+}
+/* 【翻译测试】块内两行：两栏 textarea / 测试按钮行 */
+body .physton-settings-modal .settings-tab-pane .paio-side-block>.paio-test-pair{
   display:flex; align-items:stretch; gap:12px;
 }
-body .physton-settings-modal .settings-tab-pane .paio-test-block>.paio-test-pair>.test-input{
+body .physton-settings-modal .settings-tab-pane .paio-side-block>.paio-test-pair>.test-input{
   flex:1 1 0; min-width:0; width:auto!important;
 }
-body .physton-settings-modal .settings-tab-pane .paio-test-block>.paio-test-actions{
+body .physton-settings-modal .settings-tab-pane .paio-side-block>.paio-test-actions{
   display:flex; align-items:center; justify-content:flex-end; gap:12px;
 }
-/* 【翻译接口】的「免费接口提示 + 帮助链接」合并为一行、左右两栏：
+/* 「免费接口提示 + 帮助链接」同一行、左右两栏：
    左=提示文字（占满剩余宽度），右=帮助链接；只有一项时也各就各位（2026-10-16 @TraeCode） */
-body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-split>.line-text{
-  display:none!important;
+body .physton-settings-modal .settings-tab-pane .paio-split{
+  display:flex; align-items:center; gap:16px; width:100%;
 }
-body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-split>.line-content{
-  flex:1 1 auto; width:100%; margin-left:0;
-  display:flex; align-items:center; gap:16px;
-}
-body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-split>.line-content>span.common-red{
+body .physton-settings-modal .settings-tab-pane .paio-split>span.common-red{
   flex:1 1 auto; min-width:0;
 }
-body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-split>.line-content>.help-list{
+body .physton-settings-modal .settings-tab-pane .paio-split>.help-list{
   flex:0 0 auto; margin-left:auto;
 }
 /* 帮助链接：上游把颜色与下划线写死成 #fff，设置弹窗跟随主题后，

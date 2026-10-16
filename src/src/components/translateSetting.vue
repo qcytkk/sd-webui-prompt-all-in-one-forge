@@ -6,56 +6,62 @@
                     <icon-svg name="close"/>
                 </div>
                 <div class="translate-setting-content" @click.stop>
-                    <!-- ① 翻译接口（分组标题沿用 translate_api，原行内重复标题已去掉）
-                         本组各行（下拉 / 红字说明 / 帮助链接 / 各参数行）同属「配置当前翻译接口」一块，
-                         加 .paio-plain 去掉组内虚线 -->
+                    <!-- ① 翻译接口：标题在左列、内容在右列（与翻译测试同款两栏布局）；
+                         右列把「接口下拉 + 免费提示/帮助链接 + 各接口参数」套成一个块 -->
                     <div class="settings-section paio-plain">
-                        <div class="settings-section-title" role="heading" aria-level="3">{{ getLang('translate_api') }}</div>
-                        <div class="setting-line">
-                            <div class="line-text"></div>
-                            <div class="line-content">
-                                <select :aria-label="getLang('translate_api')" v-model="apiKey" @change="onApiKeyChange($event)">
-                                    <optgroup v-for="typeGroup in supportApi" :key="typeGroup.type"
-                                              :label="getLang(typeGroup.type)">
-                                        <option v-for="item in typeGroup.children" :key="item.key" :value="item.key" :disabled="item.disabled">
-                                            {{ getItemName(item) }}
-                                        </option>
-                                    </optgroup>
-                                </select>
-                            </div>
-                        </div>
-                        <!-- 免费接口提示（仅 translators 类接口）与帮助链接合并为一行、左右两栏：左=提示，右=帮助链接 -->
-                        <div class="setting-line paio-split" v-if="apiItem && (apiItem.type == 'translators' || apiItem.help)">
-                            <div class="line-text"></div>
-                            <div class="line-content">
-                                <span class="common-red" v-if="apiItem.type == 'translators'">*{{ getLang('not_api_key_desc') }}</span>
-                                <div class="help-list" v-if="apiItem.help">
-                                    <div v-for="item in apiItem.help" class="help-item">[?] <a :href="item.url" target="_blank">{{ item.title }}</a></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="setting-line" v-for="config in configs">
+                        <div class="setting-line paio-side">
                             <div class="line-text">
-                                <div class="line-title">{{ configLabel(config) }}</div>
+                                <div class="line-title">{{ getLang('translate_api') }}</div>
                             </div>
                             <div class="line-content">
-                                <input type="text" v-if="config.type == 'input'" v-model="config.value" @change="onChangeConfigValue(config)">
-                                <select v-if="config.type == 'select'" v-model="config.value" @change="onConfigSelectChange(config, $event)">
-                                    <option v-for="option in config.options" :value="option">{{ option }}</option>
-                                </select>
-                                <div v-if="config.desc" v-html="config.desc"></div>
+                                <div class="paio-side-block">
+                                    <!-- 翻译接口下拉 -->
+                                    <div class="paio-param-row">
+                                        <div class="line-text"></div>
+                                        <div class="paio-param-ctl">
+                                            <select :aria-label="getLang('translate_api')" v-model="apiKey" @change="onApiKeyChange($event)">
+                                                <optgroup v-for="typeGroup in supportApi" :key="typeGroup.type"
+                                                          :label="getLang(typeGroup.type)">
+                                                    <option v-for="item in typeGroup.children" :key="item.key" :value="item.key" :disabled="item.disabled">
+                                                        {{ getItemName(item) }}
+                                                    </option>
+                                                </optgroup>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- 免费接口提示（仅 translators 类接口）与帮助链接同一行、左右两栏 -->
+                                    <div class="paio-split" v-if="apiItem && (apiItem.type == 'translators' || apiItem.help)">
+                                        <span class="common-red" v-if="apiItem.type == 'translators'">*{{ getLang('not_api_key_desc') }}</span>
+                                        <div class="help-list" v-if="apiItem.help">
+                                            <div v-for="item in apiItem.help" class="help-item">[?] <a :href="item.url" target="_blank">{{ item.title }}</a></div>
+                                        </div>
+                                    </div>
+                                    <!-- 各接口参数：名称在左、控件在右 -->
+                                    <div class="paio-param-row" v-for="config in configs">
+                                        <div class="line-text">
+                                            <div class="line-title">{{ configLabel(config) }}</div>
+                                        </div>
+                                        <div class="paio-param-ctl">
+                                            <input type="text" v-if="config.type == 'input'" v-model="config.value" @change="onChangeConfigValue(config)">
+                                            <select v-if="config.type == 'select'" v-model="config.value" @change="onConfigSelectChange(config, $event)">
+                                                <option v-for="option in config.options" :value="option">{{ option }}</option>
+                                            </select>
+                                            <div v-if="config.desc" v-html="config.desc"></div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <!-- ② 翻译测试：标题在左列、内容在右列（与 TagComplete 同款两栏布局）；
                          右列把「两栏 textarea + 测试按钮」套成一个块 -->
                     <div class="settings-section paio-plain paio-no-sep">
-                        <div class="setting-line paio-test">
+                        <div class="setting-line paio-side">
                             <div class="line-text">
                                 <div class="line-title">{{ getLang('translate_test') }}</div>
                             </div>
                             <div class="line-content">
-                                <div class="paio-test-block">
+                                <div class="paio-side-block">
                                     <!-- 第一行两栏：左=翻译原文，右=翻译结果 -->
                                     <div class="paio-test-pair">
                                         <textarea class="test-input" :aria-label="getLang('translate_test')" v-model="testText"></textarea>
