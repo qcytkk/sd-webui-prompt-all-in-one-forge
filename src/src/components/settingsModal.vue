@@ -389,7 +389,7 @@ export default {
             activeTab: 'common',
             tabs: [
                 {key: 'common', icon: 'setting', labelKey: 'setting'},
-                {key: 'translate', icon: 'api', labelKey: 'translate_api'},
+                {key: 'translate', icon: 'api', labelKey: 'translate_settings'},
                 {key: 'format', icon: 'format', labelKey: 'prompt_format'},
                 {key: 'blacklist', icon: 'blacklist', labelKey: 'keywords_blacklist'},
                 {key: 'hotkey', icon: 'hotkey', labelKey: 'hotkey_setting'},
