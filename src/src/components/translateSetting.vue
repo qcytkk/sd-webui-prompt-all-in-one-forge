@@ -51,8 +51,9 @@
                             </div>
                         </div>
                     </div>
-                    <!-- ② 翻译测试（输入框 / 测试按钮 / 结果 同属一个测试功能，加 .paio-plain 去掉组内虚线） -->
-                    <div class="settings-section paio-plain">
+                    <!-- ② 翻译测试（输入框 / 测试按钮 / 结果 同属一个测试功能，加 .paio-plain 去掉组内虚线；
+                         加 .paio-no-sep 去掉与上一组「翻译接口」之间的组间虚线） -->
+                    <div class="settings-section paio-plain paio-no-sep">
                         <div class="settings-section-title" role="heading" aria-level="3">{{ getLang('translate_test') }}</div>
                         <div class="setting-line">
                             <div class="line-text"></div>

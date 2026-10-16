@@ -310,6 +310,11 @@ body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line:
 body .physton-settings-modal .settings-tab-pane .settings-section.paio-plain>.setting-line{
   border-bottom:none!important;
 }
+/* `.paio-no-sep`：去掉本组与上一组之间的虚线（.settings-section + .settings-section 的 border-top）
+   —— 用于【翻译接口】与【翻译测试】之间（2026-10-16 @TraeCode） */
+body .physton-settings-modal .settings-tab-pane .settings-section+.settings-section.paio-no-sep{
+  border-top:none!important;
+}
 
 /* 右列内容较多时（多段说明 + 控件行 + 勾选框说明）纵向堆叠成多行
    —— 基线规则是 display:flex; justify-content:flex-end，多块内容会被横向挤在一行
