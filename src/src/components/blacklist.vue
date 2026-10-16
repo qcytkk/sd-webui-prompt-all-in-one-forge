@@ -93,7 +93,6 @@
                     </div>
                     <div class="setting-btns">
                         <div class="blacklist-save hover-scale-120" @click="onSaveClick">{{ getLang('save') }}</div>
-                        <div class="blacklist-close hover-scale-120" @click="onCloseClick">{{ getLang('close') }}</div>
                     </div>
                 </div>
             </div>
@@ -191,8 +190,9 @@ export default {
             this.data.translate = this.textarea.translate.split(/\s*\n\s*/).filter(item => item?.trim().length)
             this.gradioAPI.setData('blacklist', this.data)
             this.gradioAPI.setData('cancelBlacklistConfirm', this.cancelBlacklistConfirm)
-            this.close()
             this.$emit('update:blacklist', this.data, this.cancelBlacklistConfirm)
+            // 嵌入设置弹窗后不再「保存即关闭」——旧的弹窗行为会让本页内容消失，这里只给个轻提示
+            this.$toastr.success(this.getLang('success'))
         },
     },
 }

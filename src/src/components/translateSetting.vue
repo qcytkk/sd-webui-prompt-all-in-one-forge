@@ -106,7 +106,6 @@
                     </div>
                     <div class="setting-btns">
                         <div class="translate-save hover-scale-120" @click="onSaveClick">{{ getLang('save') }}</div>
-                        <div class="translate-close hover-scale-120" @click="onCloseClick">{{ getLang('close') }}</div>
                     </div>
                 </div>
             </div>
@@ -294,7 +293,6 @@ export default {
             })
         },
         onSaveClick() {
-            this.isOpen = false
             let configs = {}
             for (const item of this.configs) {
                 configs[item.key] = item.value
@@ -306,6 +304,8 @@ export default {
             this.gradioAPI.setData('translate_api.' + this.apiKey, configs).then(res => {
                 if (this.apiKey === this.translateApi) this.$emit('forceUpdate:translateApi')
             })
+            // 嵌入设置弹窗后不再「保存即关闭」——旧的弹窗行为会让本页内容消失，这里只给个轻提示
+            this.$toastr.success(this.getLang('success'))
         },
         onCloseClick() {
             this.isOpen = false
