@@ -315,17 +315,26 @@ body .physton-settings-modal .settings-tab-pane .settings-section.paio-plain>.se
 body .physton-settings-modal .settings-tab-pane .settings-section+.settings-section.paio-no-sep{
   border-top:none!important;
 }
-/* 【翻译测试】第一行两栏：左=翻译原文、右=翻译结果，各占一半（2026-10-16 @TraeCode）
-   本行不需要左列标题，隐藏空的 .line-text 让 .line-content 撑满整行 */
-body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-test-pair>.line-text{
-  display:none!important;
+/* 【翻译测试】：标题左列、内容右列（与 TagComplete 同款两栏），
+   右列内部是「两栏 textarea + 测试按钮」套成的一个块（2026-10-16 @TraeCode） */
+body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-test>.line-text{
+  flex:0 0 auto;
 }
-body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-test-pair>.line-content{
-  flex:1 1 auto; width:100%; margin-left:0;
-  display:flex; align-items:stretch; justify-content:flex-start; gap:12px;
+body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-test>.line-content{
+  flex:1 1 auto; width:auto; min-width:0; margin-left:0;
+  display:flex; align-items:stretch; justify-content:flex-start;
 }
-body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-test-pair>.line-content>.test-input{
+body .physton-settings-modal .settings-tab-pane .paio-test-block{
+  display:flex; flex-direction:column; align-items:stretch; gap:12px; width:100%;
+}
+body .physton-settings-modal .settings-tab-pane .paio-test-block>.paio-test-pair{
+  display:flex; align-items:stretch; gap:12px;
+}
+body .physton-settings-modal .settings-tab-pane .paio-test-block>.paio-test-pair>.test-input{
   flex:1 1 0; min-width:0; width:auto!important;
+}
+body .physton-settings-modal .settings-tab-pane .paio-test-block>.paio-test-actions{
+  display:flex; align-items:center; justify-content:flex-end; gap:12px;
 }
 /* 【翻译接口】的「免费接口提示 + 帮助链接」合并为一行、左右两栏：
    左=提示文字（占满剩余宽度），右=帮助链接；只有一项时也各就各位（2026-10-16 @TraeCode） */
@@ -341,6 +350,16 @@ body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.
 }
 body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-split>.line-content>.help-list{
   flex:0 0 auto; margin-left:auto;
+}
+/* 帮助链接：上游把颜色与下划线写死成 #fff，设置弹窗跟随主题后，
+   亮色主题下会「白字白底」看不见；改用主题令牌（2026-10-16 @TraeCode） */
+body .physton-prompt-translate-setting .help-list .help-item a{
+  color:var(--paio-brand-text)!important;
+  border-bottom-color:var(--paio-brand-text)!important;
+}
+body .physton-prompt-translate-setting .help-list .help-item a:hover{
+  color:var(--paio-brand)!important;
+  border-bottom-color:var(--paio-brand)!important;
 }
 
 /* 右列内容较多时（多段说明 + 控件行 + 勾选框说明）纵向堆叠成多行

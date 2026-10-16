@@ -47,26 +47,28 @@
                             </div>
                         </div>
                     </div>
-                    <!-- ② 翻译测试（输入框 / 测试按钮 / 结果 同属一个测试功能，加 .paio-plain 去掉组内虚线；
-                         加 .paio-no-sep 去掉与上一组「翻译接口」之间的组间虚线） -->
+                    <!-- ② 翻译测试：标题在左列、内容在右列（与 TagComplete 同款两栏布局）；
+                         右列把「两栏 textarea + 测试按钮」套成一个块 -->
                     <div class="settings-section paio-plain paio-no-sep">
-                        <div class="settings-section-title" role="heading" aria-level="3">{{ getLang('translate_test') }}</div>
-                        <!-- 第一行两栏：左=翻译原文，右=翻译结果 -->
-                        <div class="setting-line paio-test-pair">
-                            <div class="line-text"></div>
-                            <div class="line-content">
-                                <textarea class="test-input" :aria-label="getLang('translate_test')" v-model="testText"></textarea>
-                                <textarea class="test-input" :aria-label="getLang('translate_result')" v-model="translatedText"></textarea>
+                        <div class="setting-line paio-test">
+                            <div class="line-text">
+                                <div class="line-title">{{ getLang('translate_test') }}</div>
                             </div>
-                        </div>
-                        <!-- 第二行：测试按钮（失败时在其左侧显示错误信息） -->
-                        <div class="setting-line">
-                            <div class="line-text"></div>
                             <div class="line-content">
-                                <div class="translate-error" v-if="!translateSuccess && errorMessage">{{ errorMessage }}</div>
-                                <div class="hover-scale-120 test-btn" @click="onTestClick">
-                                    <icon-svg v-if="loading" name="loading"/>
-                                    <template v-else>{{getLang('test')}}</template>
+                                <div class="paio-test-block">
+                                    <!-- 第一行两栏：左=翻译原文，右=翻译结果 -->
+                                    <div class="paio-test-pair">
+                                        <textarea class="test-input" :aria-label="getLang('translate_test')" v-model="testText"></textarea>
+                                        <textarea class="test-input" :aria-label="getLang('translate_result')" v-model="translatedText"></textarea>
+                                    </div>
+                                    <!-- 第二行：测试按钮（失败时在其左侧显示错误信息） -->
+                                    <div class="paio-test-actions">
+                                        <div class="translate-error" v-if="!translateSuccess && errorMessage">{{ errorMessage }}</div>
+                                        <div class="hover-scale-120 test-btn" @click="onTestClick">
+                                            <icon-svg v-if="loading" name="loading"/>
+                                            <template v-else>{{getLang('test')}}</template>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
