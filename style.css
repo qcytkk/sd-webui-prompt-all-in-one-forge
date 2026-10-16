@@ -310,10 +310,10 @@ body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line:
 body .physton-settings-modal .settings-tab-pane .settings-section.paio-plain>.setting-line{
   border-bottom:none!important;
 }
-/* `.paio-no-sep`：去掉本组与上一组之间的虚线（.settings-section + .settings-section 的 border-top）
-   —— 用于【翻译接口】与【翻译测试】之间（2026-10-16 @TraeCode） */
+/* `.paio-no-sep`：本组与上一组视作**同一个功能区块**——去掉组间虚线 + 收掉组间额外间距
+   （只留两侧行自身的 12px 内边距）—— 用于【翻译接口】与【翻译测试】（2026-10-16 @TraeCode） */
 body .physton-settings-modal .settings-tab-pane .settings-section+.settings-section.paio-no-sep{
-  border-top:none!important;
+  border-top:none!important; margin-top:0!important; padding-top:0!important;
 }
 /* 「标题在左列、内容在右列」的两栏行（【翻译接口】【翻译测试】共用）：
    左列只占标题的自然宽度，右列吃满剩余宽度；右列里放一个内容块 .paio-side-block
