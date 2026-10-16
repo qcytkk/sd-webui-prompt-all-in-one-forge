@@ -299,6 +299,12 @@ body .physton-settings-modal .settings-tab-pane .settings-section>.settings-auto
 body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line>.line-content:has(.auto-input-row){
   flex-direction:column; align-items:stretch; gap:6px; width:min(320px,48%);
 }
+/* 附属行 `.paio-sub`：本行属于上一行的功能（如 TagComplete 下方的测试行），
+   去掉两行之间的虚线，使它们看起来是一整块（2026-10-16 @TraeCode / UI26） */
+body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line:has(+ .setting-line.paio-sub){
+  border-bottom:none!important;
+}
+
 /* 右列内容较多时（多段说明 + 控件行 + 勾选框说明）纵向堆叠成多行
    —— 基线规则是 display:flex; justify-content:flex-end，多块内容会被横向挤在一行
    （2026-10-16 @TraeCode / UI25，用于【翻译接口】的关键词组 / TagComplete 行） */

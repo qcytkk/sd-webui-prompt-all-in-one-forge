@@ -223,7 +223,8 @@
                 "enhance_translation": "翻译增强",
                 "translation_source": "翻译来源（依次回退）",
                 "source_csv_dict": "CSV 词典",
-                "source_network": "网络翻译"
+                "source_network": "网络翻译",
+                "tag_complete_dict": "（标签词典）"
             }
         },
         {
@@ -448,7 +449,8 @@
                 "enhance_translation": "翻譯增強",
                 "translation_source": "翻譯來源（依次回退）",
                 "source_csv_dict": "CSV 詞典",
-                "source_network": "網絡翻譯"
+                "source_network": "網絡翻譯",
+                "tag_complete_dict": "（標籤詞典）"
             }
         },
         {
@@ -673,7 +675,8 @@
                 "enhance_translation": "翻譯增強",
                 "translation_source": "翻譯來源（依次回退）",
                 "source_csv_dict": "CSV 詞典",
-                "source_network": "網路翻譯"
+                "source_network": "網路翻譯",
+                "tag_complete_dict": "（標籤詞典）"
             }
         },
         {
@@ -898,7 +901,8 @@
                 "enhance_translation": "Translation Enhancements",
                 "translation_source": "Translation sources (fallback order)",
                 "source_csv_dict": "CSV dictionary",
-                "source_network": "Network"
+                "source_network": "Network",
+                "tag_complete_dict": "(Tag dictionary)"
             }
         },
         {

@@ -105,7 +105,9 @@
                         <!-- 内容较多，右列纵向分 4 行：说明 / 红字警告 / 控件行(下拉+刷新+勾选框) / 勾选框说明 -->
                         <div class="setting-line paio-col">
                             <div class="line-text">
+                                <!-- 标题分两行：产品名一行、中文注解一行（沿用 title + desc 的左列两行写法） -->
                                 <div class="line-title">TagComplete</div>
+                                <div class="line-desc">{{ getLang('tag_complete_dict') }}</div>
                             </div>
                             <div class="line-content">
                                 <div v-html="getLang('tagcomplete_translate_desc')"></div>
@@ -126,7 +128,8 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="setting-line" v-show="tagCompleteFileKey">
+                        <!-- 本行属于上方 TagComplete 功能，标 .paio-sub：与上一行之间不再画虚线 -->
+                        <div class="setting-line paio-sub" v-show="tagCompleteFileKey">
                             <div class="line-text"></div>
                             <div class="line-content">
                                 <div class="hover-scale-120 test-btn" @click="onTagCompleteTestClick">{{ getLang('test') }}</div>
