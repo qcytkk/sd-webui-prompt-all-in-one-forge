@@ -1,16 +1,78 @@
 <template>
     <Transition name="fade">
-        <div class="physton-prompt-history" ref="history" v-show="isShow" @mouseenter="onMouseEnter"
-             @mouseleave="onMouseLeave" @click.stop="">
-            <div class="popup-tabs">
-                <div v-for="(group) in histories" :key="group.key"
-                     :class="['popup-tab', group.key === historyKey ? 'active': '']" @click="onTabClick(group.key)">
-                    <div class="tab-name">{{ getLang(group.name) }}</div>
-                    <div class="tab-type">{{ getLang(group.type) }}</div>
-                    <div class="tab-count">{{ group.list.length }}</div>
+        <!-- 改为「插件设置」同款模态：固定遮罩 + 居中弹窗；只能点关闭按钮或遮罩关闭，
+             不再鼠标移出/超时自动关闭（2026-10-17 @TraeCode） -->
+        <div class="physton-prompt-history" v-show="isShow" @click="onMaskClick">
+            <div class="paio-modal-main" @click.stop>
+                <div class="paio-modal-header">
+                    <div class="paio-modal-title">{{ getLang('history') }}</div>
+                    <div class="paio-modal-close" role="button" tabindex="0"
+                         :aria-label="getLang('close')" :title="getLang('close')"
+                         @click="hide" @keydown.enter="hide" @keydown.space.prevent="hide">
+                        <icon-svg name="close"/>
+                    </div>
+                </div>
+                <div class="paio-modal-body">
+                    <div class="popup-tabs">
+                        <div v-for="(group) in histories" :key="group.key"
+                             :class="['popup-tab', group.key === historyKey ? 'active': '']" @click="onTabClick(group.key)">
+                            <div class="tab-name">{{ getLang(group.name) }}</div>
+                            <div class="tab-type">{{ getLang(group.type) }}</div>
+                            <div class="tab-count">{{ group.list.length }}</div>
+                        </div>
+                    </div>
+                    <div v-for="(group) in histories" :key="group.key" :class="['popup-tab-content', group.key === historyKey ? 'active': '']">
+                        <div class="content-list" v-show="group.list.length > 0">
+                            <div class="clear-btn" @click="onDeleteAllHistoryClick">
+                                <icon-svg name="remove"/>
+                                {{ getLang('delete_all_history') }}
+                            </div>
+                            <div class="content-item" v-for="(item, index) in group.list" :key="item.id"
+                                 @mouseenter="onItemMouseEnter(index, $event)" @mouseleave="onItemMouseLeave(index)">
+                                <div class="item-header">
+                                    <div class="item-header-left">
+                                        <div class="item-header-index">{{ group.list.length - index }}</div>
+                                        <div class="item-header-time">{{ formatTime(item.time) }}</div>
+                                        <div class="item-header-name">
+                                            <input class="header-name-input" :value="item.name"
+                                                   @keydown="onNameKeyDown(index, $event)"
+                                                   @change="onNameChange(index, $event)" :placeholder="getLang('unset_name')">
+                                        </div>
+                                    </div>
+                                    <div class="item-header-right">
+                                        <div class="header-btn-favorite hover-scale-140" @click="onDeleteClick(index)">
+                                            <icon-svg name="remove"/>
+                                        </div>
+                                        <div class="header-btn-favorite hover-scale-140" @click="onFavoriteClick(index)"
+                                             v-show="item.is_favorite" v-tooltip="getLang('remove_from_favorite')">
+                                            <icon-svg name="favorite-yes"/>
+                                        </div>
+                                        <div class="header-btn-favorite hover-scale-140" @click="onFavoriteClick(index)"
+                                             v-show="!item.is_favorite" v-tooltip="getLang('add_to_favorite')">
+                                            <icon-svg name="favorite-no"/>
+                                        </div>
+                                        <div class="header-btn-copy hover-scale-140" @click="onCopyClick(index)"
+                                             v-tooltip="getLang('copy_to_clipboard')">
+                                            <icon-svg name="copy"/>
+                                        </div>
+                                        <div class="header-btn-use hover-scale-140" @click="onUseClick(index)"
+                                             v-tooltip="getLang('use')">
+                                            <icon-svg name="use"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item-prompt">{{ item.prompt }}</div>
+                            </div>
+                        </div>
+                        <div class="content-empty" v-show="group.list.length === 0">
+                            <icon-svg name="loading" v-if="loading"/>
+                            <span v-else>{{ emptyMsg }}</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="popup-detail" ref="historyDetail" v-show="currentItem && currentItem.tags">
+            <!-- 条目悬停时的「标签预览」浮层：改为相对视口定位（JS 按悬停条目的位置算） -->
+            <div class="popup-detail" ref="historyDetail" v-show="currentItem && currentItem.tags" @click.stop>
                 <div class="popup-item-tags">
                     <template v-for="(tag, index) in currentItem.tags" :key="index">
                         <div v-if="tag.type && tag.type === 'wrap'" class="item-wrap"></div>
@@ -19,54 +81,6 @@
                             <div class="item-tag-local-value">{{ tag.localValue }}</div>
                         </div>
                     </template>
-                </div>
-            </div>
-            <div v-for="(group) in histories" :key="group.key" :class="['popup-tab-content', group.key === historyKey ? 'active': '']">
-                <div class="content-list" v-show="group.list.length > 0">
-                    <div class="clear-btn" @click="onDeleteAllHistoryClick">
-                        <icon-svg name="remove"/>
-                        {{ getLang('delete_all_history') }}
-                    </div>
-                    <div class="content-item" v-for="(item, index) in group.list" :key="item.id"
-                         @mouseenter="onItemMouseEnter(index)" @mouseleave="onItemMouseLeave(index)">
-                        <div class="item-header">
-                            <div class="item-header-left">
-                                <div class="item-header-index">{{ group.list.length - index }}</div>
-                                <div class="item-header-time">{{ formatTime(item.time) }}</div>
-                                <div class="item-header-name">
-                                    <input class="header-name-input" :value="item.name"
-                                           @keydown="onNameKeyDown(index, $event)"
-                                           @change="onNameChange(index, $event)" :placeholder="getLang('unset_name')">
-                                </div>
-                            </div>
-                            <div class="item-header-right">
-                                <div class="header-btn-favorite hover-scale-140" @click="onDeleteClick(index)">
-                                    <icon-svg name="remove"/>
-                                </div>
-                                <div class="header-btn-favorite hover-scale-140" @click="onFavoriteClick(index)"
-                                     v-show="item.is_favorite" v-tooltip="getLang('remove_from_favorite')">
-                                    <icon-svg name="favorite-yes"/>
-                                </div>
-                                <div class="header-btn-favorite hover-scale-140" @click="onFavoriteClick(index)"
-                                     v-show="!item.is_favorite" v-tooltip="getLang('add_to_favorite')">
-                                    <icon-svg name="favorite-no"/>
-                                </div>
-                                <div class="header-btn-copy hover-scale-140" @click="onCopyClick(index)"
-                                     v-tooltip="getLang('copy_to_clipboard')">
-                                    <icon-svg name="copy"/>
-                                </div>
-                                <div class="header-btn-use hover-scale-140" @click="onUseClick(index)"
-                                     v-tooltip="getLang('use')">
-                                    <icon-svg name="use"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item-prompt">{{ item.prompt }}</div>
-                    </div>
-                </div>
-                <div class="content-empty" v-show="group.list.length === 0">
-                    <icon-svg name="loading" v-if="loading"/>
-                    <span v-else>{{ emptyMsg }}</span>
                 </div>
             </div>
         </div>
@@ -114,12 +128,14 @@ export default {
             isShow: false,
             loading: false,
             emptyMsg: '',
-            mouseEnter: false,
             currentItem: {}
         }
     },
     emits: ['use', 'refreshFavorites'],
     mounted() {
+    },
+    beforeUnmount() {
+        this.setScrollLock(false)
     },
     methods: {
         formatTime(time) {
@@ -143,45 +159,43 @@ export default {
                 this.loading = false
             })
         },
-        show(historyKey, e) {
-            if (!historyKey || !e) return
+        show(historyKey) {
+            if (!historyKey) return
             this.historyKey = historyKey
             if (this.isShow) {
-                this.isShow = false
+                this.hide()
                 return
             }
-            this.mouseEnter = false
-
             this.loading = true
             this.isShow = true
-            this.$refs.history.style.top = (e.pageY + 2) + 'px'
-            this.$refs.history.style.left = (e.pageX + 2) + 'px'
-
+            this.setScrollLock(true)
             this.getHistories(this.historyKey)
-            this.$nextTick(() => {
-                // 如果当前窗口超出屏幕，就自动调整位置
-                let rect = this.$refs.history.getBoundingClientRect()
-                if (rect.right > window.innerWidth) {
-                    this.$refs.history.style.left = (window.innerWidth - rect.width - 2) + 'px'
-                }
-            })
-
-            // 如果n秒后鼠标还没进来，就隐藏
-            setTimeout(() => {
-                if (this.mouseEnter) return
-                this.hide()
-            }, 3000)
         },
         hide() {
-            this.mouseEnter = false
+            if (!this.isShow) return
             this.isShow = false
+            this.currentItem = {}
+            this.setScrollLock(false)
         },
-        onMouseEnter() {
-            this.mouseEnter = true
-        },
-        onMouseLeave(e) {
-            if (!e.relatedTarget) return // 微软输入法BUG
+        onMaskClick() {
             this.hide()
+        },
+        setScrollLock(lock) {
+            // 弹窗打开时禁止背景页面滚轮滚动（与「插件设置」弹窗一致）
+            const cls = 'paio-scroll-locked'
+            if (lock) {
+                const sw = window.innerWidth - document.documentElement.clientWidth
+                document.body.style.paddingRight = sw > 0 ? sw + 'px' : ''
+            } else {
+                document.body.style.paddingRight = ''
+            }
+            const targets = [
+                document.documentElement,
+                document.body,
+                ...document.getElementsByTagName('gradio-app'),
+                ...document.querySelectorAll('.gradio-container'),
+            ]
+            targets.forEach(el => el && el.classList.toggle(cls, lock))
         },
         onTabClick(key) {
             this.historyKey = key
@@ -249,17 +263,27 @@ export default {
                 e.target.value = history.name
             })
         },
-        onItemMouseEnter(index) {
+        onItemMouseEnter(index, e) {
             let group = this.histories.find(item => item.key === this.historyKey)
             if (!group) return
             this.currentItem = group.list[index]
+            if (!this.currentItem || !this.currentItem.tags) return
 
+            const itemEl = e && e.currentTarget ? e.currentTarget : null
             this.$nextTick(() => {
-                // 判断 historyDetail 是否超出屏幕
-                let rect = this.$refs.historyDetail.getBoundingClientRect()
-                if (rect.right > window.innerWidth) {
-                    this.$refs.historyDetail.style.left = (0 - rect.width - 2) + 'px'
-                }
+                const detail = this.$refs.historyDetail
+                if (!detail || !itemEl) return
+                // 弹窗已居中，浮层改为相对视口定位：贴在悬停条目右侧，放不下就翻到左侧
+                const rect = itemEl.getBoundingClientRect()
+                const dw = detail.offsetWidth || 400
+                const dh = detail.offsetHeight || 0
+                let left = rect.right + 8
+                if (left + dw > window.innerWidth - 8) left = rect.left - dw - 8
+                if (left < 8) left = 8
+                let top = rect.top
+                if (top + dh > window.innerHeight - 8) top = Math.max(8, window.innerHeight - dh - 8)
+                detail.style.left = left + 'px'
+                detail.style.top = top + 'px'
             })
         },
         onItemMouseLeave(index) {

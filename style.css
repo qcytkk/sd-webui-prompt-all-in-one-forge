@@ -514,3 +514,67 @@ body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.
   display:block; width:100%!important; min-width:0; height:100px;
   box-sizing:border-box; resize:none;
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   【历史记录】/【收藏列表】弹窗 → 改为【插件设置】同款模态（2026-10-17 @TraeCode）
+   原先：绝对定位的悬浮层，鼠标移出或 3 秒内没进入就自动关闭 → 交互体验差。
+   现在：固定全屏遮罩 + 居中弹窗 + 标题栏关闭按钮；只能点关闭按钮或遮罩关闭。
+   注意：**不要**给根元素写 display（v-show 靠行内 display:none 控制显隐，
+   写 display:flex!important 会让弹窗常显）；居中改用 transform 方案。
+   ═══════════════════════════════════════════════════════════════════════════ */
+body .physton-prompt-history,
+body .physton-prompt-favorite{
+  position:fixed!important; top:0!important; left:0!important; right:0!important; bottom:0!important;
+  width:auto!important; height:auto!important; max-width:none!important; max-height:none!important;
+  padding:0!important; border:none!important; border-radius:0!important; box-shadow:none!important;
+  background:rgba(0,0,0,.55)!important; overflow:visible!important; z-index:2990!important;
+}
+body .physton-prompt-history>.paio-modal-main,
+body .physton-prompt-favorite>.paio-modal-main{
+  position:absolute!important; left:50%; top:50%; transform:translate(-50%,-50%);
+  /* 尺寸与【插件设置】弹窗（.settings-modal-main）保持同一标准：820px / 92vw / 80vh */
+  width:820px; max-width:92vw; height:80vh; max-height:80vh;
+  background:var(--paio-surface); border:1px solid var(--paio-border); border-radius:var(--paio-radius);
+  box-shadow:var(--paio-shadow-dialog); color:var(--paio-text);
+  display:flex; flex-direction:column; overflow:hidden;
+}
+/* 标题栏 */
+body .physton-prompt-history .paio-modal-header,
+body .physton-prompt-favorite .paio-modal-header{
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+  padding:12px 18px; flex-shrink:0; border-bottom:1px solid var(--paio-border);
+}
+body .physton-prompt-history .paio-modal-title,
+body .physton-prompt-favorite .paio-modal-title{
+  font-size:15px; font-weight:600; color:var(--paio-text);
+}
+body .physton-prompt-history .paio-modal-close,
+body .physton-prompt-favorite .paio-modal-close{
+  cursor:pointer; padding:4px; display:flex; align-items:center;
+  border-radius:var(--paio-radius-sm); color:var(--paio-text); flex:0 0 auto;
+}
+body .physton-prompt-history .paio-modal-close:hover,
+body .physton-prompt-favorite .paio-modal-close:hover{background:var(--paio-surface-2);}
+/* 主体：标签页 + 内容区，撑满剩余高度并内部滚动（上游给的是固定 500px 高度） */
+body .physton-prompt-history .paio-modal-body,
+body .physton-prompt-favorite .paio-modal-body{
+  flex:1; min-height:0; display:flex; flex-direction:column; overflow:hidden;
+}
+body .physton-prompt-history .paio-modal-body .popup-tabs,
+body .physton-prompt-favorite .paio-modal-body .popup-tabs{flex-shrink:0;}
+body .physton-prompt-history .paio-modal-body .popup-tab-content.active,
+body .physton-prompt-favorite .paio-modal-body .popup-tab-content.active{
+  display:flex!important; flex-direction:column; flex:1; min-height:0; height:auto!important;
+}
+body .physton-prompt-history .paio-modal-body .content-list,
+body .physton-prompt-favorite .paio-modal-body .content-list{
+  flex:1; min-height:0; height:auto!important; overflow-y:auto!important;
+}
+/* 条目悬停的「标签预览」浮层：改为相对视口定位（left/top 由 JS 计算，不加 !important 以免压掉行内样式） */
+body .physton-prompt-history .popup-detail,
+body .physton-prompt-favorite .popup-detail{
+  position:fixed!important; z-index:3010!important;
+}
+/* 弹窗内文字/控件跟随主题令牌 */
+body .physton-prompt-history .paio-modal-body,
+body .physton-prompt-favorite .paio-modal-body{color:var(--paio-text);}
