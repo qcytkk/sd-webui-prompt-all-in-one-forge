@@ -2,7 +2,7 @@
     <div class="physton-settings-modal" v-show="visible" @click="onMaskClick">
             <div class="settings-modal-main" @click.stop>
                 <div class="settings-modal-header">
-                    <div class="settings-modal-title">{{ getLang('setting_desc') }}</div>
+                    <div class="settings-modal-title">{{ getLang('plugin_settings') }}</div>
                     <div class="settings-modal-header-right">
                         <div class="settings-modal-icon-btn" @click="close">
                             <icon-svg name="close"/>
