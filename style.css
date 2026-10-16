@@ -299,6 +299,26 @@ body .physton-settings-modal .settings-tab-pane .settings-section>.settings-auto
 body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line>.line-content:has(.auto-input-row){
   flex-direction:column; align-items:stretch; gap:6px; width:min(320px,48%);
 }
+/* 右列内容较多时（多段说明 + 控件行 + 勾选框说明）纵向堆叠成多行
+   —— 基线规则是 display:flex; justify-content:flex-end，多块内容会被横向挤在一行
+   （2026-10-16 @TraeCode / UI25，用于【翻译接口】的关键词组 / TagComplete 行） */
+body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-col>.line-content{
+  flex-direction:column!important; align-items:stretch!important; justify-content:flex-start!important;
+  gap:8px;
+}
+body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-col>.line-content>.line-row{
+  align-items:center!important; justify-content:flex-start!important;
+}
+body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-col>.line-content>.onlyCsvOnAuto{
+  margin:0!important;
+}
+/* 段落自带 margin 时，与外层 gap 叠加会过空，收掉首尾 */
+body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-col>.line-content>div>p:first-child{
+  margin-top:0!important;
+}
+body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-col>.line-content>div>p:last-child{
+  margin-bottom:0!important;
+}
 body .physton-settings-modal .settings-tab-pane .settings-section .auto-input-row{gap:10px; margin-bottom:0;}
 body .physton-settings-modal .settings-tab-pane .settings-section .auto-input-label{min-width:52px;}
 body .physton-settings-modal .settings-tab-pane .settings-section .auto-input-row select{min-width:0; width:100%;}

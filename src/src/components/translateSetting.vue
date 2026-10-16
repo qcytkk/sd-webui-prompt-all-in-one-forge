@@ -89,7 +89,8 @@
                                 <span class="paio-source-badge" :class="{'is-off': translationChainOff}">{{ translationChainText }}</span>
                             </div>
                         </div>
-                        <div class="setting-line">
+                        <!-- 说明 + 勾选框，同样纵向分 2 行（与下方 TagComplete 行保持一致） -->
+                        <div class="setting-line paio-col">
                             <div class="line-text">
                                 <div class="line-title">{{ getLang('Keyword_group') }}</div>
                             </div>
@@ -101,7 +102,8 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="setting-line">
+                        <!-- 内容较多，右列纵向分 4 行：说明 / 红字警告 / 控件行(下拉+刷新+勾选框) / 勾选框说明 -->
+                        <div class="setting-line paio-col">
                             <div class="line-text">
                                 <div class="line-title">TagComplete</div>
                             </div>
@@ -116,9 +118,10 @@
                                         <icon-svg v-if="tagCompleteFilesLoading" name="loading"/>
                                         <icon-svg v-else name="refresh" />
                                     </div>
+                                    <input v-show="tagCompleteFileKey" id="paio-only-csv-auto"
+                                           class="hover-scale-120" type="checkbox" value="1" v-model="onlyCsvOnAutoValue">
                                 </div>
-                                <label class="onlyCsvOnAuto" :style="{display: tagCompleteFileKey ? 'flex': 'none'}">
-                                    <input class="hover-scale-120" type="checkbox" value="1" v-model="onlyCsvOnAutoValue">
+                                <label class="onlyCsvOnAuto" for="paio-only-csv-auto" v-show="tagCompleteFileKey">
                                     <span>{{ getLang('only_csv_on_auto') }}</span>
                                 </label>
                             </div>
