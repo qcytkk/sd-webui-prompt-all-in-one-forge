@@ -24,17 +24,13 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="setting-line" v-if="apiItem && apiItem.type == 'translators'">
+                        <!-- 免费接口提示（仅 translators 类接口）与帮助链接合并为一行、左右两栏：左=提示，右=帮助链接 -->
+                        <div class="setting-line paio-split" v-if="apiItem && (apiItem.type == 'translators' || apiItem.help)">
                             <div class="line-text"></div>
                             <div class="line-content">
-                                <span class="common-red">*{{ getLang('not_api_key_desc') }}</span>
-                            </div>
-                        </div>
-                        <div class="setting-line" v-if="apiItem.help">
-                            <div class="line-text"></div>
-                            <div class="line-content">
-                                <div v-for="item in apiItem.help" class="help-list">
-                                    <div class="help-item">[?] <a :href="item.url" target="_blank">{{ item.title }}</a></div>
+                                <span class="common-red" v-if="apiItem.type == 'translators'">*{{ getLang('not_api_key_desc') }}</span>
+                                <div class="help-list" v-if="apiItem.help">
+                                    <div v-for="item in apiItem.help" class="help-item">[?] <a :href="item.url" target="_blank">{{ item.title }}</a></div>
                                 </div>
                             </div>
                         </div>

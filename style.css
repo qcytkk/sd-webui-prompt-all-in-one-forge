@@ -327,6 +327,21 @@ body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.
 body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-test-pair>.line-content>.test-input{
   flex:1 1 0; min-width:0; width:auto!important;
 }
+/* 【翻译接口】的「免费接口提示 + 帮助链接」合并为一行、左右两栏：
+   左=提示文字（占满剩余宽度），右=帮助链接；只有一项时也各就各位（2026-10-16 @TraeCode） */
+body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-split>.line-text{
+  display:none!important;
+}
+body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-split>.line-content{
+  flex:1 1 auto; width:100%; margin-left:0;
+  display:flex; align-items:center; gap:16px;
+}
+body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-split>.line-content>span.common-red{
+  flex:1 1 auto; min-width:0;
+}
+body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-split>.line-content>.help-list{
+  flex:0 0 auto; margin-left:auto;
+}
 
 /* 右列内容较多时（多段说明 + 控件行 + 勾选框说明）纵向堆叠成多行
    —— 基线规则是 display:flex; justify-content:flex-end，多块内容会被横向挤在一行
