@@ -10,10 +10,11 @@
                 <div class="prompt-header-extend">
                     <div class="extend-content">
                         <div class="extend-btn-group">
-                            <div class="extend-btn-item"
+                            <div class="extend-btn-item paio-settings-btn"
                                  v-tooltip="getLang('setting_desc')"
                                  @click="$emit('click:openSettings', $event)">
                                 <icon-svg class="hover-scale-120" name="setting"/>
+                                <span class="paio-settings-btn-text">{{ getLang('plugin_settings') }}</span>
                             </div>
                         </div>
                     </div>

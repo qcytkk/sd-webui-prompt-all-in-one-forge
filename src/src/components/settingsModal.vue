@@ -408,6 +408,7 @@ export default {
     },
     watch: {
         visible(val) {
+            this.setScrollLock(val)
             if (val) {
                 this.loadAutoInputPrompts()
                 this.$nextTick(() => this.openTab(this.activeTab))
@@ -419,9 +420,30 @@ export default {
     created() {
         this.gradioAPI = new GradioAPI()
     },
+    beforeUnmount() {
+        this.setScrollLock(false)
+    },
     methods: {
         close() {
             this.$emit('update:visible', false)
+        },
+        setScrollLock(lock) {
+            // 弹窗打开时禁止背景页面滚轮滚动（弹窗自身的 .settings-modal-content 仍可滚动）
+            const cls = 'paio-scroll-locked'
+            if (lock) {
+                // 先量滚动条宽度（加了 overflow:hidden 之后就量不到了），锁定后用它补偿，避免页面横向跳动
+                const sw = window.innerWidth - document.documentElement.clientWidth
+                document.body.style.paddingRight = sw > 0 ? sw + 'px' : ''
+            } else {
+                document.body.style.paddingRight = ''
+            }
+            const targets = [
+                document.documentElement,
+                document.body,
+                ...document.getElementsByTagName('gradio-app'),
+                ...document.querySelectorAll('.gradio-container'),
+            ]
+            targets.forEach(el => el && el.classList.toggle(cls, lock))
         },
         onMaskClick() {
             this.close()

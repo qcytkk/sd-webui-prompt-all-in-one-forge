@@ -340,3 +340,19 @@ body .physton-settings-modal .settings-tab-pane .settings-section>.settings-auto
 }
 /* 详情文案中的强调短语：加粗 + 提亮（两套主题下对比度均高于周边的弱化文字） */
 body .physton-settings-modal .settings-tab-pane .line-desc .paio-em{font-weight:600; color:var(--paio-text);}
+
+/* ── 主界面「插件设置」按钮加文字（2026-10-16 @TraeCode / UI12）
+   原按钮是固定宽度的纯图标项（宽度来自 --pp-ph-phe-ec-ebg-extendBtnItem-width），
+   这里让它按内容自适应，文字紧跟在齿轮图标右侧。 */
+.physton-prompt .extend-btn-item.paio-settings-btn{
+  width:auto!important; padding:0 6px;
+  display:inline-flex!important; align-items:center!important; gap:4px;
+}
+.physton-prompt .extend-btn-item.paio-settings-btn .paio-settings-btn-text{
+  font-size:12px; line-height:1; white-space:nowrap; color:inherit;
+}
+/* ── 插件设置弹窗打开时锁定背景滚动（弹窗内部 .settings-modal-content 仍可滚动） ── */
+html.paio-scroll-locked,
+body.paio-scroll-locked,
+gradio-app.paio-scroll-locked,
+.gradio-container.paio-scroll-locked{overflow:hidden!important;}
