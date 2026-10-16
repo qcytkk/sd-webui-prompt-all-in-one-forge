@@ -64,7 +64,7 @@
                 "not_api_key_desc": "免费的翻译接口不稳定，并不是每个接口都能在你的电脑中使用，请尽量申请api key使用稳定的官方接口",
                 "setting_desc": "设置：翻译API、自动翻译、显示/隐藏...",
                 "line_break_character": "换行符号",
-                "tagcomplete_translate_desc": "<p>使用 {{nameTagComplete}} 扩展中的 danbooru.csv 增强翻译功能，以达到节省网络请求、精准翻译的目的。</p><p>点击刷新按钮后，将扫描以下路径的csv文件: <p>extensions\\{{shortNameTagComplete}}\\tags</p><p>extensions\\{{shortName}}\\tags</p></p><p><b>注意</b>：这是本地的 CSV 词典来源，与上方的「关键词组」<b>互斥</b>——关键词组开启时，此处选择的文件不生效。</p>",
+                "tagcomplete_translate_desc": "<p>使用 {{nameTagComplete}} 扩展中的 danbooru.csv 增强翻译功能，以达到节省网络请求、精准翻译的目的。</p><p>点击刷新按钮后，将扫描以下路径的csv文件: <p>extensions\\{{shortNameTagComplete}}\\tags</p><p>extensions\\{{shortName}}\\tags</p></p><p><b>注意</b>：本词典位于翻译链的第二档——上方「关键词组」未命中的词会落到这里；这里也没命中的词，才交给网络翻译接口。</p>",
                 "test": "测试",
                 "refresh": "刷新",
                 "not_enable": "不启用",
@@ -150,7 +150,7 @@
                 "one_keyword_per_line": "每行一个关键词",
                 "Keyword_group": "关键词组",
                 "enhance_translation_use_keyword_group": "使用关键词组增强翻译功能",
-                "enhance_translation_use_Keyword_group_desc": "<p>关键词组文件位于 group_tags 目录中。</p><p>启用该功能后，优先使用 yaml 文件中的内容进行翻译匹配。如果没有匹配到，再使用翻译接口进行翻译。</p><p><b>说明</b>：该词表由社区人工整理（约 4000 条，覆盖常用词），并且同时决定主界面「分组标签」面板的分类与配色。</p><p><b>注意</b>：它与下方的 CSV 词典<b>互斥</b>——开启后 CSV 词典不生效，未匹配到的词会交给网络翻译接口。</p>",
+                "enhance_translation_use_Keyword_group_desc": "<p>关键词组文件位于 group_tags 目录中。</p><p>启用该功能后，优先使用 yaml 文件中的内容进行翻译匹配。如果没有匹配到，再使用翻译接口进行翻译。</p><p><b>说明</b>：该词表由社区人工整理（约 4000 条，覆盖常用词），并同时决定主界面「分组标签」面板的分类与配色。</p><p>未匹配到的词<b>不会丢弃</b>：会先交给下方的 CSV 词典（若已选择文件），仍未命中才使用网络翻译接口。三者是<b>依次回退</b>的关系，不是二选一。</p>",
                 "hotkey_setting": "快捷键设置",
                 "left_click_keyword_tag": "左键点击关键词标签",
                 "right_click_keyword_tag": "右键点击关键词标签",
@@ -221,9 +221,9 @@
                 "translate_blacklist_title": "禁止翻译的词",
                 "cancel_confirm_title": "取消加入黑名单的确认提示",
                 "enhance_translation": "翻译增强",
-                "translation_source": "当前生效的翻译来源",
+                "translation_source": "翻译来源（依次回退）",
                 "source_csv_dict": "CSV 词典",
-                "source_network_only": "未启用本地词典（全部走网络翻译）"
+                "source_network": "网络翻译"
             }
         },
         {
@@ -289,7 +289,7 @@
                 "not_api_key_desc": "免費嘅翻譯接口唔太可靠，唔係每個接口都可以喺你嘅電腦中使用，請盡量申請api key使用穩定嘅官方接口",
                 "setting_desc": "設置：翻譯API、自動翻譯、顯示/隱藏...",
                 "line_break_character": "換行符號",
-                "tagcomplete_translate_desc": "<p>使用 {{nameTagComplete}} 擴展中的 danbooru.csv 增強翻譯功能，以達到節省網絡請求、精確翻譯的目的。</p><p>點擊刷新按鈕後，將掃描以下路徑的csv文件：<p>extensions\\{{shortNameTagComplete}}\\tags</p><p>extensions\\{{shortName}}\\tags</p></p><p><b>注意</b>：這是本地的 CSV 詞典來源，與上方的「關鍵詞組」<b>互斥</b>——關鍵詞組開啟時，此處選擇的檔案不生效。</p>",
+                "tagcomplete_translate_desc": "<p>使用 {{nameTagComplete}} 擴展中的 danbooru.csv 增強翻譯功能，以達到節省網絡請求、精確翻譯的目的。</p><p>點擊刷新按鈕後，將掃描以下路徑的csv文件：<p>extensions\\{{shortNameTagComplete}}\\tags</p><p>extensions\\{{shortName}}\\tags</p></p><p><b>注意</b>：本詞典位於翻譯鏈的第二檔——上方「關鍵詞組」未命中的詞會落到這裡；這裡也沒命中的詞，才交給網絡翻譯介面。</p>",
                 "test": "測試",
                 "refresh": "刷新",
                 "not_enable": "不啟用",
@@ -375,7 +375,7 @@
                 "one_keyword_per_line": "每行一個關鍵詞",
                 "Keyword_group": "關鍵詞組",
                 "enhance_translation_use_keyword_group": "使用關鍵詞組增強翻譯功能",
-                "enhance_translation_use_Keyword_group_desc": "<p>關鍵詞組文件位於 group_tags 目錄中。</p><p>啟用該功能後，優先使用 yaml 文件中的內容進行翻譯匹配。如果沒有匹配到，再使用翻譯接口進行翻譯。</p><p><b>說明</b>：該詞表由社群人工整理（約 4000 條，涵蓋常用詞），並且同時決定主介面「分組標籤」面板的分類與配色。</p><p><b>注意</b>：它與下方的 CSV 詞典<b>互斥</b>——開啟後 CSV 詞典不生效，未匹配到的詞會交給網絡翻譯介面。</p>",
+                "enhance_translation_use_Keyword_group_desc": "<p>關鍵詞組文件位於 group_tags 目錄中。</p><p>啟用該功能後，優先使用 yaml 文件中的內容進行翻譯匹配。如果沒有匹配到，再使用翻譯接口進行翻譯。</p><p><b>說明</b>：該詞表由社群人工整理（約 4000 條，涵蓋常用詞），並同時決定主介面「分組標籤」面板的分類與配色。</p><p>未匹配到的詞<b>不會丟棄</b>：會先交給下方的 CSV 詞典（若已選擇檔案），仍未命中才使用網絡翻譯介面。三者是<b>依次回退</b>的關係，不是二選一。</p>",
                 "hotkey_setting": "快捷鍵設定",
                 "left_click_keyword_tag": "左鍵點擊關鍵詞標籤",
                 "right_click_keyword_tag": "右鍵點擊關鍵詞標籤",
@@ -446,9 +446,9 @@
                 "translate_blacklist_title": "禁止翻譯的詞",
                 "cancel_confirm_title": "取消加入黑名單的確認提示",
                 "enhance_translation": "翻譯增強",
-                "translation_source": "當前生效的翻譯來源",
+                "translation_source": "翻譯來源（依次回退）",
                 "source_csv_dict": "CSV 詞典",
-                "source_network_only": "未啟用本地詞典（全部走網絡翻譯）"
+                "source_network": "網絡翻譯"
             }
         },
         {
@@ -514,7 +514,7 @@
                 "not_api_key_desc": "免費的翻譯介面不穩定，不是每一個介面都能在你的電腦上使用，建議申請API Key以使用穩定的官方介面。",
                 "setting_desc": "設置：翻譯API、自動翻譯、顯示/隱藏...",
                 "line_break_character": "換行字元",
-                "tagcomplete_translate_desc": "<p>使用 {{nameTagComplete}} 擴展中的 danbooru.csv 增強翻譯功能，以達到節省網路請求、精確翻譯的目的。</p><p>點擊重新整理按鈕後，將掃描以下路徑的csv檔案：<p>extensions\\{{shortNameTagComplete}}\\tags</p><p>extensions\\{{shortName}}\\tags</p></p><p><b>注意</b>：這是本地的 CSV 詞典來源，與上方的「關鍵詞組」<b>互斥</b>——關鍵詞組開啟時，此處選擇的檔案不生效。</p>",
+                "tagcomplete_translate_desc": "<p>使用 {{nameTagComplete}} 擴展中的 danbooru.csv 增強翻譯功能，以達到節省網路請求、精確翻譯的目的。</p><p>點擊重新整理按鈕後，將掃描以下路徑的csv檔案：<p>extensions\\{{shortNameTagComplete}}\\tags</p><p>extensions\\{{shortName}}\\tags</p></p><p><b>注意</b>：本詞典位於翻譯鏈的第二檔——上方「關鍵詞組」未命中的詞會落到這裡；這裡也沒命中的詞，才交給網路翻譯介面。</p>",
                 "test": "測試",
                 "refresh": "重新整理",
                 "not_enable": "不啟用",
@@ -600,7 +600,7 @@
                 "one_keyword_per_line": "每行一個關鍵字",
                 "Keyword_group": "關鍵詞組",
                 "enhance_translation_use_keyword_group": "使用關鍵詞組增強翻譯功能",
-                "enhance_translation_use_Keyword_group_desc": "<p>關鍵詞組文件位於 group_tags 目錄中。</p><p>啟用該功能後，優先使用 yaml 文件中的內容進行翻譯匹配。如果沒有匹配到，再使用翻譯接口進行翻譯。</p><p><b>說明</b>：該詞表由社群人工整理（約 4000 條，涵蓋常用詞），並且同時決定主介面「分組標籤」面板的分類與配色。</p><p><b>注意</b>：它與下方的 CSV 詞典<b>互斥</b>——開啟後 CSV 詞典不生效，未匹配到的詞會交給網路翻譯介面。</p>",
+                "enhance_translation_use_Keyword_group_desc": "<p>關鍵詞組文件位於 group_tags 目錄中。</p><p>啟用該功能後，優先使用 yaml 文件中的內容進行翻譯匹配。如果沒有匹配到，再使用翻譯接口進行翻譯。</p><p><b>說明</b>：該詞表由社群人工整理（約 4000 條，涵蓋常用詞），並同時決定主介面「分組標籤」面板的分類與配色。</p><p>未匹配到的詞<b>不會丟棄</b>：會先交給下方的 CSV 詞典（若已選擇檔案），仍未命中才使用網路翻譯介面。三者是<b>依次回退</b>的關係，不是二選一。</p>",
                 "hotkey_setting": "快捷鍵設定",
                 "left_click_keyword_tag": "左鍵點擊關鍵字標籤",
                 "right_click_keyword_tag": "右鍵點擊關鍵字標籤",
@@ -671,9 +671,9 @@
                 "translate_blacklist_title": "禁止翻譯的詞",
                 "cancel_confirm_title": "取消加入黑名單的確認提示",
                 "enhance_translation": "翻譯增強",
-                "translation_source": "當前生效的翻譯來源",
+                "translation_source": "翻譯來源（依次回退）",
                 "source_csv_dict": "CSV 詞典",
-                "source_network_only": "未啟用本地詞典（全部走網路翻譯）"
+                "source_network": "網路翻譯"
             }
         },
         {
@@ -739,7 +739,7 @@
                 "not_api_key_desc": "Free translation interfaces are unstable, and not every interface can be used on your computer. Please apply for an API Key to use the stable official interface.",
                 "setting_desc": "Settings: Translation API, automatic translation, show/hide...",
                 "line_break_character": "Line break character",
-                "tagcomplete_translate_desc": "<p>Enhance translation function using danbooru.csv in {{nameTagComplete}} extension to achieve the purpose of saving network requests and accurate translation.</p><p>After clicking the refresh button, csv files from the following paths will be scanned: <p>extensions\\{{shortNameTagComplete}}\\tags</p><p>extensions\\{{shortName}}\\tags</p></p><p><b>Important</b>: this is the local CSV dictionary source. It is <b>mutually exclusive</b> with the \"Keyword Group\" option above — while keyword groups are enabled, the file selected here is not used.</p>",
+                "tagcomplete_translate_desc": "<p>Enhance translation function using danbooru.csv in {{nameTagComplete}} extension to achieve the purpose of saving network requests and accurate translation.</p><p>After clicking the refresh button, csv files from the following paths will be scanned: <p>extensions\\{{shortNameTagComplete}}\\tags</p><p>extensions\\{{shortName}}\\tags</p></p><p><b>Note</b>: this dictionary is the second tier of the chain — tags missed by \"Keyword Group\" above fall through to here, and only tags missed here go to the network translation API.</p>",
                 "test": "Test",
                 "refresh": "Refresh",
                 "not_enable": "Not enable",
@@ -825,7 +825,7 @@
                 "one_keyword_per_line": "One keyword per line",
                 "Keyword_group": "Keyword Group",
                 "enhance_translation_use_keyword_group": "Enhance Translation with Keyword Group",
-                "enhance_translation_use_Keyword_group_desc": "<p>The keyword group file is located in the group_tags directory.</p><p>When this feature is enabled, the contents in the YAML file are prioritized for translation matching. If no match is found, the translation interface is used.</p><p><b>Note</b>: this word list is community-curated (about 4,000 entries covering common tags) and it also drives the categories and colors of the \"Group Tags\" panel on the main UI.</p><p><b>Important</b>: it is <b>mutually exclusive</b> with the CSV dictionary below — while this is on, the CSV dictionary is not used, and unmatched tags go to the network translation API.</p>",
+                "enhance_translation_use_Keyword_group_desc": "<p>The keyword group file is located in the group_tags directory.</p><p>When this feature is enabled, the contents in the YAML file are prioritized for translation matching. If no match is found, the translation interface is used.</p><p><b>Note</b>: this word list is community-curated (about 4,000 entries covering common tags) and it also drives the categories and colors of the \"Group Tags\" panel on the main UI.</p><p>Unmatched tags are <b>not discarded</b>: they go to the CSV dictionary below first (if a file is selected), and only if that misses too do they go to the network translation API. The three form a <b>fallback chain</b>, not a choice.</p>",
                 "hotkey_setting": "Hotkey Setting",
                 "left_click_keyword_tag": "Left Click Keyword Tag",
                 "right_click_keyword_tag": "Right Click Keyword Tag",
@@ -896,9 +896,9 @@
                 "translate_blacklist_title": "Translation Blacklist",
                 "cancel_confirm_title": "Skip confirmation when adding to blacklist",
                 "enhance_translation": "Translation Enhancements",
-                "translation_source": "Active translation source",
+                "translation_source": "Translation sources (fallback order)",
                 "source_csv_dict": "CSV dictionary",
-                "source_network_only": "No local dictionary (all via network)"
+                "source_network": "Network"
             }
         },
         {
