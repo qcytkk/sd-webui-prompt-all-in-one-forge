@@ -12,7 +12,7 @@
                         <div class="setting-line">
                             <div class="line-text"></div>
                             <div class="line-content">
-                                <select :aria-label="getLang('translate_api')" v-model="apiKey">
+                                <select :aria-label="getLang('translate_api')" v-model="apiKey" @change="onApiKeyChange($event)">
                                     <optgroup v-for="typeGroup in supportApi" :key="typeGroup.type"
                                               :label="getLang(typeGroup.type)">
                                         <option v-for="item in typeGroup.children" :key="item.key" :value="item.key" :disabled="item.disabled">
@@ -42,7 +42,7 @@
                             </div>
                             <div class="line-content">
                                 <input type="text" v-if="config.type == 'input'" v-model="config.value" @change="onChangeConfigValue(config)">
-                                <select v-if="config.type == 'select'" v-model="config.value">
+                                <select v-if="config.type == 'select'" v-model="config.value" @change="onConfigSelectChange(config, $event)">
                                     <option v-for="option in config.options" :value="option">{{ option }}</option>
                                 </select>
                                 <div v-if="config.desc" v-html="config.desc"></div>
@@ -97,7 +97,8 @@
                             <div class="line-content">
                                 <div v-html="getLang('enhance_translation_use_Keyword_group_desc')"></div>
                                 <label class="onlyCsvOnAuto">
-                                    <input class="hover-scale-120" type="checkbox" value="1" v-model="groupTagsTranslateValue">
+                                    <input class="hover-scale-120" type="checkbox" value="1"
+                                           v-model="groupTagsTranslateValue" @change="onGroupTagsTranslateChange($event)">
                                     <span>{{ getLang('enhance_translation_use_keyword_group') }}</span>
                                 </label>
                             </div>
@@ -113,7 +114,7 @@
                                 <div v-html="getLang('tagcomplete_translate_desc')"></div>
                                 <div class="common-red" v-html="getLang('tagcomplete_translate_desc2')"></div>
                                 <div class="line-row">
-                                    <select v-model="tagCompleteFileKey" @change="tagCompleteResults = []">
+                                    <select v-model="tagCompleteFileKey" @change="onTagCompleteFileChange($event)">
                                         <option v-for="item in tagCompleteFiles" :value="item.key">{{ item.name }}</option>
                                     </select>
                                     <div class="refresh-btn hover-scale-120" v-tooltip="getLang('refresh')" @click="refreshCSVs">
@@ -123,7 +124,8 @@
                                 </div>
                                 <!-- 勾选框与它的说明文字成对放在同一行 -->
                                 <label class="onlyCsvOnAuto" v-show="tagCompleteFileKey">
-                                    <input class="hover-scale-120" type="checkbox" value="1" v-model="onlyCsvOnAutoValue">
+                                    <input class="hover-scale-120" type="checkbox" value="1"
+                                           v-model="onlyCsvOnAutoValue" @change="onOnlyCsvOnAutoChange($event)">
                                     <span>{{ getLang('only_csv_on_auto') }}</span>
                                 </label>
                             </div>
@@ -138,9 +140,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="setting-btns">
-                        <div class="translate-save hover-scale-120" @click="onSaveClick">{{ getLang('save') }}</div>
                     </div>
                 </div>
             </div>
@@ -274,11 +273,6 @@ export default {
             name += '[QPS: ' + (item.concurrent || 1) + ']'*/
             return name
         },
-        onChangeConfigValue(config) {
-            if (config.type === 'input' && config.value === '' && config.default) {
-                config.value = config.default
-            }
-        },
         refreshCSVs() {
             if (this.tagCompleteFilesLoading) return
             this.tagCompleteFilesLoading = true
@@ -339,20 +333,45 @@ export default {
                 })
             })
         },
-        onSaveClick() {
+        // ── 改动即保存（替代原来的「保存」按钮）──
+        // translateApi / tagCompleteFile / onlyCsvOnAuto / groupTagsTranslate 在 App.vue 里各自有 watcher，
+        // emit 上去就会落盘；只有「当前 API 的参数对象」不在 watcher 覆盖范围内，需要显式 setData。
+        saveConfigs() {
             let configs = {}
             for (const item of this.configs) {
                 configs[item.key] = item.value
             }
-            this.$emit('update:translateApi', this.apiKey)
-            this.$emit('update:tagCompleteFile', this.tagCompleteFileKey)
-            this.$emit('update:onlyCsvOnAuto', this.onlyCsvOnAutoValue)
-            this.$emit('update:groupTagsTranslate', this.groupTagsTranslateValue)
             this.gradioAPI.setData('translate_api.' + this.apiKey, configs).then(res => {
                 if (this.apiKey === this.translateApi) this.$emit('forceUpdate:translateApi')
             })
-            // 嵌入设置弹窗后不再「保存即关闭」——旧的弹窗行为会让本页内容消失，这里只给个轻提示
-            this.$toastr.success(this.getLang('success'))
+        },
+        onApiKeyChange(e) {
+            // 注意：此刻 this.configs 还属于「上一个 API」，不能在这里保存参数；
+            // 参数是在各自字段 change 时、按当时的 apiKey 保存的
+            this.$emit('update:translateApi', e.target.value)
+        },
+        onChangeConfigValue(config) {
+            if (config.type === 'input' && config.value === '' && config.default) {
+                config.value = config.default
+            }
+            this.saveConfigs()
+        },
+        onConfigSelectChange(config, e) {
+            config.value = e.target.value
+            this.saveConfigs()
+        },
+        onTagCompleteFileChange(e) {
+            this.tagCompleteResults = []
+            this.tagCompleteFileKey = e.target.value
+            this.$emit('update:tagCompleteFile', e.target.value)
+        },
+        onOnlyCsvOnAutoChange(e) {
+            this.onlyCsvOnAutoValue = e.target.checked
+            this.$emit('update:onlyCsvOnAuto', e.target.checked)
+        },
+        onGroupTagsTranslateChange(e) {
+            this.groupTagsTranslateValue = e.target.checked
+            this.$emit('update:groupTagsTranslate', e.target.checked)
         },
         onCloseClick() {
             this.isOpen = false

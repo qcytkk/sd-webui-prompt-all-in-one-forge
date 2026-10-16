@@ -9,13 +9,10 @@
                 <div class="hotkey-list">
                     <div class="hotkey-item" v-for="(hotkey) in hotkeys" :key="hotkey.name">
                         <div class="hotkey-title">{{ getLang(hotkey.title) }}</div>
-                        <select class="hotkey-select" v-model="hotkey.value">
+                        <select class="hotkey-select" v-model="hotkey.value" @change="onHotkeyChange">
                             <option v-for="(option) in hotkey.options" :key="option.name" :value="option.name">{{ getLang(option.title) }}</option>
                         </select>
                     </div>
-                </div>
-                <div class="setting-btns">
-                    <div class="hotkey-save hover-scale-120" @click="onSaveClick">{{ getLang('save') }}</div>
                 </div>
             </div>
         </div>
@@ -149,14 +146,14 @@ export default {
         onCloseClick() {
             this.close()
         },
-        onSaveClick() {
+        // ── 改动即保存（替代原来的「保存」按钮）──
+        onHotkeyChange() {
             let data = {}
             this.hotkeys.forEach(item => {
                 data[item.name] = item.value
             })
             this.gradioAPI.setData('hotkey', data)
             this.$emit('update:hotkey', data)
-            // 嵌入设置弹窗后不再「保存即关闭」——旧的弹窗行为会让本页内容消失，这里只给个轻提示
             this.$toastr.success(this.getLang('success'))
         },
     },
