@@ -206,7 +206,18 @@
                 "hide_default_input_desc_negative": "隐藏/显示 WebUI 自带的<strong class=\"paio-em\">反向提示词输入框</strong>，只显示本插件的标签编辑区",
                 "auto_load_desc_positive": "WebUI 的<strong class=\"paio-em\">正向提示词输入框</strong>变动时自动加载并格式化；关闭后需手动点击「加载WebUI提示词」按钮",
                 "auto_load_desc_negative": "WebUI 的<strong class=\"paio-em\">反向提示词输入框</strong>变动时自动加载并格式化；关闭后需手动点击「加载WebUI提示词」按钮",
-                "plugin_settings": "插件设置"
+                "plugin_settings": "插件设置",
+                "fmt_remove_space": "逗号后的空格",
+                "fmt_remove_last_comma": "末尾逗号",
+                "fmt_remove_before_line_comma": "换行前的逗号",
+                "fmt_keep_weight_zero": "权重为 0 的格式",
+                "fmt_novel_ai_symbol": "NovelAI 权重符号",
+                "fmt_break_before_wrap": "BREAK 前换行",
+                "fmt_break_after_wrap": "BREAK 后换行",
+                "fmt_lora_before_comma": "Lora 前的逗号",
+                "fmt_lora_after_comma": "Lora 后的逗号",
+                "fmt_split_by_period": "句号分词",
+                "fmt_split_include_paren": "括号前的句号"
             }
         },
         {
@@ -414,7 +425,18 @@
                 "hide_default_input_desc_negative": "隱藏/顯示 WebUI 內建的<strong class=\"paio-em\">反向提示詞輸入框</strong>，只顯示本插件的標籤編輯區",
                 "auto_load_desc_positive": "WebUI 的<strong class=\"paio-em\">正向提示詞輸入框</strong>變動時自動載入並格式化；關閉後需手動點擊「載入 WebUI 提示詞」按鈕",
                 "auto_load_desc_negative": "WebUI 的<strong class=\"paio-em\">反向提示詞輸入框</strong>變動時自動載入並格式化；關閉後需手動點擊「載入 WebUI 提示詞」按鈕",
-                "plugin_settings": "插件設定"
+                "plugin_settings": "插件設定",
+                "fmt_remove_space": "逗號後的空格",
+                "fmt_remove_last_comma": "結尾逗號",
+                "fmt_remove_before_line_comma": "換行前的逗號",
+                "fmt_keep_weight_zero": "權重為 0 的格式",
+                "fmt_novel_ai_symbol": "NovelAI 權重符號",
+                "fmt_break_before_wrap": "BREAK 前換行",
+                "fmt_break_after_wrap": "BREAK 後換行",
+                "fmt_lora_before_comma": "Lora 前的逗號",
+                "fmt_lora_after_comma": "Lora 後的逗號",
+                "fmt_split_by_period": "句號分詞",
+                "fmt_split_include_paren": "括號前的句號"
             }
         },
         {
@@ -622,7 +644,18 @@
                 "hide_default_input_desc_negative": "隱藏/顯示 WebUI 內建的<strong class=\"paio-em\">反向提示詞輸入框</strong>，只顯示本外掛的標籤編輯區",
                 "auto_load_desc_positive": "WebUI 的<strong class=\"paio-em\">正向提示詞輸入框</strong>變動時自動載入並格式化；關閉後需手動點擊「載入 WebUI 提示詞」按鈕",
                 "auto_load_desc_negative": "WebUI 的<strong class=\"paio-em\">反向提示詞輸入框</strong>變動時自動載入並格式化；關閉後需手動點擊「載入 WebUI 提示詞」按鈕",
-                "plugin_settings": "外掛設定"
+                "plugin_settings": "外掛設定",
+                "fmt_remove_space": "逗號後的空格",
+                "fmt_remove_last_comma": "結尾逗號",
+                "fmt_remove_before_line_comma": "換行前的逗號",
+                "fmt_keep_weight_zero": "權重為 0 的格式",
+                "fmt_novel_ai_symbol": "NovelAI 權重符號",
+                "fmt_break_before_wrap": "BREAK 前換行",
+                "fmt_break_after_wrap": "BREAK 後換行",
+                "fmt_lora_before_comma": "Lora 前的逗號",
+                "fmt_lora_after_comma": "Lora 後的逗號",
+                "fmt_split_by_period": "句號分詞",
+                "fmt_split_include_paren": "括號前的句號"
             }
         },
         {
@@ -830,7 +863,18 @@
                 "hide_default_input_desc_negative": "Hide/show the WebUI built-in <strong class=\"paio-em\">negative prompt input box</strong>; show only this plugin’s tag editor",
                 "auto_load_desc_positive": "Auto-load and format when the WebUI <strong class=\"paio-em\">positive prompt input box</strong> changes; when off, click the Load WebUI Prompt button manually",
                 "auto_load_desc_negative": "Auto-load and format when the WebUI <strong class=\"paio-em\">negative prompt input box</strong> changes; when off, click the Load WebUI Prompt button manually",
-                "plugin_settings": "Plugin Settings"
+                "plugin_settings": "Plugin Settings",
+                "fmt_remove_space": "Space after comma",
+                "fmt_remove_last_comma": "Trailing comma",
+                "fmt_remove_before_line_comma": "Comma before newline",
+                "fmt_keep_weight_zero": "Keep weight-0 format",
+                "fmt_novel_ai_symbol": "NovelAI weight symbol",
+                "fmt_break_before_wrap": "Newline before BREAK",
+                "fmt_break_after_wrap": "Newline after BREAK",
+                "fmt_lora_before_comma": "Comma before Lora",
+                "fmt_lora_after_comma": "Comma after Lora",
+                "fmt_split_by_period": "Split by period",
+                "fmt_split_include_paren": "Period before parentheses"
             }
         },
         {

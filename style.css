@@ -356,3 +356,5 @@ html.paio-scroll-locked,
 body.paio-scroll-locked,
 gradio-app.paio-scroll-locked,
 .gradio-container.paio-scroll-locked{overflow:hidden!important;}
+/* 【Prompt格式】里的从句号分词子项：保留层级缩进 */
+body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-fmt-sub{padding-left:24px!important;}

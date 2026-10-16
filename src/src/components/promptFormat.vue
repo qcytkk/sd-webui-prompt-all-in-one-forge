@@ -1,93 +1,43 @@
 <template>
-    <Transition name="fadeDown">
-        <div :class="['physton-prompt-format', {'embedded-host': embedded}]" v-if="isOpen" @click="close">
+    <div :class="['physton-prompt-format', {'embedded-host': embedded}]" v-if="isOpen" @click="close">
         <div class="format-main" @click.stop>
             <div class="format-close" v-if="!embedded" @click="close">
                 <icon-svg name="close"/>
             </div>
             <div class="format-list" @click.stop>
-                <div class="format-group">
-                    <div class="format-group-title">{{ getLang('group_comma_space') }}</div>
-                    <div class="format-item">
-                        <input class="format-checkbox" type="checkbox"
-                               :checked="autoRemoveSpace"
-                               @change="$emit('update:autoRemoveSpace', $event.target.checked)">
-                        <div class="format-desc" v-html="getLang('is_remove_space')"></div>
-                    </div>
-                    <div class="format-item">
-                        <input class="format-checkbox" type="checkbox"
-                               :checked="autoRemoveLastComma"
-                               @change="$emit('update:autoRemoveLastComma', $event.target.checked)">
-                        <div class="format-desc" v-html="getLang('is_remove_last_comma')"></div>
-                    </div>
-                    <div class="format-item">
-                        <input class="format-checkbox" type="checkbox"
-                               :checked="autoRemoveBeforeLineComma"
-                               @change="$emit('update:autoRemoveBeforeLineComma', $event.target.checked)">
-                        <div class="format-desc" v-html="getLang('is_remove_before_line_comma')"></div>
-                    </div>
-                </div>
-                <div class="format-group">
-                    <div class="format-group-title">{{ getLang('group_weight_symbol') }}</div>
-                    <div class="format-item">
-                        <input class="format-checkbox" type="checkbox"
-                               :checked="autoKeepWeightZero"
-                               @change="$emit('update:autoKeepWeightZero', $event.target.checked)">
-                        <div class="format-desc" v-html="getLang('is_keep_weight_zero')"></div>
-                    </div>
-                    <div class="format-item">
-                        <input class="format-checkbox" type="checkbox"
-                               :checked="useNovelAiWeightSymbol"
-                               @change="$emit('update:useNovelAiWeightSymbol', $event.target.checked)">
-                        <div class="format-desc" v-html="getLang('is_use_novel_ai_weight_symbol')"></div>
-                    </div>
-                </div>
-                <div class="format-group">
-                    <div class="format-group-title">{{ getLang('group_break_wrap') }}</div>
-                    <div class="format-item">
-                        <input class="format-checkbox" type="checkbox"
-                               :checked="autoBreakBeforeWrap"
-                               @change="$emit('update:autoBreakBeforeWrap', $event.target.checked)">
-                        <div class="format-desc" v-html="getLang('is_break_before_wrap')"></div>
-                    </div>
-                    <div class="format-item">
-                        <input class="format-checkbox" type="checkbox"
-                               :checked="autoBreakAfterWrap"
-                               @change="$emit('update:autoBreakAfterWrap', $event.target.checked)">
-                        <div class="format-desc" v-html="getLang('is_break_after_wrap')"></div>
-                    </div>
-                </div>
-                <div class="format-group">
-                    <div class="format-group-title">{{ getLang('group_lora_period') }}</div>
-                    <div class="format-item">
-                        <input class="format-checkbox" type="checkbox"
-                               :checked="autoRemoveLoraBeforeComma"
-                               @change="$emit('update:autoRemoveLoraBeforeComma', $event.target.checked)">
-                        <div class="format-desc" v-html="getLang('is_remove_lora_before_comma')"></div>
-                    </div>
-                    <div class="format-item">
-                        <input class="format-checkbox" type="checkbox"
-                               :checked="autoRemoveLoraAfterComma"
-                               @change="$emit('update:autoRemoveLoraAfterComma', $event.target.checked)">
-                        <div class="format-desc" v-html="getLang('is_remove_lora_after_comma')"></div>
-                    </div>
-                    <div class="format-item">
-                        <input class="format-checkbox" type="checkbox"
-                               :checked="autoSplitByPeriod"
-                               @change="$emit('update:autoSplitByPeriod', $event.target.checked)">
-                        <div class="format-desc" v-html="getLang('is_split_by_period')"></div>
-                    </div>
-                    <div class="format-item" v-if="autoSplitByPeriod" style="padding-left: 20px;">
-                        <input class="format-checkbox" type="checkbox"
-                               :checked="autoSplitByPeriodIncludeParen"
-                               @change="$emit('update:autoSplitByPeriodIncludeParen', $event.target.checked)">
-                        <div class="format-desc" v-html="getLang('is_split_by_period_include_paren')"></div>
-                    </div>
+                <!-- 行样式与【通用设置】一致：左=标题+详情，右=胶囊开关 -->
+                <div class="settings-section" v-for="group in groups" :key="group.title">
+                    <div class="settings-section-title" role="heading" aria-level="3">{{ getLang(group.title) }}</div>
+                    <template v-for="item in group.items" :key="item.name">
+                        <div class="setting-line"
+                             v-if="!item.showWhen || this[item.showWhen]"
+                             :class="{'paio-fmt-sub': item.sub}">
+                            <div class="line-text">
+                                <div class="line-title">{{ getLang(item.title) }}</div>
+                                <div class="line-desc" v-html="getLang(item.desc)"></div>
+                            </div>
+                            <div class="line-content">
+                                <div class="paio-pill" role="radiogroup" :aria-label="getLang(item.title)">
+                                    <label class="paio-pill-btn">
+                                        <input class="paio-pill-input" type="radio" :name="'paio-fmt-' + item.name"
+                                               :checked="!this[item.name]"
+                                               @change="setOpt(item.name, false)">
+                                        <span>{{ getLang('toggle_off') }}</span>
+                                    </label>
+                                    <label class="paio-pill-btn">
+                                        <input class="paio-pill-input" type="radio" :name="'paio-fmt-' + item.name"
+                                               :checked="this[item.name]"
+                                               @change="setOpt(item.name, true)">
+                                        <span>{{ getLang('toggle_on') }}</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
                 </div>
             </div>
         </div>
     </div>
-    </Transition>
 </template>
 <script>
 import LanguageMixin from "@/mixins/languageMixin";
@@ -151,6 +101,39 @@ export default {
     data() {
         return {
             isOpen: false,
+            // 行数据：name 与 props 名一一对应（用于 this[name] 取值与 update:<name> 事件）
+            groups: [
+                {
+                    title: 'group_comma_space', items: [
+                        {name: 'autoRemoveSpace', title: 'fmt_remove_space', desc: 'is_remove_space'},
+                        {name: 'autoRemoveLastComma', title: 'fmt_remove_last_comma', desc: 'is_remove_last_comma'},
+                        {name: 'autoRemoveBeforeLineComma', title: 'fmt_remove_before_line_comma', desc: 'is_remove_before_line_comma'},
+                    ]
+                },
+                {
+                    title: 'group_weight_symbol', items: [
+                        {name: 'autoKeepWeightZero', title: 'fmt_keep_weight_zero', desc: 'is_keep_weight_zero'},
+                        {name: 'useNovelAiWeightSymbol', title: 'fmt_novel_ai_symbol', desc: 'is_use_novel_ai_weight_symbol'},
+                    ]
+                },
+                {
+                    title: 'group_break_wrap', items: [
+                        {name: 'autoBreakBeforeWrap', title: 'fmt_break_before_wrap', desc: 'is_break_before_wrap'},
+                        {name: 'autoBreakAfterWrap', title: 'fmt_break_after_wrap', desc: 'is_break_after_wrap'},
+                    ]
+                },
+                {
+                    title: 'group_lora_period', items: [
+                        {name: 'autoRemoveLoraBeforeComma', title: 'fmt_lora_before_comma', desc: 'is_remove_lora_before_comma'},
+                        {name: 'autoRemoveLoraAfterComma', title: 'fmt_lora_after_comma', desc: 'is_remove_lora_after_comma'},
+                        {name: 'autoSplitByPeriod', title: 'fmt_split_by_period', desc: 'is_split_by_period'},
+                        {
+                            name: 'autoSplitByPeriodIncludeParen', title: 'fmt_split_include_paren',
+                            desc: 'is_split_by_period_include_paren', sub: true, showWhen: 'autoSplitByPeriod'
+                        },
+                    ]
+                },
+            ],
         }
     },
     emits: [
@@ -176,6 +159,9 @@ export default {
         },
         close() {
             this.isOpen = false
+        },
+        setOpt(name, value) {
+            this.$emit('update:' + name, value)
         },
     },
 }
