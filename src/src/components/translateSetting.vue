@@ -6,8 +6,10 @@
                     <icon-svg name="close"/>
                 </div>
                 <div class="translate-setting-content" @click.stop>
-                    <!-- ① 翻译接口（分组标题沿用 translate_api，原行内重复标题已去掉） -->
-                    <div class="settings-section">
+                    <!-- ① 翻译接口（分组标题沿用 translate_api，原行内重复标题已去掉）
+                         本组各行（下拉 / 红字说明 / 帮助链接 / 各参数行）同属「配置当前翻译接口」一块，
+                         加 .paio-plain 去掉组内虚线 -->
+                    <div class="settings-section paio-plain">
                         <div class="settings-section-title" role="heading" aria-level="3">{{ getLang('translate_api') }}</div>
                         <div class="setting-line">
                             <div class="line-text"></div>
@@ -38,7 +40,7 @@
                         </div>
                         <div class="setting-line" v-for="config in configs">
                             <div class="line-text">
-                                <div class="line-title">{{ config.title }}</div>
+                                <div class="line-title">{{ configLabel(config) }}</div>
                             </div>
                             <div class="line-content">
                                 <input type="text" v-if="config.type == 'input'" v-model="config.value" @change="onChangeConfigValue(config)">
@@ -49,8 +51,8 @@
                             </div>
                         </div>
                     </div>
-                    <!-- ② 翻译测试 -->
-                    <div class="settings-section">
+                    <!-- ② 翻译测试（输入框 / 测试按钮 / 结果 同属一个测试功能，加 .paio-plain 去掉组内虚线） -->
+                    <div class="settings-section paio-plain">
                         <div class="settings-section-title" role="heading" aria-level="3">{{ getLang('translate_test') }}</div>
                         <div class="setting-line">
                             <div class="line-text"></div>
@@ -272,6 +274,17 @@ export default {
             }
             name += '[QPS: ' + (item.concurrent || 1) + ']'*/
             return name
+        },
+        // 接口参数名默认沿用 translate_apis.json 的英文 title（技术名词，保持英文）；
+        // 只有「语言/市场型」的 region（选项为 CN/EN/JP 这类两字母代码，即 translators 类接口）
+        // 额外补一个中文注解，避免与机房地域（cn-shanghai 等）混淆。
+        configLabel(config) {
+            if (config.key === 'region' && config.type === 'select'
+                && Array.isArray(config.options) && config.options.length > 0
+                && config.options.every(option => /^[A-Z]{2}$/.test(option))) {
+                return this.getLang('api_region_market')
+            }
+            return config.title
         },
         refreshCSVs() {
             if (this.tagCompleteFilesLoading) return

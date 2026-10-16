@@ -304,6 +304,12 @@ body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line>
 body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line:has(+ .setting-line.paio-sub){
   border-bottom:none!important;
 }
+/* 整组同属一个功能区的 `.settings-section`（如【翻译接口】的下拉/红字/帮助/参数行、
+   【翻译测试】的输入/按钮/结果）：组内不再画虚线，靠分组标题与间距区分
+   （2026-10-16 @TraeCode） */
+body .physton-settings-modal .settings-tab-pane .settings-section.paio-plain>.setting-line{
+  border-bottom:none!important;
+}
 
 /* 右列内容较多时（多段说明 + 控件行 + 勾选框说明）纵向堆叠成多行
    —— 基线规则是 display:flex; justify-content:flex-end，多块内容会被横向挤在一行
