@@ -372,6 +372,10 @@ body .physton-settings-modal .settings-tab-pane .about-body{
   box-shadow:none!important;
   border-radius:0!important;
   transition:none!important;
+  /* 宽度与弹窗自适应：上游给 blacklist-body / hotkey-body 写死了 500px（--ppb-bm-blacklistBody-width 等），
+     嵌进设置弹窗后必须放开，否则内容比弹窗窄一截 */
+  width:auto!important;
+  max-width:none!important;
 }
 
 /* ── 【关键词黑名单】与【通用设置】统一（2026-10-16 @TraeCode / UI16） ──
@@ -381,10 +385,13 @@ body .physton-settings-modal .settings-tab-pane .about-body{
 body .physton-settings-modal .settings-tab-pane .settings-section>.paio-section-desc{
   font-size:12px; line-height:1.55; color:var(--paio-text-muted); margin:0 0 10px;
 }
+/* .paio-stack：标签在上、整宽控件在下（大文本框用），并留出标签与控件之间的间距 */
 body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-stack{display:block!important;}
+body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-stack>.line-text{margin-bottom:8px;}
 body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-stack>.line-content{
-  width:100%; margin-left:0; justify-content:flex-start;
+  display:block!important; width:auto!important; margin-left:0!important;
 }
 body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-stack textarea{
-  width:100%; height:100px; resize:none;
+  display:block; width:100%!important; min-width:0; height:100px;
+  box-sizing:border-box; resize:none;
 }
