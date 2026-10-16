@@ -6,27 +6,21 @@
                 <icon-svg name="close"/>
             </div>
             <div class="extension-list" @click.stop>
-                <table class="extension-table">
-                    <tr v-for="(item, index) in list" :key="item.dir" class="extension-item" ref="items">
-                        <td>
-                            <input class="extension-checkbox" type="checkbox" name="extension-item"
-                                   :checked="item.selected"
+                <!-- 按 manifest.type 分类（theme 主题 / enhance 增强），分组标题用小标题 + 组内虚线分隔 -->
+                <div class="settings-section" v-for="group in groupedList" :key="group.type">
+                    <div class="settings-section-title" role="heading" aria-level="3">{{ getLang(group.type) }}</div>
+                    <div class="setting-line" v-for="item in group.items" :key="item.dir">
+                        <div class="line-text">
+                            <div class="line-title">{{ getName(item) }}</div>
+                            <div class="line-desc">{{ getItemInfo(item) }}</div>
+                        </div>
+                        <div class="line-content">
+                            <input type="checkbox" :checked="item.selected"
+                                   :aria-label="getName(item)"
                                    @change="onChangeSelect(item.id)">
-                        </td>
-                        <td class="extension-name">
-                            {{ getName(item) }}
-                        </td>
-                        <td class="extension-type">
-                            {{ getLang(item.manifest.type) }}
-                        </td>
-                        <td class="extension-dir">
-                            {{ item.dir }}
-                        </td>
-                        <td class="extension-author">
-                            <template v-if="item.manifest.author">By: {{ item.manifest.author }}</template>
-                        </td>
-                    </tr>
-                </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -50,7 +44,22 @@ export default {
             list: [],
         }
     },
-    computed: {},
+    computed: {
+        // list 已按 type + dir 排好序，这里只做分组（分组顺序随首次出现的 type）
+        groupedList() {
+            const groups = []
+            this.list.forEach(item => {
+                const type = item.manifest.type || 'enhance'
+                let group = groups.find(g => g.type === type)
+                if (!group) {
+                    group = {type, items: []}
+                    groups.push(group)
+                }
+                group.items.push(item)
+            })
+            return groups
+        },
+    },
     mounted() {
     },
     methods: {
@@ -94,6 +103,12 @@ export default {
                 name = item.manifest.i18n[this.languageCode]
             }
             return name
+        },
+        getItemInfo(item) {
+            let parts = []
+            if (item.dir) parts.push(item.dir)
+            if (item.manifest.author) parts.push('By: ' + item.manifest.author)
+            return parts.join(' · ')
         },
         onChangeSelect(id) {
             let item = this.list.find(item => item.id === id)

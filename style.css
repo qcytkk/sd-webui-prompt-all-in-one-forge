@@ -385,6 +385,11 @@ body .physton-settings-modal .settings-tab-pane .about-body{
    （format-list / extension-list / about-body 上游本来就是 block，无需处理） */
 body .physton-settings-modal .settings-tab-pane .blacklist-body,
 body .physton-settings-modal .settings-tab-pane .hotkey-body{display:block!important;}
+/* 【插件样式扩展】内容盒上游是 height:100% + overflow:hidden（独立弹窗的固定高度滚动区），
+   嵌进设置弹窗后要放开：内容自然伸展、由弹窗自身滚动，否则条目多时会被裁掉 */
+body .physton-settings-modal .settings-tab-pane .extension-list{
+  height:auto!important; max-height:none!important; overflow:visible!important;
+}
 
 /* ── 【关键词黑名单】与【通用设置】统一（2026-10-16 @TraeCode / UI16） ──
    1) 分组说明文字（替代原来的红色「1. / 2. …」段落）
