@@ -55,26 +55,23 @@
                          加 .paio-no-sep 去掉与上一组「翻译接口」之间的组间虚线） -->
                     <div class="settings-section paio-plain paio-no-sep">
                         <div class="settings-section-title" role="heading" aria-level="3">{{ getLang('translate_test') }}</div>
-                        <div class="setting-line">
+                        <!-- 第一行两栏：左=翻译原文，右=翻译结果 -->
+                        <div class="setting-line paio-test-pair">
                             <div class="line-text"></div>
                             <div class="line-content">
                                 <textarea class="test-input" :aria-label="getLang('translate_test')" v-model="testText"></textarea>
+                                <textarea class="test-input" :aria-label="getLang('translate_result')" v-model="translatedText"></textarea>
                             </div>
                         </div>
-                        <div class="setting-line">
-                            <div class="line-text"></div>
-                            <div class="line-content">
-                                <div class="hover-scale-120 test-btn" @click="onTestClick">
-                                    <icon-svg v-if="loading" name="loading"/>
-                                    <template v-else>{{getLang('test')}}</template>
-                                </div>
-                            </div>
-                        </div>
+                        <!-- 第二行：测试按钮（失败时在其左侧显示错误信息） -->
                         <div class="setting-line">
                             <div class="line-text"></div>
                             <div class="line-content">
                                 <div class="translate-error" v-if="!translateSuccess && errorMessage">{{ errorMessage }}</div>
-                                <textarea class="test-input" v-if="translatedText" v-model="translatedText"></textarea>
+                                <div class="hover-scale-120 test-btn" @click="onTestClick">
+                                    <icon-svg v-if="loading" name="loading"/>
+                                    <template v-else>{{getLang('test')}}</template>
+                                </div>
                             </div>
                         </div>
                     </div>

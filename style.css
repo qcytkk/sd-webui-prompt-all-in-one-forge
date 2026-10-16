@@ -315,6 +315,18 @@ body .physton-settings-modal .settings-tab-pane .settings-section.paio-plain>.se
 body .physton-settings-modal .settings-tab-pane .settings-section+.settings-section.paio-no-sep{
   border-top:none!important;
 }
+/* 【翻译测试】第一行两栏：左=翻译原文、右=翻译结果，各占一半（2026-10-16 @TraeCode）
+   本行不需要左列标题，隐藏空的 .line-text 让 .line-content 撑满整行 */
+body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-test-pair>.line-text{
+  display:none!important;
+}
+body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-test-pair>.line-content{
+  flex:1 1 auto; width:100%; margin-left:0;
+  display:flex; align-items:stretch; justify-content:flex-start; gap:12px;
+}
+body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-test-pair>.line-content>.test-input{
+  flex:1 1 0; min-width:0; width:auto!important;
+}
 
 /* 右列内容较多时（多段说明 + 控件行 + 勾选框说明）纵向堆叠成多行
    —— 基线规则是 display:flex; justify-content:flex-end，多块内容会被横向挤在一行
