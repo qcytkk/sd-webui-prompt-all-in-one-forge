@@ -9,6 +9,30 @@
                 <p v-if="!loading">
                     <span>{{ getLang('version') }}: {{ formatVersion(version) }}</span>
                 </p>
+                <!-- 插件来源与联动说明（2026-10-21 @TraeCode） -->
+                <div class="about-links">
+                    <div class="about-link-item">
+                        <div class="about-link-title">{{ getLang('about_original_plugin') }}</div>
+                        <a class="about-link" href="https://github.com/Physton/sd-webui-prompt-all-in-one"
+                           target="_blank" rel="noopener noreferrer">https://github.com/Physton/sd-webui-prompt-all-in-one</a>
+                    </div>
+                    <div class="about-link-item">
+                        <div class="about-link-title">{{ getLang('about_this_plugin') }}</div>
+                        <a class="about-link" href="https://github.com/qcytkk/sd-webui-prompt-all-in-one-forge"
+                           target="_blank" rel="noopener noreferrer">https://github.com/qcytkk/sd-webui-prompt-all-in-one-forge</a>
+                        <div class="about-link-desc">{{ getLang('about_this_plugin_desc') }}</div>
+                    </div>
+                    <div class="about-link-item">
+                        <div class="about-link-title">{{ getLang('about_linked_plugin') }}</div>
+                        <a class="about-link" href="https://github.com/qcytkk/sd_forge_lora_new"
+                           target="_blank" rel="noopener noreferrer">https://github.com/qcytkk/sd_forge_lora_new</a>
+                        <div class="about-link-desc">{{ getLang('about_linked_plugin_desc') }}</div>
+                    </div>
+                    <div class="about-link-item">
+                        <div class="about-link-title">{{ getLang('about_features') }}</div>
+                        <div class="about-link-desc">{{ getLang('about_features_desc') }}</div>
+                    </div>
+                </div>
                 <div class="version-list">
                     <icon-svg v-if="loading" name="loading"/>
                     <div class="version-item" v-for="(item) in versions" :key="item.version">

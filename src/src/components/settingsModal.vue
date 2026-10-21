@@ -421,7 +421,7 @@ export default {
                 {key: 'blacklist', icon: 'blacklist', labelKey: 'keywords_blacklist'},
                 {key: 'hotkey', icon: 'hotkey', labelKey: 'hotkey_setting'},
                 {key: 'theme', icon: 'theme', labelKey: 'theme_extension'},
-                {key: 'about', icon: 'about', labelKey: 'about_desc'},
+                {key: 'about', icon: 'about', labelKey: 'about_plugin_info'},
             ],
             openedTabs: {},
             autoInputPromptPrompt: 'disabled',

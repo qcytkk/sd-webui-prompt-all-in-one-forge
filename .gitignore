@@ -5,3 +5,9 @@
 /src/package-lock.json
 /styles/extensions/demo
 __pycache__
+
+# 内部开发文档与多 AI 协作通道：仅本地保留，不发布
+项目开发说明.md
+UI控件说明.md
+本地大模型翻译开发记录.md
+/_collab
