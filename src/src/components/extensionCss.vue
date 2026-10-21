@@ -1,6 +1,5 @@
 <template>
-    <Transition name="slideRight">
-        <div :class="['physton-prompt-extension-css', {'embedded-host': embedded}]" v-if="isOpen" @click="close">
+    <div :class="['physton-prompt-extension-css', {'embedded-host': embedded}]" v-if="isOpen" @click="close">
         <div class="extension-main" @click.stop>
             <div class="extension-close" v-if="!embedded" @click="close">
                 <icon-svg name="close"/>
@@ -24,7 +23,6 @@
             </div>
         </div>
     </div>
-    </Transition>
 </template>
 <script>
 import LanguageMixin from "@/mixins/languageMixin";

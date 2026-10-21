@@ -183,7 +183,85 @@ export default class GradioAPI {
         return (await this.api.post("/gen_openai", {messages, api_config})).data
     }
 
+    // 走本地模型（models\LLM，与本地AI大模型翻译共用同一实例）
+    async localLLMGen(messages) {
+        const config = {timeout: 10000000}
+        return (await this.api.post("/local_llm/gen", {messages}, config)).data
+    }
+
     async getGroupTags(lang) {
         return (await this.api.get("/get_group_tags", {params: {lang}})).data.tags
+    }
+
+    // ── 机翻词典（缓存连网翻译 / 本地大模型翻译的成功译文）──
+    async machineDictStats() {
+        return (await this.api.get("/machine_dict/stats")).data
+    }
+
+    async machineDictLookup(texts, from_lang, to_lang) {
+        return (await this.api.post("/machine_dict/lookup", {texts, from_lang, to_lang})).data.texts
+    }
+
+    async machineDictAdd(from_lang, to_lang, items) {
+        return (await this.api.post("/machine_dict/add", {from_lang, to_lang, items})).data
+    }
+
+    async machineDictClear() {
+        return (await this.api.post("/machine_dict/clear", {})).data
+    }
+
+    // ── 本地AI大模型翻译（与 sd_forge_lora_new 共用 lna_llm_service）──
+    // 注意：baseURL 已经是 ".../physton_prompt/"，这里不能再带 physton_prompt 前缀
+    async localLLMStatus() {
+        return (await this.api.get("/local_llm/status")).data
+    }
+
+    async localLLMModels() {
+        const config = {timeout: 200000}
+        return (await this.api.get("/local_llm/models", config)).data
+    }
+
+    async localLLMSelect(rel) {
+        const config = {timeout: 10000000}
+        return (await this.api.post("/local_llm/select", {rel}, config)).data
+    }
+
+    async localLLMGpu(gpu) {
+        const config = {timeout: 10000000}
+        return (await this.api.post("/local_llm/gpu", {gpu}, config)).data
+    }
+
+    async localLLMUnload() {
+        const config = {timeout: 10000000}
+        return (await this.api.post("/local_llm/unload", {}, config)).data
+    }
+
+    async localLLMIdleSettings(data) {
+        return (await this.api.post("/local_llm/idle_settings", data)).data
+    }
+
+    async localLLMPrompt() {
+        return (await this.api.get("/local_llm/prompt")).data
+    }
+
+    async localLLMPromptSave(text) {
+        return (await this.api.post("/local_llm/prompt", {text})).data
+    }
+
+    async localLLMOpenFolder() {
+        return (await this.api.post("/local_llm/open_folder")).data
+    }
+
+    async localLLMRuntimeInfo(force = false) {
+        const config = {timeout: 200000}
+        return (await this.api.get("/local_llm/runtime_info", {params: {force}, ...config})).data
+    }
+
+    async localLLMRuntimeDownloadCuda() {
+        return (await this.api.post("/local_llm/runtime_download_cuda")).data
+    }
+
+    async localLLMRuntimeDownloadStatus() {
+        return (await this.api.get("/local_llm/runtime_download_status")).data
     }
 }

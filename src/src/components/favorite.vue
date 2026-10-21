@@ -5,8 +5,13 @@
         <div class="physton-prompt-favorite" v-show="isShow" @click="onMaskClick">
             <div class="paio-modal-main" @click.stop>
                 <div class="paio-modal-header">
+                    <div class="settings-modal-icon-btn" role="button" tabindex="0"
+                         :aria-label="getLang('close')" :title="getLang('close')"
+                         @click="hide" @keydown.enter="hide" @keydown.space.prevent="hide">
+                        <icon-svg name="close"/>
+                    </div>
                     <div class="paio-modal-title">{{ getLang('favorite') }}</div>
-                    <div class="paio-modal-close" role="button" tabindex="0"
+                    <div class="settings-modal-icon-btn" role="button" tabindex="0"
                          :aria-label="getLang('close')" :title="getLang('close')"
                          @click="hide" @keydown.enter="hide" @keydown.space.prevent="hide">
                         <icon-svg name="close"/>
@@ -23,8 +28,7 @@
                     </div>
                     <div v-for="(group) in favorites" :key="group.key" :class="['popup-tab-content', group.key === favoriteKey ? 'active': '']">
                         <div class="content-list" v-show="group.list.length > 0">
-                            <div class="content-item" v-for="(item, index) in group.list" :key="item.id"
-                                 @mouseenter="onItemMouseEnter(index, $event)" @mouseleave="onItemMouseLeave(index)">
+                            <div class="content-item" v-for="(item, index) in group.list" :key="item.id">
                                 <div class="item-header">
                                     <div class="item-header-left">
                                         <div class="item-header-index">{{ group.list.length - index }}</div>
@@ -62,7 +66,16 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="item-prompt">{{ item.prompt }}</div>
+                                <div class="item-prompt" v-if="item.tags && item.tags.length">
+                                    <template v-for="(tag, tIdx) in item.tags" :key="tIdx">
+                                        <div v-if="tag.type && tag.type === 'wrap'" class="item-wrap"></div>
+                                        <div v-else class="item-tag">
+                                            <div class="item-tag-value">{{ tag.value }}</div>
+                                            <div class="item-tag-local-value">{{ tag.localValue }}</div>
+                                        </div>
+                                    </template>
+                                </div>
+                                <div class="item-prompt" v-else>{{ item.prompt }}</div>
                             </div>
                         </div>
                         <div class="content-empty" v-show="group.list.length === 0">
@@ -72,18 +85,7 @@
                     </div>
                 </div>
             </div>
-            <!-- 条目悬停时的「标签预览」浮层：改为相对视口定位（JS 按悬停条目的位置算） -->
-            <div class="popup-detail" ref="favoriteDetail" v-show="currentItem && currentItem.tags" @click.stop>
-                <div class="popup-item-tags">
-                    <template v-for="(tag, index) in currentItem.tags" :key="index">
-                        <div v-if="tag.type && tag.type === 'wrap'" class="item-wrap"></div>
-                        <div v-else class="item-tag">
-                            <div class="item-tag-value">{{ tag.value }}</div>
-                            <div class="item-tag-local-value">{{ tag.localValue }}</div>
-                        </div>
-                    </template>
-                </div>
-            </div>
+
         </div>
     </Transition>
 </template>
@@ -129,8 +131,7 @@ export default {
             ],
             isShow: false,
             loading: false,
-            emptyMsg: '',
-            currentItem: {}
+            emptyMsg: ''
         }
     },
     emits: ['use'],
@@ -183,7 +184,6 @@ export default {
         hide() {
             if (!this.isShow) return
             this.isShow = false
-            this.currentItem = {}
             this.setScrollLock(false)
         },
         onMaskClick() {
@@ -262,32 +262,7 @@ export default {
                 e.target.value = favorite.name
             })
         },
-        onItemMouseEnter(index, e) {
-            let group = this.favorites.find(item => item.key === this.favoriteKey)
-            if (!group) return
-            this.currentItem = group.list[index]
-            if (!this.currentItem || !this.currentItem.tags) return
 
-            const itemEl = e && e.currentTarget ? e.currentTarget : null
-            this.$nextTick(() => {
-                const detail = this.$refs.favoriteDetail
-                if (!detail || !itemEl) return
-                // 弹窗已居中，浮层改为相对视口定位：贴在悬停条目右侧，放不下就翻到左侧
-                const rect = itemEl.getBoundingClientRect()
-                const dw = detail.offsetWidth || 400
-                const dh = detail.offsetHeight || 0
-                let left = rect.right + 8
-                if (left + dw > window.innerWidth - 8) left = rect.left - dw - 8
-                if (left < 8) left = 8
-                let top = rect.top
-                if (top + dh > window.innerHeight - 8) top = Math.max(8, window.innerHeight - dh - 8)
-                detail.style.left = left + 'px'
-                detail.style.top = top + 'px'
-            })
-        },
-        onItemMouseLeave(index) {
-            this.currentItem = {}
-        },
         onUseClick(index) {
             let group = this.favorites.find(item => item.key === this.favoriteKey)
             if (!group) return

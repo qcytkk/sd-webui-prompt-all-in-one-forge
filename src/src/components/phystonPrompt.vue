@@ -90,10 +90,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="prompt-header-extend" v-if="!neg">
+                <div class="prompt-header-extend" v-if="!neg && showChatgptBtn">
                     <div class="extend-content">
                         <div class="extend-btn-group">
-                            <div class="extend-btn-item" v-tooltip="getLang('use_chatgpt_gen_prompts')"
+                            <div class="extend-btn-item" v-tooltip="getLang('chatgpt_modal_title')"
                                  @click="$emit('click:showChatgpt', $event)">
                                 <icon-svg class="hover-scale-120" name="chatgpt"/>
                             </div>
@@ -563,6 +563,11 @@ export default {
             type: Boolean,
             default: true,
         },
+        // 是否显示【使用Ai生成提示词】按钮（设置 → 通用设置里可切换）
+        showChatgptBtn: {
+            type: Boolean,
+            default: true,
+        },
         historyKey: {
             type: String,
             default: '',
@@ -756,6 +761,19 @@ export default {
         })
     },
     methods: {
+        // 当前启用的翻译方案（按用户排序后的顺序返回 key 数组）
+        flowStages() {
+            const list = Array.isArray(this.translateFlow) ? this.translateFlow : []
+            const enabled = list.filter(item => item && item.enabled).map(item => item.key)
+            if (enabled.length) return enabled
+            // 没有配置（老版本数据）时退回旧行为：关键词组 → 词典 → 连网
+            const legacy = []
+            if (this.groupTagsTranslate) legacy.push('group_tags')
+            if (this.tagCompleteFile) legacy.push('tag_dict')
+            legacy.push('machine_dict')
+            legacy.push('network')
+            return legacy
+        },
         init() {
             this.tags = []
             this.onTextareaChange()
@@ -1363,33 +1381,108 @@ export default {
                     needTranslateTags.push(tag)
                 })
 
-                const translate = (tags) => {
+                // ── 机翻词典（缓存连网 / 本地大模型的历史译文）：命中即用，不消耗资源 ──
+                const translateByMachineDict = (tags, next) => {
                     if (tags.length <= 0) {
-                        setLoadings(tags, false)
-                        resolve()
+                        next([])
                         return
                     }
+                    // 与标签词典一致：先剥离括号再查，命中后原样还原
+                    tags.forEach(tag => {
+                        const splitTag = common.splitTag(tag.value)
+                        if (splitTag.value !== tag.value) {
+                            tag.value = splitTag.value
+                            tag.splits = splitTag
+                        }
+                    })
                     let groups = {}
-                    tags.forEach((tag, index) => {
+                    tags.forEach(tag => {
                         let fromLang = tag.toLocal ? 'en_US' : this.languageCode
                         let toLang = tag.toLocal ? this.languageCode : 'en_US'
                         let groupKey = fromLang + '.' + toLang
                         if (!groups[groupKey]) groups[groupKey] = {fromLang, toLang, tags: []}
                         groups[groupKey].tags.push(tag)
                     })
+                    let keys = Object.keys(groups)
+                    let pending = []
+                    const finish = () => {
+                        // 未命中的标签还原括号后交给下一档
+                        pending.forEach(tag => {
+                            if (tag.splits) {
+                                tag.value = tag.splits.left + tag.value + tag.splits.right
+                            }
+                        })
+                        next(pending)
+                    }
+                    const runGroup = () => {
+                        let key = keys.shift()
+                        if (!key) {
+                            finish()
+                            return
+                        }
+                        let group = groups[key]
+                        let texts = group.tags.map(tag => getTranslateText(tag))
+                        this.gradioAPI.machineDictLookup(texts, group.fromLang, group.toLang).then(results => {
+                            (results || []).forEach((translateText, index) => {
+                                let tag = group.tags[index]
+                                translateText = (translateText || '').trim()
+                                if (translateText !== '' && translateText !== tag.value) {
+                                    if (tag.splits) {
+                                        // 括号/权重原样还原（与标签词典的处理保持一致）
+                                        translateText = tag.splits.left + translateText + tag.splits.right
+                                        tag.value = tag.splits.left + tag.value + tag.splits.right
+                                    }
+                                    setTag(tag, translateText)
+                                    setLoading(tag, false)
+                                } else {
+                                    pending.push(tag)
+                                }
+                            })
+                            runGroup()
+                        }).catch(err => {
+                            // 词典不可用时不阻塞翻译：把剩余的词全部交给下一档
+                            console.log('Machine dict lookup failed:', err)
+                            pending = pending.concat(group.tags)
+                            keys.forEach(k => {
+                                pending = pending.concat(groups[k].tags)
+                            })
+                            keys = []
+                            finish()
+                        })
+                    }
+                    runGroup()
+                }
+
+                // ── 通用 API 翻译（连网 / 本地大模型共用）：未译出的词交给下一档 ──
+                const translateByApi = (tags, api, next) => {
+                    if (tags.length <= 0) {
+                        next([])
+                        return
+                    }
+                    let groups = {}
+                    tags.forEach(tag => {
+                        let fromLang = tag.toLocal ? 'en_US' : this.languageCode
+                        let toLang = tag.toLocal ? this.languageCode : 'en_US'
+                        let groupKey = fromLang + '.' + toLang
+                        if (!groups[groupKey]) groups[groupKey] = {fromLang, toLang, tags: []}
+                        groups[groupKey].tags.push(tag)
+                    })
+                    let pending = []
                     const translateGroup = () => {
                         let group = groups[Object.keys(groups)[0]]
                         if (!group) {
-                            resolve()
+                            next(pending)
                             return
                         }
                         let texts = group.tags.map(tag => getTranslateText(tag))
-                        this.gradioAPI.translates(texts, group.fromLang, group.toLang, this.translateApi, this.translateApiConfig).then(res => {
+                        let config = api === this.translateApi ? this.translateApiConfig : {}
+                        this.gradioAPI.translates(texts, group.fromLang, group.toLang, api, config).then(res => {
                             if (res.success) {
                                 let translated_text = res.translated_text
+                                let learned = []
                                 translated_text.forEach((translateText, index) => {
                                     // 去除最后的 .
-                                    translateText = translateText.replace(/\.$/, '').trim()
+                                    translateText = (translateText || '').replace(/\.$/, '').trim()
                                     if (common.isEnglish(translateText)) {
                                         // 如果首字母是大写，转为小写（全部是大写，不转换）
                                         if (translateText !== translateText.toUpperCase()) {
@@ -1398,9 +1491,22 @@ export default {
                                     }
 
                                     let tag = group.tags[index]
-                                    if (translateText !== '') setTag(tag, translateText)
-                                    setLoading(tag, false)
+                                    // 空结果或原样返回 = 这一档没译出来，继续交给下一档
+                                    if (translateText !== '' && translateText !== tag.value) {
+                                        setTag(tag, translateText)
+                                        setLoading(tag, false)
+                                        // 成功译文写入【机翻词典】，下次同词直接复用、不再消耗资源
+                                        // （Lora/Lyco/Embedding 的名称不是自然语言，不写进词典）
+                                        if (!tag.isLora && !tag.isLyco && !tag.isEmbedding) {
+                                            learned.push({source: texts[index], target: translateText})
+                                        }
+                                    } else {
+                                        pending.push(tag)
+                                    }
                                 })
+                                if (learned.length) {
+                                    this.gradioAPI.machineDictAdd(group.fromLang, group.toLang, learned).catch(() => {})
+                                }
                                 delete groups[Object.keys(groups)[0]]
                                 translateGroup()
                             } else {
@@ -1419,9 +1525,12 @@ export default {
                     translateGroup()
                 }
 
-                let translateByCSV = (tags) => {
-                    // 开启了使用tagcomplete翻译
-                    console.log('translateByCSV', tags.map(tag => tag.value), { useNetwork })
+                // 兼容旧调用：默认按「连网翻译」的接口走
+                const translate = (tags) => translateByApi(tags, this.translateApi, () => resolve())
+
+                let translateByCSV = (tags, next) => {
+                    // 标签词典（TagComplete CSV）
+                    console.log('translateByCSV', tags.map(tag => tag.value))
                     let promises = []
                     tags.forEach(tag => {
                         // 是否被括号包裹
@@ -1432,7 +1541,7 @@ export default {
                         }
                         if (tag.toLocal) {
                             // 翻译到本地语言
-                            promises.push(this.translateToLocalByCSV(tag.value, void 0, void 0, useNetwork))
+                            promises.push(this.translateToLocalByCSV(tag.value))
                         } else {
                             // 翻译到英文
                             promises.push(this.translateToEnByCSV(tag.value))
@@ -1458,12 +1567,7 @@ export default {
                             }
                         })
                         console.log('No translated keywords: ', needs.map(tag => tag.value))
-                        if (useNetwork) {
-                            translate(needs)
-                        } else {
-                            setLoadings(needs, false)
-                            resolve()
-                        }
+                        next(needs)
                     }).catch(error => {
                         // 有一个错误，就不翻译了
                         setLoadings(tags, false)
@@ -1472,9 +1576,9 @@ export default {
                     })
                 }
 
-                let translateByGroupTags = (tags) => {
-                    // 开启了使用关键词组翻译
-                    console.log('translateByGroupTags', tags.map(tag => tag.value), { useNetwork })
+                let translateByGroupTags = (tags, next) => {
+                    // 关键词组
+                    console.log('translateByGroupTags', tags.map(tag => tag.value))
                     let promises = []
                     tags.forEach(tag => {
                         // 是否被括号包裹
@@ -1485,10 +1589,10 @@ export default {
                         }
                         if (tag.toLocal) {
                             // 翻译到本地语言
-                            promises.push(this.translateToLocalByGroupTags(tag.value, useNetwork))
+                            promises.push(this.translateToLocalByGroupTags(tag.value))
                         } else {
                             // 翻译到英文
-                            promises.push(this.translateToEnByGroupTags(tag.value, useNetwork))
+                            promises.push(this.translateToEnByGroupTags(tag.value))
                         }
                     })
                     Promise.allSettled(promises).then(results => {
@@ -1516,23 +1620,11 @@ export default {
                             }
                         })
                         console.log('No translated keywords: ', needs.map(tag => tag.value))
-                        if (this.tagCompleteFile) {
-                            // 开启了使用tagcomplete翻译
-                            translateByCSV(needs)
-                        } else {
-                            if (errors.length) {
-                              setLoadings(tags, false)
-                              this.$toastr.error(errors[0])
-                              reject(errors[0])
-                              return
-                            }
-                            if (useNetwork) {
-                                translate(needs)
-                            } else {
-                                setLoadings(needs, false)
-                                resolve()
-                            }
+                        if (errors.length && needs.length === tags.length) {
+                            // 整个关键词组都没命中（含异常）时，不报错，直接交给下一档
+                            console.log('Group tags miss, fallback:', errors[0])
                         }
+                        next(needs)
                     }).catch(error => {
                         // 有一个错误，就不翻译了
                         setLoadings(tags, false)
@@ -1541,18 +1633,39 @@ export default {
                     })
                 }
 
-                if (this.groupTagsTranslate) {
-                    translateByGroupTags(needTranslateTags)
-                } else if (this.tagCompleteFile) {
-                    translateByCSV(needTranslateTags)
-                } else {
-                    if (useNetwork) {
-                        translate(needTranslateTags)
-                    } else {
-                        setLoadings(needTranslateTags, false)
+                // 按用户配置的顺序与开关依次尝试；每档只处理上一档未命中的词
+                // useNetwork=false（自动翻译）时不走连网，避免边打字边发网络请求
+                const stages = this.flowStages().filter(key => useNetwork || key !== 'network')
+                const runStage = (stageIndex, tags) => {
+                    if (!tags.length) {
                         resolve()
+                        return
+                    }
+                    if (stageIndex >= stages.length) {
+                        setLoadings(tags, false)
+                        resolve()
+                        return
+                    }
+                    const stage = stages[stageIndex]
+                    const next = (pending) => runStage(stageIndex + 1, pending)
+                    if (stage === 'group_tags') {
+                        translateByGroupTags(tags, next)
+                    } else if (stage === 'tag_dict') {
+                        translateByCSV(tags, next)
+                    } else if (stage === 'machine_dict') {
+                        translateByMachineDict(tags, next)
+                    } else if (stage === 'local_llm') {
+                        translateByApi(tags, 'local_llm', next)
+                    } else {
+                        // 连网翻译：若当前接口本身就是 local_llm，则跳过，避免同一条路径跑两遍
+                        if (this.translateApi === 'local_llm') {
+                            next(tags)
+                        } else {
+                            translateByApi(tags, this.translateApi, next)
+                        }
                     }
                 }
+                runStage(0, needTranslateTags)
             })
         }
     },

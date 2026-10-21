@@ -36,6 +36,11 @@ export default {
             type: Boolean,
             default: true
         },
+        // 翻译流程：五个翻译方案的可启用状态与先后顺序（数组顺序即尝试顺序）
+        translateFlow: {
+            type: Array,
+            default: () => []
+        },
         groupTagsTranslateCache: {
             type: Object,
             default: () => {

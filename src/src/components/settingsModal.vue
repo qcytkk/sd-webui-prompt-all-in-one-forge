@@ -172,6 +172,29 @@
                                         </div>
                                     </div>
                                 </div>
+                                <!-- 显示/隐藏主界面工具栏的【使用Ai生成提示词】按钮 -->
+                                <div class="setting-line">
+                                    <div class="line-text">
+                                        <div class="line-title">{{ getLang('show_chatgpt_btn') }}</div>
+                                        <div class="line-desc">{{ getLang('show_chatgpt_btn_desc') }}</div>
+                                    </div>
+                                    <div class="line-content">
+                                        <div class="paio-pill" role="radiogroup" :aria-label="getLang('show_chatgpt_btn')">
+                                            <label class="paio-pill-btn">
+                                                <input class="paio-pill-input" type="radio" name="paio-show-chatgpt-btn"
+                                                       :checked="!showChatgptBtn"
+                                                       @change="$emit('update:showChatgptBtn', false)">
+                                                <span>{{ getLang('toggle_off') }}</span>
+                                            </label>
+                                            <label class="paio-pill-btn">
+                                                <input class="paio-pill-input" type="radio" name="paio-show-chatgpt-btn"
+                                                       :checked="showChatgptBtn"
+                                                       @change="$emit('update:showChatgptBtn', true)">
+                                                <span>{{ getLang('toggle_on') }}</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <!-- 功能区一：隐藏默认输入框（原为主界面工具栏的图标开关，按要求移入；按提示词框各自独立） -->
                             <div class="settings-section">
@@ -240,6 +263,8 @@
                                                @update:only-csv-on-auto="$emit('update:onlyCsvOnAuto', $event)"
                                                :group-tags-translate="groupTagsTranslate"
                                                @update:group-tags-translate="$emit('update:groupTagsTranslate', $event)"
+                                               :translate-flow="translateFlow"
+                                               @update:translate-flow="$emit('update:translateFlow', $event)"
                                                :translate-api="translateApi"
                                                @update:translate-api="$emit('update:translateApi', $event)"/>
                         </div>
@@ -350,10 +375,12 @@ export default {
         autoTranslateToLocal: {type: Boolean, default: false},
         autoTranslateToEnglish: {type: Boolean, default: false},
         enableTooltip: {type: Boolean, default: true},
+        showChatgptBtn: {type: Boolean, default: true},
         translateApi: {type: [String, Object], default: ''},
         tagCompleteFile: {type: String, default: ''},
         onlyCsvOnAuto: {type: Boolean, default: false},
         groupTagsTranslate: {type: Boolean, default: false},
+        translateFlow: {type: Array, default: () => []},
         autoRemoveSpace: {type: Boolean, default: false},
         autoRemoveLastComma: {type: Boolean, default: false},
         autoKeepWeightZero: {type: Boolean, default: false},
@@ -374,8 +401,8 @@ export default {
         'update:visible', 'update:theme', 'update:languageCode',
         'update:promptOption',
         'update:autoTranslate', 'update:autoTranslateToLocal', 'update:autoTranslateToEnglish',
-        'update:enableTooltip', 'update:translateApi', 'update:tagCompleteFile',
-        'update:onlyCsvOnAuto', 'update:groupTagsTranslate',
+        'update:enableTooltip', 'update:showChatgptBtn', 'update:translateApi', 'update:tagCompleteFile',
+        'update:onlyCsvOnAuto', 'update:groupTagsTranslate', 'update:translateFlow',
         'update:autoRemoveSpace', 'update:autoRemoveLastComma', 'update:autoKeepWeightZero',
         'update:autoKeepWeightOne', 'update:autoBreakBeforeWrap', 'update:autoBreakAfterWrap',
         'update:autoRemoveLoraBeforeComma', 'update:autoRemoveLoraAfterComma',

@@ -5,6 +5,34 @@
             "type": "dont_need_api_key",
             "children": [
                 {
+                    "key": "local_llm",
+                    "name": "[Local] LLM / 本地大模型",
+                    "concurrent": 1,
+                    "support": {
+                        "zh_CN": "zh-CN",
+                        "zh_TW": "zh-TW",
+                        "zh_HK": "zh-HK",
+                        "en_US": "en",
+                        "ja_JP": "ja",
+                        "ko_KR": "ko",
+                        "fr_FR": "fr",
+                        "de_DE": "de",
+                        "es_ES": "es",
+                        "ru_RU": "ru",
+                        "pt_BR": "pt",
+                        "it_IT": "it",
+                        "ar_SA": "ar",
+                        "th_TH": "th",
+                        "vi_VN": "vi",
+                        "id_ID": "id",
+                        "tr_TR": "tr",
+                        "pl_PL": "pl",
+                        "nl_NL": "nl",
+                        "uk_UA": "uk"
+                    },
+                    "help": []
+                },
+                {
                     "key": "bing_free",
                     "name": "[Free] [translators] Microsoft Bing",
                     "type": "translators",
@@ -1797,7 +1825,6 @@
                         {
                             "key": "api_base",
                             "title": "API Base",
-                            "desc": "<ul><li>https://api.openai.com/v1</li><li>https://api.openai-proxy.com/v1</li><li>https://chatai.1rmb.tk/v1</li><li>...</li></ul>",
                             "type": "input",
                             "default": "https://api.openai.com/v1"
                         },
@@ -1812,7 +1839,6 @@
                             "title": "Model",
                             "type": "input",
                             "default": "gpt-3.5-turbo",
-                            "desc": "Example: gpt-3.5-turbo, gpt-3.5-turbo-16k, gpt-3.5-turbo-0301, gpt-3.5-turbo-0613, gpt-3.5-turbo-16k-0613, gpt-3.5-turbo-1106, gpt-3.5-turbo-instruct, text-davinci-003, text-davinci-002, code-davinci-002, gpt-4, gpt-4-0314, gpt-4-0613, gpt-4-32k, gpt-4-32k-0314, gpt-4-32k-0613, gpt-4-1106-preview, gpt-4-vision-preview",
                             "options": [
                                 "gpt-3.5-turbo",
                                 "gpt-3.5-turbo-16k",

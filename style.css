@@ -336,6 +336,16 @@ body .physton-settings-modal .settings-tab-pane .paio-side-block>.paio-param-row
 body .physton-settings-modal .settings-tab-pane .paio-side-block>.paio-param-row>.paio-param-ctl{
   flex:0 1 auto; min-width:0; display:flex; align-items:center; justify-content:flex-end; gap:10px;
 }
+/* `.paio-fill`：让该参数行里的控件占满整行宽度、左对齐（用于翻译接口下拉） */
+body .physton-settings-modal .settings-tab-pane .paio-side-block>.paio-param-row.paio-fill{
+  gap:0;
+}
+body .physton-settings-modal .settings-tab-pane .paio-side-block>.paio-param-row.paio-fill>.paio-param-ctl{
+  flex:1 1 auto; width:100%; justify-content:flex-start;
+}
+body .physton-settings-modal .settings-tab-pane .paio-side-block>.paio-param-row.paio-fill>.paio-param-ctl>select{
+  flex:1 1 auto; width:100%; min-width:0;
+}
 /* 【翻译测试】块内两行：两栏 textarea / 测试按钮行 */
 body .physton-settings-modal .settings-tab-pane .paio-side-block>.paio-test-pair{
   display:flex; align-items:stretch; gap:12px;
@@ -343,8 +353,24 @@ body .physton-settings-modal .settings-tab-pane .paio-side-block>.paio-test-pair
 body .physton-settings-modal .settings-tab-pane .paio-side-block>.paio-test-pair>.test-input{
   flex:1 1 0; min-width:0; width:auto!important;
 }
+/* 【AI翻译提示词】模板输入框：高度更高（约 8 行），保留原生换行 */
+body .physton-settings-modal .settings-tab-pane .paio-side-block>.paio-prompt-input{
+  width:100%!important; height:170px!important; padding:8px!important;
+  box-sizing:border-box; resize:vertical;
+  font-family:ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace;
+  font-size:13px!important; line-height:1.55;
+}
 body .physton-settings-modal .settings-tab-pane .paio-side-block>.paio-test-actions{
   display:flex; align-items:center; justify-content:flex-end; gap:12px;
+}
+/* 【机翻词典】右列：说明文字 + 「统计徽标 + 刷新/导出/清空」一行 + 文件位置小字
+   （2026-10-18 @TraeCode） */
+body .physton-settings-modal .settings-tab-pane .paio-side-block>.line-row{
+  display:flex; align-items:center; justify-content:flex-start; flex-wrap:wrap; gap:10px;
+}
+body .physton-settings-modal .settings-tab-pane .paio-side-block>.line-row>.paio-source-badge{margin-right:2px;}
+body .physton-settings-modal .settings-tab-pane .paio-side-block>.line-desc{
+  font-size:12px; line-height:1.55; color:var(--paio-text-muted);
 }
 /* 「免费接口提示 + 帮助链接」同一行、左右两栏：
    左=提示文字（占满剩余宽度），右=帮助链接；只有一项时也各就各位（2026-10-16 @TraeCode） */
@@ -380,6 +406,59 @@ body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.
 }
 body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-col>.line-content>.onlyCsvOnAuto{
   margin:0!important;
+}
+/* 两栏行 `.paio-two-col`：左列=标题+小字注解，右列=控件。
+   用 grid 明确划成两列（1fr | auto），不依赖上游 flex 的收缩行为，
+   避免长注解把右侧控件挤到同一处、看起来像叠在一起（2026-10-18 @TraeCode） */
+body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-two-col{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) auto!important;
+  align-items:center!important;
+  column-gap:16px;
+}
+body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-two-col>.line-text{
+  min-width:0; flex:none; width:auto;
+}
+body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-two-col>.line-text>.line-title{
+  width:auto!important;
+}
+body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-two-col>.line-content{
+  margin-left:0; min-width:0;
+  display:flex; align-items:center; justify-content:flex-end; gap:10px;
+}
+/* 「纵向三段式」行 `.paio-stack`：第一行标签、第二行小字注解、第三行控件。
+   基线 .setting-line 是左右两栏（标题靠左、控件靠右），这里改为整行堆叠、控件左对齐，
+   用于【本地AI大模型翻译】整块（2026-10-18 @TraeCode） */
+body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-stack{
+  flex-direction:column!important; align-items:stretch!important; justify-content:flex-start!important;
+  gap:8px;
+}
+body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-stack>.line-text{
+  flex:0 0 auto; width:100%; min-width:100%;
+}
+/* 纵向三段式的标签必须整行显示：上游给 .line-title 写死了 width:150px，
+   超过该宽度的标题（如「本地AI大模型翻译-运行环境」）会被挤成两行 */
+body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-stack>.line-text>.line-title{
+  width:auto!important; white-space:nowrap;
+}
+body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-stack>.line-content{
+  flex:0 0 auto; width:100%; margin-left:0;
+  display:flex; flex-direction:column; align-items:stretch; justify-content:flex-start; gap:8px;
+}
+body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-stack>.line-content>.line-row{
+  display:flex; align-items:center; justify-content:flex-start; gap:10px; flex-wrap:wrap;
+}
+/* 模型下拉：与两个按钮同一行，宽度自适应剩余空间（覆盖 .settings-section select 的 240px 下限） */
+body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-stack>.line-content>.line-row>select{
+  flex:1 1 240px; min-width:0; width:auto;
+}
+/* 说明文字里的外链：品牌色 + 下划线，保证在弱化小字里也能被识别为可点击 */
+body .physton-settings-modal .settings-tab-pane .line-desc .paio-link{
+  color:var(--paio-brand-text); text-decoration:none;
+  border-bottom:1px solid currentColor; word-break:break-all;
+}
+body .physton-settings-modal .settings-tab-pane .line-desc .paio-link:hover{
+  color:var(--paio-brand);
 }
 /* 段落自带 margin 时，与外层 gap 叠加会过空，收掉首尾 */
 body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-col>.line-content>div>p:first-child{
@@ -431,6 +510,217 @@ body .physton-settings-modal .settings-tab-pane .settings-section>.settings-auto
 }
 /* 详情文案中的强调短语：加粗 + 提亮（两套主题下对比度均高于周边的弱化文字） */
 body .physton-settings-modal .settings-tab-pane .line-desc .paio-em{font-weight:600; color:var(--paio-text);}
+
+/* ── 【本地AI大模型翻译】区块：空闲分钟数输入框 + 禁用态按钮 ── */
+body .physton-settings-modal .settings-tab-pane .paio-num-input{
+  width:72px; height:var(--paio-ctl-h); padding:0 8px; box-sizing:border-box;
+  background:var(--paio-input-bg); color:var(--paio-text);
+  border:1px solid var(--paio-border); border-radius:var(--paio-radius-sm);
+}
+body .physton-settings-modal .settings-tab-pane .paio-num-input:disabled{opacity:.55; cursor:not-allowed;}
+body .physton-settings-modal .settings-tab-pane .test-btn.is-disabled{opacity:.45; cursor:not-allowed; pointer-events:none;}
+
+/* ── 【本地AI大模型翻译】带文字的操作按钮（图标 + 文字 / 悬停蓝底白字 / 点击回弹）
+   参考 LoRA 管理器的次级按钮形态：28px 高、6px 圆角、1px 边框。
+   无障碍：用原生 <button>（可 Tab 聚焦、回车/空格触发、读屏可识别），
+   焦点环沿用全局 :focus-visible 规则，忙碌态用 aria-busy 暴露给读屏。
+   （2026-10-18 @TraeCode） */
+body .physton-settings-modal .settings-tab-pane .paio-btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:6px;
+  height:var(--paio-ctl-h); padding:0 10px; box-sizing:border-box;
+  background:var(--paio-surface-2); color:var(--paio-text);
+  border:1px solid var(--paio-border); border-radius:var(--paio-radius-sm);
+  font:inherit; font-size:13px; line-height:1; white-space:nowrap; cursor:pointer;
+  transition:background .18s ease, color .18s ease, border-color .18s ease, box-shadow .18s ease;
+}
+body .physton-settings-modal .settings-tab-pane .paio-btn:hover{
+  background:var(--paio-brand-strong); border-color:var(--paio-brand-strong);
+  color:var(--paio-on-brand); box-shadow:var(--paio-shadow);
+}
+/* 键盘聚焦时与悬停同款视觉，键盘用户也能明确看到当前按钮 */
+body .physton-settings-modal .settings-tab-pane .paio-btn:focus-visible{
+  background:var(--paio-brand-strong); border-color:var(--paio-brand-strong); color:var(--paio-on-brand);
+}
+/* 点击反馈：下沉 + 轻微缩放，松开即回弹（.12s，不足以干扰连续点击） */
+body .physton-settings-modal .settings-tab-pane .paio-btn:active{
+  transform:translateY(1px) scale(.97);
+  transition-duration:.06s;
+}
+@media (prefers-reduced-motion: reduce){
+  body .physton-settings-modal .settings-tab-pane .paio-btn{transition:none;}
+  body .physton-settings-modal .settings-tab-pane .paio-btn:active{transform:none;}
+}
+body .physton-settings-modal .settings-tab-pane .paio-btn>span{pointer-events:none;}
+/* 禁用态：不改底色语义，只降对比 + 禁止悬停样式（模型未加载时不可点） */
+body .physton-settings-modal .settings-tab-pane .paio-btn:disabled{
+  opacity:.55; cursor:not-allowed;
+}
+body .physton-settings-modal .settings-tab-pane .paio-btn:disabled:hover{
+  background:var(--paio-surface-2); border-color:var(--paio-border);
+  color:var(--paio-text); box-shadow:none;
+}
+/* 请求进行中：图标原地旋转，按钮转为忙碌样式 */
+body .physton-settings-modal .settings-tab-pane .paio-btn>.icon-svg.is-spinning{
+  animation:paio-spin .9s linear infinite;
+}
+body .physton-settings-modal .settings-tab-pane .paio-btn[aria-busy="true"]{
+  cursor:progress;
+}
+@keyframes paio-spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion: reduce){
+  body .physton-settings-modal .settings-tab-pane .paio-btn>.icon-svg.is-spinning{animation:none;}
+}
+
+/* ── 【翻译流程】方案卡片列表（关键词组 / 标签词典 / 连网翻译 / 本地AI大模型翻译）
+   四张卡片纵向排列，`⋮⋮` 手柄可拖动排序，右侧「关闭 / 开启」胶囊决定是否参与翻译
+   （2026-10-18 @TraeCode） */
+/* 【翻译流程】标题行与下方卡片列表属于同一块：去掉标题行底部的虚线，
+   让「注解 → 列表」连成一体（2026-10-18 @TraeCode） */
+body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-flow-head{
+  flex-direction:column!important; align-items:stretch!important; justify-content:flex-start!important;
+  gap:4px;
+  border-bottom:none!important;
+  padding-bottom:8px!important;
+}
+/* 第一行：标题左、徽标右 */
+body .physton-settings-modal .settings-tab-pane .paio-flow-head-row{
+  display:flex; align-items:center; justify-content:space-between; gap:16px; width:100%;
+}
+body .physton-settings-modal .settings-tab-pane .paio-flow-head-row>.line-title{
+  flex:1 1 auto; min-width:0; width:auto!important;
+}
+body .physton-settings-modal .settings-tab-pane .paio-flow-head-row>.paio-source-badge{
+  flex:0 0 auto;
+}
+/* 第二行：说明独占整行 */
+body .physton-settings-modal .settings-tab-pane .settings-section>.setting-line.paio-flow-head>.line-desc{
+  width:100%;
+}
+body .physton-settings-modal .settings-tab-pane .paio-flow-list{
+  display:flex; flex-direction:column; gap:8px; margin:0 0 12px;
+}
+/* 卡片列表与下一段内容（关键词组说明）之间补一条虚线：
+   列表本身不是 .setting-line，拿不到基线的 border-bottom，这里画在下一行顶部 */
+body .physton-settings-modal .settings-tab-pane .settings-section>.paio-flow-list+.setting-line{
+  border-top:1px dashed var(--paio-border)!important;
+  padding-top:12px!important;
+}
+body .physton-settings-modal .settings-tab-pane .paio-flow-card{
+  display:flex; align-items:center; gap:10px;
+  padding:10px 12px; box-sizing:border-box;
+  background:var(--paio-surface-2);
+  border:1px solid var(--paio-border); border-radius:var(--paio-radius);
+}
+body .physton-settings-modal .settings-tab-pane .paio-flow-handle{
+  flex:0 0 auto; color:var(--paio-text-muted); font-size:14px; line-height:1;
+  letter-spacing:-1px; cursor:grab; user-select:none;
+}
+body .physton-settings-modal .settings-tab-pane .paio-flow-handle:active{cursor:grabbing;}
+body .physton-settings-modal .settings-tab-pane .paio-flow-index{
+  flex:0 0 auto; display:inline-flex; align-items:center; justify-content:center;
+  width:20px; height:20px; border-radius:50%;
+  background:var(--paio-brand-soft); color:var(--paio-brand-text);
+  font-size:12px; font-weight:600;
+}
+body .physton-settings-modal .settings-tab-pane .paio-flow-text{
+  flex:1 1 auto; min-width:0; display:flex; flex-direction:column; gap:2px;
+}
+body .physton-settings-modal .settings-tab-pane .paio-flow-title{
+  font-size:14px; font-weight:500; color:var(--paio-text);
+}
+body .physton-settings-modal .settings-tab-pane .paio-flow-desc{
+  font-size:12px; line-height:1.5; color:var(--paio-text-muted);
+}
+body .physton-settings-modal .settings-tab-pane .paio-flow-actions{
+  flex:0 0 auto; display:flex; align-items:center; gap:6px;
+}
+/* 上移 / 下移：小号图标按钮，键盘可达 */
+body .physton-settings-modal .settings-tab-pane .paio-icon-btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:22px; height:22px; padding:0;
+  background:var(--paio-surface); color:var(--paio-text-muted);
+  border:1px solid var(--paio-border); border-radius:var(--paio-radius-sm);
+  font:inherit; font-size:12px; line-height:1; cursor:pointer;
+  transition:background .18s ease, color .18s ease, border-color .18s ease;
+}
+body .physton-settings-modal .settings-tab-pane .paio-icon-btn:hover:not(:disabled){
+  background:var(--paio-brand-strong); border-color:var(--paio-brand-strong); color:var(--paio-on-brand);
+}
+body .physton-settings-modal .settings-tab-pane .paio-icon-btn:disabled{
+  opacity:.4; cursor:not-allowed;
+}
+/* 拖动中的占位卡片 */
+body .physton-settings-modal .settings-tab-pane .paio-flow-card.sortable-ghost{
+  opacity:.45; border-style:dashed;
+}
+/* 窄屏：卡片内部换行，控件掉到下一行也不挤压标题 */
+@media (max-width: 720px){
+  body .physton-settings-modal .settings-tab-pane .paio-flow-card{
+    flex-wrap:wrap;
+  }
+  body .physton-settings-modal .settings-tab-pane .paio-flow-text{
+    flex-basis:100%; order:3;
+  }
+}
+
+/* 模型加载状态文字：未加载灰、已加载绿（两套主题下对比度均 ≥ 4.5:1） */
+body .physton-settings-modal .settings-tab-pane .paio-status-text.is-off{
+  color:var(--paio-text-muted)!important;
+}
+body .physton-settings-modal .settings-tab-pane .paio-status-text.is-on{
+  color:#15803d!important;
+}
+body.dark .physton-settings-modal .settings-tab-pane .paio-status-text.is-on{
+  color:#4ade80!important;
+}
+
+/* ── 「翻译模型状态」按钮（与 sd_forge_lora_new 顶栏同款三态）
+   未加载：灰色只读（disabled）；已加载：绿底白字，可点击卸载；
+   已加载 + 悬停：转红，文案换成「卸载翻译模型」。
+   冻结（lora_new 启用）时仍保持绿色状态外观，只是不可点击。
+   （2026-10-18 @TraeCode） */
+body .physton-settings-modal .settings-tab-pane .paio-llm-state{
+  display:inline-flex; align-items:center; gap:6px;
+  height:var(--paio-ctl-h); padding:0 10px; box-sizing:border-box;
+  background:var(--paio-surface-2); color:var(--paio-text-muted);
+  border:1px solid var(--paio-border); border-radius:var(--paio-radius-sm);
+  font:inherit; font-size:13px; line-height:1; white-space:nowrap;
+  cursor:default;
+  transition:background .18s ease, color .18s ease, border-color .18s ease;
+}
+/* 禁用态不做半透明（保证文字对比度），仅用灰色表达只读 */
+body .physton-settings-modal .settings-tab-pane .paio-llm-state:disabled{opacity:1;}
+body .physton-settings-modal .settings-tab-pane .paio-llm-state-dot{
+  width:8px; height:8px; border-radius:50%; background:#9ca3af; flex:0 0 auto;
+}
+/* 三段文案：默认只显示「未加载」 */
+body .physton-settings-modal .settings-tab-pane .paio-llm-state .paio-llm-state-on,
+body .physton-settings-modal .settings-tab-pane .paio-llm-state .paio-llm-state-hover{display:none;}
+body .physton-settings-modal .settings-tab-pane .paio-llm-state .paio-llm-state-text{font-size:13px;}
+/* 已加载：绿色（暗色主题用深绿底 + 亮绿点，对比度均 ≥ 4.5:1） */
+body .physton-settings-modal .settings-tab-pane .paio-llm-state.is-loaded{
+  background:#15803d; border-color:#15803d; color:#fff;
+  cursor:pointer;
+}
+body .physton-settings-modal .settings-tab-pane .paio-llm-state.is-loaded .paio-llm-state-dot{background:#bbf7d0;}
+body.dark .physton-settings-modal .settings-tab-pane .paio-llm-state.is-loaded{
+  background:#166534; border-color:#22c55e; color:#dcfce7;
+}
+body.dark .physton-settings-modal .settings-tab-pane .paio-llm-state.is-loaded .paio-llm-state-dot{background:#4ade80;}
+/* 已加载 + 可点击 + 悬停：转红，文案换成「卸载翻译模型」 */
+body .physton-settings-modal .settings-tab-pane .paio-llm-state.is-loaded:not(:disabled):hover{
+  background:#b91c1c; border-color:#b91c1c; color:#fff;
+}
+body .physton-settings-modal .settings-tab-pane .paio-llm-state.is-loaded:not(:disabled):hover .paio-llm-state-dot{background:#fecaca;}
+body.dark .physton-settings-modal .settings-tab-pane .paio-llm-state.is-loaded:not(:disabled):hover{
+  background:#991b1b; border-color:#ef4444; color:#fee2e2;
+}
+body .physton-settings-modal .settings-tab-pane .paio-llm-state.is-loaded .paio-llm-state-off{display:none;}
+body .physton-settings-modal .settings-tab-pane .paio-llm-state.is-loaded .paio-llm-state-on{display:inline;}
+body .physton-settings-modal .settings-tab-pane .paio-llm-state.is-loaded:not(:disabled):hover .paio-llm-state-on{display:none;}
+body .physton-settings-modal .settings-tab-pane .paio-llm-state.is-loaded:not(:disabled):hover .paio-llm-state-hover{display:inline;}
+/* 加载/卸载请求进行中：进度指针 */
+body .physton-settings-modal .settings-tab-pane .paio-llm-state.is-loaded[disabled]{cursor:progress;}
 
 /* ── 主界面「插件设置」按钮加文字（2026-10-16 @TraeCode / UI12）
    原按钮是固定宽度的纯图标项（宽度来自 --pp-ph-phe-ec-ebg-extendBtnItem-width），
@@ -548,13 +838,26 @@ body .physton-prompt-history .paio-modal-title,
 body .physton-prompt-favorite .paio-modal-title{
   font-size:15px; font-weight:600; color:var(--paio-text);
 }
-body .physton-prompt-history .paio-modal-close,
-body .physton-prompt-favorite .paio-modal-close{
-  cursor:pointer; padding:4px; display:flex; align-items:center;
-  border-radius:var(--paio-radius-sm); color:var(--paio-text); flex:0 0 auto;
+body .physton-prompt-history .settings-modal-icon-btn,
+body .physton-prompt-favorite .settings-modal-icon-btn{
+  cursor:pointer; min-width:32px; min-height:32px; padding:0 8px;
+  display:flex; align-items:center; justify-content:center;
+  border-radius:var(--paio-radius); color:var(--paio-text); flex:0 0 auto;
 }
-body .physton-prompt-history .paio-modal-close:hover,
-body .physton-prompt-favorite .paio-modal-close:hover{background:var(--paio-surface-2);}
+body .physton-prompt-history .settings-modal-icon-btn:hover,
+body .physton-prompt-favorite .settings-modal-icon-btn:hover{background:var(--paio-surface-2);}
+body .physton-prompt-history .settings-modal-icon-btn:focus-visible,
+body .physton-prompt-favorite .settings-modal-icon-btn:focus-visible{outline:2px solid #6b73ff; outline-offset:2px;}
+body .physton-prompt-history .icon-svg,
+body .physton-prompt-favorite .icon-svg{
+  width:16px; height:16px; flex:0 0 auto;
+  display:inline-flex; align-items:center; justify-content:center;
+  line-height:1; color:currentColor;
+}
+body .physton-prompt-history .icon-svg svg,
+body .physton-prompt-favorite .icon-svg svg{
+  width:100%; height:100%; display:block; fill:currentColor;
+}
 /* 主体：标签页 + 内容区，撑满剩余高度并内部滚动（上游给的是固定 500px 高度） */
 body .physton-prompt-history .paio-modal-body,
 body .physton-prompt-favorite .paio-modal-body{
@@ -570,11 +873,147 @@ body .physton-prompt-history .paio-modal-body .content-list,
 body .physton-prompt-favorite .paio-modal-body .content-list{
   flex:1; min-height:0; height:auto!important; overflow-y:auto!important;
 }
-/* 条目悬停的「标签预览」浮层：改为相对视口定位（left/top 由 JS 计算，不加 !important 以免压掉行内样式） */
-body .physton-prompt-history .popup-detail,
-body .physton-prompt-favorite .popup-detail{
-  position:fixed!important; z-index:3010!important;
+/* 条目内标签：沿用原悬停浮层的小方块样式（英文标签在深色圆角块内，译文在下方） */
+body .physton-prompt-history .item-prompt:has(.item-tag),
+body .physton-prompt-favorite .item-prompt:has(.item-tag){
+  display:flex; flex-wrap:wrap; justify-content:flex-start; align-items:flex-start;
+  white-space:normal!important; overflow:visible!important;
+  /* 有标签时标签块自己带深色底，去掉上游继承给整段文字的底色与内边距 */
+  background:transparent!important; padding:0!important;
+}
+/* 纯文本模式（后端没存 tags）：与标签模式视觉统一。上游 :hover 会把内联截断放开成
+   overflow:visible + 多行，而父级 content-list 是 overflow 裁剪，换行文本会溢出面板；
+   这里强制保持单行省略号 */
+body .physton-prompt-history .item-prompt:not(:has(.item-tag)),
+body .physton-prompt-favorite .item-prompt:not(:has(.item-tag)){
+  overflow:hidden!important; white-space:nowrap!important; text-overflow:ellipsis!important;
+  background:transparent!important; padding:0!important;
+}
+body .physton-prompt-history .item-prompt .item-wrap,
+body .physton-prompt-favorite .item-prompt .item-wrap{
+  flex-basis:100%; width:100%; height:0; margin:0; padding:0;
+}
+body .physton-prompt-history .item-prompt .item-tag,
+body .physton-prompt-favorite .item-prompt .item-tag{
+  display:flex; flex-direction:column; align-items:flex-start;
+  margin:0 5px 5px 0;
+}
+body .physton-prompt-history .item-prompt .item-tag:last-child,
+body .physton-prompt-favorite .item-prompt .item-tag:last-child{margin-right:0;}
+body .physton-prompt-history .item-prompt .item-tag .item-tag-value,
+body .physton-prompt-favorite .item-prompt .item-tag .item-tag-value{
+  padding:4px 6px; border-radius:5px;
+  background:rgba(30,30,30,.9); color:#fff; font-size:12px; line-height:1.35;
+}
+body .physton-prompt-history .item-prompt .item-tag .item-tag-local-value,
+body .physton-prompt-favorite .item-prompt .item-tag .item-tag-local-value{
+  margin-top:2px; font-size:12px; color:var(--paio-text-2); line-height:1.35;
 }
 /* 弹窗内文字/控件跟随主题令牌 */
 body .physton-prompt-history .paio-modal-body,
 body .physton-prompt-favorite .paio-modal-body{color:var(--paio-text);}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   【ChatGPT 生成 Prompt】弹窗 → 改为【插件设置】同款模态（2026-10-21 @TraeCode）
+   原先：上游通用弹窗外壳（居中浮层 + 右上角圆形红叉），面板头是写死的灰色
+   （#626262），面板内容盒是写死的深色（#1e1e1e），亮色主题下不协调。
+   现在：固定全屏遮罩 + 820px/92vw/80vh 居中弹窗 + 标题栏（标题左 / 关闭右），
+   面板标题改为弱化色、面板框改用主题令牌，与设置弹窗观感一致。
+   注意：根元素上**不要**写 display（v-show/v-if 控制显隐），居中用 transform。
+   ═══════════════════════════════════════════════════════════════════════════ */
+body .physton-chatgpt-prompt{
+  background:var(--paio-overlay)!important;
+}
+body .physton-chatgpt-prompt .chatgpt-main{
+  position:relative!important;
+  width:820px!important; max-width:92vw!important;
+  height:80vh!important; max-height:80vh!important;
+  display:flex!important; flex-direction:column!important; overflow:hidden!important;
+  padding:0!important;
+  background:var(--paio-surface)!important; color:var(--paio-text)!important;
+  border:1px solid var(--paio-border)!important; border-radius:var(--paio-radius)!important;
+  box-shadow:var(--paio-shadow-dialog)!important;
+}
+/* 标题栏（与 .settings-modal-header 同款） */
+body .physton-chatgpt-prompt .chatgpt-main>.paio-modal-header{
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+  padding:12px 18px; flex-shrink:0; border-bottom:1px solid var(--paio-border);
+}
+body .physton-chatgpt-prompt .paio-modal-title{
+  font-size:15px; font-weight:600; color:var(--paio-text);
+}
+body .physton-chatgpt-prompt .settings-modal-icon-btn{
+  cursor:pointer; min-width:32px; min-height:32px; padding:0 8px;
+  display:flex; align-items:center; justify-content:center;
+  border-radius:var(--paio-radius); color:var(--paio-text); flex:0 0 auto;
+}
+body .physton-chatgpt-prompt .settings-modal-icon-btn:hover{background:var(--paio-surface-2);}
+body .physton-chatgpt-prompt .icon-svg{
+  width:16px; height:16px; flex:0 0 auto;
+  display:inline-flex; align-items:center; justify-content:center;
+  line-height:1; color:currentColor;
+}
+body .physton-chatgpt-prompt .icon-svg svg{width:100%; height:100%; display:block; fill:currentColor;}
+/* 主体：内部滚动，撑满剩余高度 */
+body .physton-chatgpt-prompt .chatgpt-body{
+  flex:1!important; min-height:0!important;
+  max-height:none!important; overflow-y:auto!important;
+  background:transparent!important; box-shadow:none!important;
+  border-radius:0!important; padding:14px 20px!important;
+  color:var(--paio-text)!important;
+}
+/* 面板（API配置 / 图片描述 / 生成结果）：去掉上游灰底与深色框，改为令牌虚线分隔 */
+body .physton-chatgpt-prompt .body-panel{
+  border:1px solid var(--paio-border)!important; border-radius:var(--paio-radius-sm)!important;
+  margin-bottom:12px!important;
+}
+body .physton-chatgpt-prompt .body-panel:last-child{margin-bottom:0!important;}
+body .physton-chatgpt-prompt .body-panel .panel-header{
+  background:var(--paio-surface-2)!important;
+  border-bottom:1px solid var(--paio-border)!important;
+  padding:8px 12px!important;
+}
+body .physton-chatgpt-prompt .body-panel .panel-title{
+  font-weight:600!important; font-size:13px!important;
+  color:var(--paio-text)!important;
+}
+body .physton-chatgpt-prompt .body-panel .panel-content{padding:12px!important;}
+/* 行标签：弱化色（对齐设置弹窗的 .line-title / .line-desc 层级） */
+body .physton-chatgpt-prompt .body-line .line-title{
+  font-size:13px!important; font-weight:500!important;
+  color:var(--paio-text)!important;
+}
+body .physton-chatgpt-prompt .body-line .line-title .line-subtitle{
+  font-size:12px!important; color:var(--paio-text-muted)!important;
+}
+/* 折叠态（.fold）在顶栏样式下仍保持 36px 高度，避免被 padding 撑高 */
+body .physton-chatgpt-prompt .body-panel.fold .panel-header{border-bottom:none!important;}
+/* 【生成方式】单选项：一行两个，整行可点，选中项用品牌色描边（2026-10-21 @TraeCode） */
+body .physton-chatgpt-prompt .paio-gen-source{
+  display:flex; flex-direction:column; align-items:stretch; gap:6px; width:100%;
+}
+body .physton-chatgpt-prompt .paio-gen-source-item{
+  display:flex; align-items:center; gap:8px;
+  padding:6px 10px; box-sizing:border-box;
+  background:var(--paio-surface-2); color:var(--paio-text);
+  border:1px solid var(--paio-border); border-radius:var(--paio-radius-sm);
+  font-size:13px; line-height:1.4; cursor:pointer;
+  transition:background .18s ease, border-color .18s ease;
+}
+body .physton-chatgpt-prompt .paio-gen-source-item:hover{
+  border-color:var(--paio-brand);
+}
+body .physton-chatgpt-prompt .paio-gen-source-item input[type="radio"]{
+  accent-color:var(--paio-brand); width:14px; height:14px; flex:0 0 auto; margin:0;
+}
+body .physton-chatgpt-prompt .paio-gen-source-item:has(input:checked){
+  border-color:var(--paio-brand); background:var(--paio-brand-soft);
+  color:var(--paio-brand-text); font-weight:600;
+}
+body .physton-chatgpt-prompt .paio-gen-source-item:has(input:focus-visible){
+  outline:2px solid var(--paio-focus); outline-offset:2px;
+}
+/* 模型名过长时省略，避免撑破弹窗 */
+body .physton-chatgpt-prompt .paio-gen-source-item>span{
+  min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+}

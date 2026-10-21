@@ -1,6 +1,5 @@
 <template>
-    <Transition name="fadeDown">
-        <div :class="['physton-prompt-blacklist', {'embedded-host': embedded}]" v-if="isOpen" @click="onCloseClick">
+    <div :class="['physton-prompt-blacklist', {'embedded-host': embedded}]" v-if="isOpen" @click="onCloseClick">
             <div class="blacklist-main" @click.stop>
                 <div class="blacklist-popup-close" v-if="!embedded" @click="onCloseClick">
                     <icon-svg name="close"/>
@@ -97,7 +96,6 @@
                 </div>
             </div>
         </div>
-    </Transition>
 </template>
 <script>
 import LanguageMixin from "@/mixins/languageMixin";

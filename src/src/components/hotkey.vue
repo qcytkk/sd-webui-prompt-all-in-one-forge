@@ -1,6 +1,5 @@
 <template>
-    <Transition name="fadeDown">
-        <div :class="['physton-prompt-hotkey', {'embedded-host': embedded}]" v-if="isOpen" @click="onCloseClick">
+    <div :class="['physton-prompt-hotkey', {'embedded-host': embedded}]" v-if="isOpen" @click="onCloseClick">
         <div class="hotkey-main" @click.stop>
             <div class="hotkey-popup-close" v-if="!embedded" @click="onCloseClick">
                 <icon-svg name="close"/>
@@ -17,7 +16,6 @@
             </div>
         </div>
     </div>
-    </Transition>
 </template>
 <script>
 import LanguageMixin from "@/mixins/languageMixin";

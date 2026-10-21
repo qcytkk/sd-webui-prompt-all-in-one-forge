@@ -1,9 +1,15 @@
 <template>
-    <Transition name="fadeDown">
+    <Transition name="fade">
+        <!-- 改为「插件设置」同款模态：固定遮罩 + 居中弹窗 + 标题栏关闭按钮（2026-10-21 @TraeCode） -->
         <div class="physton-chatgpt-prompt" v-if="isOpen" @click="close">
-        <div class="chatgpt-main" @click.stop>
-            <div class="chatgpt-close" @click="close">
-                <icon-svg name="close"/>
+        <div class="chatgpt-main paio-modal-main" @click.stop>
+            <div class="paio-modal-header">
+                <div class="paio-modal-title">{{ getLang('chatgpt_modal_title') }}</div>
+                <div class="settings-modal-icon-btn" role="button" tabindex="0"
+                     :aria-label="getLang('close')" :title="getLang('close')"
+                     @click="close" @keydown.enter="close" @keydown.space.prevent="close">
+                    <icon-svg name="close"/>
+                </div>
             </div>
             <div class="chatgpt-body" @click.stop>
                 <div :class="['body-panel', hidePanels['api'] ? 'fold': '']">
@@ -15,9 +21,10 @@
                     </div>
                     <div class="panel-content">
                         <div class="body-line" v-for="config in configs">
-                            <div class="line-title">{{ config.title }}</div>
+                            <div class="line-title">{{ configLabel(config) }}</div>
                             <div class="line-content">
-                                <input type="text" v-if="config.type == 'input'" v-model="config.value">
+                                <input type="text" v-if="config.type == 'input'"
+                                       v-model="config.value" :placeholder="configPlaceholder(config)">
                                 <select v-if="config.type == 'select'" v-model="config.value">
                                     <option v-for="option in config.options" :value="option">{{ option }}</option>
                                 </select>
@@ -64,6 +71,21 @@
                             <div class="line-content">
                                 <textarea style="height: 100px" ref="imageDesc" v-model="imageDesc"
                                           :placeholder="getLang('input_image_desc')"></textarea>
+                            </div>
+                        </div>
+                        <div class="body-line">
+                            <div class="line-title">{{ getLang('gen_source_title') }}</div>
+                            <div class="line-content">
+                                <div class="paio-gen-source" role="radiogroup" :aria-label="getLang('gen_source_title')">
+                                    <label class="paio-gen-source-item">
+                                        <input type="radio" value="local" v-model="genSource">
+                                        <span>{{ localModelLabel }}</span>
+                                    </label>
+                                    <label class="paio-gen-source-item">
+                                        <input type="radio" value="api" v-model="genSource">
+                                        <span>{{ apiModelLabel }}</span>
+                                    </label>
+                                </div>
                             </div>
                         </div>
                         <div class="body-line">
@@ -127,17 +149,52 @@ export default {
             promptResult: '',
             saveConfigIng: false,
             genIng: false,
+            // 生成来源：local = models\LLM 里的本地模型；api = 上方 API 配置
+            genSource: 'api',
+            localModel: '',
         }
     },
     emits: ['use'],
-    computed: {},
+    computed: {
+        // 选项 1：本地模型名（models\LLM 里的模型，与翻译共用）
+        localModelLabel() {
+            return this.localModel || this.getLang('no_local_model')
+        },
+        // 选项 2：API 配置里的「模型名称」，没填则回落到「模型id」
+        apiModelLabel() {
+            let name = ''
+            let modelId = ''
+            this.configs.forEach(item => {
+                if (item.key === 'model_name') name = (item.value || '').trim()
+                if (item.key === 'model') modelId = (item.value || '').trim()
+            })
+            return name || modelId || this.getLang('unnamed_model')
+        },
+    },
     mounted() {
     },
+    beforeUnmount() {
+        this.setScrollLock(false)
+    },
     methods: {
+        // API 地址 / 模型 id 两行的标题改用中文可读文案（其余参数保持接口原英文名）
+        configLabel(config) {
+            if (config.key === 'api_base') return this.getLang('api_base_title')
+            if (config.key === 'model') return this.getLang('model_title')
+            if (config.key === 'model_name') return this.getLang('model_name_title')
+            return config.title
+        },
+        configPlaceholder(config) {
+            if (config.key === 'api_base') return this.getLang('api_base_placeholder')
+            if (config.key === 'api_key') return this.getLang('api_key_placeholder')
+            return ''
+        },
         open() {
             this.isOpen = true
+            this.setScrollLock(true)
             this.saveConfigIng = false
             this.genIng = false
+            this.loadLocalModel()
 
             this.gradioAPI.getDatas(['chatgpt_prompts_preset', 'chatgpt_key', 'translate_api.openai']).then(res => {
                 console.log(res)
@@ -174,10 +231,37 @@ export default {
                     item.value = configs[item.key]
                     this.configs.push(item)
                 }
+                // 【模型名称】：只属于本弹窗（存 chatgpt_key），不写进 translate_apis.json，
+                // 免得翻译设置页的 OpenAI 接口参数里多出一栏。用于下方「生成方式」选项名。
+                const nameIndex = this.configs.findIndex(item => item.key === 'model')
+                this.configs.splice(nameIndex + 1, 0, {
+                    key: 'model_name',
+                    title: 'Model Name',
+                    type: 'input',
+                    value: (res.chatgpt_key && res.chatgpt_key['model_name']) || '',
+                })
             })
         },
         close() {
             this.isOpen = false
+            this.setScrollLock(false)
+        },
+        setScrollLock(lock) {
+            // 弹窗打开时禁止背景页面滚轮滚动（与「插件设置」弹窗一致）
+            const cls = 'paio-scroll-locked'
+            if (lock) {
+                const sw = window.innerWidth - document.documentElement.clientWidth
+                document.body.style.paddingRight = sw > 0 ? sw + 'px' : ''
+            } else {
+                document.body.style.paddingRight = ''
+            }
+            const targets = [
+                document.documentElement,
+                document.body,
+                ...document.getElementsByTagName('gradio-app'),
+                ...document.querySelectorAll('.gradio-container'),
+            ]
+            targets.forEach(el => el && el.classList.toggle(cls, lock))
         },
         onUnfoldClick(panelName) {
             this.hidePanels[panelName] = !this.hidePanels[panelName]
@@ -222,7 +306,10 @@ export default {
             this.configs.forEach(item => {
                 configs[item.key] = item.value
             })
-            this.gradioAPI.genOpenAI(messages, configs).then(res => {
+            const request = this.genSource === 'local'
+                ? this.gradioAPI.localLLMGen(messages)
+                : this.gradioAPI.genOpenAI(messages, configs)
+            request.then(res => {
                 if (res.success) {
                     this.promptResult = res.result
                 } else {
@@ -232,6 +319,16 @@ export default {
             }).catch(err => {
                 this.$toastr.error(err.message || err)
                 this.genIng = false
+            })
+        },
+        // 读取 models\LLM 里当前选中的本地模型名（与【本地AI大模型翻译】共用同一模型）
+        loadLocalModel() {
+            this.gradioAPI.localLLMStatus().then(res => {
+                if (res && res.ok) {
+                    this.localModel = res.model || res.selected || ''
+                }
+            }).catch(() => {
+                this.localModel = ''
             })
         },
         onUseClick() {

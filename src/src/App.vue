@@ -33,12 +33,14 @@
                             :hide-panel="item.hidePanel"
                             @update:hide-panel="onUpdateHidePanel(item.id, $event)"
                             v-model:enable-tooltip="enableTooltip"
+                            v-model:show-chatgpt-btn="showChatgptBtn"
                             v-model:translate-api="translateApi"
                             :translate-api-config="translateApiConfig"
                             @click:open-settings="onOpenSettings"
                             v-model:tag-complete-file="tagCompleteFile"
                             v-model:only-csv-on-auto="onlyCsvOnAuto"
                             v-model:group-tags-translate="groupTagsTranslate"
+                            :translate-flow="translateFlow"
                             @click:select-language="onSelectLanguageClick"
                             @click:show-chatgpt="onShowChatgpt(item.id, $event)"
                             :extra-networks="extraNetworks"
@@ -76,10 +78,12 @@
                         v-model:auto-translate-to-local="autoTranslateToLocal"
                         v-model:auto-translate-to-english="autoTranslateToEnglish"
                         v-model:enable-tooltip="enableTooltip"
+                        v-model:show-chatgpt-btn="showChatgptBtn"
                         v-model:translate-api="translateApi"
                         v-model:tag-complete-file="tagCompleteFile"
                         v-model:only-csv-on-auto="onlyCsvOnAuto"
                         v-model:group-tags-translate="groupTagsTranslate"
+                        v-model:translate-flow="translateFlow"
                         v-model:auto-remove-space="autoRemoveSpace"
                         v-model:auto-remove-last-comma="autoRemoveLastComma"
                         v-model:auto-keep-weight-zero="autoKeepWeightZero"
@@ -164,6 +168,9 @@ import jsYaml from "js-yaml";
 import {ref} from "vue";
 import ExtraNetworksPopup from "@/components/extraNetworksPopup.vue";
 import waitTick from "@/utils/waitTick";
+
+// 翻译流程支持的五个方案（顺序由用户拖动决定）
+const FLOW_KEYS = ['group_tags', 'tag_dict', 'machine_dict', 'network', 'local_llm'];
 
 export default {
     name: 'App',
@@ -298,8 +305,18 @@ export default {
             autoSplitByPeriodIncludeParen: false,
             // hideDefaultInput: false,
             enableTooltip: true,
+            // 【使用Ai生成提示词】按钮的显示开关（主界面工具栏）
+            showChatgptBtn: true,
             tagCompleteFile: '',
             onlyCsvOnAuto: false,
+            // 翻译流程：五个方案的开关与顺序（数组顺序 = 尝试顺序）
+            translateFlow: [
+                {key: 'group_tags', enabled: true},
+                {key: 'tag_dict', enabled: true},
+                {key: 'machine_dict', enabled: true},
+                {key: 'network', enabled: true},
+                {key: 'local_llm', enabled: false},
+            ],
 
             startWatchSave: false,
 
@@ -565,6 +582,15 @@ export default {
             },
             immediate: false,
         },
+        showChatgptBtn: {
+            handler: function (val, oldVal) {
+                if (!this.startWatchSave) return
+                this.gradioAPI.setData('showChatgptBtn', val).then(data => {
+                }).catch(err => {
+                })
+            },
+            immediate: false,
+        },
         translateApi: {
             handler: function (val, oldVal) {
                 if (!this.startWatchSave) return
@@ -613,6 +639,17 @@ export default {
             this.gradioAPI.setData('onlyCsvOnAuto', this.onlyCsvOnAuto).then(data => {
             }).catch(err => {
             })
+        },
+        translateFlow: {
+            handler: function (val, oldVal) {
+                if (!this.startWatchSave) return
+                console.log('onTranslateFlowChange', val, oldVal)
+                this.gradioAPI.setData('translateFlow', val).then(data => {
+                }).catch(err => {
+                })
+            },
+            deep: true,
+            immediate: false,
         },
         extraNetworksWidth() {
             if (!this.startWatchSave) return
@@ -719,8 +756,10 @@ export default {
                 /*'hideDefaultInput', */
                 'translateApi',
                 'enableTooltip',
+                'showChatgptBtn',
                 'tagCompleteFile',
                 'onlyCsvOnAuto',
+                'translateFlow',
                 'extensionSelect.minimalist',
                 'groupTagsColor',
                 'groupTagsTranslate',
@@ -832,6 +871,9 @@ export default {
                 }
                 localStorage.setItem('phystonPromptEnableTooltip', this.enableTooltip ? 'true' : 'false')
                 this.updateTippyState()
+                if (data.showChatgptBtn !== null) {
+                    this.showChatgptBtn = data.showChatgptBtn
+                }
                 if (data.translateApi !== null) {
                     this.translateApi = data.translateApi
                     /*if (data.translateApi === 'alibaba_free') {
@@ -857,6 +899,35 @@ export default {
                 }
                 if (data.onlyCsvOnAuto !== null) {
                     this.onlyCsvOnAuto = data.onlyCsvOnAuto
+                }
+
+                if (Array.isArray(data.translateFlow) && data.translateFlow.length) {
+                    // 兼容：只保留已知的 5 个 key，缺失项按默认顺序插回原位置
+                    // （老数据没有【机翻词典】时，它会落在【连网翻译】之前 = 先查缓存再联网）
+                    const saved = data.translateFlow.filter(item => item && FLOW_KEYS.includes(item.key))
+                        .map(item => ({key: item.key, enabled: !!item.enabled}))
+                    FLOW_KEYS.forEach((key, defaultIndex) => {
+                        if (saved.some(item => item.key === key)) return
+                        const def = this.translateFlow.find(item => item.key === key) || {enabled: false}
+                        let insertAt = saved.length
+                        for (let i = 0; i < saved.length; i++) {
+                            if (FLOW_KEYS.indexOf(saved[i].key) > defaultIndex) {
+                                insertAt = i
+                                break
+                            }
+                        }
+                        saved.splice(insertAt, 0, {key, enabled: !!def.enabled})
+                    })
+                    this.translateFlow = saved
+                }
+
+                // 旧数据迁移：以前 local_llm 是「翻译接口」里的一个选项，
+                // 现在它只能在【翻译流程】里开关，接口下拉不再提供它。
+                if (this.translateApi === 'local_llm') {
+                    this.translateFlow = this.translateFlow.map(item => (
+                        item.key === 'local_llm' ? {key: item.key, enabled: true} : item
+                    ))
+                    this.translateApi = 'bing_free'
                 }
 
                 if (data['extensionSelect.minimalist'] === null) {

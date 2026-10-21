@@ -14,6 +14,7 @@ from scripts.physton_prompt.get_translate_apis import get_translate_apis, privac
 from scripts.physton_prompt.translate import translate
 from scripts.physton_prompt.history import History
 from scripts.physton_prompt.csv import get_csvs, get_csv
+from scripts.physton_prompt import machine_dict
 from scripts.physton_prompt.styles import get_style_full_path, get_extension_css_list
 from scripts.physton_prompt.get_extra_networks import get_extra_networks
 from scripts.physton_prompt.packages import get_packages_state, install_package
@@ -375,6 +376,38 @@ def on_app_started(_: gr.Blocks, app: FastAPI):
     async def _get_extension_css_list():
         return {"css_list": get_extension_css_list()}
 
+    # ── 机翻词典：缓存【连网翻译】/【本地AI大模型翻译】的成功译文 ──
+    @app.get("/physton_prompt/machine_dict/stats")
+    async def _machine_dict_stats():
+        return machine_dict.stats()
+
+    @app.get("/physton_prompt/machine_dict/file")
+    async def _machine_dict_file():
+        if not os.path.exists(machine_dict.dict_path()):
+            return Response(status_code=404)
+        return FileResponse(machine_dict.dict_path(), media_type='text/csv',
+                            filename=os.path.basename(machine_dict.dict_path()))
+
+    @app.post("/physton_prompt/machine_dict/lookup")
+    async def _machine_dict_lookup(request: Request):
+        data = await request.json()
+        texts = data.get('texts') or []
+        return {
+            'texts': machine_dict.lookup(texts, data.get('from_lang'), data.get('to_lang')),
+        }
+
+    @app.post("/physton_prompt/machine_dict/add")
+    async def _machine_dict_add(request: Request):
+        data = await request.json()
+        added = await run_in_threadpool(
+            machine_dict.add_many, data.get('from_lang'), data.get('to_lang'), data.get('items') or []
+        )
+        return {'success': True, 'added': added}
+
+    @app.post("/physton_prompt/machine_dict/clear")
+    async def _machine_dict_clear():
+        return {'success': await run_in_threadpool(machine_dict.clear)}
+
     @app.get("/physton_prompt/get_extra_networks")
     async def _get_extra_networks():
         return {"extra_networks": get_extra_networks()}
@@ -396,6 +429,10 @@ def on_app_started(_: gr.Blocks, app: FastAPI):
     @app.get("/physton_prompt/get_group_tags")
     async def _get_group_tags(lang: str):
         return {"tags": get_group_tags(lang)}
+
+    # 【本地ai大模型翻译】与 sd_forge_lora_new 共用模型与翻译环境，路由见 local_llm_api
+    from scripts.physton_prompt.local_llm_api import register as _register_local_llm
+    _register_local_llm(app)
 
 
 try:

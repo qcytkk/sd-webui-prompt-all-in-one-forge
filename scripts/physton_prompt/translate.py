@@ -19,6 +19,7 @@ from scripts.physton_prompt.translator.caiyun_translator import CaiyunTranslator
 from scripts.physton_prompt.translator.volcengine_translator import VolcengineTranslator
 from scripts.physton_prompt.translator.iflytekV1_translator import IflytekV1Translator
 from scripts.physton_prompt.translator.iflytekV2_translator import IflytekV2Translator
+from scripts.physton_prompt.translator.local_llm_translator import LocalLLMTranslator
 
 caches = {}
 
@@ -27,6 +28,15 @@ def translate(text, from_lang, to_lang, api, api_config=None):
     if api_config is None:
         api_config = {}
     global caches
+
+    # 本地大模型：把当前提示词模板的指纹并进 api_config，
+    # 它参与下面的缓存 key —— 改了【AI翻译提示词】就不会再命中旧译文。
+    if api == 'local_llm':
+        try:
+            from scripts.physton_prompt.translator.local_llm_translator import prompt_signature
+            api_config = dict(api_config, __prompt=prompt_signature())
+        except Exception:
+            pass
 
     def _translate_result(success, message, translated_text):
         return {
@@ -112,6 +122,8 @@ def translate(text, from_lang, to_lang, api, api_config=None):
             translator = IflytekV1Translator()
         elif api == 'iflytekV2':
             translator = IflytekV2Translator()
+        elif api == 'local_llm':
+            translator = LocalLLMTranslator()
         elif 'type' in find and find['type'] == 'translators':
             translator = TranslatorsTranslator(api)
             translator.set_translator(find['translator'])
