@@ -6,6 +6,8 @@
 Stable Diffusion WebUI / Forge 的提示词输入增强扩展：标签翻译、补全、历史记录、收藏、
 以及基于大模型的提示词生成。
 
+当前版本：**0.1.0**（版本号维护在 [`version.txt`](version.txt)，同步于 `src/package.json`）
+
 ---
 
 ## 与原版的差异

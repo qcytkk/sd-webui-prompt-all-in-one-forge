@@ -20,7 +20,7 @@ from scripts.physton_prompt.get_extra_networks import get_extra_networks
 from scripts.physton_prompt.packages import get_packages_state, install_package
 from scripts.physton_prompt.gen_openai import gen_openai
 from scripts.physton_prompt.get_lang import get_lang
-from scripts.physton_prompt.get_version import get_git_commit_version, get_git_remote_versions, get_latest_version
+from scripts.physton_prompt.get_version import get_version, get_git_remote_versions, get_latest_version
 from scripts.physton_prompt.get_group_tags import get_group_tags
 
 try:
@@ -63,7 +63,7 @@ def on_app_started(_: gr.Blocks, app: FastAPI):
     @app.get("/physton_prompt/get_version")
     async def _get_version():
         return {
-            'version': get_git_commit_version(),
+            'version': get_version(),
             'latest_version': get_latest_version(),
         }
 

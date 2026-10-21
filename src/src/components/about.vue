@@ -103,6 +103,8 @@ export default {
         },
         formatVersion(version) {
             if (!version) return this.getLang('unknown_version')
+            // 语义版本号（如 0.1.0）原样显示；git commit 只取前 7 位
+            if (/^\d+\.\d+/.test(version)) return version
             return version.slice(0, 7)
         },
         message(text) {
