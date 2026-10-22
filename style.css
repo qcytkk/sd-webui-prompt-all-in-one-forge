@@ -741,6 +741,18 @@ body .physton-settings-modal .settings-tab-pane .paio-llm-state.is-loaded[disabl
 .physton-prompt .extend-btn-item.paio-settings-btn .paio-settings-btn-text{
   font-size:12px; line-height:1; white-space:nowrap; color:inherit;
 }
+/* ── 主界面功能栏「去重」图标（2026-10-22）
+   上游只给已知图标名写了尺寸/填色变量，新增的 dedupe 需单独补一条，
+   尺寸与相邻的 copy 图标保持一致，填色跟随所在按钮组的文字色。 */
+.physton-prompt .prompt-header .extend-btn-item .icon-svg-dedupe svg{
+  width:auto; height:18px; padding:var(--iconSvg-padding); box-sizing:var(--iconSvg-box-sizing);
+}
+.physton-prompt .prompt-header .extend-btn-item .icon-svg-dedupe svg path{
+  fill:currentColor;
+}
+body.dark .physton-prompt .prompt-header .extend-btn-item .icon-svg-dedupe svg path{
+  fill:rgba(255,255,255,.85);
+}
 /* ── 插件设置弹窗打开时锁定背景滚动（弹窗内部 .settings-modal-content 仍可滚动） ── */
 html.paio-scroll-locked,
 body.paio-scroll-locked,
@@ -1050,6 +1062,14 @@ body .physton-chatgpt-prompt .paio-gen-source-item:has(input:focus-visible){
 /* 模型名过长时省略，避免撑破弹窗 */
 body .physton-chatgpt-prompt .paio-gen-source-item>span{
   min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+}
+/* 生成按钮行：用时文字 + 按钮同一行右对齐 */
+body .physton-chatgpt-prompt .paio-gen-actions{
+  display:flex; align-items:center; justify-content:flex-end; gap:10px;
+}
+body .physton-chatgpt-prompt .paio-gen-elapsed{
+  font-size:12px; line-height:1.4; color:var(--paio-text-muted);
+  white-space:nowrap;
 }
 /* ── 预设管理（切换 / 编辑 / 编辑内容 / 删除确认）（2026-10-21 @TraeCode）
    三个子弹窗共用一个遮罩，层级高于主弹窗内容；点遮罩空白处关闭 */

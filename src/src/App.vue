@@ -34,6 +34,7 @@
                             @update:hide-panel="onUpdateHidePanel(item.id, $event)"
                             v-model:enable-tooltip="enableTooltip"
                             v-model:show-chatgpt-btn="showChatgptBtn"
+                            v-model:show-dedupe-btn="showDedupeBtn"
                             v-model:translate-api="translateApi"
                             :translate-api-config="translateApiConfig"
                             @click:open-settings="onOpenSettings"
@@ -79,6 +80,7 @@
                         v-model:auto-translate-to-english="autoTranslateToEnglish"
                         v-model:enable-tooltip="enableTooltip"
                         v-model:show-chatgpt-btn="showChatgptBtn"
+                        v-model:show-dedupe-btn="showDedupeBtn"
                         v-model:translate-api="translateApi"
                         v-model:tag-complete-file="tagCompleteFile"
                         v-model:only-csv-on-auto="onlyCsvOnAuto"
@@ -307,6 +309,8 @@ export default {
             enableTooltip: true,
             // 【使用Ai生成提示词】按钮的显示开关（主界面工具栏）
             showChatgptBtn: true,
+            // 【去除重复的关键词】按钮的显示开关（主界面工具栏）
+            showDedupeBtn: true,
             tagCompleteFile: '',
             onlyCsvOnAuto: false,
             // 翻译流程：五个方案的开关与顺序（数组顺序 = 尝试顺序）
@@ -591,6 +595,15 @@ export default {
             },
             immediate: false,
         },
+        showDedupeBtn: {
+            handler: function (val, oldVal) {
+                if (!this.startWatchSave) return
+                this.gradioAPI.setData('showDedupeBtn', val).then(data => {
+                }).catch(err => {
+                })
+            },
+            immediate: false,
+        },
         translateApi: {
             handler: function (val, oldVal) {
                 if (!this.startWatchSave) return
@@ -757,6 +770,7 @@ export default {
                 'translateApi',
                 'enableTooltip',
                 'showChatgptBtn',
+                'showDedupeBtn',
                 'tagCompleteFile',
                 'onlyCsvOnAuto',
                 'translateFlow',
@@ -873,6 +887,9 @@ export default {
                 this.updateTippyState()
                 if (data.showChatgptBtn !== null) {
                     this.showChatgptBtn = data.showChatgptBtn
+                }
+                if (data.showDedupeBtn !== null) {
+                    this.showDedupeBtn = data.showDedupeBtn
                 }
                 if (data.translateApi !== null) {
                     this.translateApi = data.translateApi

@@ -166,6 +166,31 @@ export default {
             this.tags = []
             this.updateTags()
         },
+        // 去重：保留首次出现的标签（忽略大小写与首尾空格），换行符（wrap）不受影响
+        onRemoveDuplicateTagsClick() {
+            const seen = new Set()
+            const removed = []
+            this.tags.forEach(tag => {
+                if (tag.type === 'wrap') return
+                const key = String(tag.originalValue || tag.value || '').trim().toLowerCase()
+                if (!key) return
+                if (seen.has(key)) {
+                    removed.push(tag)
+                } else {
+                    seen.add(key)
+                }
+            })
+            if (!removed.length) {
+                this.$toastr.info(this.getLang('remove_duplicates_none'))
+                return
+            }
+            const removedIds = new Set(removed.map(tag => tag.id))
+            this.tags = this.tags.filter(tag => !removedIds.has(tag.id))
+            this.updateTags()
+            this.$toastr.success(
+                this.getLang('remove_duplicates_done').replace('{0}', removed.length)
+            )
+        },
         onClickLoadWebuiPrompt() {
             this.onTextareaChange(true)
         },

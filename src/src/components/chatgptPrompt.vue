@@ -92,7 +92,11 @@
                         </div>
                         <div class="body-line">
                             <div class="line-title"></div>
-                            <div class="line-content text-right">
+                            <div class="line-content text-right paio-gen-actions">
+                                <!-- 生成用时：完成后显示在【生成】按钮左侧 -->
+                                <span class="paio-gen-elapsed" v-if="!genIng && genElapsed > 0">
+                                    {{ getLang('gen_elapsed').replace('{0}', genElapsedText) }}
+                                </span>
                                 <div :class="['common-btn', genIng ? 'is-loading' : 'hover-scale-120']"
                                      :aria-busy="genIng ? 'true' : 'false'"
                                      @click="onGenClick">
@@ -238,6 +242,8 @@ export default {
             promptResult: '',
             saveConfigIng: false,
             genIng: false,
+            // 上次生成耗时（秒），0 = 还没生成过
+            genElapsed: 0,
             // 生成来源：local = models\LLM 里的本地模型；api = 上方 API 配置
             genSource: 'api',
             localModel: '',
@@ -278,6 +284,14 @@ export default {
             const item = this.presets[this.presetEditIndex]
             const name = (item && item.name) || this.getLang('unset_name')
             return this.getLang('preset_use_warning').replace('{0}', name)
+        },
+        // 用时展示：不足 1 分钟显示 12.3 秒，超过则显示 1 分 05 秒
+        genElapsedText() {
+            const total = this.genElapsed
+            if (total < 60) return total.toFixed(1) + ' ' + this.getLang('unit_second')
+            const m = Math.floor(total / 60)
+            const s = total - m * 60
+            return m + ' ' + this.getLang('unit_minute') + ' ' + s.toFixed(0) + ' ' + this.getLang('unit_second')
         },
     },
     mounted() {
@@ -408,6 +422,8 @@ export default {
             this.imageDesc = this.imageDesc.trim()
             if (!this.imageDesc) return this.$refs.imageDesc.focus()
             this.genIng = true
+            this.genElapsed = 0
+            const startedAt = Date.now()
             // 预设 = system 指令，图片描述 = user 输入。
             // 这样 API 与本地模型两条路径语义一致（此前两条都是 user，API 侧靠自动合并、
             // 本地侧靠后端拼接，行为不统一）。
@@ -425,6 +441,8 @@ export default {
             request.then(res => {
                 if (res.success) {
                     this.promptResult = res.result
+                    // 成功后记录本次生成耗时（秒，保留一位小数）
+                    this.genElapsed = (Date.now() - startedAt) / 1000
                 } else {
                     this.$toastr.error(res.message || 'error')
                 }

@@ -69,6 +69,10 @@
                 <div class="prompt-header-extend">
                     <div class="extend-content">
                         <div class="extend-btn-group">
+                            <div class="extend-btn-item" v-if="showDedupeBtn" v-tooltip="getLang('remove_duplicates')"
+                                 @click="onRemoveDuplicateTagsClick">
+                                <icon-svg class="hover-scale-120" name="dedupe"/>
+                            </div>
                             <div class="extend-btn-item" v-tooltip="getLang('copy_keywords_to_clipboard')"
                                  @click="onCopyAllTagsClick">
                                 <icon-svg class="hover-scale-120" name="copy"/>
@@ -563,8 +567,13 @@ export default {
             type: Boolean,
             default: true,
         },
-        // 是否显示【使用Ai生成提示词】按钮（设置 → 通用设置里可切换）
+        // 是否显示【使用Ai生成提示词】按钮（设置 → 控件显示设置里可切换）
         showChatgptBtn: {
+            type: Boolean,
+            default: true,
+        },
+        // 是否显示【去除重复的关键词】按钮（设置 → 控件显示设置里可切换）
+        showDedupeBtn: {
             type: Boolean,
             default: true,
         },

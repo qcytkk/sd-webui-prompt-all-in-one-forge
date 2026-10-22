@@ -172,6 +172,38 @@
                                         </div>
                                     </div>
                                 </div>
+                                <!-- 显示/隐藏主界面工具栏的【使用Ai生成提示词】按钮：已移至【控件显示设置】 -->
+                            </div>
+                        </div>
+
+                        <!-- 控件显示设置：主界面控件开关（显隐类），从【通用设置】移入 -->
+                        <div v-show="activeTab === 'control'" class="settings-tab-pane">
+                            <!-- 去除重复的关键词：显示/隐藏主界面工具栏按钮 -->
+                            <div class="settings-section">
+                                <div class="setting-line">
+                                    <div class="line-text">
+                                        <div class="line-title">{{ getLang('show_dedupe_btn') }}</div>
+                                        <div class="line-desc">{{ getLang('show_dedupe_btn_desc') }}</div>
+                                    </div>
+                                    <div class="line-content">
+                                        <div class="paio-pill" role="radiogroup" :aria-label="getLang('show_dedupe_btn')">
+                                            <label class="paio-pill-btn">
+                                                <input class="paio-pill-input" type="radio" name="paio-show-dedupe-btn"
+                                                       :checked="!showDedupeBtn"
+                                                       @change="$emit('update:showDedupeBtn', false)">
+                                                <span>{{ getLang('toggle_off') }}</span>
+                                            </label>
+                                            <label class="paio-pill-btn">
+                                                <input class="paio-pill-input" type="radio" name="paio-show-dedupe-btn"
+                                                       :checked="showDedupeBtn"
+                                                       @change="$emit('update:showDedupeBtn', true)">
+                                                <span>{{ getLang('toggle_on') }}</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="settings-section">
                                 <!-- 显示/隐藏主界面工具栏的【使用Ai生成提示词】按钮 -->
                                 <div class="setting-line">
                                     <div class="line-text">
@@ -196,7 +228,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- 功能区一：隐藏默认输入框（原为主界面工具栏的图标开关，按要求移入；按提示词框各自独立） -->
+                            <!-- 功能区一：隐藏默认输入框（按提示词框各自独立） -->
                             <div class="settings-section">
                                 <div class="settings-section-title" role="heading" aria-level="3">{{ getLang('hide_default_input_box') }}</div>
                                 <div class="setting-line" v-for="item in promptItems" :key="'hide-' + item.id">
@@ -376,6 +408,7 @@ export default {
         autoTranslateToEnglish: {type: Boolean, default: false},
         enableTooltip: {type: Boolean, default: true},
         showChatgptBtn: {type: Boolean, default: true},
+        showDedupeBtn: {type: Boolean, default: true},
         translateApi: {type: [String, Object], default: ''},
         tagCompleteFile: {type: String, default: ''},
         onlyCsvOnAuto: {type: Boolean, default: false},
@@ -401,7 +434,7 @@ export default {
         'update:visible', 'update:theme', 'update:languageCode',
         'update:promptOption',
         'update:autoTranslate', 'update:autoTranslateToLocal', 'update:autoTranslateToEnglish',
-        'update:enableTooltip', 'update:showChatgptBtn', 'update:translateApi', 'update:tagCompleteFile',
+        'update:enableTooltip', 'update:showChatgptBtn', 'update:showDedupeBtn', 'update:translateApi', 'update:tagCompleteFile',
         'update:onlyCsvOnAuto', 'update:groupTagsTranslate', 'update:translateFlow',
         'update:autoRemoveSpace', 'update:autoRemoveLastComma', 'update:autoKeepWeightZero',
         'update:autoKeepWeightOne', 'update:autoBreakBeforeWrap', 'update:autoBreakAfterWrap',
@@ -416,6 +449,7 @@ export default {
             activeTab: 'common',
             tabs: [
                 {key: 'common', icon: 'setting', labelKey: 'setting'},
+                {key: 'control', icon: 'input', labelKey: 'control_display'},
                 {key: 'translate', icon: 'api', labelKey: 'translate_settings'},
                 {key: 'format', icon: 'format', labelKey: 'prompt_format'},
                 {key: 'blacklist', icon: 'blacklist', labelKey: 'keywords_blacklist'},
