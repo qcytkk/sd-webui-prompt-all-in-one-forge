@@ -62,24 +62,20 @@ def import_error():
 
 
 def lora_new_enabled():
-    """sd_forge_lora_new 是否存在且已启用（决定空闲卸载计时归属哪一方）。"""
-    try:
-        from modules import extensions as webui_extensions
-        listed = webui_extensions.list_extensions()
-    except Exception:
-        listed = None
-    if not listed:
-        return sibling_extension_dir().is_dir()
-    for ext in listed:
-        path = str(getattr(ext, 'path', '') or '').replace('\\', '/')
-        if path.rstrip('/').endswith('/' + SIBLING_EXTENSION):
-            return bool(getattr(ext, 'enabled', True))
-        # 目录名可能被改过（例如带分支后缀），按路径判定优先于按名字判定
-    for ext in listed:
-        name = str(getattr(ext, 'name', '') or '')
-        if name == SIBLING_EXTENSION:
-            return bool(getattr(ext, 'enabled', True))
-    return False
+    """sd_forge_lora_new 是否存在且已启用（决定空闲卸载计时归属哪一方）。
+
+    注意：**不要**用 `modules.extensions.list_extensions()` —— 它会扫描整个
+    extensions 目录、逐个读取扩展的 git 信息，在启动早期/独立线程里调用会长时间阻塞
+    （实测会让整个 WebUI 卡死）。这里改成纯文件系统判断：
+    目录存在 + 没被 `disabled` 标记（WebUI 停用扩展就是在目录里放一个 disabled 文件）。
+    """
+    ext = sibling_extension_dir()
+    if not ext.is_dir():
+        return False
+    # WebUI 停用扩展的方式：在扩展目录内创建名为 `disabled` 的文件
+    if (ext / 'disabled').exists():
+        return False
+    return True
 
 
 def owner():

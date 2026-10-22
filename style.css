@@ -248,6 +248,15 @@ body .physton-packages-state .btn-packages-install:hover,
 body .physton-paste-popup .paste-submit:hover{
   background:var(--paio-brand)!important; border-color:var(--paio-brand)!important; color:var(--paio-on-brand)!important;
 }
+/* 生成按钮忙碌态：不可点、去掉悬停缩放，保持品牌蓝底白字 */
+body .physton-chatgpt-prompt .common-btn.is-loading{
+  cursor:progress!important; opacity:1!important;
+  background:var(--paio-brand-strong)!important; border-color:var(--paio-brand-strong)!important;
+  color:var(--paio-on-brand)!important;
+}
+body .physton-chatgpt-prompt .common-btn.is-loading:hover{
+  background:var(--paio-brand-strong)!important; border-color:var(--paio-brand-strong)!important;
+}
 body .physton-prompt-translate-setting .setting-btns>div:hover,
 body .physton-prompt-blacklist .setting-btns>div:hover,
 body .physton-prompt-hotkey .setting-btns>div:hover{background:var(--paio-surface)!important;}
@@ -1041,4 +1050,103 @@ body .physton-chatgpt-prompt .paio-gen-source-item:has(input:focus-visible){
 /* 模型名过长时省略，避免撑破弹窗 */
 body .physton-chatgpt-prompt .paio-gen-source-item>span{
   min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+}
+/* ── 预设管理（切换 / 编辑 / 编辑内容 / 删除确认）（2026-10-21 @TraeCode）
+   三个子弹窗共用一个遮罩，层级高于主弹窗内容；点遮罩空白处关闭 */
+body .physton-chatgpt-prompt .paio-preset-link{margin-left:12px;}
+body .physton-chatgpt-prompt .paio-preset-mask{
+  position:fixed; top:0; left:0; right:0; bottom:0;
+  z-index:3100; display:flex; align-items:center; justify-content:center;
+  background:rgba(0,0,0,.45);
+}
+body .physton-chatgpt-prompt .paio-preset-dialog{
+  width:420px; max-width:92vw; max-height:80vh;
+  display:flex; flex-direction:column;
+  padding:16px 18px; box-sizing:border-box;
+  background:var(--paio-surface); color:var(--paio-text);
+  border:1px solid var(--paio-border); border-radius:var(--paio-radius);
+  box-shadow:var(--paio-shadow-dialog);
+}
+body .physton-chatgpt-prompt .paio-preset-dialog-wide{width:560px;}
+body .physton-chatgpt-prompt .paio-preset-dialog-title{
+  font-size:14px; font-weight:600; margin-bottom:12px; flex:0 0 auto;
+}
+/* 列表：内部滚动，条目多时不撑破弹窗 */
+body .physton-chatgpt-prompt .paio-preset-list{
+  flex:1 1 auto; min-height:0; overflow-y:auto;
+  display:flex; flex-direction:column; gap:8px;
+  padding-right:2px;
+}
+body .physton-chatgpt-prompt .paio-preset-row{
+  display:flex; align-items:center; gap:8px;
+  padding:8px 10px; box-sizing:border-box;
+  background:var(--paio-surface-2);
+  border:1px solid var(--paio-border); border-radius:var(--paio-radius-sm);
+}
+body .physton-chatgpt-prompt .paio-preset-drag{
+  flex:0 0 auto; color:var(--paio-text-muted);
+  font-size:14px; line-height:1; letter-spacing:-1px;
+  cursor:grab; user-select:none;
+}
+body .physton-chatgpt-prompt .paio-preset-drag:active{cursor:grabbing;}
+body .physton-chatgpt-prompt .paio-preset-row-name{
+  flex:1 1 auto; min-width:0;
+  font-size:13px; color:var(--paio-text);
+  overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+}
+/* 按钮：默认次要样式，主要操作用品牌色，危险操作用红色 */
+body .physton-chatgpt-prompt .paio-preset-btn{
+  flex:0 0 auto;
+  height:28px; padding:0 12px; box-sizing:border-box;
+  display:inline-flex; align-items:center; justify-content:center;
+  background:var(--paio-surface); color:var(--paio-text);
+  border:1px solid var(--paio-border); border-radius:var(--paio-radius-sm);
+  font:inherit; font-size:13px; line-height:1; white-space:nowrap;
+  cursor:pointer; transition:background .18s ease, border-color .18s ease, color .18s ease;
+}
+body .physton-chatgpt-prompt .paio-preset-btn:hover{
+  background:var(--paio-surface-2); border-color:var(--paio-brand);
+}
+body .physton-chatgpt-prompt .paio-preset-btn-primary{
+  background:var(--paio-brand-strong); border-color:var(--paio-brand-strong);
+  color:var(--paio-on-brand); font-weight:600;
+}
+body .physton-chatgpt-prompt .paio-preset-btn-primary:hover{
+  background:var(--paio-brand); border-color:var(--paio-brand); color:var(--paio-on-brand);
+}
+/* 危险操作（删除）：红色，亮暗主题下对比度均 ≥ 4.5:1 */
+body .physton-chatgpt-prompt .paio-preset-btn-danger{
+  background:#dc2626; border-color:#dc2626; color:#fff; font-weight:600;
+}
+body .physton-chatgpt-prompt .paio-preset-btn-danger:hover{
+  background:#b91c1c; border-color:#b91c1c; color:#fff;
+}
+body .physton-chatgpt-prompt .paio-preset-empty{
+  padding:16px 0; text-align:center;
+  font-size:13px; color:var(--paio-text-muted);
+}
+body .physton-chatgpt-prompt .paio-preset-warning{
+  font-size:13px; line-height:1.6; color:var(--paio-text);
+  padding:4px 0 6px;
+}
+body .physton-chatgpt-prompt .paio-preset-dialog-footer{
+  flex:0 0 auto;
+  display:flex; align-items:center; justify-content:flex-end; gap:8px;
+  margin-top:14px; padding-top:12px;
+  border-top:1px solid var(--paio-border);
+}
+/* 编辑内容：名称输入框 + 内容文本域 */
+body .physton-chatgpt-prompt .paio-preset-field{
+  display:flex; flex-direction:column; gap:6px; margin-bottom:12px;
+}
+body .physton-chatgpt-prompt .paio-preset-field:last-of-type{margin-bottom:0;}
+body .physton-chatgpt-prompt .paio-preset-label{
+  font-size:13px; font-weight:500; color:var(--paio-text);
+}
+body .physton-chatgpt-prompt .paio-preset-input{
+  width:100%; height:28px; padding:0 8px; box-sizing:border-box;
+}
+body .physton-chatgpt-prompt .paio-preset-textarea{
+  width:100%; height:180px; padding:8px; box-sizing:border-box;
+  resize:vertical; line-height:1.5;
 }

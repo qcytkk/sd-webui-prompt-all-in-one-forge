@@ -62,6 +62,8 @@
                             <div class="line-title"></div>
                             <div class="line-content text-right">
                                 <a href="javascript:" @click="onRestoreClick">{{ getLang('restore_to_default') }}</a>
+                                <a href="javascript:" class="paio-preset-link" @click="openPresetSwitch">{{ getLang('preset_switch') }}</a>
+                                <a href="javascript:" class="paio-preset-link" @click="openPresetEdit">{{ getLang('preset_edit') }}</a>
                             </div>
                         </div>
                         <div class="body-line">
@@ -91,9 +93,11 @@
                         <div class="body-line">
                             <div class="line-title"></div>
                             <div class="line-content text-right">
-                                <div class="common-btn hover-scale-120" @click="onGenClick">
+                                <div :class="['common-btn', genIng ? 'is-loading' : 'hover-scale-120']"
+                                     :aria-busy="genIng ? 'true' : 'false'"
+                                     @click="onGenClick">
                                     <icon-svg v-if="genIng" name="loading"/>
-                                    <template v-else>{{ getLang('generate') }}</template>
+                                    <span>{{ genIng ? getLang('generating') : getLang('generate') }}</span>
                                 </div>
                             </div>
                         </div>
@@ -123,6 +127,90 @@
                 </div>
             </div>
         </div>
+        <!-- 预设管理弹窗（切换 / 编辑 / 编辑内容 / 删除确认）：
+             都挂在外层遮罩内、点自身不关闭；层级高于主弹窗内容区 -->
+        <div class="paio-preset-mask" v-if="presetDialog" @click.stop.self="closePresetDialog">
+            <!-- 切换预设 -->
+            <div class="paio-preset-dialog" v-if="presetDialog === 'switch'">
+                <div class="paio-preset-dialog-title">{{ getLang('preset_switch') }}</div>
+                <div class="paio-preset-list" v-if="presets.length">
+                    <div class="paio-preset-row" v-for="(item, index) in presets" :key="item.id">
+                        <div class="paio-preset-row-name" :title="item.name">{{ item.name || getLang('unset_name') }}</div>
+                        <button type="button" class="paio-preset-btn" @click="onPresetUseClick(index)">
+                            {{ getLang('use') }}
+                        </button>
+                    </div>
+                </div>
+                <div class="paio-preset-empty" v-else>{{ getLang('preset_empty') }}</div>
+                <div class="paio-preset-dialog-footer">
+                    <button type="button" class="paio-preset-btn" @click="closePresetDialog">{{ getLang('btn_cancel') }}</button>
+                </div>
+            </div>
+            <!-- 编辑预设：列表 + 拖拽排序 -->
+            <div class="paio-preset-dialog paio-preset-dialog-wide" v-if="presetDialog === 'edit'">
+                <div class="paio-preset-dialog-title">{{ getLang('preset_edit') }}</div>
+                <div class="paio-preset-list" ref="presetEditList" v-if="presets.length">
+                    <div class="paio-preset-row" v-for="(item, index) in presets" :key="item.id">
+                        <div class="paio-preset-drag" :title="getLang('preset_edit')">⋮⋮</div>
+                        <div class="paio-preset-row-name" :title="item.name">{{ item.name || getLang('unset_name') }}</div>
+                        <button type="button" class="paio-preset-btn" @click="openPresetContentEditor(index)">
+                            {{ getLang('preset_edit_content') }}
+                        </button>
+                        <button type="button" class="paio-preset-btn paio-preset-btn-danger"
+                                @click="askPresetDelete(index)">
+                            {{ getLang('preset_delete') }}
+                        </button>
+                    </div>
+                </div>
+                <div class="paio-preset-empty" v-else>{{ getLang('preset_empty') }}</div>
+                <div class="paio-preset-dialog-footer">
+                    <button type="button" class="paio-preset-btn paio-preset-btn-primary" @click="openPresetCreator">
+                        {{ getLang('preset_add') }}
+                    </button>
+                    <button type="button" class="paio-preset-btn" @click="closePresetDialog">{{ getLang('btn_cancel') }}</button>
+                </div>
+            </div>
+            <!-- 编辑内容 -->
+            <div class="paio-preset-dialog paio-preset-dialog-wide" v-if="presetDialog === 'content'">
+                <div class="paio-preset-dialog-title">{{ presetEditingIndex < 0 ? getLang('preset_add') : getLang('preset_edit_content') }}</div>
+                <div class="paio-preset-field">
+                    <div class="paio-preset-label">{{ getLang('preset_name') }}</div>
+                    <input type="text" class="paio-preset-input" v-model="presetDraftName">
+                </div>
+                <div class="paio-preset-field">
+                    <div class="paio-preset-label">{{ getLang('preset_content') }}</div>
+                    <textarea class="paio-preset-textarea" v-model="presetDraftContent"></textarea>
+                </div>
+                <div class="paio-preset-dialog-footer">
+                    <button type="button" class="paio-preset-btn" @click="closePresetDialog">{{ getLang('btn_cancel') }}</button>
+                    <button type="button" class="paio-preset-btn paio-preset-btn-primary" @click="onPresetSaveClick">
+                        {{ getLang('btn_confirm') }}
+                    </button>
+                </div>
+            </div>
+            <!-- 删除确认 -->
+            <div class="paio-preset-dialog" v-if="presetDialog === 'delete'">
+                <div class="paio-preset-dialog-title">{{ getLang('preset_delete') }}</div>
+                <div class="paio-preset-warning">{{ presetDeleteWarningText }}</div>
+                <div class="paio-preset-dialog-footer">
+                    <button type="button" class="paio-preset-btn" @click="closePresetDialog">{{ getLang('btn_cancel') }}</button>
+                    <button type="button" class="paio-preset-btn paio-preset-btn-danger" @click="onPresetDeleteConfirm">
+                        {{ getLang('preset_confirm_delete') }}
+                    </button>
+                </div>
+            </div>
+            <!-- 使用确认 -->
+            <div class="paio-preset-dialog" v-if="presetDialog === 'use'">
+                <div class="paio-preset-dialog-title">{{ getLang('use') }}</div>
+                <div class="paio-preset-warning">{{ presetUseWarningText }}</div>
+                <div class="paio-preset-dialog-footer">
+                    <button type="button" class="paio-preset-btn" @click="closePresetDialog">{{ getLang('btn_cancel') }}</button>
+                    <button type="button" class="paio-preset-btn paio-preset-btn-primary" @click="onPresetUseConfirm">
+                        {{ getLang('btn_confirm') }}
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
     </Transition>
 </template>
@@ -130,6 +218,7 @@
 import LanguageMixin from "@/mixins/languageMixin";
 import IconSvg from "@/components/iconSvg.vue";
 import common from "@/utils/common";
+import Sortable from "sortablejs";
 
 export default {
     name: 'ChatgptPrompt',
@@ -152,6 +241,14 @@ export default {
             // 生成来源：local = models\LLM 里的本地模型；api = 上方 API 配置
             genSource: 'api',
             localModel: '',
+            // 预设管理：列表 + 当前打开的子弹窗（switch / edit / content / delete / use）
+            presets: [],
+            presetDialog: '',
+            presetEditIndex: -1,
+            presetEditingIndex: -1,
+            presetDraftName: '',
+            presetDraftContent: '',
+            presetSortable: null,
         }
     },
     emits: ['use'],
@@ -170,11 +267,24 @@ export default {
             })
             return name || modelId || this.getLang('unnamed_model')
         },
+        // 删除确认文案里的预设名
+        presetDeleteWarningText() {
+            const item = this.presets[this.presetEditIndex]
+            const name = (item && item.name) || this.getLang('unset_name')
+            return this.getLang('preset_delete_warning').replace('{0}', name)
+        },
+        // 使用确认文案里的预设名
+        presetUseWarningText() {
+            const item = this.presets[this.presetEditIndex]
+            const name = (item && item.name) || this.getLang('unset_name')
+            return this.getLang('preset_use_warning').replace('{0}', name)
+        },
     },
     mounted() {
     },
     beforeUnmount() {
         this.setScrollLock(false)
+        this.destroyPresetSortable()
     },
     methods: {
         // API 地址 / 模型 id 两行的标题改用中文可读文案（其余参数保持接口原英文名）
@@ -298,8 +408,11 @@ export default {
             this.imageDesc = this.imageDesc.trim()
             if (!this.imageDesc) return this.$refs.imageDesc.focus()
             this.genIng = true
+            // 预设 = system 指令，图片描述 = user 输入。
+            // 这样 API 与本地模型两条路径语义一致（此前两条都是 user，API 侧靠自动合并、
+            // 本地侧靠后端拼接，行为不统一）。
             let messages = [
-                {'role': 'user', 'content': this.chatPreset},
+                {'role': 'system', 'content': this.chatPreset},
                 {'role': 'user', 'content': this.imageDesc},
             ]
             let configs = {}
@@ -334,6 +447,145 @@ export default {
         onUseClick() {
             this.$emit('use', this.promptResult)
             this.close()
+        },
+        // ── 预设管理 ────────────────────────────────────────────────
+        // 存储键 chatgpt_presets：数组 [{id, name, content}]，数组顺序即显示顺序
+        loadPresets() {
+            return this.gradioAPI.getData('chatgpt_presets').then(res => {
+                let list = res
+                if (typeof list === 'string') {
+                    try {
+                        list = JSON.parse(list)
+                    } catch (e) {
+                        list = []
+                    }
+                }
+                if (!Array.isArray(list)) list = []
+                this.presets = list.filter(item => item && typeof item === 'object').map((item, i) => ({
+                    id: item.id || ('p' + Date.now() + '_' + i),
+                    name: item.name || '',
+                    content: item.content || '',
+                }))
+            }).catch(() => {
+                this.presets = []
+            })
+        },
+        savePresets() {
+            return this.gradioAPI.setData('chatgpt_presets', this.presets)
+        },
+        closePresetDialog() {
+            this.presetDialog = ''
+            this.presetEditIndex = -1
+            this.presetEditingIndex = -1
+            this.presetDraftName = ''
+            this.presetDraftContent = ''
+            this.destroyPresetSortable()
+        },
+        // 切换预设
+        openPresetSwitch() {
+            this.loadPresets().then(() => {
+                this.presetDialog = 'switch'
+            })
+        },
+        onPresetUseClick(index) {
+            this.presetEditIndex = index
+            this.presetDialog = 'use'
+        },
+        onPresetUseConfirm() {
+            const item = this.presets[this.presetEditIndex]
+            if (!item) return this.closePresetDialog()
+            // 清空当前内容后用预设内容覆盖（textarea 受控于 chatPreset）
+            this.chatPreset = item.content || ''
+            this._saveChatPreset()
+            this.$toastr.success(
+                this.getLang('preset_applied').replace('{0}', item.name || this.getLang('unset_name'))
+            )
+            this.closePresetDialog()
+        },
+        // 编辑预设
+        openPresetEdit() {
+            this.loadPresets().then(() => {
+                this.presetDialog = 'edit'
+                this.$nextTick(() => this.initPresetSortable())
+            })
+        },
+        initPresetSortable() {
+            this.destroyPresetSortable()
+            const el = this.$refs.presetEditList
+            if (!el) return
+            this.presetSortable = Sortable.create(el, {
+                handle: '.paio-preset-drag',
+                animation: 150,
+                onEnd: evt => {
+                    if (evt.oldIndex === evt.newIndex) return
+                    const list = this.presets.slice()
+                    const moved = list.splice(evt.oldIndex, 1)[0]
+                    list.splice(evt.newIndex, 0, moved)
+                    this.presets = list
+                    this.savePresets()
+                },
+            })
+        },
+        destroyPresetSortable() {
+            if (this.presetSortable) {
+                this.presetSortable.destroy()
+                this.presetSortable = null
+            }
+        },
+        openPresetContentEditor(index) {
+            const item = this.presets[index]
+            if (!item) return
+            this.presetEditingIndex = index
+            this.presetDraftName = item.name || ''
+            this.presetDraftContent = item.content || ''
+            this.presetDialog = 'content'
+        },
+        // 新增预设：以当前预设输入框内容作为初始内容
+        openPresetCreator() {
+            this.presetEditingIndex = -1
+            this.presetDraftName = ''
+            this.presetDraftContent = this.chatPreset || ''
+            this.presetDialog = 'content'
+        },
+        onPresetSaveClick() {
+            const name = (this.presetDraftName || '').trim()
+            const content = this.presetDraftContent || ''
+            if (this.presetEditingIndex < 0) {
+                // 新增
+                this.presets.push({
+                    id: 'p' + Date.now(),
+                    name: name,
+                    content: content,
+                })
+            } else {
+                // 编辑已有
+                const item = this.presets[this.presetEditingIndex]
+                if (!item) return this.closePresetDialog()
+                item.name = name
+                item.content = content
+            }
+            this.savePresets()
+            this.$toastr.success(this.getLang('success'))
+            this.presetDialog = 'edit'
+            this.presetEditingIndex = -1
+            this.presetDraftName = ''
+            this.presetDraftContent = ''
+            this.$nextTick(() => this.initPresetSortable())
+        },
+        askPresetDelete(index) {
+            if (!this.presets[index]) return
+            this.presetEditIndex = index
+            this.presetDialog = 'delete'
+        },
+        onPresetDeleteConfirm() {
+            if (this.presetEditIndex < 0) return this.closePresetDialog()
+            this.presets.splice(this.presetEditIndex, 1)
+            this.savePresets()
+            this.$toastr.success(this.getLang('success'))
+            this.presetEditIndex = -1
+            // 删完回到列表；若已空则关闭
+            this.presetDialog = this.presets.length ? 'edit' : ''
+            this.$nextTick(() => this.initPresetSortable())
         },
     },
 }

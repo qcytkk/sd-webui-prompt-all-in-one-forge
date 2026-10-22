@@ -240,7 +240,8 @@ def register(app):
 
     @app.post('/physton_prompt/local_llm/gen')
     async def _llm_gen(request: Request):
-        # 【使用Ai生成提示词】走本地模型时的推理入口：system = 预设，user = 图片描述
+        # 【使用Ai生成提示词】走本地模型时的推理入口：
+        #   system = 前端「预设」框（生成指令），user = 前端「图片描述」框
         from scripts.physton_prompt import local_llm
         if local_llm.get_service() is None:
             return {'success': False, 'message': _t('llm_not_enabled_plugin')}
@@ -256,12 +257,18 @@ def register(app):
                 system_prompt = content
             elif content:
                 user_parts.append(content)
+        # 预设为空时必须给一句中性指令：lna_llm_service.run_inference 在 system 为空串时
+        # 会回落到「只输出 JSON」的**翻译**提示词，那会让生成结果变成 JSON。
+        if not system_prompt.strip():
+            system_prompt = '根据用户给出的画面描述，生成一行 Stable Diffusion 英文提示词标签，用逗号分隔。'
         res = await run_in_threadpool(
             local_llm.run_inference, '\n\n'.join(user_parts), system_prompt
         )
         if not res.get('ok'):
             return {'success': False, 'message': res.get('error') or 'Local LLM inference failed'}
-        return {'success': True, 'result': str(res.get('text') or '').strip()}
+        # 与 API 路径一致：清洗推理过程 / 前缀 / 代码块 / 重复标签
+        from scripts.physton_prompt.prompt_clean import sanitize_tags
+        return {'success': True, 'result': sanitize_tags(res.get('text'))}
 
     @app.get('/physton_prompt/local_llm/runtime_download_status')
     async def _llm_runtime_download_status():
