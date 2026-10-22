@@ -120,18 +120,18 @@
                                             <icon-svg name="refresh" :class="{'is-spinning': machineDictLoading}"/>
                                             <span>{{ getLang('refresh') }}</span>
                                         </button>
-                                        <button type="button" class="paio-btn" :disabled="!machineDict.count"
-                                                @click="exportMachineDict">
-                                            <icon-svg name="unfold"/>
-                                            <span>{{ getLang('machine_dict_export') }}</span>
-                                        </button>
-                                        <button type="button" class="paio-btn" :disabled="machineDictClearing || !machineDict.count"
-                                                @click="clearMachineDict">
-                                            <icon-svg v-if="machineDictClearing" name="loading" class="is-spinning"/>
-                                            <span>{{ getLang('machine_dict_clear') }}</span>
+                                        <button type="button" class="paio-btn" @click="openDictEditor">
+                                            <icon-svg name="edit"/>
+                                            <span>{{ getLang('machine_dict_edit') }}</span>
                                         </button>
                                     </div>
-                                    <div class="line-desc">{{ getLang('machine_dict_file_hint') }}{{ machineDict.file }}</div>
+                                    <div class="paio-dict-file-row">
+                                        <span class="line-desc">{{ getLang('machine_dict_file_hint') }}{{ machineDict.file }}</span>
+                                        <button type="button" class="paio-btn" @click="openMachineDictFolder">
+                                            <icon-svg name="folder"/>
+                                            <span>{{ getLang('machine_dict_open_folder') }}</span>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -321,28 +321,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- div 6：本地翻译测试（与连网翻译测试同款两栏 + 测试按钮） -->
-                        <div class="setting-line paio-stack">
-                            <div class="line-text">
-                                <div class="line-title">{{ getLang('llm_local_test') }}</div>
-                            </div>
-                            <div class="line-content">
-                                <div class="paio-side-block">
-                                    <div class="paio-test-pair">
-                                        <textarea class="test-input" :aria-label="getLang('llm_local_test')" v-model="llmTestText"></textarea>
-                                        <textarea class="test-input" :aria-label="getLang('translate_result')" v-model="llmTranslatedText"></textarea>
-                                    </div>
-                                    <div class="paio-test-actions">
-                                        <div class="translate-error" v-if="llmTestError">{{ llmTestError }}</div>
-                                        <div class="hover-scale-120 test-btn" @click="onLLMTestClick">
-                                            <icon-svg v-if="llmTesting" name="loading"/>
-                                            <template v-else>{{ getLang('test') }}</template>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- div 7：AI翻译提示词（模型需要明确的目标语言与输出格式约束） -->
+                        <!-- div 6：AI翻译提示词（模型需要明确的目标语言与输出格式约束） -->
                         <div class="setting-line paio-stack">
                             <div class="line-text">
                                 <div class="line-title">{{ getLang('llm_prompt_title') }}</div>
@@ -367,6 +346,27 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- div 7：本地翻译测试（与连网翻译测试同款两栏 + 测试按钮） -->
+                        <div class="setting-line paio-stack">
+                            <div class="line-text">
+                                <div class="line-title">{{ getLang('llm_local_test') }}</div>
+                            </div>
+                            <div class="line-content">
+                                <div class="paio-side-block">
+                                    <div class="paio-test-pair">
+                                        <textarea class="test-input" :aria-label="getLang('llm_local_test')" v-model="llmTestText"></textarea>
+                                        <textarea class="test-input" :aria-label="getLang('translate_result')" v-model="llmTranslatedText"></textarea>
+                                    </div>
+                                    <div class="paio-test-actions">
+                                        <div class="translate-error" v-if="llmTestError">{{ llmTestError }}</div>
+                                        <div class="hover-scale-120 test-btn" @click="onLLMTestClick">
+                                            <icon-svg v-if="llmTesting" name="loading"/>
+                                            <template v-else>{{ getLang('test') }}</template>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <!-- div 8：运行状态提示（未启用插件 / 未选模型 / 加载失败） -->
                         <div class="setting-line" v-if="llmHint">
                             <div class="line-text">
@@ -381,6 +381,104 @@
                             </div>
                             <div class="line-content"></div>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 【机翻词典】编辑弹窗：列出全部词条，支持修改译文 / 删除。
+                 锁定模式：只可通过右上角关闭或底部【关闭】退出，避免误触丢失编辑内容 -->
+            <div class="paio-dict-mask" v-if="dictEditorVisible" @click.stop>
+                <div class="paio-dict-dialog paio-dict-editor" role="dialog" aria-modal="true"
+                     :aria-label="getLang('machine_dict_edit')">
+                    <div class="paio-dict-header">
+                        <div class="paio-dict-title">{{ getLang('machine_dict_edit') }}</div>
+                        <button type="button" class="paio-icon-btn" :aria-label="getLang('close')"
+                                :title="getLang('close')" @click="closeDictEditor">
+                            <icon-svg name="close"/>
+                        </button>
+                    </div>
+                    <div class="paio-dict-body">
+                        <div class="paio-dict-empty" v-if="dictLoading">
+                            <icon-svg name="loading" class="is-spinning"/>
+                        </div>
+                        <table class="paio-dict-table" v-else-if="dictRows.length">
+                            <thead>
+                            <tr>
+                                <th class="paio-dict-col-index" scope="col">{{ getLang('dict_col_index') }}</th>
+                                <th scope="col">{{ getLang('dict_col_source') }}</th>
+                                <th scope="col">{{ getLang('dict_col_target') }}</th>
+                                <th class="paio-dict-col-actions" scope="col">{{ getLang('dict_col_actions') }}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr v-for="(row, index) in dictRows" :key="index">
+                                <td class="paio-dict-col-index">{{ index + 1 }}</td>
+                                <td class="paio-dict-cell">{{ row.source }}</td>
+                                <td class="paio-dict-cell">{{ row.target }}</td>
+                                <td class="paio-dict-col-actions">
+                                    <button type="button" class="paio-btn" @click="openDictEdit(row)">
+                                        <span>{{ getLang('dict_action_edit') }}</span>
+                                    </button>
+                                    <button type="button" class="paio-btn is-danger" @click="openDictDelete(row)">
+                                        <span>{{ getLang('dict_action_delete') }}</span>
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="paio-dict-empty" v-else>{{ getLang('machine_dict_empty') }}</div>
+                    </div>
+                    <div class="paio-dict-footer">
+                        <button type="button" class="paio-btn" @click="closeDictEditor">
+                            <span>{{ getLang('close') }}</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- 【机翻词典】二级弹窗：修改译文 / 删除确认 -->
+            <div class="paio-dict-mask is-top" v-if="dictSubVisible" @click.stop>
+                <div class="paio-dict-dialog paio-dict-sub" role="dialog" aria-modal="true"
+                     :aria-label="dictSubMode === 'delete' ? getLang('dict_action_delete') : getLang('dict_edit_title')">
+                    <div class="paio-dict-header">
+                        <div class="paio-dict-title">
+                            {{ dictSubMode === 'delete' ? getLang('dict_action_delete') : getLang('dict_edit_title') }}
+                        </div>
+                        <button type="button" class="paio-icon-btn" :aria-label="getLang('close')"
+                                :title="getLang('close')" @click="closeDictSub">
+                            <icon-svg name="close"/>
+                        </button>
+                    </div>
+                    <div class="paio-dict-body" v-if="dictSubMode === 'edit'">
+                        <div class="paio-dict-field">
+                            <div class="paio-dict-label">{{ getLang('dict_edit_source') }}</div>
+                            <div class="paio-dict-readonly">{{ dictEditing.source }}</div>
+                        </div>
+                        <div class="paio-dict-field">
+                            <div class="paio-dict-label">{{ getLang('dict_edit_current') }}</div>
+                            <div class="paio-dict-readonly">{{ dictEditing.target }}</div>
+                        </div>
+                        <div class="paio-dict-field">
+                            <label class="paio-dict-label" for="paio-dict-new-target">{{ getLang('dict_edit_new') }}</label>
+                            <input id="paio-dict-new-target" ref="dictNewTarget" type="text" class="paio-dict-input"
+                                   v-model="dictEditing.newTarget" :placeholder="getLang('dict_edit_placeholder')"
+                                   @keydown.enter.prevent="saveDictEdit">
+                        </div>
+                    </div>
+                    <div class="paio-dict-body" v-else>
+                        <p class="paio-dict-confirm">{{ getLang('dict_delete_confirm') }}</p>
+                        <div class="paio-dict-readonly">{{ dictEditing.source }}</div>
+                        <div class="paio-dict-readonly">{{ dictEditing.target }}</div>
+                    </div>
+                    <div class="paio-dict-footer">
+                        <button type="button" class="paio-btn" @click="closeDictSub">
+                            <span>{{ getLang('cancel') }}</span>
+                        </button>
+                        <button type="button"
+                                :class="['paio-btn', dictSubMode === 'delete' ? 'is-danger-solid' : 'is-primary']"
+                                :disabled="dictSaving" :aria-busy="dictSaving ? 'true' : 'false'"
+                                @click="dictSubMode === 'delete' ? confirmDictDelete() : saveDictEdit()">
+                            <icon-svg v-if="dictSaving" name="loading" class="is-spinning"/>
+                            <span>{{ dictSubMode === 'delete' ? getLang('dict_delete_confirm_btn') : getLang('save') }}</span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -430,7 +528,14 @@ export default {
             // 机翻词典：缓存连网 / 本地大模型翻译的对照（storage/machine_dict.csv）
             machineDict: {count: 0, size: 0, file: 'machine_dict.csv'},
             machineDictLoading: false,
-            machineDictClearing: false,
+            // 【编辑词典】弹窗状态：列表 / 二级弹窗（修改译文、删除确认）
+            dictEditorVisible: false,
+            dictLoading: false,
+            dictRows: [],
+            dictSubVisible: false,
+            dictSubMode: '',
+            dictEditing: {from_lang: '', to_lang: '', source: '', target: '', newTarget: ''},
+            dictSaving: false,
 
             // 翻译流程：五张卡片的拖动排序实例（列表数据见 computed.flowList）
             flowSortable: null,
@@ -653,38 +758,132 @@ export default {
         refreshMachineDict() {
             if (this.machineDictLoading) return
             this.machineDictLoading = true
+            const start = Date.now()
+            // 接口通常几十毫秒就返回，图标根本来不及转；这里让忙碌态至少持续 600ms，
+            // 保证「点击 → 图标旋转」的反馈肉眼可见。
+            const done = () => {
+                const left = Math.max(0, 600 - (Date.now() - start))
+                setTimeout(() => {
+                    this.machineDictLoading = false
+                }, left)
+            }
             return this.gradioAPI.machineDictStats().then(res => {
-                this.machineDictLoading = false
-                if (!res) return
-                this.machineDict = {
-                    count: res.count || 0,
-                    size: res.size || 0,
-                    file: res.file || 'machine_dict.csv',
+                if (res) {
+                    this.machineDict = {
+                        count: res.count || 0,
+                        size: res.size || 0,
+                        file: res.file || 'machine_dict.csv',
+                    }
                 }
+                done()
             }).catch(() => {
-                this.machineDictLoading = false
+                done()
             })
         },
-        // 导出机翻词典 CSV（直接用浏览器下载，可自行编辑后再放回 storage/）
-        exportMachineDict() {
-            const url = common.apiUrl() + 'machine_dict/file?t=' + new Date().getTime()
-            const link = document.createElement('a')
-            link.href = url
-            link.download = this.machineDict.file || 'machine_dict.csv'
-            document.body.appendChild(link)
-            link.click()
-            link.remove()
+        openMachineDictFolder() {
+            this.gradioAPI.machineDictOpenFolder().then(res => {
+                if (!res || res.ok === false) {
+                    this.$toastr.error((res && res.error) || this.getLang('failed'))
+                }
+            }).catch(() => {
+                this.$toastr.error(this.getLang('failed'))
+            })
         },
-        clearMachineDict() {
-            if (this.machineDictClearing || !this.machineDict.count) return
-            if (!window.confirm(this.getLang('machine_dict_clear_confirm'))) return
-            this.machineDictClearing = true
-            this.gradioAPI.machineDictClear().then(() => {
-                this.machineDictClearing = false
+        // ── 【编辑词典】列表 ──
+        openDictEditor() {
+            this.dictEditorVisible = true
+            this.loadDictEntries()
+        },
+        closeDictEditor() {
+            this.dictEditorVisible = false
+            this.dictRows = []
+            this.closeDictSub()
+        },
+        loadDictEntries() {
+            if (this.dictLoading) return
+            this.dictLoading = true
+            return this.gradioAPI.machineDictEntries().then(rows => {
+                this.dictLoading = false
+                this.dictRows = rows || []
+            }).catch(() => {
+                this.dictLoading = false
+                this.$toastr.error(this.getLang('failed'))
+            })
+        },
+        // ── 二级弹窗：修改译文 / 删除 ──
+        openDictEdit(row) {
+            this.dictEditing = {
+                from_lang: row.from_lang, to_lang: row.to_lang, source: row.source,
+                target: row.target, newTarget: row.target,
+            }
+            this.dictSubMode = 'edit'
+            this.dictSubVisible = true
+            this.$nextTick(() => {
+                if (this.$refs.dictNewTarget) this.$refs.dictNewTarget.focus()
+            })
+        },
+        openDictDelete(row) {
+            this.dictEditing = {
+                from_lang: row.from_lang, to_lang: row.to_lang, source: row.source,
+                target: row.target, newTarget: row.target,
+            }
+            this.dictSubMode = 'delete'
+            this.dictSubVisible = true
+        },
+        closeDictSub() {
+            this.dictSubVisible = false
+            this.dictSubMode = ''
+        },
+        saveDictEdit() {
+            if (this.dictSaving) return
+            const target = (this.dictEditing.newTarget || '').trim()
+            if (!target) {
+                this.$toastr.error(this.getLang('dict_edit_empty'))
+                return
+            }
+            this.dictSaving = true
+            this.gradioAPI.machineDictUpdate(this.dictEditing, target).then(res => {
+                this.dictSaving = false
+                if (!res || !res.ok) {
+                    this.$toastr.error(this.getLang('failed'))
+                    return
+                }
+                // 就地更新，不重拉列表，避免行位置跳动
+                this.dictRows.forEach(row => {
+                    if (row.source === this.dictEditing.source
+                        && row.from_lang === this.dictEditing.from_lang
+                        && row.to_lang === this.dictEditing.to_lang) {
+                        row.target = target
+                    }
+                })
+                this.closeDictSub()
                 this.refreshMachineDict()
                 this.$toastr.success(this.getLang('success'))
             }).catch(() => {
-                this.machineDictClearing = false
+                this.dictSaving = false
+                this.$toastr.error(this.getLang('failed'))
+            })
+        },
+        confirmDictDelete() {
+            if (this.dictSaving) return
+            this.dictSaving = true
+            this.gradioAPI.machineDictDelete(this.dictEditing).then(res => {
+                this.dictSaving = false
+                if (!res || !res.ok) {
+                    this.$toastr.error(this.getLang('failed'))
+                    return
+                }
+                // 移除后由 v-for 的 index 重新编号，序号自动对齐、不会留空行
+                this.dictRows = this.dictRows.filter(row => !(
+                    row.source === this.dictEditing.source
+                    && row.from_lang === this.dictEditing.from_lang
+                    && row.to_lang === this.dictEditing.to_lang
+                ))
+                this.closeDictSub()
+                this.refreshMachineDict()
+                this.$toastr.success(this.getLang('success'))
+            }).catch(() => {
+                this.dictSaving = false
                 this.$toastr.error(this.getLang('failed'))
             })
         },

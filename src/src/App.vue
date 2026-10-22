@@ -686,12 +686,6 @@ export default {
         },
     },
     mounted() {
-        common.loadCSS('toastr.min.css', 'physton-prompt-toastr', true, true, false)
-        common.loadCSS('tippy.css', 'physton-prompt-tippy', true, true, false)
-        common.loadCSS('vue3-colorpicker.css', 'physton-prompt-vue3-colorpicker', true, true, false)
-        common.loadCSS('animate.min.css', 'physton-prompt-animate', true, true, false)
-        common.loadCSS('main.min.css', 'physton-prompt-main', true)
-
         const urlParams = new URLSearchParams(window.location.search);
         let theme = urlParams.get("__theme")
         if (['dark', 'light'].includes(theme)) {
@@ -725,25 +719,47 @@ export default {
         }, 3000)
 
 
-        this.gradioAPI.getConfig().then(res => {
-            console.log('config:', res)
-            this.languageCode = res.i18n.default
-            this.translateApi = res.translate_apis.default
-            this.translateApis = res.translate_apis.apis
-            this.python = res.python
-            this.packagesState = res.packages_state
-            let languages = {}
-            res.i18n.languages.forEach(lang => {
-                languages[lang.code] = lang
-            })
-            this.languages = languages
-            this.init()
-        }).catch(err => {
-            this.$toastr.error("Connection to backend API service failed. Please manually refresh the webpage. If it still doesn't work, please restart the WebUI.<br/>连接到后台接口服务失败，请手动再刷新一次网页。如果还是不行，请重启WebUI。<br/><br/>" + err.message, globals.shortName, {timeOut: 20000})
-            console.log(err)
-        })
+        this.loadConfig()
     },
     methods: {
+        /**
+         * 拉取后台配置并初始化。
+         *
+         * 页面脚本会比后端的 on_app_started 回调更早执行（Gradio launch 之后、
+         * 各扩展注册路由之前），此时 /physton_prompt/get_config 还是 404，
+         * 一次性请求失败会导致插件整块不渲染、必须手动刷新。
+         * 这里按 1s 间隔重试，最多 15 次（约 15s），覆盖扩展注册路由的耗时。
+         */
+        loadConfig(attempt = 0) {
+            this.gradioAPI.getConfig().then(res => {
+                console.log('config:', res)
+                // 样式也等后台路由可用后再加载：启动瞬间 /physton_prompt/styles 还是 404，
+                // 提前加载会让 <link> 永久失效，表现为插件样式全丢，只能手动刷新恢复。
+                common.loadCSS('toastr.min.css', 'physton-prompt-toastr', true, true, false)
+                common.loadCSS('tippy.css', 'physton-prompt-tippy', true, true, false)
+                common.loadCSS('vue3-colorpicker.css', 'physton-prompt-vue3-colorpicker', true, true, false)
+                common.loadCSS('animate.min.css', 'physton-prompt-animate', true, true, false)
+                common.loadCSS('main.min.css', 'physton-prompt-main', true)
+                this.languageCode = res.i18n.default
+                this.translateApi = res.translate_apis.default
+                this.translateApis = res.translate_apis.apis
+                this.python = res.python
+                this.packagesState = res.packages_state
+                let languages = {}
+                res.i18n.languages.forEach(lang => {
+                    languages[lang.code] = lang
+                })
+                this.languages = languages
+                this.init()
+            }).catch(err => {
+                if (attempt < 15) {
+                    setTimeout(() => this.loadConfig(attempt + 1), 1000)
+                    return
+                }
+                this.$toastr.error("Connection to backend API service failed. Please manually refresh the webpage. If it still doesn't work, please restart the WebUI.<br/>连接到后台接口服务失败，请手动再刷新一次网页。如果还是不行，请重启WebUI。<br/><br/>" + err.message, globals.shortName, {timeOut: 20000})
+                console.log(err)
+            })
+        },
         getLang(key) {
             return common.getLang(key, this.languageCode, this.languages)
         },

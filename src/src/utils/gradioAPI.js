@@ -206,8 +206,24 @@ export default class GradioAPI {
         return (await this.api.post("/machine_dict/add", {from_lang, to_lang, items})).data
     }
 
-    async machineDictClear() {
-        return (await this.api.post("/machine_dict/clear", {})).data
+    async machineDictOpenFolder() {
+        return (await this.api.post("/machine_dict/open_folder", {})).data
+    }
+
+    async machineDictEntries() {
+        return (await this.api.get("/machine_dict/entries")).data.entries
+    }
+
+    async machineDictUpdate(row, target) {
+        return (await this.api.post("/machine_dict/update", {
+            from_lang: row.from_lang, to_lang: row.to_lang, source: row.source, target,
+        })).data
+    }
+
+    async machineDictDelete(row) {
+        return (await this.api.post("/machine_dict/delete", {
+            from_lang: row.from_lang, to_lang: row.to_lang, source: row.source,
+        })).data
     }
 
     // ── 本地AI大模型翻译（与 sd_forge_lora_new 共用 lna_llm_service）──

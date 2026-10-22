@@ -381,12 +381,33 @@ def on_app_started(_: gr.Blocks, app: FastAPI):
     async def _machine_dict_stats():
         return machine_dict.stats()
 
-    @app.get("/physton_prompt/machine_dict/file")
-    async def _machine_dict_file():
-        if not os.path.exists(machine_dict.dict_path()):
-            return Response(status_code=404)
-        return FileResponse(machine_dict.dict_path(), media_type='text/csv',
-                            filename=os.path.basename(machine_dict.dict_path()))
+    @app.post("/physton_prompt/machine_dict/open_folder")
+    async def _machine_dict_open_folder():
+        err = await run_in_threadpool(machine_dict.open_folder)
+        if err:
+            return {'ok': False, 'error': err}
+        return {'ok': True, 'path': machine_dict.storage_dir()}
+
+    @app.get("/physton_prompt/machine_dict/entries")
+    async def _machine_dict_entries():
+        return {'entries': await run_in_threadpool(machine_dict.entries)}
+
+    @app.post("/physton_prompt/machine_dict/update")
+    async def _machine_dict_update(request: Request):
+        data = await request.json()
+        ok = await run_in_threadpool(
+            machine_dict.update, data.get('from_lang'), data.get('to_lang'),
+            data.get('source'), data.get('target')
+        )
+        return {'ok': bool(ok)}
+
+    @app.post("/physton_prompt/machine_dict/delete")
+    async def _machine_dict_delete(request: Request):
+        data = await request.json()
+        ok = await run_in_threadpool(
+            machine_dict.delete, data.get('from_lang'), data.get('to_lang'), data.get('source')
+        )
+        return {'ok': bool(ok)}
 
     @app.post("/physton_prompt/machine_dict/lookup")
     async def _machine_dict_lookup(request: Request):
@@ -403,10 +424,6 @@ def on_app_started(_: gr.Blocks, app: FastAPI):
             machine_dict.add_many, data.get('from_lang'), data.get('to_lang'), data.get('items') or []
         )
         return {'success': True, 'added': added}
-
-    @app.post("/physton_prompt/machine_dict/clear")
-    async def _machine_dict_clear():
-        return {'success': await run_in_threadpool(machine_dict.clear)}
 
     @app.get("/physton_prompt/get_extra_networks")
     async def _get_extra_networks():

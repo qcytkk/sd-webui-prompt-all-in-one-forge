@@ -8,6 +8,8 @@
 """
 import csv
 import os
+import subprocess
+import sys
 import threading
 
 _base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '../', '../'))
@@ -19,10 +21,6 @@ HEADER = ['from_lang', 'to_lang', 'source', 'target']
 _lock = threading.RLock()
 _cache = None
 _cache_sig = None
-
-
-def dict_path():
-    return _dict_path
 
 
 def _norm(text):
@@ -138,9 +136,57 @@ def stats():
     }
 
 
-def clear():
+def storage_dir():
+    return _dict_dir
+
+
+def entries():
+    """返回全部词条（按文件顺序），供【编辑词典】列表展示。"""
+    return [
+        {'from_lang': from_lang, 'to_lang': to_lang, 'source': source, 'target': target}
+        for (from_lang, to_lang, source), target in _load().items()
+    ]
+
+
+def update(from_lang, to_lang, source, target):
+    """修改单条译文；词条不存在或译文为空时返回 False。"""
+    target = _norm(target)
+    if not target:
+        return False
     with _lock:
-        if os.path.exists(_dict_path):
-            os.remove(_dict_path)
+        data = dict(_load())
+        key = _key(from_lang, to_lang, source)
+        if key not in data:
+            return False
+        if data[key] != target:
+            data[key] = target
+            _write(data)
+            _invalidate()
+    return True
+
+
+def delete(from_lang, to_lang, source):
+    """删除单条词条；词条不存在时返回 False。"""
+    with _lock:
+        data = dict(_load())
+        key = _key(from_lang, to_lang, source)
+        if key not in data:
+            return False
+        del data[key]
+        _write(data)
         _invalidate()
     return True
+
+
+def open_folder():
+    """在系统文件管理器里打开词典所在目录；成功返回空串，失败返回错误信息。"""
+    try:
+        os.makedirs(_dict_dir, exist_ok=True)
+        if os.name == 'nt':
+            os.startfile(_dict_dir)
+        else:
+            opener = 'open' if sys.platform == 'darwin' else 'xdg-open'
+            subprocess.Popen([opener, _dict_dir])
+    except Exception as e:
+        return str(e)
+    return ''
