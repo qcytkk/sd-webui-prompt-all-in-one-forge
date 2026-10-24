@@ -79,6 +79,7 @@
                         v-model:auto-translate-to-local="autoTranslateToLocal"
                         v-model:auto-translate-to-english="autoTranslateToEnglish"
                         v-model:enable-tooltip="enableTooltip"
+                        v-model:enable-extra-networks-popup="enableExtraNetworksPopup"
                         v-model:show-chatgpt-btn="showChatgptBtn"
                         v-model:show-dedupe-btn="showDedupeBtn"
                         v-model:translate-api="translateApi"
@@ -134,6 +135,7 @@
         <extra-networks-popup ref="extraNetworksPopup"
                               v-model:language-code="languageCode"
                               :translate-apis="translateApis" :languages="languages"
+                              :enabled="enableExtraNetworksPopup"
                               :extra-networks="extraNetworks" />
 
         <div class="physton-paste-popup" v-if="showPastePopup" @click="closePastePopup">
@@ -307,6 +309,8 @@ export default {
             autoSplitByPeriodIncludeParen: false,
             // hideDefaultInput: false,
             enableTooltip: true,
+            // 【LoRA 信息框】的显示开关（悬停 LoRA 标签时弹出的信息浮层）
+            enableExtraNetworksPopup: true,
             // 【使用Ai生成提示词】按钮的显示开关（主界面工具栏）
             showChatgptBtn: true,
             // 【去除重复的关键词】按钮的显示开关（主界面工具栏）
@@ -586,6 +590,15 @@ export default {
             },
             immediate: false,
         },
+        enableExtraNetworksPopup: {
+            handler: function (val, oldVal) {
+                if (!this.startWatchSave) return
+                this.gradioAPI.setData('enableExtraNetworksPopup', val).then(data => {
+                }).catch(err => {
+                })
+            },
+            immediate: false,
+        },
         showChatgptBtn: {
             handler: function (val, oldVal) {
                 if (!this.startWatchSave) return
@@ -785,6 +798,7 @@ export default {
                 /*'hideDefaultInput', */
                 'translateApi',
                 'enableTooltip',
+                'enableExtraNetworksPopup',
                 'showChatgptBtn',
                 'showDedupeBtn',
                 'tagCompleteFile',
@@ -901,6 +915,9 @@ export default {
                 }
                 localStorage.setItem('phystonPromptEnableTooltip', this.enableTooltip ? 'true' : 'false')
                 this.updateTippyState()
+                if (data.enableExtraNetworksPopup !== null) {
+                    this.enableExtraNetworksPopup = data.enableExtraNetworksPopup
+                }
                 if (data.showChatgptBtn !== null) {
                     this.showChatgptBtn = data.showChatgptBtn
                 }

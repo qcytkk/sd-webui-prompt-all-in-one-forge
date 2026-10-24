@@ -172,6 +172,29 @@
                                         </div>
                                     </div>
                                 </div>
+                                <!-- LoRA 信息框：鼠标悬停 LoRA 标签时弹出的模型信息浮层 -->
+                                <div class="setting-line">
+                                    <div class="line-text">
+                                        <div class="line-title">{{ getLang('lora_info_popup') }}</div>
+                                        <div class="line-desc">{{ getLang('lora_info_popup_desc') }}</div>
+                                    </div>
+                                    <div class="line-content">
+                                        <div class="paio-pill" role="radiogroup" :aria-label="getLang('lora_info_popup')">
+                                            <label class="paio-pill-btn">
+                                                <input class="paio-pill-input" type="radio" name="paio-enable-lora-info-popup"
+                                                       :checked="!enableExtraNetworksPopup"
+                                                       @change="$emit('update:enableExtraNetworksPopup', false)">
+                                                <span>{{ getLang('toggle_off') }}</span>
+                                            </label>
+                                            <label class="paio-pill-btn">
+                                                <input class="paio-pill-input" type="radio" name="paio-enable-lora-info-popup"
+                                                       :checked="enableExtraNetworksPopup"
+                                                       @change="$emit('update:enableExtraNetworksPopup', true)">
+                                                <span>{{ getLang('toggle_on') }}</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
                                 <!-- 显示/隐藏主界面工具栏的【使用Ai生成提示词】按钮：已移至【控件显示设置】 -->
                             </div>
                         </div>
@@ -407,6 +430,7 @@ export default {
         autoTranslateToLocal: {type: Boolean, default: false},
         autoTranslateToEnglish: {type: Boolean, default: false},
         enableTooltip: {type: Boolean, default: true},
+        enableExtraNetworksPopup: {type: Boolean, default: true},
         showChatgptBtn: {type: Boolean, default: true},
         showDedupeBtn: {type: Boolean, default: true},
         translateApi: {type: [String, Object], default: ''},
@@ -434,7 +458,7 @@ export default {
         'update:visible', 'update:theme', 'update:languageCode',
         'update:promptOption',
         'update:autoTranslate', 'update:autoTranslateToLocal', 'update:autoTranslateToEnglish',
-        'update:enableTooltip', 'update:showChatgptBtn', 'update:showDedupeBtn', 'update:translateApi', 'update:tagCompleteFile',
+        'update:enableTooltip', 'update:enableExtraNetworksPopup', 'update:showChatgptBtn', 'update:showDedupeBtn', 'update:translateApi', 'update:tagCompleteFile',
         'update:onlyCsvOnAuto', 'update:groupTagsTranslate', 'update:translateFlow',
         'update:autoRemoveSpace', 'update:autoRemoveLastComma', 'update:autoKeepWeightZero',
         'update:autoKeepWeightOne', 'update:autoBreakBeforeWrap', 'update:autoBreakAfterWrap',

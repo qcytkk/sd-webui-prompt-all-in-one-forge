@@ -61,6 +61,10 @@ export default {
     components: {IconSvg},
     mixins: [LanguageMixin],
     props: {
+        enabled: {
+            type: Boolean,
+            default: true,
+        },
         extraNetworks: {
             type: Array,
             default: () => [],
@@ -84,8 +88,17 @@ export default {
     computed: {},
     mounted() {
     },
+    watch: {
+        enabled(val) {
+            if (!val) this.isShow = false
+        },
+    },
     methods: {
         show(e, name, useCallback, showCheckpoints = false, from = 'tags') {
+            if (!this.enabled) {
+                this.isShow = false
+                return
+            }
             this.mouseIn = false
             this.eMouseIn = true
             this.e = e
