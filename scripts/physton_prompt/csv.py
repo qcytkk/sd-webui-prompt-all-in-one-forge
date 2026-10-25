@@ -53,7 +53,10 @@ def get_csvs():
                 continue
             path = os.path.join(dir, file)
             name = os.path.basename(file)
-            size = os.path.getsize(path)
+            try:
+                st = os.stat(path)
+            except OSError:
+                continue
             if dir == self_tags_dir:
                 # 本插件自己的词典：直接用文件名作 key。
                 # 不硬编码插件目录名，插件被改名/移动后旧 key 依然可用。
@@ -64,7 +67,9 @@ def get_csvs():
             csvs.append({
                 'key': key,
                 'name': name,
-                'size': size,
+                'size': st.st_size,
+                # 毫秒级修改时间：前端据此判断词典是否被外部增改
+                'mtime': int(st.st_mtime_ns // 1000000),
                 'path': path
             })
     return csvs

@@ -93,7 +93,10 @@ export default {
             return new Promise((resolve, reject) => {
                 tagCompleteFile = tagCompleteFile || this.tagCompleteFile
                 if (!reload && window.tagCompleteFileCache[tagCompleteFile]) {
-                    resolve(window.tagCompleteFileCache[tagCompleteFile])
+                    // 缓存命中时先按文件 mtime+size 判断是否被外部增改，有变化才重读
+                    this.ensureCSVFresh(tagCompleteFile).then(() => {
+                        resolve(window.tagCompleteFileCache[tagCompleteFile])
+                    })
                     return
                 }
 
@@ -172,6 +175,8 @@ export default {
                     })*/
                     window.tagCompleteFileLoading[tagCompleteFile] = false
                     window.tagCompleteFileCache[tagCompleteFile] = data
+                    window.tagCompleteFileCacheAt = window.tagCompleteFileCacheAt || {}
+                    window.tagCompleteFileCacheAt[tagCompleteFile] = Date.now()
                     resolve(data)
                 }).catch(error => {
                     window.tagCompleteFileLoading[tagCompleteFile] = false
@@ -183,6 +188,47 @@ export default {
                     }
                 })
             })
+        },
+        // 标签词典文件也可能被其它插件/手工增改：翻译前按 mtime+size 判断缓存是否过期，
+        // 只有真的变了才重新下载解析，避免每次翻译都白解析整份大 CSV
+        ensureCSVFresh(key) {
+            if (!key) return Promise.resolve()
+            window.tagCompleteFileMeta = window.tagCompleteFileMeta || {}
+            window.tagCompleteFileChecking = window.tagCompleteFileChecking || {}
+            window.tagCompleteFileCacheAt = window.tagCompleteFileCacheAt || {}
+            const meta = window.tagCompleteFileMeta[key] || {}
+            // 2 秒内已检查过：同一批翻译里的多个标签共用一次结果
+            if (meta.checkedAt && Date.now() - meta.checkedAt < 2000) return Promise.resolve()
+            if (window.tagCompleteFileChecking[key]) return window.tagCompleteFileChecking[key]
+            const task = this.gradioAPI.getCSVs().then(csvs => {
+                meta.checkedAt = Date.now()
+                window.tagCompleteFileMeta[key] = meta
+                const file = (csvs || []).find(item => item.key === key)
+                if (!file) {
+                    // 文件被删除或改名：清掉缓存，后续按原逻辑处理
+                    delete window.tagCompleteFileCache[key]
+                    delete window.tagCompleteFileCacheAt[key]
+                    return
+                }
+                const sig = `${file.mtime}|${file.size}`
+                if (meta.sig === sig) return
+                // 首次检查：若缓存是在文件最后修改之后加载的，说明缓存就是最新内容
+                const cacheAt = window.tagCompleteFileCacheAt[key] || 0
+                meta.sig = sig
+                if (!cacheAt || cacheAt < file.mtime) {
+                    const oldCache = window.tagCompleteFileCache[key]
+                    return this.getCSV(key, true).catch(() => {
+                        // 重读失败时保留旧缓存，避免整批翻译静默失配
+                        if (oldCache) window.tagCompleteFileCache[key] = oldCache
+                    })
+                }
+            }).catch(() => {
+                // 接口不可用时不阻塞翻译，继续使用已有缓存
+            }).then(() => {
+                delete window.tagCompleteFileChecking[key]
+            })
+            window.tagCompleteFileChecking[key] = task
+            return task
         },
         _translateToLocalBy(text, toLocal, useNetwork = false) {
             text = text.trim().toLowerCase()
