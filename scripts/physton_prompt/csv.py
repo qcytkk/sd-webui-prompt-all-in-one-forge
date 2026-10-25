@@ -12,10 +12,13 @@ PREFERRED_DICT = 'sd-webui-prompt-all-in-one-forge_en_zh_dictionary.csv'
 FALLBACK_DICT = 'danbooru.zh_CN_SFW.csv'
 
 tagcomplete_tags_dir = os.path.join(base_dir, 'extensions', 'a1111-sd-webui-tagcomplete', 'tags')
+# sd_forge_lora_new 插件的数据目录：只取其中的 .csv 词典（同目录还有 json 等其它文件）
+lora_new_data_dir = os.path.join(base_dir, 'extensions', 'sd_forge_lora_new', 'data')
 
 dirs = [
     self_tags_dir,
     tagcomplete_tags_dir,
+    lora_new_data_dir,
 ]
 
 
@@ -43,7 +46,7 @@ def get_csvs():
         if not os.path.exists(dir):
             continue
         for file in os.listdir(dir):
-            if not file.endswith('.csv'):
+            if not file.lower().endswith('.csv'):
                 continue
             # 优先词典存在时，不再列出已被它取代的回退词典
             if preferred and file == FALLBACK_DICT:

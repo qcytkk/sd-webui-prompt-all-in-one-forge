@@ -2,6 +2,18 @@ import common from "@/utils/common"
 import Papa from 'papaparse'
 import globals from "../../globals";
 
+// 标签词典 CSV 常见的首行表头（如「英文,中文」「name,zh_CN」），解析时跳过，避免被当成词条
+const CSV_HEADERS = new Set([
+    '英文|中文',
+    'english|chinese',
+    'english|zh',
+    'english|zh_cn',
+    'name|zh_cn',
+    'tag|zh_cn',
+    'name|translation',
+    'tag|translation',
+])
+
 export default {
     props: {
         languageCode: {
@@ -133,11 +145,16 @@ export default {
                         header: false,
                         skipEmptyLines: true,
                     })
-                    res.data.forEach(line => {
+                    res.data.forEach((line, index) => {
                         if (line.length < 2) return
                         let en = line[0].trim()
                         let local = line[1].trim()
                         if (en === '' || local === '') return
+                        // 首行是表头时跳过（有的词典 CSV 带表头，有的不带，两种都兼容）
+                        if (index === 0) {
+                            const head = en.toLowerCase().replace(/^\uFEFF/, '')
+                            if (CSV_HEADERS.has(`${head}|${local.toLowerCase()}`)) return
+                        }
                         setData(en, local)
                     })
 

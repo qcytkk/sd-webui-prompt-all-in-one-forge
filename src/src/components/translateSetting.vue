@@ -396,11 +396,17 @@
                             <icon-svg name="close"/>
                         </button>
                     </div>
+                    <!-- 搜索栏：逗号分词（中英文逗号均可），命中关键词越多越靠前 -->
+                    <div class="paio-dict-toolbar">
+                        <input type="text" class="paio-dict-input" v-model="dictSearch"
+                               :placeholder="getLang('dict_search_placeholder')"
+                               :aria-label="getLang('dict_search_placeholder')">
+                    </div>
                     <div class="paio-dict-body">
                         <div class="paio-dict-empty" v-if="dictLoading">
                             <icon-svg name="loading" class="is-spinning"/>
                         </div>
-                        <table class="paio-dict-table" v-else-if="dictRows.length">
+                        <table class="paio-dict-table" v-else-if="dictFilteredRows.length">
                             <thead>
                             <tr>
                                 <th class="paio-dict-col-index" scope="col">{{ getLang('dict_col_index') }}</th>
@@ -410,7 +416,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr v-for="(row, index) in dictRows" :key="index">
+                            <tr v-for="(row, index) in dictFilteredRows" :key="index">
                                 <td class="paio-dict-col-index">{{ index + 1 }}</td>
                                 <td class="paio-dict-cell">{{ row.source }}</td>
                                 <td class="paio-dict-cell">{{ row.target }}</td>
@@ -425,7 +431,9 @@
                             </tr>
                             </tbody>
                         </table>
-                        <div class="paio-dict-empty" v-else>{{ getLang('machine_dict_empty') }}</div>
+                        <div class="paio-dict-empty" v-else>
+                            {{ dictRows.length ? getLang('dict_search_empty') : getLang('machine_dict_empty') }}
+                        </div>
                     </div>
                     <div class="paio-dict-footer">
                         <button type="button" class="paio-btn" @click="closeDictEditor">
@@ -532,6 +540,7 @@ export default {
             dictEditorVisible: false,
             dictLoading: false,
             dictRows: [],
+            dictSearch: '',
             dictSubVisible: false,
             dictSubMode: '',
             dictEditing: {from_lang: '', to_lang: '', source: '', target: '', newTarget: ''},
@@ -625,6 +634,26 @@ export default {
             const count = this.machineDict.count || 0
             if (!count) return this.getLang('machine_dict_empty')
             return this.getLang('machine_dict_count').replace('{0}', String(count)).replace('{1}', this.formatSize(this.machineDict.size))
+        },
+        // 【编辑词典】搜索过滤：逗号分词（中英文逗号均可），命中关键词越多越靠前
+        dictFilteredRows() {
+            const words = String(this.dictSearch || '')
+                .split(/[,，]/)
+                .map(w => w.trim().toLowerCase())
+                .filter(Boolean)
+            if (!words.length) return this.dictRows
+            const scored = []
+            this.dictRows.forEach((row, index) => {
+                const haystack = `${row.source || ''}\n${row.target || ''}`.toLowerCase()
+                let hits = 0
+                words.forEach(word => {
+                    if (haystack.includes(word)) hits++
+                })
+                if (hits) scored.push({row, hits, index})
+            })
+            // 命中数降序；命中数相同时保持原列表顺序
+            scored.sort((a, b) => (b.hits - a.hits) || (a.index - b.index))
+            return scored.map(item => item.row)
         },
         // 共享服务不可用时的提示：区分「插件目录缺失」与「模块导入失败」
         llmPromptText() {
@@ -792,11 +821,13 @@ export default {
         // ── 【编辑词典】列表 ──
         openDictEditor() {
             this.dictEditorVisible = true
+            this.dictSearch = ''
             this.loadDictEntries()
         },
         closeDictEditor() {
             this.dictEditorVisible = false
             this.dictRows = []
+            this.dictSearch = ''
             this.closeDictSub()
         },
         loadDictEntries() {
