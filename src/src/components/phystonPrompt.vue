@@ -174,7 +174,7 @@
                          :ref="'promptTag-' + tag.id" :data-id="tag.id">
                         <div class="prompt-tag-main"
                              @mouseenter="onTagMouseEnter(tag.id)"
-                             @mousemove.stop="onTagMouseMove(tag.id)"
+                             @mousemove.stop="onTagMouseMove(tag.id, $event)"
                              @mouseleave.stop="onTagMouseLeave(tag.id)">
                             <div class="prompt-tag-edit">
                                 <template v-if="tag.type === 'wrap'">
@@ -195,6 +195,8 @@
                                          :style="getTagColorStyle(tag)"
                                          :ref="'promptTagValue-' + tag.id"
                                          v-tooltip="tag.isLora || tag.isLyco ? '' : getLang('click_to_edit') + '<br/>' + getLang('dblclick_to_disable') + '<br/>' + getLang('drop_to_order')"
+                                         @mousedown.left="onTagMouseDown(tag.id, $event)"
+                                         @mouseup.left="onTagMouseUp(tag.id, $event)"
                                          @click="onTagClick(tag.id, $event)"
                                          @dblclick="onTagDblclick(tag.id)"
                                          @click.right.prevent="onTagRightClick(tag.id, $event)"
@@ -225,7 +227,6 @@
                                 </div>
                             </div>
                             <div class="btn-tag-extend"
-                                 v-animate="'fadeIn'"
                                  :style="{display: (tag.type === 'text' || !tag.type) && (showExtendId === tag.id) && !this.editing[tag.id] ? 'flex' : 'none'}"
                                  @click.stop=""
                                  @mousedown.stop=""
@@ -410,7 +411,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="tags-footer" v-if="item.type !== 'favorite' && item.type !== 'extraNetworks'">
+                                    <div class="tags-footer"
+                                         v-if="showTagsCopyright && item.type !== 'favorite' && item.type !== 'extraNetworks'">
                                         <div class="tags-color">
                                             <div>{{ getLang('tags_color') }}:</div>
                                             <div class="tags-color-picker hover-scale-120"
@@ -574,6 +576,11 @@ export default {
         },
         // 是否显示【去除重复的关键词】按钮（设置 → 控件显示设置里可切换）
         showDedupeBtn: {
+            type: Boolean,
+            default: true,
+        },
+        // 是否显示标签区底部的版权提示行（设置 → 通用设置里可切换）
+        showTagsCopyright: {
             type: Boolean,
             default: true,
         },
@@ -1273,11 +1280,13 @@ export default {
             this.applySplitByPeriod()
             this.updateTags()
         },
-        onPromptMainClick() {
+        onPromptMainClick(e) {
             if (this.autoLoadWebuiPrompt) {
                 this.onTextareaChange(true)
             }
             this._setTextareaFocus()
+            // 点击标签本身时不关闭扩展面板，避免与标签热键的开合逻辑冲突
+            if (e && e.target && typeof e.target.closest === 'function' && e.target.closest('.prompt-tag')) return
             this.showExtendId = ''
         },
         translates(indexes, toLocal = false, useNetwork = true) {

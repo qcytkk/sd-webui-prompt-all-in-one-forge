@@ -195,6 +195,29 @@
                                         </div>
                                     </div>
                                 </div>
+                                <!-- 标签区底部版权提示 -->
+                                <div class="setting-line">
+                                    <div class="line-text">
+                                        <div class="line-title">{{ getLang('show_tags_copyright') }}</div>
+                                        <div class="line-desc">{{ getLang('show_tags_copyright_desc') }}</div>
+                                    </div>
+                                    <div class="line-content">
+                                        <div class="paio-pill" role="radiogroup" :aria-label="getLang('show_tags_copyright')">
+                                            <label class="paio-pill-btn">
+                                                <input class="paio-pill-input" type="radio" name="paio-show-tags-copyright"
+                                                       :checked="!showTagsCopyright"
+                                                       @change="$emit('update:showTagsCopyright', false)">
+                                                <span>{{ getLang('toggle_off') }}</span>
+                                            </label>
+                                            <label class="paio-pill-btn">
+                                                <input class="paio-pill-input" type="radio" name="paio-show-tags-copyright"
+                                                       :checked="showTagsCopyright"
+                                                       @change="$emit('update:showTagsCopyright', true)">
+                                                <span>{{ getLang('toggle_on') }}</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
                                 <!-- 显示/隐藏主界面工具栏的【使用Ai生成提示词】按钮：已移至【控件显示设置】 -->
                             </div>
                         </div>
@@ -324,6 +347,15 @@
                                                @update:translate-api="$emit('update:translateApi', $event)"/>
                         </div>
 
+                        <!-- 标签快捷列表（自定义分组追加到内置列表末尾） -->
+                        <div v-show="activeTab === 'group_tags'" class="settings-tab-pane">
+                            <group-tags-setting ref="groupTagsSetting" embedded
+                                                :language-code="languageCode"
+                                                @update:language-code="$emit('update:languageCode', $event)"
+                                                :translate-apis="translateApis" :languages="languages"
+                                                @refresh-group-tags="$emit('refresh-group-tags', $event)"/>
+                        </div>
+
                         <!-- 提示词格式 -->
                         <div v-show="activeTab === 'format'" class="settings-tab-pane">
                             <prompt-format ref="promptFormat" embedded
@@ -405,6 +437,7 @@
 import LanguageMixin from "@/mixins/languageMixin";
 import IconSvg from "@/components/iconSvg.vue";
 import TranslateSetting from "@/components/translateSetting.vue";
+import GroupTagsSetting from "@/components/groupTagsSetting.vue";
 import PromptFormat from "@/components/promptFormat.vue";
 import Blacklist from "@/components/blacklist.vue";
 import Hotkey from "@/components/hotkey.vue";
@@ -415,7 +448,7 @@ import GradioAPI from "@/utils/gradioAPI.js";
 export default {
     name: 'SettingsModal',
     components: {
-        IconSvg, TranslateSetting, PromptFormat, Blacklist, Hotkey, ExtensionCss, About
+        IconSvg, TranslateSetting, GroupTagsSetting, PromptFormat, Blacklist, Hotkey, ExtensionCss, About
     },
     mixins: [LanguageMixin],
     props: {
@@ -433,6 +466,7 @@ export default {
         enableExtraNetworksPopup: {type: Boolean, default: true},
         showChatgptBtn: {type: Boolean, default: true},
         showDedupeBtn: {type: Boolean, default: true},
+        showTagsCopyright: {type: Boolean, default: true},
         translateApi: {type: [String, Object], default: ''},
         tagCompleteFile: {type: String, default: ''},
         onlyCsvOnAuto: {type: Boolean, default: false},
@@ -458,7 +492,7 @@ export default {
         'update:visible', 'update:theme', 'update:languageCode',
         'update:promptOption',
         'update:autoTranslate', 'update:autoTranslateToLocal', 'update:autoTranslateToEnglish',
-        'update:enableTooltip', 'update:enableExtraNetworksPopup', 'update:showChatgptBtn', 'update:showDedupeBtn', 'update:translateApi', 'update:tagCompleteFile',
+        'update:enableTooltip', 'update:enableExtraNetworksPopup', 'update:showChatgptBtn', 'update:showDedupeBtn', 'update:showTagsCopyright', 'update:translateApi', 'update:tagCompleteFile',
         'update:onlyCsvOnAuto', 'update:groupTagsTranslate', 'update:translateFlow',
         'update:autoRemoveSpace', 'update:autoRemoveLastComma', 'update:autoKeepWeightZero',
         'update:autoKeepWeightOne', 'update:autoBreakBeforeWrap', 'update:autoBreakAfterWrap',
@@ -466,7 +500,7 @@ export default {
         'update:useNovelAiWeightSymbol', 'update:autoRemoveBeforeLineComma',
         'update:autoSplitByPeriod', 'update:autoSplitByPeriodIncludeParen',
         'update:blacklist', 'update:hotkey',
-        'forceUpdate:translateApi',
+        'forceUpdate:translateApi', 'refresh-group-tags',
     ],
     data() {
         return {
@@ -475,6 +509,7 @@ export default {
                 {key: 'common', icon: 'setting', labelKey: 'setting'},
                 {key: 'control', icon: 'input', labelKey: 'control_display'},
                 {key: 'translate', icon: 'api', labelKey: 'translate_settings'},
+                {key: 'group_tags', icon: 'favorite', labelKey: 'group_tags_setting'},
                 {key: 'format', icon: 'format', labelKey: 'prompt_format'},
                 {key: 'blacklist', icon: 'blacklist', labelKey: 'keywords_blacklist'},
                 {key: 'hotkey', icon: 'hotkey', labelKey: 'hotkey_setting'},
@@ -499,6 +534,9 @@ export default {
                 this.$nextTick(() => this.openTab(this.activeTab))
             } else {
                 this.openedTabs = {}
+                // 关闭设置弹窗时同步关闭【标签快捷列表】内部的删除确认弹窗，避免下次打开残留
+                const groupTagsRef = this.$refs.groupTagsSetting
+                if (groupTagsRef && groupTagsRef.close) groupTagsRef.close()
             }
         }
     },
@@ -553,6 +591,7 @@ export default {
         getTabRef(key) {
             switch (key) {
                 case 'translate': return this.$refs.translateSetting
+                case 'group_tags': return this.$refs.groupTagsSetting
                 case 'format': return this.$refs.promptFormat
                 case 'blacklist': return this.$refs.blacklist
                 case 'hotkey': return this.$refs.hotkey

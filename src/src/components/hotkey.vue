@@ -60,6 +60,29 @@ export default {
                     ]
                 },
                 {
+                    name: 'longPress',
+                    title: 'long_press_keyword_tag',
+                    value: '',
+                    options: [
+                        {
+                            name: '',
+                            title: 'none'
+                        },
+                        {
+                            name: 'edit',
+                            title: 'edit_keyword'
+                        },
+                        {
+                            name: 'disable',
+                            title: 'disable_enable_keyword'
+                        },
+                        {
+                            name: 'extend',
+                            title: 'show_keyword_extend_panel'
+                        }
+                    ]
+                },
+                {
                     name: 'rightClick',
                     title: 'right_click_keyword_tag',
                     value: '',

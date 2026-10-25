@@ -22,6 +22,7 @@ from scripts.physton_prompt.gen_openai import gen_openai
 from scripts.physton_prompt.get_lang import get_lang
 from scripts.physton_prompt.get_version import get_version, get_git_remote_versions, get_latest_version
 from scripts.physton_prompt.get_group_tags import get_group_tags
+from scripts.physton_prompt import group_tags_custom
 
 try:
     from modules.shared import cmd_opts
@@ -446,6 +447,20 @@ def on_app_started(_: gr.Blocks, app: FastAPI):
     @app.get("/physton_prompt/get_group_tags")
     async def _get_group_tags(lang: str):
         return {"tags": get_group_tags(lang)}
+
+    # 【标签快捷列表】自定义分组：读写 group_tags/append.yaml
+    @app.get("/physton_prompt/group_tags_custom")
+    async def _get_group_tags_custom():
+        return {"content": group_tags_custom.read_custom()}
+
+    @app.post("/physton_prompt/group_tags_custom")
+    async def _set_group_tags_custom(request: Request):
+        data = await request.json()
+        try:
+            content = await run_in_threadpool(group_tags_custom.save_custom, data.get('content'))
+            return {"success": True, "content": content}
+        except Exception as e:
+            return {"success": False, "message": str(e)}
 
     # 【本地ai大模型翻译】与 sd_forge_lora_new 共用模型与翻译环境，路由见 local_llm_api
     from scripts.physton_prompt.local_llm_api import register as _register_local_llm

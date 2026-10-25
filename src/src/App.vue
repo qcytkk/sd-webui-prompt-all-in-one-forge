@@ -35,6 +35,7 @@
                             v-model:enable-tooltip="enableTooltip"
                             v-model:show-chatgpt-btn="showChatgptBtn"
                             v-model:show-dedupe-btn="showDedupeBtn"
+                            v-model:show-tags-copyright="showTagsCopyright"
                             v-model:translate-api="translateApi"
                             :translate-api-config="translateApiConfig"
                             @click:open-settings="onOpenSettings"
@@ -82,6 +83,7 @@
                         v-model:enable-extra-networks-popup="enableExtraNetworksPopup"
                         v-model:show-chatgpt-btn="showChatgptBtn"
                         v-model:show-dedupe-btn="showDedupeBtn"
+                        v-model:show-tags-copyright="showTagsCopyright"
                         v-model:translate-api="translateApi"
                         v-model:tag-complete-file="tagCompleteFile"
                         v-model:only-csv-on-auto="onlyCsvOnAuto"
@@ -106,7 +108,8 @@
                         @update:hotkey="onUpdateHotkey"
                         :prompt-items="prompts"
                         @update:prompt-option="onUpdatePromptOption"
-                        @forceUpdate:translateApi="updateTranslateApiConfig"/>
+                        @forceUpdate:translateApi="updateTranslateApiConfig"
+                        @refresh-group-tags="onRefreshGroupTags"/>
         <select-language ref="selectLanguage" v-model:language-code="languageCode"
                          :translate-apis="translateApis"
                          :languages="languages"
@@ -315,6 +318,7 @@ export default {
             showChatgptBtn: true,
             // 【去除重复的关键词】按钮的显示开关（主界面工具栏）
             showDedupeBtn: true,
+            showTagsCopyright: true,
             tagCompleteFile: '',
             onlyCsvOnAuto: false,
             // 翻译流程：五个方案的开关与顺序（数组顺序 = 尝试顺序）
@@ -370,6 +374,7 @@ export default {
 
             hotkey: {
                 click: 'edit', // edit, disable, extend
+                longPress: '', // edit, disable, extend
                 dblClick: 'disable', // edit, disable, extend
                 rightClick: '', // edit, disable, extend
                 hover: 'extend', // extend
@@ -617,6 +622,15 @@ export default {
             },
             immediate: false,
         },
+        showTagsCopyright: {
+            handler: function (val, oldVal) {
+                if (!this.startWatchSave) return
+                this.gradioAPI.setData('showTagsCopyright', val).then(data => {
+                }).catch(err => {
+                })
+            },
+            immediate: false,
+        },
         translateApi: {
             handler: function (val, oldVal) {
                 if (!this.startWatchSave) return
@@ -801,6 +815,7 @@ export default {
                 'enableExtraNetworksPopup',
                 'showChatgptBtn',
                 'showDedupeBtn',
+                'showTagsCopyright',
                 'tagCompleteFile',
                 'onlyCsvOnAuto',
                 'translateFlow',
@@ -923,6 +938,9 @@ export default {
                 }
                 if (data.showDedupeBtn !== null) {
                     this.showDedupeBtn = data.showDedupeBtn
+                }
+                if (data.showTagsCopyright !== null) {
+                    this.showTagsCopyright = data.showTagsCopyright
                 }
                 if (data.translateApi !== null) {
                     this.translateApi = data.translateApi
@@ -1104,6 +1122,19 @@ export default {
                 this._handleGroupTags()
             })
         },
+        // 【标签快捷列表】保存后：先把用户填写的颜色写进颜色缓存（否则会被旧值挡住），再重载列表
+        onRefreshGroupTags(payload) {
+            const colors = (payload && payload.colors) || []
+            colors.forEach(item => {
+                if (!item.key) return
+                if (item.color) {
+                    this.groupTagsColor[item.key] = ref(common.fitterInputColor(item.color))
+                } else {
+                    delete this.groupTagsColor[item.key]
+                }
+            })
+            this.loadGroupTags()
+        },
         _handleGroupTags() {
             let data = {toEn: new Map(), toLocal: new Map()}
             let setData = (en, local) => {
@@ -1128,13 +1159,19 @@ export default {
             this.groupTags.forEach((item, index) => {
                 item.type = item.type || ''
                 item.tabKey = 'groupTags-' + index
+                item.groups = item.groups || []
                 item.groups.forEach((group, subIndex) => {
                     group.type = group.type || ''
                     group.tabKey = 'subGroupTags-' + index + '-' + subIndex
                     if (group.type == 'wrap') return
                     let key = common.getTagsColorKey(item.name, group.name)
+                    let defaultColor = common.fitterInputColor(group.color)
                     if (!this.groupTagsColor[key]) {
-                        this.groupTagsColor[key] = ref(common.fitterInputColor(group.color))
+                        this.groupTagsColor[key] = ref(defaultColor)
+                    } else if (group.color && common.isColorTransparent(this.groupTagsColor[key])
+                        && !common.isColorTransparent(defaultColor)) {
+                        // 缓存还是透明默认色时跟随 YAML 里的颜色（设置页保存的颜色无需再点一次保存即可生效）
+                        this.groupTagsColor[key] = ref(defaultColor)
                     }
                     for (let en in group.tags) {
                         if (!en) continue

@@ -496,6 +496,33 @@ body .physton-settings-modal .paio-dict-input{
 body .physton-settings-modal .paio-dict-input:focus-visible{
   outline:2px solid var(--paio-brand); outline-offset:1px;
 }
+/* 【标签快捷列表】自定义分组编辑 */
+body .physton-settings-modal .paio-gt-desc{margin-bottom:12px;}
+body .physton-settings-modal .paio-gt-category{
+  border:1px solid var(--paio-border); border-radius:8px;
+  padding:12px; margin-bottom:12px; background:var(--paio-surface-2);
+}
+body .physton-settings-modal .paio-gt-row{
+  display:flex; align-items:center; gap:8px; margin-bottom:10px;
+}
+body .physton-settings-modal .paio-gt-row .paio-dict-input{flex:1 1 auto; min-width:0;}
+body .physton-settings-modal .paio-gt-row .paio-dict-input.paio-gt-color{flex:0 1 200px;}
+body .physton-settings-modal .paio-gt-group{
+  margin:10px 0 10px 16px; padding:10px; border-left:2px solid var(--paio-border);
+}
+body .physton-settings-modal .paio-gt-tag-row{
+  display:flex; align-items:center; gap:8px; margin-bottom:8px;
+}
+body .physton-settings-modal .paio-gt-tag-row .paio-dict-input{flex:1 1 0; min-width:0;}
+body .physton-settings-modal .paio-gt-arrow{color:var(--paio-text-muted);}
+body .physton-settings-modal .paio-gt-mini{padding:0 8px;}
+body .physton-settings-modal .paio-gt-empty{
+  padding:16px; text-align:center; color:var(--paio-text-muted);
+  font-size:13px; border:1px dashed var(--paio-border); border-radius:8px;
+}
+body .physton-settings-modal .paio-gt-footer{
+  display:flex; justify-content:space-between; gap:10px; margin-top:14px;
+}
 body .physton-settings-modal .settings-tab-pane .paio-side-block>.line-desc{
   font-size:12px; line-height:1.55; color:var(--paio-text-muted);
 }

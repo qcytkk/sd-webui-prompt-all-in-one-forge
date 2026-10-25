@@ -193,6 +193,15 @@ export default class GradioAPI {
         return (await this.api.get("/get_group_tags", {params: {lang}})).data.tags
     }
 
+    // 【标签快捷列表】自定义分组（group_tags/append.yaml）
+    async getGroupTagsCustom() {
+        return (await this.api.get("/group_tags_custom")).data.content
+    }
+
+    async saveGroupTagsCustom(content) {
+        return (await this.api.post("/group_tags_custom", {content})).data
+    }
+
     // ── 机翻词典（缓存连网翻译 / 本地大模型翻译的成功译文）──
     async machineDictStats() {
         return (await this.api.get("/machine_dict/stats")).data

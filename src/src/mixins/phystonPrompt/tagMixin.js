@@ -6,6 +6,10 @@ export default {
         return {
             tagClickTimeId: 0,
             showExtendId: '',
+            longPressTimer: 0,
+            longPressStartX: 0,
+            longPressStartY: 0,
+            longPressFired: false,
         }
     },
     mounted() {
@@ -305,13 +309,19 @@ export default {
             let tag = this.tags.find(tag => tag.id === id)
             if (!tag) return false
             tag.isFavorite = this.isFavorite(tag.id)
-            if (this.hotkey.hover === 'extend') this.showExtendId = id
+            if (this._isHoverExtendEnabled()) this.showExtendId = id
             if (tag.isLora || tag.isLyco || tag.isEmbedding) {
                 let name = tag.isLora ? tag.loraName : (tag.isLyco ? tag.lycoName : tag.embeddingName)
                 this.$emit('showExtraNetworks', this.$refs['promptTagValue-' + tag.id][0], name, this.onLoraPopupUseKeywords, 'tags')
             }
         },
-        onTagMouseMove(id) {
+        onTagMouseMove(id, e) {
+            // 长按期间移动超过阈值视为拖拽，取消长按
+            if (this.longPressTimer && e) {
+                if (Math.abs(e.clientX - this.longPressStartX) > 6 || Math.abs(e.clientY - this.longPressStartY) > 6) {
+                    this._cancelLongPress()
+                }
+            }
             /*let tag = this.tags.find(tag => tag.id === id)
             if (!tag) return false
             this.$refs.highlightPrompt.show(tag)*/
@@ -319,10 +329,22 @@ export default {
         onTagMouseLeave(id) {
             let tag = this.tags.find(tag => tag.id === id)
             if (!tag) return false
-            if (this.hotkey.hover === 'extend') this.showExtendId = ''
+            this._cancelLongPress()
+            if (this._isHoverExtendEnabled()) this.showExtendId = ''
             this.$emit('hideExtraNetworks')
         },
         onTagClick(id) {
+            // 长按已触发动作时，屏蔽松开后的点击
+            if (this.longPressFired) {
+                this.longPressFired = false
+                return
+            }
+            // 扩展面板的显示/隐藏属于即时视觉反馈，直接执行，不等待双击判定
+            if (this.hotkey.click === 'extend') {
+                if (this.tagClickTimeId) clearTimeout(this.tagClickTimeId)
+                this._handleHoverTag(id)
+                return
+            }
             if (this.tagClickTimeId) clearTimeout(this.tagClickTimeId)
             this.tagClickTimeId = setTimeout(() => {
                 switch (this.hotkey.click) {
@@ -366,6 +388,42 @@ export default {
                     break
             }
         },
+        onTagMouseDown(id, e) {
+            this._cancelLongPress()
+            this.longPressFired = false
+            if (!this.hotkey || !this.hotkey.longPress) return
+            let tag = this.tags.find(tag => tag.id === id)
+            if (!tag) return
+            this.longPressStartX = e.clientX
+            this.longPressStartY = e.clientY
+            this.longPressTimer = setTimeout(() => {
+                this.longPressTimer = 0
+                this.longPressFired = true
+                switch (this.hotkey.longPress) {
+                    case 'edit':
+                        this._handleEditTag(id)
+                        break
+                    case 'disable':
+                        this._handleDisableTag(id)
+                        break
+                    case 'extend':
+                        this._handleHoverTag(id)
+                        break
+                }
+            }, 500)
+        },
+        onTagMouseUp(id) {
+            this._cancelLongPress()
+        },
+        _cancelLongPress() {
+            if (!this.longPressTimer) return
+            clearTimeout(this.longPressTimer)
+            this.longPressTimer = 0
+        },
+        _isHoverExtendEnabled() {
+            // 左键点击/长按已绑定扩展面板时，悬停不再抢占显示状态，避免同一面板被重复开合造成闪烁
+            return this.hotkey.hover === 'extend' && this.hotkey.click !== 'extend' && this.hotkey.longPress !== 'extend'
+        },
         _handleEditTag(id) {
             let tag = this.tags.find(tag => tag.id === id)
             if (!tag) return false
@@ -388,7 +446,8 @@ export default {
         _handleHoverTag(id) {
             let tag = this.tags.find(tag => tag.id === id)
             if (!tag) return false
-            this.showExtendId = id
+            // 已显示扩展面板时再次触发则收起，否则切换为当前标签
+            this.showExtendId = this.showExtendId === id ? '' : id
         },
         onTagInputBlur(id) {
             let tag = this.tags.find(tag => tag.id === id)
