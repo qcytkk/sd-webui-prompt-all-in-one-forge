@@ -6,9 +6,9 @@ self_base_dir = os.path.abspath(os.path.join(os.path.join(os.path.dirname(__file
 self_tags_dir = os.path.join(self_base_dir, 'tags')
 
 # ---------- 词典优先级 ----------
-# 优先使用本插件 tags/ 下的 en_zh_dictionary.csv（随插件分发，条目更多、译文更干净）；
+# 优先使用本插件 tags/ 下的 sd-webui-prompt-all-in-one-forge_en_zh_dictionary.csv（随插件分发，条目更多、译文更干净）；
 # 只有它不存在时，才回退到 TagComplete 的 danbooru.zh_CN_SFW.csv。
-PREFERRED_DICT = 'en_zh_dictionary.csv'
+PREFERRED_DICT = 'sd-webui-prompt-all-in-one-forge_en_zh_dictionary.csv'
 FALLBACK_DICT = 'danbooru.zh_CN_SFW.csv'
 
 tagcomplete_tags_dir = os.path.join(base_dir, 'extensions', 'a1111-sd-webui-tagcomplete', 'tags')
@@ -70,9 +70,9 @@ def get_csvs():
 def get_csv(key):
     """把前端传来的 key 解析为实际文件路径。
 
-    优先级规则：只要 en_zh_dictionary.csv 存在，任何指向回退词典
+    优先级规则：只要 sd-webui-prompt-all-in-one-forge_en_zh_dictionary.csv 存在，任何指向回退词典
     （danbooru.zh_CN_SFW.csv）的请求都会被重定向到它；
-    en_zh_dictionary.csv 缺失时才使用回退词典。
+    sd-webui-prompt-all-in-one-forge_en_zh_dictionary.csv 缺失时才使用回退词典。
     """
     name = _basename(key)
 
